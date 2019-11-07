@@ -1,4 +1,3 @@
-
 from sifter import db
 
 

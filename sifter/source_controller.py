@@ -1,30 +1,23 @@
 import os
 import logging
 import time
-import json
 import itertools
 import requests
-from flask import session
 from sifter.models import Source, Category
-from sqlalchemy.exc import IntegrityError
-import psycopg2
 
 
 api_key = os.getenv('NEWS_SRC_MS_API_KEY')
-
-
 
 logging.basicConfig(filename='news_sources_ms.log', level=logging.INFO)
 logger = logging.getLogger(__name__)
 # print(logging.getLoggerClass().root.handlers[0].baseFilename)
 
-test_country_codes = {
-    'ar': {'name': 'Argentina', 'language': 'es'}
-}
+test_country_codes = {'ar': {'name': 'Argentina', 'language': 'es'}}
 
 test_categories = ['sports']
 
-categories = ['business', 'entertainment', 'health', 'science', 'sports', 'technology', None]
+categories = ['business', 'entertainment', 'health', 'science', 'sports', 'technology', 'general']
+
 country_codes = {
     'ar': {'name':'Argentina',      'language': 'es'},
     'au': {'name':'Australia',      'language': 'en'},
@@ -92,62 +85,47 @@ class SourceController:
     def __init__(self, db):
         self.db = db
 
-    def sift_sources(self):
-        logger.log(level=logging.INFO, msg="Starting sift_sources")
-        modified_src_id_set = set()
-        top_data = self.request_top_sources()
-        logger.log(level=logging.INFO, msg=f'TOP DATA:\n {top_data}')
-        if top_data:
-            top_id_set = self.build_top_sources(top_data)
-            modified_src_id_set.update(top_id_set)
-            logger.log(level=logging.INFO, msg=f'len(modified_src_id_set) after sifting TOP_SOURCES == {len(modified_src_id_set)}')
-        time.sleep(240)
 
+
+    def sift_sources(self):
+        modified_src_id_set = set()  # Container for IDs of new/updated Sources
+        top_data = self.request_top_sources()  # Request data from API
+        if top_data:
+            top_id_set = self.build_top_sources(top_data)  # Process data to create/update Category and Source records.
+            modified_src_id_set.update(top_id_set)  # Track IDs of new/updated records
+        time.sleep(240)
+        # The APIs sources endpoint is limited to about 125 of the largest news sources globally.
+        # These are the only sources (from 30,000) from the API which contain values
+        # for  Country, Language, and Category -- and by extension to each their own articles.
+        # However, the top-headlines endpoint has parameters for limiting
+        # results to each of 54 available countires, as well as 7 categories.
+        # Below, all combinations of countries/categories are used to query the API,
+        # allowing for the indirect identification of a source's Country and Category/Categories,
+        # while languages are applied by as 'most likely' for the given country.
         for country_code, category in itertools.product(test_country_codes, test_categories):
-            logger.log(level=logging.INFO, msg=f'Requesting data from {country_code} of category {category}.')
             country_data = self.request_country_sources(alpha2_code=country_code, src_cat=category)
             if country_data:
-                logger.log(level=logging.INFO, msg=f'Have {category} data from {country_code}.')
-                country_src_id_set = self.build_country_sources(generated_country_sources=country_data,
-                                                                alpha2_code=country_code, src_cat=category)
+                country_src_id_set = self.build_country_sources(generated_country_sources=country_data, alpha2_code=country_code, src_cat=category)
                 modified_src_id_set.update(country_src_id_set)
-                logger.log(level=logging.INFO,
-                           msg=f'len(modified_src_id_set) after sifting TOP_SOURCES == {len(modified_src_id_set)}')
             time.sleep(240)
-
-        # data_dict = {'sources': []}
-        data_dict = {'sources': [] for x in range(2)}
-        logger.log(level=logging.INFO, msg=f'''
-                \n\n\n
-                Finished Sifting Sources....Preparing JSON to POST\n\n
-                len(id_list) == {len(modified_src_id_set)} and type(id_list) == {str(type(modified_src_id_set))}\n\n
-                type(data_dict) == {type(data_dict)} and type(data_dict["sources"]) == {type(data_dict["sources"])} === {data_dict["sources"]}\n\n
-
-        ''')
-        for src_id in modified_src_id_set:
-            logger.log(level=logging.INFO, msg=f'src_id == {src_id}, type == {type(src_id)}\n\n')
+        data_dict = {'sources': [] for x in range(2)}  # Initialize container for new/updated Source JSON
+        for src_id in modified_src_id_set:  # Use tracked Source IDs to populate JSON container
             src = Source.query.get(src_id)
-            logger.log(level=logging.INFO,
-                       msg=f'src = Source.query.get(src_id) is type {type(src)} with a value of {src}\n\nsrc.json == {src.json}\n\n')
-            # data_dict['sources'].append({
-            #     'name': src.name,
-            #     'country': src.country,
-            #     'language': src.language,
-            #     'categories': [category.name for category in src.categories]
-            # })
             data_dict['sources'].append(src.json)
-        logger.log(level=logging.INFO,
-                   msg=f'len(data_dict[sources]) after sifting == {len(data_dict["sources"])} and ==\n\n{data_dict["sources"]}')
-        json_data = json.dumps(data_dict)
-        logger.log(level=logging.INFO,
-                   msg=f'JSON DATA ->\n\n\n{json_data}\n\n\n================================================FINISHED==================================================')
-        print(json_data)
-        return json_data
+        try:
+            payload = requests.post(url=os.getenv('NEWS_MAP_POST_URL'), json=data_dict, timeout=5)
+            payload.raise_for_status()
+            return True
+        except ConnectionError:
+            logger.log(level=logging.INFO, msg=f'ConnectionError when posting payload.')
+            pass
+
 
     @staticmethod
     def generated_sources(src_gen):
         for src in src_gen:
             yield src
+
 
 
     def request_country_sources(self, alpha2_code, src_cat=None):
@@ -166,49 +144,34 @@ class SourceController:
             return None
 
 
+
     def build_country_sources(self, generated_country_sources, alpha2_code, src_cat):
         new_and_updated_id_set = set()
-        if src_cat is None:
-            src_cat = 'unavailable'
         category = Category.query.filter_by(name=src_cat).first()
-        if category is None:
+        if category is None:  # Category not in DB
             category = Category(name=src_cat)
             self.db.session.add(category)
             self.db.session.commit()
         for src in generated_country_sources:
             source = Source.query.filter_by(name=src["source"]["name"]).first()
-            if source is None:
-                new_source = Source(
-                    name=src['source']['name'],
-                    country=alpha2_code,
-                    language=country_codes.get(alpha2_code).get('language'))
-                logger.log(level=logging.INFO, msg=f'Adding source, NAME: {src["source"]["name"]}, COUNTRY: {alpha2_code}, LANGUAGE: {country_codes.get(alpha2_code).get("language")}, CATEGORY: {src_cat}')
+            if source is None:  # Source does not exist in DB
+                new_source = Source(name=src['source']['name'], country=alpha2_code, language=country_codes.get(alpha2_code).get('language'))
                 new_source.categories.append(category)
-                logger.log(level=logging.INFO, msg=f'Category {category} added to source -> {new_source.categories}')
                 self.db.session.add(new_source)
                 new_and_updated_id_set.add(new_source.id)
-                logger.log(level=logging.INFO, msg=f'Added {new_source.name} to DB and list.')
-            else:
-                logger.log(level=logging.INFO, msg=f'Established source has source.categories = {source.categories}, checking for {category}')
-
-                try:
+                logger.log(level=logging.INFO, msg=f'Adding source, NAME: {src["source"]["name"]}, COUNTRY: {alpha2_code}, LANGUAGE: {country_codes.get(alpha2_code).get("language")}, CATEGORY: {src_cat}')
+                logger.log(level=logging.INFO, msg=f'Category {category} added to source -> {new_source.categories}')
+            else:  # Source exists in DB
+                try:  # Check if Category present for Source
                     idx = source.categories.index(category)
-                    logger.log(level=logging.INFO, msg=f'Category of {category} (ID:{category.id}, NAME:{category.name})'
-                                                       f' already present in source.categories: {source.categories} {idx}')
-                except ValueError:  # Raised when src_cat not in list source.categories
-                    logger.log(level=logging.INFO, msg=f'Current source.categories: {source.categories}\nNew Category Name: {category.name}\n'
-                                                       f'Target Category ID: {category.id}\nTarget Category Object: {category}')
+                except ValueError:  # Raised if not present, add Category to Source
                     source.categories.append(category)
                     new_and_updated_id_set.add(source.id)
-                    logger.log(level=logging.INFO, msg=f'Source.categories after adding new cat: {source.categories}')
+                    logger.log(level=logging.INFO, msg=f'Category {category} added to source -> {source.categories}')
         self.db.session.commit()
-        logger.log(level=logging.INFO, msg=f'''
-                     \n\nCOUNTRY SRCS new_and_updated_id_set -->\n\n
-                     TYPE == {type(new_and_updated_id_set)}\n\n
-                     VALUE == {new_and_updated_id_set}\n\n
-                     LENGTH == {len(new_and_updated_id_set)}\n\n
-             ''')
         return new_and_updated_id_set
+
+
 
     @staticmethod
     def request_top_sources():
@@ -222,156 +185,26 @@ class SourceController:
             return None
 
 
+
     def build_top_sources(self, generated_top_sources):
-
-        # Store ID of each new Source and Sources with a new Category.
-        new_and_updated_id_set = set()
-
+        new_and_updated_id_set = set()  # Store ID of each new Source and Sources with a new Category.
         for src in generated_top_sources:
-
-            logger.log(level=logging.INFO, msg=f'src[category] = {src["category"]}\n src = {src}')
-            # Check DB for Category
-            category = Category.query.filter_by(name=src['category']).first()
-
-            # Category does not exist in DB, add Category
-            if category is None:
+            category = Category.query.filter_by(name=src['category']).first()  # Check DB for Category
+            if category is None:  # Category does not exist in DB, add Category
                 category = Category(name=src['category'])
-
                 self.db.session.add(category)
                 self.db.session.commit()
-            # Checking DB for Source
-            source = Source.query.filter_by(name=src["name"]).first()
-
-            # Source does not exist in DB, add Source.
-            if source is None:
-                source = Source(
-                    name=src['name'],
-                    country=src['country'],
-                    language=src['language']
-                )
+            source = Source.query.filter_by(name=src["name"]).first()  # Checking DB for Source
+            if source is None:  # Source does not exist in DB, add Source.
+                source = Source(name=src['name'], country=src['country'], language=src['language'])
                 source.categories.append(category)
                 self.db.session.add(source)
                 new_and_updated_id_set.add(source.id)
-
-            # Source exists in DB.
-            else:
-                # Check Source for Category
-                try:
+            else:  # Source exists in DB.
+                try:  # Check Source for Category
                     idx = source.categories.index(category)
-
-                # Category does not exist for Source, add Category.
-                except ValueError:
+                except ValueError:  # Category does not exist for Source, add Category.
                     source.categories.append(category)
                     new_and_updated_id_set.add(source.id)
-
         self.db.session.commit()
-        logger.log(level=logging.INFO, msg=f'''
-                \n\nTOP SOURCES new_and_updated_id_set -->\n\n
-                TYPE == {type(new_and_updated_id_set)}\n\n
-                VALUE == {new_and_updated_id_set}\n\n
-                LENGTH == {len(new_and_updated_id_set)}\n\n
-        ''')
         return new_and_updated_id_set
-
-
-
-
-
-
-# if __name__ == '__main__':
-#
-#     scheduler.add_job(func=sift_sources, 'interval', minutes=2)
-#     scheduler.start()
-#     print(f'Press Ctrl+{"Break" if os.name == "nt" else "C"} to exit')
-#     try:
-#         while True:
-#             time.sleep(2)
-#     except (KeyboardInterrupt, SystemExit):
-#         scheduler.shutdown()
-
-
-
-
-
-# MISC
-
-# There are two ways to add jobs to a scheduler:
-#
-#     by calling :meth:`~apscheduler.schedulers.base.BaseScheduler.add_job`
-#     by decorating a function with :meth:`~apscheduler.schedulers.base.BaseScheduler.scheduled_job`
-#
-# The first way is the most common way to do it.
-# The second way is mostly a convenience to declare jobs that don't change during the application's run time.
-# The :meth:`~apscheduler.schedulers.base.BaseScheduler.add_job` method returns a
-# :class:`apscheduler.job.Job` instance that you can use to modify or remove the job later.
-#
-# You can schedule jobs on the scheduler at any time. If the scheduler is not yet running when the job is added, the job will be scheduled tentatively and its first run time will only be computed when the scheduler starts.
-#
-# It is important to note that if you use an executor or job store that serializes the job, it will add a couple requirements on your job:
-#     The target callable must be globally accessible
-#     Any arguments to the callable must be serializable
-#
-# Of the builtin job stores, only MemoryJobStore doesn't serialize jobs.
-# Of the builtin executors, only ProcessPoolExecutor will serialize jobs.
-#
-########################################################################################
-# Important
-#
-# If you schedule jobs in a persistent job store during your application's initialization,
-# you MUST define an explicit ID for the job and use replace_existing=True
-# or you will get a new copy of the job every time your application restarts!
-#
-
-
-
-############################################################################
-# Tip
-#
-# To run a job immediately, omit trigger argument when adding the job.
-
-
-# SQALCHEMY JOBSTORE
-
-# if __name__ == '__main__':
-#     scheduler = BlockingScheduler()
-#     url = sys.argv[1] if len(sys.argv) > 1 else 'sqlite:///example.sqlite'
-#     scheduler.add_jobstore('sqlalchemy', url=url)
-#     alarm_time = datetime.now() + timedelta(seconds=10)
-#     scheduler.add_job(alarm, 'date', run_date=alarm_time, args=[datetime.now()])
-#     print('To clear the alarms, delete the example.sqlite file.')
-#     print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
-#
-#     try:
-#         scheduler.start()
-#     except (KeyboardInterrupt, SystemExit):
-#         pass
-
-
-
-
-# BACKGROUND SCHEDULER
-
-# from datetime import datetime
-# import time
-# import os
-#
-# from apscheduler.schedulers.background import BackgroundScheduler
-#
-#
-# def tick():
-#     print('Tick! The time is: %s' % datetime.now())
-#
-#
-# if __name__ == '__main__':
-#     scheduler = BackgroundScheduler()
-#     scheduler.add_job(tick, 'interval', seconds=3)
-#     scheduler.start()
-#     print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
-#
-#     try:
-#         # This is here to simulate application activity (which keeps the main thread alive).
-#         while True:
-#             time.sleep(2)
-#     except (KeyboardInterrupt, SystemExit):
-#         # Not strictly necessary if daemonic mode is enabled but should be done if possible
-#         scheduler.shutdown()
