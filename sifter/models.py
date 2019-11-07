@@ -17,14 +17,6 @@ class Source(db.Model):
     language = db.Column(db.String(255), nullable=False)
     categories = db.relationship('Category', secondary=categories, lazy='subquery', backref=db.backref('sources', lazy=True))
 
-    # def __init__(self, name: str, country: str, language: str):
-    #     self._name = name
-    #     self._country = country
-    #     self._language = language
-    #     self._categories = categories
-    # def __str__(self):
-    #     return f'{self.name}, {self.country}, {self.language}'
-
     @property
     def json(self):
         return {
@@ -36,7 +28,6 @@ class Source(db.Model):
 
 
 
-
 class Category(db.Model):
 
     __tablename__ = 'category'
@@ -44,8 +35,3 @@ class Category(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
 
-    # def __init__(self, name: str):
-    #     self._name = name
-
-    # def __repr__(self):
-    #     return f'{self._name}'

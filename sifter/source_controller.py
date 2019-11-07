@@ -19,9 +19,11 @@ logger = logging.getLogger(__name__)
 # print(logging.getLoggerClass().root.handlers[0].baseFilename)
 
 test_country_codes = {
-    'ar': {'name': 'Argentina', 'language': 'es'},
-    'au': {'name': 'Australia', 'language': 'en'}
+    'ar': {'name': 'Argentina', 'language': 'es'}
 }
+
+test_categories = ['sports']
+
 categories = ['business', 'entertainment', 'health', 'science', 'sports', 'technology', None]
 country_codes = {
     'ar': {'name':'Argentina',      'language': 'es'},
@@ -90,6 +92,58 @@ class SourceController:
     def __init__(self, db):
         self.db = db
 
+    def sift_sources(self):
+        logger.log(level=logging.INFO, msg="Starting sift_sources")
+        modified_src_id_set = set()
+        top_data = self.request_top_sources()
+        logger.log(level=logging.INFO, msg=f'TOP DATA:\n {top_data}')
+        if top_data:
+            top_id_set = self.build_top_sources(top_data)
+            modified_src_id_set.update(top_id_set)
+            logger.log(level=logging.INFO, msg=f'len(modified_src_id_set) after sifting TOP_SOURCES == {len(modified_src_id_set)}')
+        time.sleep(240)
+
+        for country_code, category in itertools.product(test_country_codes, test_categories):
+            logger.log(level=logging.INFO, msg=f'Requesting data from {country_code} of category {category}.')
+            country_data = self.request_country_sources(alpha2_code=country_code, src_cat=category)
+            if country_data:
+                logger.log(level=logging.INFO, msg=f'Have {category} data from {country_code}.')
+                country_src_id_set = self.build_country_sources(generated_country_sources=country_data,
+                                                                alpha2_code=country_code, src_cat=category)
+                modified_src_id_set.update(country_src_id_set)
+                logger.log(level=logging.INFO,
+                           msg=f'len(modified_src_id_set) after sifting TOP_SOURCES == {len(modified_src_id_set)}')
+            time.sleep(240)
+
+        # data_dict = {'sources': []}
+        data_dict = {'sources': [] for x in range(2)}
+        logger.log(level=logging.INFO, msg=f'''
+                \n\n\n
+                Finished Sifting Sources....Preparing JSON to POST\n\n
+                len(id_list) == {len(modified_src_id_set)} and type(id_list) == {str(type(modified_src_id_set))}\n\n
+                type(data_dict) == {type(data_dict)} and type(data_dict["sources"]) == {type(data_dict["sources"])} === {data_dict["sources"]}\n\n
+
+        ''')
+        for src_id in modified_src_id_set:
+            logger.log(level=logging.INFO, msg=f'src_id == {src_id}, type == {type(src_id)}\n\n')
+            src = Source.query.get(src_id)
+            logger.log(level=logging.INFO,
+                       msg=f'src = Source.query.get(src_id) is type {type(src)} with a value of {src}\n\nsrc.json == {src.json}\n\n')
+            # data_dict['sources'].append({
+            #     'name': src.name,
+            #     'country': src.country,
+            #     'language': src.language,
+            #     'categories': [category.name for category in src.categories]
+            # })
+            data_dict['sources'].append(src.json)
+        logger.log(level=logging.INFO,
+                   msg=f'len(data_dict[sources]) after sifting == {len(data_dict["sources"])} and ==\n\n{data_dict["sources"]}')
+        json_data = json.dumps(data_dict)
+        logger.log(level=logging.INFO,
+                   msg=f'JSON DATA ->\n\n\n{json_data}\n\n\n================================================FINISHED==================================================')
+        print(json_data)
+        return json_data
+
     @staticmethod
     def generated_sources(src_gen):
         for src in src_gen:
@@ -148,6 +202,12 @@ class SourceController:
                     new_and_updated_id_set.add(source.id)
                     logger.log(level=logging.INFO, msg=f'Source.categories after adding new cat: {source.categories}')
         self.db.session.commit()
+        logger.log(level=logging.INFO, msg=f'''
+                     \n\nCOUNTRY SRCS new_and_updated_id_set -->\n\n
+                     TYPE == {type(new_and_updated_id_set)}\n\n
+                     VALUE == {new_and_updated_id_set}\n\n
+                     LENGTH == {len(new_and_updated_id_set)}\n\n
+             ''')
         return new_and_updated_id_set
 
     @staticmethod
@@ -205,43 +265,17 @@ class SourceController:
                     new_and_updated_id_set.add(source.id)
 
         self.db.session.commit()
+        logger.log(level=logging.INFO, msg=f'''
+                \n\nTOP SOURCES new_and_updated_id_set -->\n\n
+                TYPE == {type(new_and_updated_id_set)}\n\n
+                VALUE == {new_and_updated_id_set}\n\n
+                LENGTH == {len(new_and_updated_id_set)}\n\n
+        ''')
         return new_and_updated_id_set
 
 
 
-    def sift_sources(self):
-        logger.log(level=logging.INFO, msg="Starting sift_sources")
-        id_list = set()
-        top_data = self.request_top_sources()
-        logger.log(level=logging.INFO, msg=f'TOP DATA:\n {top_data}')
-        if top_data:
-            top_id_set = self.build_top_sources(top_data)
-            id_list.difference_update(top_id_set)
-        time.sleep(240)
 
-        for country_code, category in itertools.product(test_country_codes, categories):
-            logger.log(level=logging.INFO, msg=f'Requesting data from {country_code} of category {category}.')
-            country_data = self.request_country_sources(alpha2_code=country_code, src_cat=category)
-            if country_data:
-                logger.log(level=logging.INFO, msg=f'Have {category} data from {country_code}.')
-                country_src_id_set = self.build_country_sources(generated_country_sources=country_data, alpha2_code=country_code, src_cat=category)
-                id_list.difference_update(country_src_id_set)
-            time.sleep(240)
-
-        data_dict = {'sources': []}
-        for src_id in id_list:
-            src = Source.query.get(src_id)
-            # data_dict['sources'].append({
-            #     'name': src.name,
-            #     'country': src.country,
-            #     'language': src.language,
-            #     'categories': [category.name for category in src.categories]
-            # })
-            data_dict['sources'].append(src.json)
-        json_data = json.dumps(data_dict)
-        logger.log(level=logging.INFO, msg=f'JSON DATA ->\n\n\n{json_data}')
-        print(json_data)
-        return True
 
 
 # if __name__ == '__main__':
