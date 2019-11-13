@@ -82,7 +82,7 @@ def sift_sources():
         if top_data:
             top_id_set = build_top_sources(top_data)  # Process data to create/update Category and Source records.
             modified_src_id_set.update(top_id_set)  # Track IDs of new/updated records
-        time.sleep(360)
+        time.sleep(240)
         # The APIs sources endpoint is limited to about 125 of the largest news sources globally.
         # These are the only sources (from 30,000) from the API which contain values
         # for  Country, Language, and Category -- and by extension to each their own articles.
@@ -97,7 +97,7 @@ def sift_sources():
                 country_src_id_set = build_country_sources(
                     generated_country_sources=country_data, alpha2_code=country_code, src_cat=category)
                 modified_src_id_set.update(country_src_id_set)
-            time.sleep(360)
+            time.sleep(240)
 
         for src_id in modified_src_id_set:  # Use tracked Source IDs to populate JSON container
             src = Source.query.filter_by(id=src_id).first()
