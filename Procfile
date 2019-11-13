@@ -1,4 +1,4 @@
-release: flask db upgrade
+
 web: gunicorn sifter_app:app
 init: python manage.py db init
 migrate: python manage.py db migrate
