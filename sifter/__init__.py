@@ -20,12 +20,14 @@ scheduler = APScheduler()
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(os.getenv('APP_SETTINGS'))
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
     app.app_context().push()
 
     db.init_app(app)
     from sifter import models
     db.create_all()
-
+    db.session.commit()
+    db.init_app(app)
     migrate.init_app(app, db)
     scheduler.init_app(app)
 
@@ -49,6 +51,7 @@ def create_app(config_class=Config):
         except:
             logger.log(level=logging.INFO, msg="Returning app caused exception, shutting down scheduler.")
             scheduler.shutdown()
+
 
 
 # def sift_sources():

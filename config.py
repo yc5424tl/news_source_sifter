@@ -9,6 +9,7 @@ class Config:
     SECRET_KEY = os.getenv('NEWS_SRC_MS_SEC_KEY')
     SQLALCHEMY_DATABASE_URI = os.getenv('NEWS_SRC_MS_DB_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LOG_TO_STDOUT = os.getenv('LOG_TO_STDOUT')
 
 class ProductionConfig(Config):
     DEBUG = False
