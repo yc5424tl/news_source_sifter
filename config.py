@@ -1,5 +1,6 @@
 import os
 
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
@@ -14,7 +15,10 @@ class Config:
 class ProductionConfig(Config):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
-    SECRET_KEY = os.getenv('SECRET_KEY')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    TESTING = False
+    DEVELOPMENT = False
+    SECRET_KEY = os.urandom(24)
     LOG_TO_STDOUT = os.getenv('LOG_TO_STDOUT')
 
 class StagingConfig(Config):

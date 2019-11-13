@@ -6,14 +6,10 @@ import requests
 import time
 import logging
 
-
 api_key = os.getenv('NEWS_SRC_MS_API_KEY')
-
 logging.basicConfig(filename='news_sources_ms.log', level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 categories = ['business', 'entertainment', 'health', 'science', 'sports', 'technology', 'general']
-
 country_codes = {
     'ar': {'name':'Argentina',      'language': 'es'},
     'au': {'name':'Australia',      'language': 'en'},
@@ -74,6 +70,8 @@ country_codes = {
     'us': {'name':'United States',  'language': 'en'},
     've': {'name':'Venezuela',      'language': 'es'}
 }
+data_dict = {'sources': [] for x in range(2)}
+
 
 def sift_sources():
     print('sifting sources')
@@ -92,7 +90,6 @@ def sift_sources():
         # Below, all combinations of countries/categories are used to query the API,
         # allowing for the indirect identification of a source's Country and Category/Categories,
         # while languages are applied by as 'most likely' for the given country.
-
         target_list = list(country_codes.keys())
         target_list.append('top_sources')
         random_target = random.choice(target_list)
@@ -102,7 +99,6 @@ def sift_sources():
                 top_id_set = build_top_sources(top_data)  # Process data to create/update Category and Source records.
                 modified_src_id_set.update(top_id_set)  # Track IDs of new/updated records
             time.sleep(240)
-
         else:
             random_category = random.choice(categories)
             country_data = request_country_sources(alpha2_code=random_target, src_cat=random_category)
@@ -134,7 +130,6 @@ def sift_sources():
 print('creating app')
 app = create_app()
 app.config['SQLALCHEMY_DATABSE_URI'] = os.getenv('DATABSE_URI')
-length = os.getenv('SIFTER_JOB_LENGTH')
 scheduler.add_job(id='sifter_scheduler', func=sift_sources, trigger='interval', minutes=360)
 scheduler.start()
 app.app_context().push()
@@ -146,11 +141,8 @@ from sifter.models import Source, Category
 def make_shell_context():
     return {'db': app.db, 'Source': Source, 'Category': Category}
 
-data_dict = {'sources': [] for x in range(2)}
-
 
 def post_json():
-
     login_url = os.getenv('NEWS_MAP_LOGIN_URL')
     username = os.getenv('NEWS_MAP_POST_USER')
     password = os.getenv('NEWS_MAP_POST_PW')
