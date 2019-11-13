@@ -10,21 +10,22 @@ class Source(db.Model):
 
     __tablename__ = 'source'
 
-    id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(255), nullable=False, unique=True)
-    country = db.Column(db.String(255), nullable=False)
-    language = db.Column(db.String(255), nullable=False)
+    id         = db.Column(db.Integer(), primary_key=True)
+    name       = db.Column(db.String(255), nullable=False, unique=True)
+    country    = db.Column(db.String(255), nullable=False)
+    language   = db.Column(db.String(255), nullable=False)
+    url        = db.Column(db.String(500), nullable=True)
     categories = db.relationship('Category', secondary=categories, lazy='subquery', backref=db.backref('sources', lazy=True))
 
     @property
     def json(self):
         return {
-            'name': self.name,
-            'country': self.country,
-            'language': self.language,
+            'name'      : self.name,
+            'country'   : self.country,
+            'language'  : self.language,
+            'url'       : self.url,
             'categories': [category.name for category in self.categories]
         }
-
 
 
 class Category(db.Model):
