@@ -19,7 +19,7 @@ scheduler = APScheduler()
 
 def create_app(config_class=ProductionConfig):
     app = Flask(__name__)
-    app.config.from_object(os.getenv('APP_SETTINGS'))
+    app.config.from_object(config_class)
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
     app.app_context().push()
 

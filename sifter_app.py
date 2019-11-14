@@ -97,10 +97,13 @@ def sift_sources():
 
         print('sifting sources')
         first_source = Source.query.filter_by(id=1).first()
+        print(f'first_source = {first_source}')
         if not first_source:
             try:
                 with open("./static/js/top_sources.json") as json_data:
+                    print(f'file open')
                     data = json.load(json_data)
+                    print(f'json.load(json_data) == {data}')
                     for source_data in data:
                         category = Category.query.filter_by(name=source_data['category']).first()
                         new_source = Source(name=source_data['name'],
@@ -113,6 +116,7 @@ def sift_sources():
                         modified_src_id_set.add(new_source.id)
             except FileNotFoundError:
                 logger.log(level=logging.INFO, msg='Error Building Sources from File.')
+        print('passed if not first source try/except')
 
             # top_data = request_top_sources()  # Request data from API
             # if top_data:
@@ -133,42 +137,42 @@ def sift_sources():
         # Below, all combinations of countries/categories are used to query the API,
         # allowing for the indirect identification of a source's Country and Category/Categories,
         # while languages are applied by as 'most likely' for the given country.
+        # try:
+        target_list = list(country_codes.keys())
+        random_target = random.choice(target_list)
+        random_category = random.choice(categories)
+        country_data = request_country_sources(alpha2_code=random_target, src_cat=random_category)
+        if country_data:
+            country_src_id_set = build_country_sources(
+                generated_country_sources=country_data, alpha2_code=random_target, src_cat=random_category)
+            modified_src_id_set.update(country_src_id_set)
+
+
+        # for country_code, category in itertools.product(country_codes, categories):
+            # country_data = request_country_sources(alpha2_code=country_code, src_cat=category)
+            # if country_data:
+            #     country_src_id_set = build_country_sources(
+            #         generated_country_sources=country_data, alpha2_code=country_code, src_cat=category)
+            #     modified_src_id_set.update(country_src_id_set)
+            # time.sleep(240)
+
+        for src_id in modified_src_id_set:  # Use tracked Source IDs to populate JSON container
+            src = Source.query.filter_by(id=src_id).first()
+            data_dict['sources'].append(src.json)
         try:
-            target_list = list(country_codes.keys())
-            random_target = random.choice(target_list)
-            random_category = random.choice(categories)
-            country_data = request_country_sources(alpha2_code=random_target, src_cat=random_category)
-            if country_data:
-                country_src_id_set = build_country_sources(
-                    generated_country_sources=country_data, alpha2_code=random_target, src_cat=random_category)
-                modified_src_id_set.update(country_src_id_set)
+            payload = post_json()
+            logger.log(level=logging.INFO, msg=f'Payload Delivered == {payload}\n\n=================================================\nContents:\n{data_dict}\n\n=================================================\n')
             time.sleep(360)
-
-            # for country_code, category in itertools.product(country_codes, categories):
-                # country_data = request_country_sources(alpha2_code=country_code, src_cat=category)
-                # if country_data:
-                #     country_src_id_set = build_country_sources(
-                #         generated_country_sources=country_data, alpha2_code=country_code, src_cat=category)
-                #     modified_src_id_set.update(country_src_id_set)
-                # time.sleep(240)
-
-            for src_id in modified_src_id_set:  # Use tracked Source IDs to populate JSON container
-                src = Source.query.filter_by(id=src_id).first()
-                data_dict['sources'].append(src.json)
-            try:
-                payload = post_json()
-                logger.log(level=logging.INFO, msg=f'Payload Delivered == {payload}\n\n=================================================\nContents:\n{data_dict}\n\n=================================================\n')
-                return True
-            except ConnectionError:
-                logger.log(level=logging.INFO, msg=f'ConnectionError when posting payload.')
-                pass
-        except BaseException as bE:
-            logger.log(level=logging.INFO, msg=f'Exception Sifting Sources: {bE}')
+            return True
+        except ConnectionError:
+            logger.log(level=logging.INFO, msg=f'ConnectionError when posting payload.')
+            return False
+        # except BaseException as bE:
+        #     logger.log(level=logging.INFO, msg=f'Exception Sifting Sources: {bE}')
 
 
 print('creating app')
 app = create_app()
-app.config['SQLALCHEMY_DATABSE_URI'] = os.getenv('DATABSE_URI')
 scheduler.add_job(id='sifter_scheduler', func=sift_sources, trigger='interval', minutes=6)
 scheduler.start()
 app.app_context().push()
