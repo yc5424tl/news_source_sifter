@@ -6,7 +6,7 @@ from flask_apscheduler import APScheduler
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
-from config import Config
+from config import Config, ProductionConfig
 
 logging.basicConfig(filename='news_sources_ms.log', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -17,7 +17,7 @@ scheduler = APScheduler()
 
 
 
-def create_app(config_class=Config):
+def create_app(config_class=ProductionConfig):
     app = Flask(__name__)
     app.config.from_object(os.getenv('APP_SETTINGS'))
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')

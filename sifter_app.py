@@ -130,7 +130,7 @@ def sift_sources():
 print('creating app')
 app = create_app()
 app.config['SQLALCHEMY_DATABSE_URI'] = os.getenv('DATABSE_URI')
-scheduler.add_job(id='sifter_scheduler', func=sift_sources, trigger='interval', minutes=360)
+scheduler.add_job(id='sifter_scheduler', func=sift_sources, trigger='interval', minutes=6)
 scheduler.start()
 app.app_context().push()
 
