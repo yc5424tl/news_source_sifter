@@ -102,7 +102,7 @@ def sift_sources():
             try:
                 with open("./static/js/top_sources.json") as json_data:
                     print(f'file open')
-                    data = json.load(json_data)
+                    data = json.load(json_data)['sources']
                     print(f'json.load(json_data) == {data}')
                     for source_data in data:
                         category = Category.query.filter_by(name=source_data['category']).first()
