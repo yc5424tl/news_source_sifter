@@ -6,6 +6,7 @@ import requests
 import time
 import logging
 
+
 api_key = os.getenv('NEWS_SRC_MS_API_KEY')
 logging.basicConfig(filename='news_sources_ms.log', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -71,12 +72,21 @@ country_codes = {
     've': {'name':'Venezuela',      'language': 'es'}
 }
 data_dict = {'sources': [] for x in range(2)}
+bool_dict = {'have_top': False}
 
 
 def sift_sources():
     print('sifting sources')
+
     with app.app_context():
         modified_src_id_set = set()  # Container for IDs of new/updated Sources
+        if not bool_dict['have_top']:
+            top_data = request_top_sources()  # Request data from API
+            if top_data:
+                top_id_set = build_top_sources(top_data)  # Process data to create/update Category and Source records.
+                modified_src_id_set.update(top_id_set)  # Track IDs of new/updated records
+            bool_dict['have_top'] = True
+            time.sleep(240)
         # top_data = request_top_sources()  # Request data from API
         # if top_data:
         #     top_id_set = build_top_sources(top_data)  # Process data to create/update Category and Source records.
@@ -90,31 +100,32 @@ def sift_sources():
         # Below, all combinations of countries/categories are used to query the API,
         # allowing for the indirect identification of a source's Country and Category/Categories,
         # while languages are applied by as 'most likely' for the given country.
-        target_list = list(country_codes.keys())
-        target_list.append('top_sources')
-        random_target = random.choice(target_list)
-        if random_target == 'top_sources':
-            top_data = request_top_sources()  # Request data from API
-            if top_data:
-                top_id_set = build_top_sources(top_data)  # Process data to create/update Category and Source records.
-                modified_src_id_set.update(top_id_set)  # Track IDs of new/updated records
-            time.sleep(240)
         else:
-            random_category = random.choice(categories)
-            country_data = request_country_sources(alpha2_code=random_target, src_cat=random_category)
-            if country_data:
-                country_src_id_set = build_country_sources(
-                    generated_country_sources=country_data, alpha2_code=random_target, src_cat=random_category)
-                modified_src_id_set.update(country_src_id_set)
-            time.sleep(240)
+            target_list = list(country_codes.keys())
+            target_list.append('top_sources')
+            random_target = random.choice(target_list)
+            if random_target == 'top_sources':
+                top_data = request_top_sources()  # Request data from API
+                if top_data:
+                    top_id_set = build_top_sources(top_data)  # Process data to create/update Category and Source records.
+                    modified_src_id_set.update(top_id_set)  # Track IDs of new/updated records
+                time.sleep(240)
+            else:
+                random_category = random.choice(categories)
+                country_data = request_country_sources(alpha2_code=random_target, src_cat=random_category)
+                if country_data:
+                    country_src_id_set = build_country_sources(
+                        generated_country_sources=country_data, alpha2_code=random_target, src_cat=random_category)
+                    modified_src_id_set.update(country_src_id_set)
+                time.sleep(240)
 
-        # for country_code, category in itertools.product(country_codes, categories):
-            # country_data = request_country_sources(alpha2_code=country_code, src_cat=category)
-            # if country_data:
-            #     country_src_id_set = build_country_sources(
-            #         generated_country_sources=country_data, alpha2_code=country_code, src_cat=category)
-            #     modified_src_id_set.update(country_src_id_set)
-            # time.sleep(240)
+            # for country_code, category in itertools.product(country_codes, categories):
+                # country_data = request_country_sources(alpha2_code=country_code, src_cat=category)
+                # if country_data:
+                #     country_src_id_set = build_country_sources(
+                #         generated_country_sources=country_data, alpha2_code=country_code, src_cat=category)
+                #     modified_src_id_set.update(country_src_id_set)
+                # time.sleep(240)
 
         for src_id in modified_src_id_set:  # Use tracked Source IDs to populate JSON container
             src = Source.query.filter_by(id=src_id).first()
