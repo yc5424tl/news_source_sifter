@@ -268,7 +268,7 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
 
 
 def request_top_sources():
-    # response = requests.get(f"https://newsapi.org/v2/sources?apiKey={api_key}")
+    response = requests.get(f"https://newsapi.org/v2/sources?apiKey={api_key}")
 
     if response.json()['status'] == 'ok':
         data = response.json()['sources']
