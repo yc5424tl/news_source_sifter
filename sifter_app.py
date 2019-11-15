@@ -1,13 +1,14 @@
 from sifter import create_app, scheduler, db
 import os
-import itertools
+
 import json
 import random
 import requests
 import time
 import logging
 
-from flask import url_for
+from flask import Response
+
 
 
 api_key = os.getenv('NEWS_SRC_MS_API_KEY')
@@ -78,6 +79,9 @@ data_dict = {'sources': [] for x in range(2)}
 bool_dict = {'have_top': False}
 
 
+
+
+
 def populate_categories():
     for category in categories:
         cat = Category.query.filter_by(name=category).first()
@@ -118,17 +122,8 @@ def sift_sources():
                 logger.log(level=logging.INFO, msg='Error Building Sources from File.')
         print('passed if not first source try/except')
 
-            # top_data = request_top_sources()  # Request data from API
-            # if top_data:
-            #     top_id_set = build_top_sources(top_data)  # Process data to create/update Category and Source records.
-            #     modified_src_id_set.update(top_id_set)  # Track IDs of new/updated records
 
-            # time.sleep(240)
-        # top_data = request_top_sources()  # Request data from API
-        # if top_data:
-        #     top_id_set = build_top_sources(top_data)  # Process data to create/update Category and Source records.
-        #     modified_src_id_set.update(top_id_set)  # Track IDs of new/updated records
-        # time.sleep(240)
+
         # The APIs sources endpoint is limited to about 125 of the largest news sources globally.
         # These are the only sources (from 30,000) from the API which contain values
         # for  Country, Language, and Category -- and by extension to each their own articles.
@@ -137,7 +132,7 @@ def sift_sources():
         # Below, all combinations of countries/categories are used to query the API,
         # allowing for the indirect identification of a source's Country and Category/Categories,
         # while languages are applied by as 'most likely' for the given country.
-        # try:
+
         target_list = list(country_codes.keys())
         random_target = random.choice(target_list)
         random_category = random.choice(categories)
@@ -147,7 +142,14 @@ def sift_sources():
                 generated_country_sources=country_data, alpha2_code=random_target, src_cat=random_category)
             modified_src_id_set.update(country_src_id_set)
 
+        # CODE BELOW IS FOR USE IF NOT RATE LIMITED BY API
 
+        # top_data = request_top_sources()  # Request data from API
+        # if top_data:
+        #     top_id_set = build_top_sources(top_data)  # Process data to create/update Category and Source records.
+        #     modified_src_id_set.update(top_id_set)  # Track IDs of new/updated records
+
+        # time.sleep(240)
         # for country_code, category in itertools.product(country_codes, categories):
             # country_data = request_country_sources(alpha2_code=country_code, src_cat=category)
             # if country_data:
@@ -183,6 +185,12 @@ from sifter.models import Source, Category
 @app.shell_context_processor
 def make_shell_context():
     return {'db': app.db, 'Source': Source, 'Category': Category}
+
+
+@app.route('/stay_alive')
+def stay_alive():
+    logger.log(level=logging.INFO, msg='STAY ALIVE RECEIVED')
+    return json.dumps({'stay':'alive'}), 200, {'ContentType':'application/json'}
 
 
 def post_json():
