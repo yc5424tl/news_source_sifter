@@ -7,7 +7,6 @@ import requests
 import time
 import logging
 
-from flask import Response
 
 
 
@@ -81,7 +80,6 @@ bool_dict = {'have_top': False}
 
 
 
-
 def populate_categories():
     for category in categories:
         cat = Category.query.filter_by(name=category).first()
@@ -89,6 +87,8 @@ def populate_categories():
             new_category = Category(name=category)
             db.session.add(new_category)
     db.session.commit()
+
+
 
 def sift_sources():
     with app.app_context():
@@ -120,9 +120,8 @@ def sift_sources():
                         modified_src_id_set.add(new_source.id)
             except FileNotFoundError:
                 logger.log(level=logging.INFO, msg='Error Building Sources from File.')
+
         print('passed if not first source try/except')
-
-
 
         # The APIs sources endpoint is limited to about 125 of the largest news sources globally.
         # These are the only sources (from 30,000) from the API which contain values
@@ -137,6 +136,7 @@ def sift_sources():
         random_target = random.choice(target_list)
         random_category = random.choice(categories)
         country_data = request_country_sources(alpha2_code=random_target, src_cat=random_category)
+
         if country_data:
             country_src_id_set = build_country_sources(
                 generated_country_sources=country_data, alpha2_code=random_target, src_cat=random_category)
@@ -162,15 +162,14 @@ def sift_sources():
             src = Source.query.filter_by(id=src_id).first()
             data_dict['sources'].append(src.json)
         try:
-            payload = post_json()
+            payload = post_json(data_dict)
             logger.log(level=logging.INFO, msg=f'Payload Delivered == {payload}\n\n=================================================\nContents:\n{data_dict}\n\n=================================================\n')
             time.sleep(360)
             return True
         except ConnectionError:
             logger.log(level=logging.INFO, msg=f'ConnectionError when posting payload.')
             return False
-        # except BaseException as bE:
-        #     logger.log(level=logging.INFO, msg=f'Exception Sifting Sources: {bE}')
+
 
 
 print('creating app')
@@ -178,26 +177,29 @@ app = create_app()
 scheduler.add_job(id='sifter_scheduler', func=sift_sources, trigger='interval', minutes=6)
 scheduler.start()
 app.app_context().push()
-
-
 from sifter.models import Source, Category
+
+
 
 @app.shell_context_processor
 def make_shell_context():
     return {'db': app.db, 'Source': Source, 'Category': Category}
 
 
+
 @app.route('/stay_alive')
 def stay_alive():
     logger.log(level=logging.INFO, msg='STAY ALIVE RECEIVED')
+    print('STAYIN ALIVE')
     return json.dumps({'stay':'alive'}), 200, {'ContentType':'application/json'}
 
 
-def post_json():
+
+def post_json(payload: dict):
     login_url = os.getenv('NEWS_MAP_LOGIN_URL')
-    username = os.getenv('NEWS_MAP_POST_USER')
-    password = os.getenv('NEWS_MAP_POST_PW')
-    post_url = os.getenv('NEWS_MAP_POST_URL')
+    username  = os.getenv('NEWS_MAP_POST_USER')
+    password  = os.getenv('NEWS_MAP_POST_PW')
+    post_url  = os.getenv('NEWS_MAP_POST_URL')
 
     client = requests.session()
     client.get(login_url)
@@ -208,15 +210,18 @@ def post_json():
     r1 = client.post(login_url, data=login_data, headers=dict(Referer=login_url))
     logger.log(level=logging.INFO, msg=f'response_1 => {r1}')
 
-    r2 = client.post(url=post_url, json=data_dict)
+    r2 = client.post(url=post_url, json=payload)
     logger.log(level=logging.INFO, msg=f'response_2 => {r2}')
 
     return True
 
 
+
 def generated_sources(src_gen):
     for src in src_gen:
         yield src
+    return
+
 
 
 def request_country_sources(alpha2_code, src_cat=None):
@@ -237,6 +242,7 @@ def request_country_sources(alpha2_code, src_cat=None):
         logger.log(level=logging.ERROR, msg=f'Error Code: {response.json()["code"]} Message: {response.json()["message"]}')
         # raise Error
         return None
+
 
 
 def build_country_sources(generated_country_sources, alpha2_code, src_cat):
@@ -318,3 +324,13 @@ def build_top_sources(generated_top_sources):
 
     db.session.commit()
     return new_and_updated_id_set
+
+
+
+def differential_import():
+    sources = Source.query.all()
+    source_data = {'sources': [source.json for source in sources]}
+    print(f'DIFFERENTIAL SOURCE DATA:\n{source_data}')
+    post_json(source_data)
+    print('differential_import complete')
+    return
