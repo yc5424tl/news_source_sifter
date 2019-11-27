@@ -1,0 +1,12987 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.6 (Ubuntu 11.6-1.pgdg16.04+1)
+-- Dumped by pg_dump version 11.5 (Ubuntu 11.5-0ubuntu0.19.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Data for Name: category; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.category (id, name) FROM stdin;
+1	business
+2	entertainment
+3	health
+4	science
+5	sports
+6	technology
+7	general
+\.
+
+
+--
+-- Data for Name: source; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.source (id, name, country, language, url) FROM stdin;
+1	ABC News	us	en	http://abcnews.go.com
+3	ABC News (AU)	au	en	http://www.abc.net.au/news
+4	Aftenposten	no	no	https://www.aftenposten.no
+5	Al Jazeera English	us	en	http://www.aljazeera.com
+6	ANSA.it	it	it	http://www.ansa.it
+7	Argaam	sa	ar	http://www.argaam.com
+8	Ars Technica	us	en	http://arstechnica.com
+9	Ary News	pk	ud	https://arynews.tv/ud/
+10	Associated Press	us	en	https://apnews.com/
+11	Australian Financial Review	au	en	http://www.afr.com
+12	Axios	us	en	https://www.axios.com
+13	BBC News	gb	en	http://www.bbc.co.uk/news
+14	BBC Sport	gb	en	http://www.bbc.co.uk/sport
+15	Bild	de	de	http://www.bild.de
+16	Blasting News (BR)	br	pt	http://br.blastingnews.com
+17	Bleacher Report	us	en	http://www.bleacherreport.com
+18	Bloomberg	us	en	http://www.bloomberg.com
+19	Breitbart News	us	en	http://www.breitbart.com
+20	Business Insider	us	en	http://www.businessinsider.com
+21	Business Insider (UK)	gb	en	http://uk.businessinsider.com
+22	Buzzfeed	us	en	https://www.buzzfeed.com
+23	CBC News	ca	en	http://www.cbc.ca/news
+24	CBS News	us	en	http://www.cbsnews.com
+25	CNBC	us	en	http://www.cnbc.com
+26	CNN	us	en	http://us.cnn.com
+27	CNN Spanish	us	es	http://cnnespanol.cnn.com/
+28	Crypto Coins News	us	en	https://www.ccn.com
+29	Daily Mail	gb	en	http://www.dailymail.co.uk/home/index.html
+30	Der Tagesspiegel	de	de	http://www.tagesspiegel.de
+31	Die Zeit	de	de	http://www.zeit.de/index
+32	El Mundo	es	es	http://www.elmundo.es
+33	Engadget	us	en	https://www.engadget.com
+34	Entertainment Weekly	us	en	http://www.ew.com
+35	ESPN	us	en	http://espn.go.com
+36	ESPN Cric Info	us	en	http://www.espncricinfo.com/
+37	Financial Post	ca	en	http://business.financialpost.com
+38	Financial Times	gb	en	http://www.ft.com/home/uk
+39	Focus	de	de	http://www.focus.de
+40	Football Italia	it	en	http://www.football-italia.net
+41	Fortune	us	en	http://fortune.com
+42	FourFourTwo	gb	en	http://www.fourfourtwo.com/news
+43	Fox News	us	en	http://www.foxnews.com
+44	Fox Sports	us	en	http://www.foxsports.com
+45	Globo	br	pt	http://www.globo.com/
+46	Google News	us	en	https://news.google.com
+47	Google News (Argentina)	ar	es	https://news.google.com
+48	Google News (Australia)	au	en	https://news.google.com
+49	Google News (Brasil)	br	pt	https://news.google.com
+50	Google News (Canada)	ca	en	https://news.google.com
+51	Google News (France)	fr	fr	https://news.google.com
+52	Google News (India)	in	en	https://news.google.com
+53	Google News (Israel)	is	he	https://news.google.com
+54	Google News(Italy)	it	it	https://news.google.com
+55	Google News (Russia)	ru	ru	https://news.google.com
+56	Google News (Saudi Arabia)	sa	ar	https://news.google.com
+57	Google News (UK)	gb	en	https://news.google.com
+58	Göteborgs-Posten	se	se	http://www.gp.se
+59	Gruenderszene	de	de	http://www.gruenderszene.de
+60	Hacker News	us	en	https://news.ycombinator.com
+61	Handelsblatt	de	de	http://www.handelsblatt.com
+62	IGN	us	en	http://www.ign.com
+63	Il Sole 24 Ore	it	it	http://www.ilsole24ore.com
+64	Independent	gb	en	http://www.independent.co.uk
+65	Infobae	ar	es	http://www.infobae.com/?noredirect
+66	InfoMoney	br	pt	http://www.infomoney.com.br
+67	La Gaceta	ar	es	http://www.lagaceta.com.ar
+68	La Nacion	ar	es	http://www.lanacion.com.ar
+69	La Repubblica	it	it	http://www.repubblica.it
+70	Le Monde	fr	fr	http://www.lemonde.fr
+71	Lenta	ru	ru	https://lenta.ru
+72	L'equipe	fr	fr	https://www.lequipe.fr
+73	Les Echos	fr	fr	https://www.lesechos.fr
+74	Libération	fr	fr	http://www.liberation.fr
+75	Marca	es	es	http://www.marca.com
+76	Mashable	us	en	http://mashable.com
+77	Medical News Today	us	en	http://www.medicalnewstoday.com
+78	Metro	gb	en	http://metro.co.uk
+79	Mirror	gb	en	http://www.mirror.co.uk/
+80	MSNBC	us	en	http://www.msnbc.com
+81	MTV News	us	en	http://www.mtv.com/news
+82	MTV News (UK)	gb	en	http://www.mtv.co.uk/news
+83	National Geographic	us	en	http://news.nationalgeographic.com
+84	National Review	us	en	https://www.nationalreview.com/
+85	NBC News	us	en	http://www.nbcnews.com
+86	News24	za	en	http://www.news24.com
+87	New Scientist	us	en	https://www.newscientist.com/section/news
+88	News.com.au	au	en	http://www.news.com.au
+89	Newsweek	us	en	http://www.newsweek.com
+90	New York Magazine	us	en	http://nymag.com
+91	Next Big Future	us	en	https://www.nextbigfuture.com
+92	NFL News	us	en	http://www.nfl.com/news
+93	NHL News	us	en	https://www.nhl.com/news
+94	NRK	no	no	https://www.nrk.no
+95	Politico	us	en	https://www.politico.com
+96	Polygon	us	en	http://www.polygon.com
+97	RBC	ru	ru	http://www.rbc.ru
+98	Recode	us	en	http://www.recode.net
+99	Reddit /r/all	us	en	https://www.reddit.com/r/all
+100	Reuters	us	en	http://www.reuters.com
+101	RT	ru	ru	https://russian.rt.com
+102	RTE	ie	en	https://www.rte.ie/news
+103	RTL Nieuws	nl	nl	https://www.rtlnieuws.nl/
+104	SABQ	sa	ar	https://sabq.org
+105	Spiegel Online	de	de	http://www.spiegel.de
+106	Svenska Dagbladet	se	se	https://www.svd.se
+107	T3n	de	de	http://t3n.de
+108	TalkSport	gb	en	http://talksport.com
+109	TechCrunch	us	en	https://techcrunch.com
+110	TechCrunch(CN)	zh	zh	https://techcrunch.cn
+111	TechRadar	us	en	http://www.techradar.com
+112	The American Conservative	us	en	http://www.theamericanconservative.com/
+113	The Economist	gb	en	http://www.economist.com
+114	The Globe And Mail	ca	en	https://www.theglobeandmail.com
+115	The Guardian (AU)	au	en	https://www.theguardian.com/au
+116	The Guardian (UK)	gb	en	https://www.theguardian.com/uk
+117	The Hill	us	en	http://thehill.com
+118	The Hindu	in	en	http://www.thehindu.com
+119	The Huffington Post	us	en	http://www.huffingtonpost.com
+120	The Irish Times	ie	en	https://www.irishtimes.com
+121	The Jerusalem Post	is	en	https://www.jpost.com/
+122	The Lad Bible	gb	en	http://www.theladbible.com
+123	The New York Times	us	en	http://www.nytimes.com
+124	The Next Web	us	en	http://thenextweb.com
+125	The Sport Bible	gb	en	http://www.thesportbible.com
+126	The Telegraph	gb	en	http://www.telegraph.co.uk
+127	The Times of India	in	en	http://timesofindia.indiatimes.com
+128	The Verge	us	en	http://www.theverge.com
+129	The Wall Street Journal	us	en	http://www.wsj.com
+130	The Washington Post	us	en	https://www.washingtonpost.com
+131	The Washington Times	us	en	https://www.washingtontimes.com/
+132	Time	us	en	http://time.com
+133	USA Today	us	en	http://www.usatoday.com/news
+134	Vice News	us	en	https://news.vice.com
+135	Wired	us	en	https://www.wired.com
+136	Wired.de	de	de	https://www.wired.de
+137	Wirtschafts Woche	de	de	http://www.wiwo.de
+138	Xinhua Net	zh	zh	http://xinhuanet.com
+139	Ynet	is	he	http://www.ynet.co.il
+140	Impress.co.jp	jp	ja	\N
+141	Gizmodo.jp	jp	ja	\N
+142	4gamer.net	jp	ja	\N
+143	Itmedia.co.jp	jp	ja	\N
+144	Gigazine.net	jp	ja	\N
+145	Ascii.jp	jp	ja	\N
+146	Bloomberg.co.jp	jp	ja	\N
+147	Nikkei.com	jp	ja	\N
+148	Yahoo.co.jp	jp	ja	\N
+149	Mediafax.ro	ro	ro	\N
+150	Eldiarionuevodia.com.ar	ar	es	\N
+151	Perfil.com	ar	es	\N
+152	Tn.com.ar	ar	es	\N
+153	Cointelegraph.com	ar	es	\N
+154	Clarin.com	ar	es	\N
+155	Ambito.com	ar	es	\N
+156	Cronista.com	ar	es	\N
+157	Motorpasion.com	ar	es	\N
+158	Elliberal.com.ar	ar	es	\N
+159	Blitz.bg	bg	bg	\N
+160	Fakti.bg	bg	bg	\N
+161	Dariknews.bg	bg	bg	\N
+162	Gong.bg	bg	bg	\N
+163	Corner.dir.bg	bg	bg	\N
+164	News.bg	bg	bg	\N
+165	Nova.bg	bg	bg	\N
+166	24chasa.bg	bg	bg	\N
+167	Www.gol.bg	bg	bg	\N
+168	Btvnovinite.bg	bg	bg	\N
+169	Marica.bg	bg	bg	\N
+170	Dnevnik.bg	bg	bg	\N
+171	Vesti.bg	bg	bg	\N
+172	Dnes.dir.bg	bg	bg	\N
+173	Plotek.pl	pl	pl	\N
+174	Gloswielkopolski.pl	pl	pl	\N
+175	Onet.pl	pl	pl	\N
+176	Gram.pl	pl	pl	\N
+177	Dzienniklodzki.pl	pl	pl	\N
+178	Kozaczek.pl	pl	pl	\N
+179	Lelum.pl	pl	pl	\N
+180	Antyweb.pl	pl	pl	\N
+181	Radiozet.pl	pl	pl	\N
+182	Pudelek.pl	pl	pl	\N
+183	Gwiazdy.wp.pl	pl	pl	\N
+184	Wyborcza.pl	pl	pl	\N
+185	Youtube.com	pl	pl	\N
+186	Hindustantimes.com	in	hi	\N
+187	Freepressjournal.in	in	hi	\N
+188	News18.com	in	hi	\N
+189	Pinkvilla.com	in	hi	\N
+190	Telugu360.com	in	hi	\N
+191	Ndtv.com	in	hi	\N
+192	Sina.com.cn	cn	zh	\N
+193	Chinanews.com	cn	zh	\N
+194	Eastmoney.com	cn	zh	\N
+195	Workercn.cn	cn	zh	\N
+196	Cnhubei.com	cn	zh	\N
+197	Southcn.com	cn	zh	\N
+198	People.com.cn	cn	zh	\N
+199	Nen.com.cn	cn	zh	\N
+200	Sportsonline.com.cn	cn	zh	\N
+201	Zaobao.com.sg	cn	zh	\N
+202	Titan24.com	cn	zh	\N
+203	Online.sh.cn	cn	zh	\N
+204	Sports.gmw.cn	cn	zh	\N
+205	Xinmin.cn	cn	zh	\N
+206	The-miyanichi.co.jp	jp	ja	\N
+207	Ananweb.jp	jp	ja	\N
+208	Infoseek.co.jp	jp	ja	\N
+209	Larepublica.pe	ve	es	\N
+210	Excite.co.jp	jp	ja	\N
+211	Biglobe.ne.jp	jp	ja	\N
+212	Bbc.com	ve	es	\N
+213	Jprime.jp	jp	ja	\N
+214	Investing.com	ve	es	\N
+215	Criptonoticias.com	ve	es	\N
+216	Hipertextual.com	ve	es	\N
+217	Perspectivesmed.ma	ma	fr	\N
+218	Zonebourse.com	ma	fr	\N
+219	Lematin.ma	ma	fr	\N
+220	Matichon.co.th	th	th	\N
+221	Libe.ma	ma	fr	\N
+222	Thebangkokinsight.com	th	th	\N
+223	Springnews.co.th	th	th	\N
+224	Laquotidienne.ma	ma	fr	\N
+225	Thethaiger.com	th	th	\N
+226	Huffpostmaghreb.com	ma	fr	\N
+227	Thaipost.net	th	th	\N
+228	Hespress.com	ma	fr	\N
+229	Prachachat.net	th	th	\N
+230	Khaosod.co.th	th	th	\N
+231	Boursenews.ma	ma	fr	\N
+232	Thairath.co.th	th	th	\N
+233	Leconomiste.com	ma	fr	\N
+234	Ryt9.com	th	th	\N
+235	Bangkokbiznews.com	th	th	\N
+236	Le360.ma	ma	fr	\N
+237	H24info.ma	ma	fr	\N
+238	Iphone-droid.net	th	th	\N
+239	Sanook.com	th	th	\N
+241	Techoffside.com	th	th	\N
+247	Liputan6.com	id	id	\N
+249	Inilahkoran.com	id	id	\N
+251	Www.tek.id	id	id	\N
+253	Tempo.co	id	id	\N
+254	Inews.id	id	id	\N
+255	Detik.com	id	id	\N
+257	Sindonews.com	id	id	\N
+259	Tagar.id	id	id	\N
+261	Harapanrakyat.com	id	id	\N
+262	Cnnindonesia.com	id	id	\N
+263	Selular.id	id	id	\N
+264	Tribunnews.com	id	id	\N
+265	Grid.id	id	id	\N
+266	Hitekno.com	id	id	\N
+270	Noticiasaominuto.com	pt	pt	\N
+272	Entroncamentoonline.pt	pt	pt	\N
+274	Expresso.pt	pt	pt	\N
+276	Bolamarela.pt	pt	pt	\N
+278	Www.rtp.pt	pt	pt	\N
+279	Dnoticias.pt	pt	pt	\N
+281	Www.dn.pt	pt	pt	\N
+282	Sapo.pt	pt	pt	\N
+283	Oamarense.pt	pt	pt	\N
+285	Sicnoticias.pt	pt	pt	\N
+286	Maisfutebol.iol.pt	pt	pt	\N
+287	Insider.dn.pt	pt	pt	\N
+289	Jornaldenegocios.pt	pt	pt	\N
+291	Techtudo.com.br	pt	pt	\N
+240	Boursenews.fnh.ma	ma	fr	\N
+242	Medias24.com	ma	fr	\N
+243	Telquel.ma	ma	fr	\N
+244	Youm7.com	ae	en	\N
+245	Eremnews.com	ae	en	\N
+246	Masrawy.com	ae	en	\N
+248	Alyuwm.com	ae	en	\N
+250	E3rfkora.news	ae	en	\N
+252	Alarabiya.net	ae	en	\N
+256	Hiamag.com	ae	en	\N
+258	Gulf365.co	ae	en	\N
+260	Almasryalyoum.com	ae	en	\N
+267	Tuttojuve.com	it	it	\N
+268	Ilpost.it	it	it	\N
+269	Fcinter1908.it	it	it	\N
+271	Virgilio.it	it	it	\N
+273	Tuttomercatoweb.com	it	it	\N
+275	Corrieredellosport.it	it	it	\N
+277	Areanapoli.it	it	it	\N
+280	Unionesarda.it	it	it	\N
+284	Fantacalcio.it	it	it	\N
+288	Sportando.basketball	it	it	\N
+290	Leggo.it	it	it	\N
+292	Toro.it	it	it	\N
+293	Bjd.com.cn	cn	zh	\N
+294	Chinapress.com.my	cn	zh	\N
+295	Sports.cn	cn	zh	\N
+296	Xmnn.cn	cn	zh	\N
+297	Taihainet.com	cn	zh	\N
+298	24ur.com	si	sl	\N
+299	Yunnan.cn	cn	zh	\N
+300	Svet24.si	si	sl	\N
+301	Siol.net	si	sl	\N
+302	Slovenskenovice.si	si	sl	\N
+303	Rtvslo.si	si	sl	\N
+304	Zadovoljna.si	si	sl	\N
+305	Zurnal24.si	si	sl	\N
+306	Lavanguardia.com	ve	es	\N
+307	Sydsvenskan.se	se	se	\N
+308	Lostiempos.com	ve	es	\N
+309	Www.hd.se	se	se	\N
+310	Expressen.se	se	se	\N
+311	Elintransigente.com	ve	es	\N
+312	Www.sn.se	se	se	\N
+313	Elcomercio.pe	ve	es	\N
+314	Mobil.se	se	se	\N
+315	Elpais.com	ve	es	\N
+316	Affarsvarlden.se	se	se	\N
+317	Elperiodico.com	ve	es	\N
+318	Aftonbladet.se	se	se	\N
+319	Elconfidencial.com	ve	es	\N
+320	Mobilanyheter.net	se	se	\N
+321	Elnuevodia.com	ve	es	\N
+322	Neoteo.com	ve	es	\N
+323	Kienyke.com	ve	es	\N
+324	Jornada.com.mx	ve	es	\N
+325	Ekuriren.se	se	se	\N
+326	Panorama.com.ve	ve	es	\N
+327	Elobservador.com.uy	ve	es	\N
+328	Www.svt.se	se	se	\N
+329	Presseportal.ch	de	de	\N
+330	Presseportal.de	de	de	\N
+331	Heise.de	de	de	\N
+332	Www.ndr.de	de	de	\N
+333	T-online.de	de	de	\N
+334	Www.tz.de	de	de	\N
+335	Trendyone.de	de	de	\N
+336	Heilpraxisnet.de	de	de	\N
+337	Web.de	de	de	\N
+338	Wize.life	de	de	\N
+339	Finanznachrichten.de	de	de	\N
+340	Wallstreet-online.de	de	de	\N
+341	Merkur.de	de	de	\N
+342	Stern.de	de	de	\N
+343	Pitchfork.com	sa	ar	\N
+344	Cbssports.com	sa	ar	\N
+345	Kotaku.com	ie	en	\N
+346	Eurogamer.net	ie	en	\N
+347	Forbes.com	ie	en	\N
+348	Deadline.com	sa	ar	\N
+349	Gamespot.com	ie	en	\N
+350	Yahoo.com	sa	ar	\N
+351	9to5google.com	ie	en	\N
+352	Appleinsider.com	ie	en	\N
+353	Petapixel.com	ie	en	\N
+354	Macrumors.com	ie	en	\N
+355	Cheatsheet.com	sa	ar	\N
+356	Rollingstone.com	sa	ar	\N
+357	Tennessean.com	sa	ar	\N
+358	Todayonline.com	sg	en	\N
+359	Soranews24.com	sg	en	\N
+360	Express.co.uk	sg	en	\N
+361	Theindependent.sg	sg	en	\N
+362	Soompi.com	sg	en	\N
+363	Natalie.mu	jp	ja	\N
+364	Straitstimes.com	sg	en	\N
+365	Asiaone.com	sg	en	\N
+366	Livedoor.com	jp	ja	\N
+367	Scmp.com	sg	en	\N
+368	Sponichi.co.jp	jp	ja	\N
+369	Channelnewsasia.com	sg	en	\N
+370	Wws-channel.com	jp	ja	\N
+371	Bunshun.jp	jp	ja	\N
+372	Nhk.or.jp	sg	en	\N
+373	Nikkansports.com	jp	ja	\N
+374	Metro.co.uk	sg	en	\N
+375	Hochi.news	jp	ja	\N
+376	Famitsu.com	jp	ja	\N
+377	Dengeki.com	jp	ja	\N
+378	Jisin.jp	jp	ja	\N
+379	Parentesis.com	mx	es	\N
+380	Xataka.com.mx	mx	es	\N
+381	Eluniversal.com.mx	mx	es	\N
+382	Televisa.com	mx	es	\N
+383	Xataka.com	mx	es	\N
+384	Asianage.com	in	hi	\N
+385	Mediotiempo.com	mx	es	\N
+386	Uniindia.com	in	hi	\N
+387	Rpp.pe	mx	es	\N
+388	Healthissuesindia.com	in	hi	\N
+389	Firstpost.com	in	hi	\N
+390	Merca20.com	mx	es	\N
+391	Thehindubusinessline.com	in	hi	\N
+392	Fayerwayer.com	mx	es	\N
+393	Informador.mx	mx	es	\N
+394	Entrepreneur.com	mx	es	\N
+395	Indianexpress.com	in	hi	\N
+396	Unotv.com	mx	es	\N
+397	Telegraphindia.com	in	hi	\N
+398	Dailypioneer.com	in	hi	\N
+399	Tendencias21.net	mx	es	\N
+400	Thesangaiexpress.com	in	hi	\N
+401	Canaltech.com.br	br	pt	\N
+402	Uol.com.br	br	pt	\N
+403	Dhnet.be	be	nl	\N
+404	Tudocelular.com	br	pt	\N
+405	Odiario.net	br	pt	\N
+406	Dpgmedia.be	be	nl	\N
+407	Lesoir.be	be	nl	\N
+408	Opovo.com.br	br	pt	\N
+409	Sudinfo.be	be	nl	\N
+410	Metrojornal.com.br	br	pt	\N
+411	Walfoot.be	be	nl	\N
+412	Ominho.pt	br	pt	\N
+413	Publico.pt	br	pt	\N
+414	Www.jn.pt	br	pt	\N
+415	Sofoot.com	be	nl	\N
+416	Nexojornal.com.br	br	pt	\N
+417	Abril.com.br	br	pt	\N
+419	Olhardigital.com.br	br	pt	\N
+418	Rtbf.be	be	nl	\N
+420	Eprice.com.tw	tw	zh	\N
+421	Technews.tw	tw	zh	\N
+422	Ofuxico.com.br	br	pt	\N
+423	Xfastest.com	tw	zh	\N
+424	Legiaodosherois.com.br	br	pt	\N
+425	Purepeople.com.br	br	pt	\N
+426	Cnyes.com	tw	zh	\N
+427	Inside.com.tw	tw	zh	\N
+428	Ltn.com.tw	tw	zh	\N
+429	Ibahia.com	br	pt	\N
+430	Portaldoholanda.com.br	br	pt	\N
+431	Mrmad.com.tw	tw	zh	\N
+432	Singtao.ca	tw	zh	\N
+433	Uai.com.br	br	pt	\N
+434	Udn.com	tw	zh	\N
+435	Ovicio.com.br	br	pt	\N
+436	Ig.com.br	br	pt	\N
+437	Otvfoco.com.br	br	pt	\N
+438	Istoe.com.br	br	pt	\N
+439	Omelete.com.br	br	pt	\N
+440	Sky.com	gb	en	\N
+441	Asahi.com	jp	ja	\N
+442	Gekisaka.jp	jp	ja	\N
+443	Theguardian.com	gb	en	\N
+444	Telegraph.co.uk	gb	en	\N
+445	F1-gate.com	jp	ja	\N
+446	Dailymail.co.uk	gb	en	\N
+447	As-web.jp	jp	ja	\N
+448	Sanspo.com	jp	ja	\N
+449	Full-count.jp	jp	ja	\N
+450	Footballchannel.jp	jp	ja	\N
+451	Insider.com	gb	en	\N
+452	Rugby-rp.com	jp	ja	\N
+453	Thenorthernecho.co.uk	gb	en	\N
+454	Welt.de	de	de	\N
+455	Chip.de	at	de	\N
+456	Express.de	de	de	\N
+457	Computerbase.de	at	de	\N
+458	Www.nau.ch	at	de	\N
+459	Stadt-bremerhaven.de	de	de	\N
+460	Nachrichten.at	at	de	\N
+461	Gamestar.de	at	de	\N
+463	Krone.at	at	de	\N
+464	Golem.de	at	de	\N
+465	Netzwelt.de	at	de	\N
+466	Giga.de	at	de	\N
+467	Blick.ch	at	de	\N
+468	Derstandard.at	at	de	\N
+469	Blic.rs	rs	sr	\N
+470	Kurir.rs	rs	sr	\N
+471	Telegraf.rs	rs	sr	\N
+472	Pink.rs	rs	sr	\N
+473	Srbijadanas.com	rs	sr	\N
+474	Scandal.rs	rs	sr	\N
+475	Www.alo.rs	rs	sr	\N
+476	Hellomagazin.rs	rs	sr	\N
+477	Pikio.pl	pl	pl	\N
+478	Echodnia.eu	pl	pl	\N
+479	Rmf24.pl	pl	pl	\N
+480	Bielsko.info	pl	pl	\N
+481	Www.lci.fr	fr	fr	\N
+482	Lefigaro.fr	fr	fr	\N
+483	Sudouest.fr	fr	fr	\N
+484	Jeanmarcmorandini.com	fr	fr	\N
+485	Maxisciences.com	fr	fr	\N
+486	Huffingtonpost.fr	fr	fr	\N
+487	Orange.fr	fr	fr	\N
+488	Leparisien.fr	fr	fr	\N
+489	20minutes.fr	fr	fr	\N
+490	Macg.co	fr	fr	\N
+491	Ouest-france.fr	fr	fr	\N
+492	Eurosport.fr	fr	fr	\N
+493	Lesnumeriques.com	fr	fr	\N
+494	Colbonews.co.il	il	he	\N
+495	Calcalist.co.il	il	he	\N
+496	Srugim.co.il	il	he	\N
+497	Israelhayom.co.il	il	he	\N
+498	0404.co.il	il	he	\N
+499	Maariv.co.il	il	he	\N
+500	G-rafa.co.il	il	he	\N
+501	Walla.co.il	il	he	\N
+502	Themarker.com	il	he	\N
+503	Globes.co.il	il	he	\N
+504	Kipa.co.il	il	he	\N
+505	Scitechdaily.com	my	ms	\N
+506	Eurekalert.org	my	ms	\N
+507	Theceomagazine.com	my	ms	\N
+508	Spaceref.com	my	ms	\N
+509	Bgr.com	my	ms	\N
+510	Space.com	my	ms	\N
+511	Phys.org	my	ms	\N
+512	Nanowerk.com	my	ms	\N
+513	Csusignal.com	my	ms	\N
+514	Sciencedaily.com	my	ms	\N
+515	Sciencealert.com	my	ms	\N
+516	Www.wnp.pl	pl	pl	\N
+517	Wiadomosci.wp.pl	pl	pl	\N
+518	Urania.edu.pl	pl	pl	\N
+519	Www.rp.pl	pl	pl	\N
+520	Wprost.pl	pl	pl	\N
+521	Tech.wp.pl	pl	pl	\N
+522	Kopalniawiedzy.pl	pl	pl	\N
+523	Dziennikzachodni.pl	pl	pl	\N
+524	Energia.rp.pl	pl	pl	\N
+525	Interia.pl	pl	pl	\N
+526	Focus.pl	pl	pl	\N
+527	Cnbeta.com	cn	zh	\N
+528	Iask.ca	cn	zh	\N
+529	Metropoles.com	br	pt	\N
+530	R7.com	br	pt	\N
+531	Rd1.com.br	br	pt	\N
+532	Hakolhayehudi.co.il	il	he	\N
+533	Hwzone.co.il	il	he	\N
+534	Haaretz.co.il	il	he	\N
+535	93fm.co.il	il	he	\N
+536	Sport5.co.il	il	he	\N
+537	Hidabroot.org	il	he	\N
+538	Mako.co.il	il	he	\N
+539	Fx678.com	cn	zh	\N
+540	Dw.com	cn	zh	\N
+541	Yicai.com	cn	zh	\N
+542	Sohu.com	cn	zh	\N
+543	Caixin.com	cn	zh	\N
+544	Ftchinese.com	cn	zh	\N
+545	Jrj.com.cn	cn	zh	\N
+546	Ridus.ru	ru	ru	\N
+547	Starhit.ru	ru	ru	\N
+548	Www.mk.ru	ru	ru	\N
+549	Meduza.io	ru	ru	\N
+550	Spletnik.ru	ru	ru	\N
+551	7days.ru	ru	ru	\N
+552	Woman.ru	ru	ru	\N
+553	Www.eg.ru	ru	ru	\N
+554	Mail.ru	ru	ru	\N
+555	360tv.ru	ru	ru	\N
+556	Vladtime.ru	ru	ru	\N
+557	Versiya.info	ru	ru	\N
+558	Vesma.today	ru	ru	\N
+559	Lalibre.be	be	nl	\N
+560	Lecho.be	be	nl	\N
+561	Telesambre.be	be	nl	\N
+562	Motoservices.com	be	nl	\N
+563	Automobile-sportive.com	be	nl	\N
+564	Gocar.be	be	nl	\N
+565	Developpez.com	be	nl	\N
+566	Bisnis.com	id	id	\N
+567	Cnbcindonesia.com	id	id	\N
+568	Gridoto.com	id	id	\N
+569	Motorplus-online.com	id	id	\N
+570	Kompas.com	id	id	\N
+571	Kontan.co.id	id	id	\N
+578	Tgspot.co.il	il	he	\N
+579	Gadgety.co.il	il	he	\N
+580	Pc.co.il	il	he	\N
+572	Hoonsmart.com	th	th	\N
+573	Newswit.com	th	th	\N
+574	Moneyandbanking.co.th	th	th	\N
+575	Kaohoon.com	th	th	\N
+576	Mgronline.com	th	th	\N
+577	Tnnthailand.com	th	th	\N
+581	Elfinanciero.com.mx	mx	es	\N
+582	Motorpasion.com.mx	mx	es	\N
+583	Sopitas.com	mx	es	\N
+584	Applesfera.com	mx	es	\N
+585	Expansion.mx	mx	es	\N
+586	Periodicocentral.mx	mx	es	\N
+587	Milenio.com	mx	es	\N
+588	Excelsior.com.mx	mx	es	\N
+589	Univision.com	mx	es	\N
+590	Hket.com	hk	zh	\N
+591	Eprice.com.hk	hk	zh	\N
+592	Hkepc.com	hk	zh	\N
+593	Rthk.hk	hk	zh	\N
+594	Ringhk.com	hk	zh	\N
+595	Unwire.hk	hk	zh	\N
+596	Hk.on.cc	hk	zh	\N
+597	Qooah.com	hk	zh	\N
+598	Hkej.com	hk	zh	\N
+599	Idnes.cz	cz	cs	\N
+600	Auto.cz	cz	cs	\N
+601	Hybrid.cz	cz	cs	\N
+602	Www.e15.cz	cz	cs	\N
+603	Elektrickevozy.cz	cz	cs	\N
+604	Patria.cz	cz	cs	\N
+605	Novinky.cz	cz	cs	\N
+606	Irozhlas.cz	cz	cs	\N
+607	Aktualne.cz	cz	cs	\N
+608	Mobilmania.cz	cz	cs	\N
+609	Lupa.cz	cz	cs	\N
+610	E24.no	no	no	\N
+611	Itavisen.no	no	no	\N
+612	Digi.no	no	no	\N
+613	Www.tv2.no	no	no	\N
+614	Nettavisen.no	no	no	\N
+615	Www.tu.no	no	no	\N
+616	Shifter.no	no	no	\N
+617	Itromso.no	no	no	\N
+618	Freemalaysiatoday.com	my	ms	\N
+619	Theedgemarkets.com	my	ms	\N
+620	Motor1.com	my	ms	\N
+621	Soyacincau.com	my	ms	\N
+622	Thestar.com.my	my	ms	\N
+623	Dailyfx.com	my	ms	\N
+624	Paultan.org	my	ms	\N
+625	Abacusnews.com	my	ms	\N
+626	Egeszsegkalauz.hu	hu	hu	\N
+627	Gamer.com.tw	hk	zh	\N
+628	Hk01.com	hk	zh	\N
+629	Appledaily.com	hk	zh	\N
+630	Mirror.co.uk	gb	en	\N
+631	Auto.sme.sk	sk	sk	\N
+632	Dennikn.sk	sk	sk	\N
+633	Hnonline.sk	sk	sk	\N
+634	Pravda.sk	sk	sk	\N
+635	Startitup.sk	sk	sk	\N
+636	Tech.sme.sk	sk	sk	\N
+637	Aktuality.sk	sk	sk	\N
+638	Www.va.se	se	se	\N
+639	Dagensps.se	se	se	\N
+640	Www.di.se	se	se	\N
+641	Helagotland.se	se	se	\N
+642	Ehandel.se	se	se	\N
+643	Corren.se	se	se	\N
+644	Sportsv.net	hk	zh	\N
+645	Sina.com.hk	hk	zh	\N
+646	Mingpao.com	hk	zh	\N
+647	Dpgmedia.net	nl	nl	\N
+648	Nos.nl	nl	nl	\N
+649	Boerderij.nl	nl	nl	\N
+650	Frontpage.fok.nl	nl	nl	\N
+651	Tagblatt.ch	de	de	\N
+652	Www.fr.de	de	de	\N
+653	Unternehmen-heute.de	de	de	\N
+654	Www.swr.de	de	de	\N
+655	Tagesschau.de	de	de	\N
+656	Businessinsider.de	de	de	\N
+657	1news.com.br	br	pt	\N
+658	Natureworldnews.com	nz	en	\N
+659	9news.com	nz	en	\N
+660	Techexplorist.com	nz	en	\N
+661	Headlinezpro.com	nz	en	\N
+662	Wired.co.uk	nz	en	\N
+663	Theregister.co.uk	nz	en	\N
+664	Techcentral.co.za	za	en	\N
+665	Digitaltrends.com	za	en	\N
+666	Cnet.com	za	en	\N
+667	Gizmodo.com	za	en	\N
+668	Futurism.com	za	en	\N
+669	Ixbt.com	ru	ru	\N
+670	Xakep.ru	ru	ru	\N
+671	3dnews.ru	ru	ru	\N
+672	Gametech.ru	ru	ru	\N
+673	Rambler.ru	ru	ru	\N
+674	Thesun.ie	ie	en	\N
+675	Scitecheuropa.eu	ie	en	\N
+676	Technologynetworks.com	ie	en	\N
+677	Novinite.com	ie	en	\N
+678	Ktvb.com	ie	en	\N
+679	Breakingnews.ie	ie	en	\N
+680	Medium.com	ie	en	\N
+681	Nypost.com	sa	ar	\N
+682	Espn.com	sa	ar	\N
+683	Nesn.com	sa	ar	\N
+684	Hammerandrails.com	sa	ar	\N
+685	Nbcsports.com	sa	ar	\N
+686	Chron.com	sa	ar	\N
+687	Syracuse.com	sa	ar	\N
+688	Poundingtherock.com	sa	ar	\N
+689	Triblive.com	sa	ar	\N
+690	Enaa.com	si	sl	\N
+691	Racunalniske-novice.com	si	sl	\N
+692	Monitor.si	si	sl	\N
+693	Student.si	si	sl	\N
+694	Pagina12.com.ar	ar	es	\N
+695	Cienradios.com	ar	es	\N
+696	Primerahora.com	ar	es	\N
+697	Laverdadnoticias.com	ar	es	\N
+698	Delo.si	si	sl	\N
+699	Reporter.si	si	sl	\N
+700	Okezone.com	id	id	\N
+701	Suara.com	id	id	\N
+702	Idntimes.com	id	id	\N
+703	Theconversation.com	id	id	\N
+704	Telset.id	id	id	\N
+705	Bola.com	id	id	\N
+706	Dream.co.id	id	id	\N
+707	Rakyatku.com	id	id	\N
+708	Trubus.id	id	id	\N
+709	Marketwatch.com	us	en	\N
+710	Msn.com	us	en	\N
+711	Oann.com	us	en	\N
+712	Foxbusiness.com	us	en	\N
+713	Cruiseradio.net	us	en	\N
+714	Seattletimes.com	us	en	\N
+715	Gsmarena.com	ng	en	\N
+716	Pcgamer.com	ng	en	\N
+717	Gamesradar.com	ng	en	\N
+718	Xda-developers.com	ng	en	\N
+719	Hypebeast.com	ng	en	\N
+720	Thisdaylive.com	ng	en	\N
+721	Androidpolice.com	ng	en	\N
+722	Weizmann.ac.il	il	he	\N
+723	Yallakora.com	eg	ar	\N
+724	Arabnn.net	eg	ar	\N
+725	Elbalad.news	eg	ar	\N
+726	Misr-alan.com	eg	ar	\N
+727	Ahram.org.eg	eg	ar	\N
+728	Albayan.ae	eg	ar	\N
+733	Stuff.co.nz	nz	en	\N
+734	Nrl.com	nz	en	\N
+735	Nzherald.co.nz	nz	en	\N
+736	Speedcafe.com	nz	en	\N
+737	Tvnz.co.nz	nz	en	\N
+738	Racenet.com.au	nz	en	\N
+739	Supercars.com	nz	en	\N
+746	Aeiou.pt	br	pt	\N
+759	Vdigital.pt	pt	pt	\N
+777	F1actu.com	be	nl	\N
+782	Dilei.it	it	it	\N
+783	Rainews.it	it	it	\N
+784	Oggiscienza.it	it	it	\N
+785	Astronautinews.it	it	it	\N
+786	Ilmeteo.it	it	it	\N
+787	Inaf.it	it	it	\N
+788	Gelocal.it	it	it	\N
+789	Corriere.it	it	it	\N
+790	Soldionline.it	it	it	\N
+791	Ilgiornale.it	it	it	\N
+792	Lescienze.it	it	it	\N
+793	Www.agi.it	it	it	\N
+794	Lettoquotidiano.it	it	it	\N
+795	Mediaset.it	it	it	\N
+806	Espn.com.br	br	pt	\N
+807	Terra.com.br	br	pt	\N
+808	Meutimao.com.br	br	pt	\N
+809	Foxsportsla.com	br	pt	\N
+810	Gazetaesportiva.com	br	pt	\N
+811	Lance.com.br	br	pt	\N
+812	Superesportes.com.br	br	pt	\N
+729	Arabiaweather.com	ae	en	\N
+730	Aljazeera.net	ae	en	\N
+731	Elwatannews.com	ae	en	\N
+732	Assabah.ma	ae	en	\N
+740	Totalcar.hu	hu	hu	\N
+741	Portfolio.hu	hu	hu	\N
+742	Hvg.hu	hu	hu	\N
+743	Automotor.hu	hu	hu	\N
+744	Vezess.hu	hu	hu	\N
+745	Hwsw.hu	hu	hu	\N
+747	Fin24.com	za	en	\N
+748	Ewn.co.za	za	en	\N
+749	Timeslive.co.za	za	en	\N
+750	Iol.co.za	za	en	\N
+751	Sowetanlive.co.za	za	en	\N
+752	Businesstech.co.za	za	en	\N
+753	Citizen.co.za	za	en	\N
+754	Bizcommunity.com	za	en	\N
+755	Sport24.co.za	za	en	\N
+756	Mybroadband.co.za	za	en	\N
+757	Dispatchlive.co.za	za	en	\N
+758	Channel24.co.za	za	en	\N
+760	Money.pl	pl	pl	\N
+761	Businessinsider.com.pl	pl	pl	\N
+762	Tvn24bis.pl	pl	pl	\N
+763	Bankier.pl	pl	pl	\N
+764	Gazeta.pl	pl	pl	\N
+765	Dziennik.pl	pl	pl	\N
+766	Bezprawnik.pl	pl	pl	\N
+767	Biznesinfo.pl	pl	pl	\N
+768	Vanguardia.com.mx	mx	es	\N
+769	Publimetro.com.mx	mx	es	\N
+770	Juanfutbol.com	mx	es	\N
+771	Diariodemorelos.com	mx	es	\N
+772	Aristeguinoticias.com	mx	es	\N
+773	Diario.mx	mx	es	\N
+774	Yucatan.com.mx	mx	es	\N
+775	Espn.com.mx	mx	es	\N
+776	Animalpolitico.com	mx	es	\N
+778	Thetimes.co.uk	gb	en	\N
+779	Digitalspy.com	gb	en	\N
+780	Thesun.co.uk	gb	en	\N
+781	Nme.com	gb	en	\N
+796	Sportdog.gr	gr	el	\N
+797	Sport24.gr	gr	el	\N
+798	Sport-fm.gr	gr	el	\N
+799	Enwsi.gr	gr	el	\N
+800	Gazzetta.gr	gr	el	\N
+801	Sdna.gr	gr	el	\N
+802	Newsit.gr	gr	el	\N
+803	Onsports.gr	gr	el	\N
+804	Olaprasina1908.gr	gr	el	\N
+805	Contra.gr	gr	el	\N
+813	Phonandroid.com	ma	fr	\N
+814	01net.com	ma	fr	\N
+815	Clubic.com	ma	fr	\N
+816	Frandroid.com	ma	fr	\N
+817	Androidpit.fr	ma	fr	\N
+818	Jeuneafrique.com	ma	fr	\N
+819	Telemundo.com	ve	es	\N
+820	Journaldugeek.com	be	nl	\N
+821	Numerama.com	be	nl	\N
+822	Sciencesetavenir.fr	be	nl	\N
+823	Neozone.org	be	nl	\N
+824	Meteomedia.com	be	nl	\N
+825	Courrierinternational.com	be	nl	\N
+826	Trustmyscience.com	be	nl	\N
+827	Futura-sciences.com	be	nl	\N
+828	Presse-citron.net	be	nl	\N
+829	Foot01.com	fr	fr	\N
+830	Le10sport.com	fr	fr	\N
+831	Footmercato.net	fr	fr	\N
+832	Rugbyrama.fr	fr	fr	\N
+833	Maxifoot.fr	fr	fr	\N
+834	Trashtalk.co	fr	fr	\N
+835	Bfmtv.com	fr	fr	\N
+836	Parismatch.com	fr	fr	\N
+837	Nextgen-auto.com	fr	fr	\N
+838	Talpanetwork.com	nl	nl	\N
+839	Hdblog.it	it	it	\N
+840	Tomshw.it	it	it	\N
+841	Multiplayer.it	it	it	\N
+842	Tecnoandroid.it	it	it	\N
+843	Smartworld.it	it	it	\N
+844	Mobileworld.it	it	it	\N
+845	Libero.it	it	it	\N
+846	Qualenergia.it	it	it	\N
+847	Hwupgrade.it	it	it	\N
+848	Nicematin.com	fr	fr	\N
+849	Linternaute.com	fr	fr	\N
+850	Linfo.re	fr	fr	\N
+851	Varmatin.com	fr	fr	\N
+852	Leprogres.fr	fr	fr	\N
+853	Life.dir.bg	bg	bg	\N
+854	Actualno.com	bg	bg	\N
+855	Dnes.bg	bg	bg	\N
+856	Lifestyle.bg	bg	bg	\N
+857	Flagman.bg	bg	bg	\N
+858	Revistaplaneta.com.br	br	pt	\N
+859	Jornal.usp.br	br	pt	\N
+860	Mobilissimo.ro	ro	ro	\N
+861	Hotnews.ro	ro	ro	\N
+862	Profit.ro	ro	ro	\N
+863	Www.zf.ro	ro	ro	\N
+864	Idevice.ro	ro	ro	\N
+865	Connect.ro	ro	ro	\N
+866	Gadget.ro	ro	ro	\N
+867	Adevarul.ro	ro	ro	\N
+868	Sbs.co.kr	kr	ko	\N
+869	Thedailypost.kr	kr	ko	\N
+870	Nocutnews.co.kr	kr	ko	\N
+871	Veritas-a.com	kr	ko	\N
+872	Sciencetimes.co.kr	kr	ko	\N
+873	Hani.co.kr	kr	ko	\N
+874	Kookje.co.kr	kr	ko	\N
+875	Biospectator.com	kr	ko	\N
+876	Yna.co.kr	kr	ko	\N
+877	Astronomer.rocks	kr	ko	\N
+878	Wikitree.co.kr	kr	ko	\N
+879	Sportowefakty.wp.pl	pl	pl	\N
+880	Sport.pl	pl	pl	\N
+881	Nto.pl	pl	pl	\N
+882	Tvn24.pl	pl	pl	\N
+883	Gazetawroclawska.pl	pl	pl	\N
+884	Turystyka.wp.pl	pl	pl	\N
+885	Natemat.pl	pl	pl	\N
+886	Wpolityce.pl	pl	pl	\N
+887	Pulzo.com	co	es	\N
+888	Elpais.com.co	co	es	\N
+889	Portafolio.co	co	es	\N
+890	Canalrcn.com	co	es	\N
+891	Bluradio.com	co	es	\N
+892	Antena2.com.co	co	es	\N
+893	Elespectador.com	co	es	\N
+894	Elcolombiano.com	co	es	\N
+895	Andro4all.com	co	es	\N
+896	Elheraldo.co	co	es	\N
+897	Alba24.ro	ro	ro	\N
+898	Promotor.ro	ro	ro	\N
+899	Www.b1.ro	ro	ro	\N
+900	Playtech.ro	ro	ro	\N
+901	Unimedia.info	ro	ro	\N
+902	Www.db.lv	lv	lv	\N
+903	Elektrotransports.lv	lv	lv	\N
+904	Delfi.lv	lv	lv	\N
+905	Www.lsm.lv	lv	lv	\N
+906	Leta.lv	lv	lv	\N
+907	Laukos.la.lv	lv	lv	\N
+908	Iauto.lv	lv	lv	\N
+909	Tvnet.lv	lv	lv	\N
+910	Nra.lv	lv	lv	\N
+911	Tag24.de	de	de	\N
+912	Watson.de	de	de	\N
+913	Sueddeutsche.de	de	de	\N
+914	Faz.net	de	de	\N
+915	Motorsport-total.com	de	de	\N
+916	Speedweek.com	de	de	\N
+917	Deichstube.de	de	de	\N
+918	Sport.de	de	de	\N
+924	Stheadline.com	hk	zh	\N
+925	Chinatimes.com	hk	zh	\N
+926	Pansci.asia	hk	zh	\N
+927	Bastillepost.com	hk	zh	\N
+928	Storm.mg	hk	zh	\N
+919	Sportinglife.com	ie	en	\N
+920	The42.ie	ie	en	\N
+921	Football365.com	ie	en	\N
+922	Racingpost.com	ie	en	\N
+923	Skysports.com	ie	en	\N
+929	Www.bt.no	no	no	\N
+930	Aftenbladet.no	no	no	\N
+931	Gamer.no	no	no	\N
+932	Www.vg.no	no	no	\N
+933	Tenniskafe.com	bg	bg	\N
+934	Topsport.bg	bg	bg	\N
+935	Plovdiv24.bg	bg	bg	\N
+936	Novini.bg	bg	bg	\N
+937	Telegraaf.nl	nl	nl	\N
+938	Www.nu.nl	nl	nl	\N
+939	Racingnews365.nl	nl	nl	\N
+940	Ndcmediagroep.nl	nl	nl	\N
+941	Metronieuws.nl	nl	nl	\N
+942	Sdnews.com.cn	cn	zh	\N
+943	News.gmw.cn	cn	zh	\N
+944	Sinchew.com.my	cn	zh	\N
+945	Seehua.com	cn	zh	\N
+946	Dotmed.com	cn	zh	\N
+947	Fantasypros.com	sa	ar	\N
+948	Theroot.com	sa	ar	\N
+949	Motorsport.com	sa	ar	\N
+950	Mmafighting.com	sa	ar	\N
+951	Blackshoediaries.com	sa	ar	\N
+952	Si.com	sa	ar	\N
+953	Wsbt.com	sa	ar	\N
+954	Mlssoccer.com	sa	ar	\N
+955	Theathletic.com	sa	ar	\N
+956	Al.com	sa	ar	\N
+957	Bblat.se	se	se	\N
+958	Kristianstadsbladet.se	se	se	\N
+959	Www.dn.se	se	se	\N
+960	Barometern.se	se	se	\N
+961	Www.smp.se	se	se	\N
+962	Pren.nt.se	se	se	\N
+963	Dualshockers.com	in	hi	\N
+964	Moneycontrol.com	in	hi	\N
+965	Macworld.com	in	hi	\N
+966	Indiatoday.in	in	hi	\N
+967	Hitc.com	in	hi	\N
+968	Lifo.gr	gr	el	\N
+969	Techmaniacs.gr	gr	el	\N
+970	Protothema.gr	gr	el	\N
+971	Zougla.gr	gr	el	\N
+972	Techblog.gr	gr	el	\N
+973	Insider.gr	gr	el	\N
+974	Kourdistoportocali.com	gr	el	\N
+975	Www.in.gr	gr	el	\N
+976	Techgear.gr	gr	el	\N
+977	Naftemporiki.gr	gr	el	\N
+978	Angroid.gr	gr	el	\N
+979	Insomnia.gr	gr	el	\N
+980	Gizchina.com	gr	el	\N
+981	Europe1.fr	fr	fr	\N
+982	Francetvinfo.fr	fr	fr	\N
+983	Www.rtl.fr	fr	fr	\N
+984	Purepeople.com	fr	fr	\N
+985	Sport.cz	cz	cs	\N
+986	Www.nhl.cz	cz	cs	\N
+987	Hokej.cz	cz	cs	\N
+988	Extra.cz	cz	cs	\N
+989	Nhl.cz	cz	cs	\N
+990	Sputniknews.com	pt	pt	\N
+991	Tvi24.iol.pt	pt	pt	\N
+992	Medicalxpress.com	my	ms	\N
+993	Hhmi.org	my	ms	\N
+994	Healio.com	my	ms	\N
+995	Contemporarypediatrics.com	my	ms	\N
+996	Brainerddispatch.com	my	ms	\N
+997	News-medical.net	my	ms	\N
+998	Aa.com.tr	my	ms	\N
+999	Fowlertribune.com	my	ms	\N
+1000	Latribune.fr	fr	fr	\N
+1001	Gamekult.com	fr	fr	\N
+1002	Jeuxvideo.com	fr	fr	\N
+1003	Monpetitforfait.com	fr	fr	\N
+1004	Universfreebox.com	fr	fr	\N
+1005	Omroepbrabant.nl	nl	nl	\N
+1006	Voetbalprimeur.nl	nl	nl	\N
+1007	Rtlboulevard.nl	nl	nl	\N
+1008	Tweakers.net	nl	nl	\N
+1009	Rtlz.nl	nl	nl	\N
+1010	Www.nrc.nl	nl	nl	\N
+1011	Sport.sme.sk	sk	sk	\N
+1012	Zoznam.sk	sk	sk	\N
+1013	Www.srf.ch	ch	de	\N
+1014	Watson.ch	ch	de	\N
+1015	Transfermarkt.at	ch	de	\N
+1016	Bluewin.ch	ch	de	\N
+1017	20min.ch	ch	de	\N
+1018	Transfermarkt.ch	ch	de	\N
+1019	Foxsports.com.tw	tw	zh	\N
+1020	Tagesanzeiger.ch	ch	de	\N
+1021	Setn.com	tw	zh	\N
+1022	Financefwd.com	ch	de	\N
+1023	Nownews.com	tw	zh	\N
+1024	Ettoday.net	tw	zh	\N
+1025	Bitcoinmagazine.nl	nl	nl	\N
+1026	Hardware.info	nl	nl	\N
+1027	Cajadebotin.com	mx	es	\N
+1028	Bright.nl	nl	nl	\N
+1029	Iculture.nl	nl	nl	\N
+1030	Gamer.nl	nl	nl	\N
+1031	Forbes.com.mx	mx	es	\N
+1032	Oilprice.com	us	en	\N
+1033	Niemanlab.org	us	en	\N
+1034	Npr.org	us	en	\N
+1035	Stltoday.com	us	en	\N
+1036	Sogi.com.tw	tw	zh	\N
+1037	Onemileatatime.com	us	en	\N
+1038	Local10.com	us	en	\N
+1039	Investors.com	us	en	\N
+1040	Koco.com	us	en	\N
+1041	15min.lt	lt	lt	\N
+1042	Haberler.com	tr	tr	\N
+1043	Basketnews.lt	lt	lt	\N
+1044	Mynet.com	tr	tr	\N
+1045	Krepsinis.net	lt	lt	\N
+1046	Superhaber.tv	tr	tr	\N
+1047	Haberturk.com	tr	tr	\N
+1048	Lrytas.lt	lt	lt	\N
+1049	Sozcu.com.tr	tr	tr	\N
+1050	Eurofootball.lt	lt	lt	\N
+1051	Internethaber.com	tr	tr	\N
+1052	Sabah.com.tr	tr	tr	\N
+1053	Sportas.lt	lt	lt	\N
+1054	Onedio.com	tr	tr	\N
+1055	Ensonhaber.com	tr	tr	\N
+1056	Delfi.lt	lt	lt	\N
+1057	F1news.ru	ru	ru	\N
+1058	Hellomagazine.com	ru	ru	\N
+1059	Sportingnews.com	id	id	\N
+1060	Igromania.ru	ru	ru	\N
+1061	Bolasport.com	id	id	\N
+1062	Gazeta.ru	ru	ru	\N
+1063	Bola.net	id	id	\N
+1064	Style.rbc.ru	ru	ru	\N
+1065	Viva.co.id	id	id	\N
+1066	Esquire.ru	ru	ru	\N
+1067	Www.kp.ru	ru	ru	\N
+1068	News.ru	ru	ru	\N
+1069	Biobiochile.cl	ar	es	\N
+1070	Buzzorange.com	hk	zh	\N
+1071	Iprofesional.com	ar	es	\N
+1072	Tomorrowsci.com	hk	zh	\N
+1073	Inmediahk.net	hk	zh	\N
+1074	Android-dz.com	ma	fr	\N
+1075	Www.rts.ch	ma	fr	\N
+1076	Criptotendencia.com	cu	es	\N
+1077	Elceo.com	cu	es	\N
+1078	Teknofilo.com	cu	es	\N
+1079	Tomsguide.fr	ma	fr	\N
+1080	Montevideo.com.uy	cu	es	\N
+1081	Americaeconomia.com	cu	es	\N
+1082	Codigoespagueti.com	cu	es	\N
+1083	Iproup.com	cu	es	\N
+1084	Corresponsables.com	cu	es	\N
+1085	Noticiasdelmotor.com	cu	es	\N
+1086	Outerplaces.com	ie	en	\N
+1087	Gmanetwork.com	ph	en	\N
+1088	Livescience.com	ie	en	\N
+1089	Optics.org	ie	en	\N
+1090	Mit.edu	ie	en	\N
+1091	Universetoday.com	ie	en	\N
+1092	Futurity.org	ph	en	\N
+1093	Sciencemag.org	ie	en	\N
+1094	Techxplore.com	ie	en	\N
+1095	Mvariety.com	ie	en	\N
+1096	Nasa.gov	ie	en	\N
+1097	Pesesurstart.com	ma	fr	\N
+1098	Insertlive.com	id	id	\N
+1099	Tv5monde.com	ma	fr	\N
+1100	Timesofisrael.com	ma	fr	\N
+1101	Beninwebtv.com	ma	fr	\N
+1102	Atlasinfo.fr	ma	fr	\N
+1103	Viamirabelle.tv	ma	fr	\N
+1104	My-angers.info	ma	fr	\N
+1105	Graziamaroc.ma	ma	fr	\N
+1106	Wowkeren.com	id	id	\N
+1107	Lnt.ma	ma	fr	\N
+1108	Africatopsports.com	ma	fr	\N
+1109	Index.hu	hu	hu	\N
+1110	Vox.com	us	en	\N
+1111	Patch.com	us	en	\N
+1112	Promotions.hu	hu	hu	\N
+1113	24.hu	hu	hu	\N
+1114	Origo.hu	hu	hu	\N
+1115	Nlc.hu	hu	hu	\N
+1116	Aol.com	us	en	\N
+1117	Velvet.hu	hu	hu	\N
+1118	Live5news.com	us	en	\N
+1119	Www.atv.hu	hu	hu	\N
+1120	Who.int	us	en	\N
+1121	Today.com	us	en	\N
+1122	Yale.edu	us	en	\N
+1123	Gry-online.pl	pl	pl	\N
+1124	Tabletowo.pl	pl	pl	\N
+1125	Www.ppe.pl	pl	pl	\N
+1126	Komorkomania.pl	pl	pl	\N
+1127	Gsmmaniak.pl	pl	pl	\N
+1128	Mobimaniak.pl	pl	pl	\N
+1129	Nature.com	sa	ar	\N
+1130	Pclab.pl	pl	pl	\N
+1131	Dobreprogramy.pl	pl	pl	\N
+1132	Spidersweb.pl	pl	pl	\N
+1133	Android.com.pl	pl	pl	\N
+1134	Komputerswiat.pl	pl	pl	\N
+1135	Www.vk.se	se	se	\N
+1136	Voanews.com	nz	en	\N
+1137	Lifesciencesweden.se	se	se	\N
+1138	Dagensmedicin.se	se	se	\N
+1139	Pren.unt.se	se	se	\N
+1140	Tranastidning.se	se	se	\N
+1141	Forskning.se	se	se	\N
+1142	Hojeemdia.com.br	pt	pt	\N
+1143	Melty.fr	fr	fr	\N
+1144	Camboriu.news	pt	pt	\N
+1145	Public.fr	fr	fr	\N
+1146	Xvcuritiba.com.br	pt	pt	\N
+1147	Ladepeche.fr	fr	fr	\N
+1148	Averdade.com	pt	pt	\N
+1149	Programme-tv.net	fr	fr	\N
+1150	Osaopaulo.org.br	pt	pt	\N
+1151	Ledauphine.com	fr	fr	\N
+1152	Diariodoscampos.com.br	pt	pt	\N
+1153	Allocine.fr	fr	fr	\N
+1154	Oregionalsul.com	pt	pt	\N
+1155	Francebleu.fr	fr	fr	\N
+1156	Opresente.com.br	pt	pt	\N
+1157	Tribunadepetropolis.com.br	pt	pt	\N
+1158	Ceara.gov.br	pt	pt	\N
+1159	Vozdabahia.com.br	pt	pt	\N
+1160	Contabeis.com.br	pt	pt	\N
+1161	Agenciadoradio.com.br	pt	pt	\N
+1162	Surgiu.com.br	pt	pt	\N
+1163	Flash.pt	pt	pt	\N
+1164	7news.com.au	au	en	\N
+1165	Www.vip.pt	pt	pt	\N
+1166	Goodnewsnetwork.org	au	en	\N
+1167	Rnz.co.nz	au	en	\N
+1168	9news.com.au	au	en	\N
+1169	Atelevisao.com	pt	pt	\N
+1170	10daily.com.au	au	en	\N
+1171	Tvi.iol.pt	pt	pt	\N
+1172	Sicmulher.pt	pt	pt	\N
+1173	Nit.pt	pt	pt	\N
+1174	Selfie.iol.pt	pt	pt	\N
+1175	Venturebeat.com	ie	en	\N
+1176	One.co.il	il	he	\N
+1177	Screenrant.com	ie	en	\N
+1178	Lifehacker.com	ie	en	\N
+1179	Prnewswire.com	ie	en	\N
+1180	Tennisworldusa.org	in	hi	\N
+1181	Crash.net	in	hi	\N
+1182	Cricbuzz.com	in	hi	\N
+1183	Parismatch.be	be	nl	\N
+1184	Www.rtl.be	be	nl	\N
+1185	Goal.com	in	hi	\N
+1186	Iplt20.com	in	hi	\N
+1187	Finance.si	si	sl	\N
+1188	Slo-tech.com	si	sl	\N
+1189	Najdi.si	si	sl	\N
+1190	Donanimhaber.com	tr	tr	\N
+1191	Story.rs	rs	sr	\N
+1192	Haber7.com	tr	tr	\N
+1193	Webtekno.com	tr	tr	\N
+1194	Euronews.com	tr	tr	\N
+1195	Politika.rs	rs	sr	\N
+1196	Mersinhaber.com	tr	tr	\N
+1197	Novosti.rs	rs	sr	\N
+1198	Espreso.rs	rs	sr	\N
+1199	Informer.rs	rs	sr	\N
+1200	Hurriyet.com.tr	tr	tr	\N
+1201	Gazeteduvar.com.tr	tr	tr	\N
+1202	Womany.net	hk	zh	\N
+1203	Jnytt.se	se	se	\N
+1204	Vxonews.se	se	se	\N
+1205	Fotbollskanalen.se	se	se	\N
+1206	As.com	cu	es	\N
+1207	Bolavip.com	cu	es	\N
+1208	Espn.cl	cu	es	\N
+1209	Elcomercio.com	cu	es	\N
+1210	Eluniverso.com	cu	es	\N
+1211	B92.net	rs	sr	\N
+1212	Www.rtv.rs	rs	sr	\N
+1213	Krstarica.com	rs	sr	\N
+1214	Pressserbia.com	rs	sr	\N
+1215	Cool3c.com	tw	zh	\N
+1216	Applealmond.com	tw	zh	\N
+1217	Dm-net.co.jp	jp	ja	\N
+1218	Nifty.com	jp	ja	\N
+1219	Mynavi.jp	jp	ja	\N
+1220	Petokoto.com	jp	ja	\N
+1221	Www.nt.se	se	se	\N
+1222	Perthnow.com.au	au	en	\N
+1223	Depor.com	cu	es	\N
+1224	Kotaku.com.au	au	en	\N
+1225	Heraldsun.com.au	au	en	\N
+1226	Paginasiete.bo	cu	es	\N
+1227	Nine.com.au	au	en	\N
+1228	Mibolsillo.com	cu	es	\N
+1229	Cibercuba.com	cu	es	\N
+1230	Redeszone.net	cu	es	\N
+1231	Diariobitcoin.com	cu	es	\N
+1232	Smh.com.au	au	en	\N
+1233	Laopinion.com	cu	es	\N
+1234	Lifehacker.com.au	au	en	\N
+1235	Kabutan.jp	jp	ja	\N
+1236	Sankei.com	jp	ja	\N
+1237	Iphone-mania.jp	jp	ja	\N
+1238	Ria.ru	ru	ru	\N
+1239	Mobile-review.com	ru	ru	\N
+1240	Jiji.com	jp	ja	\N
+1241	Kuruma-news.jp	jp	ja	\N
+1242	Thenewsminute.com	in	hi	\N
+1243	Noticiasdegipuzkoa.eus	cu	es	\N
+1244	Fueradeseries.com	cu	es	\N
+1245	Vogue.in	in	hi	\N
+1246	Efe.com	cu	es	\N
+1247	Deccanchronicle.com	in	hi	\N
+1248	Livemint.com	in	hi	\N
+1249	Periodicoviaje.com	cu	es	\N
+1250	Prensalibre.com	cu	es	\N
+1251	Thewire.in	in	hi	\N
+1252	Europeansting.com	my	ms	\N
+1253	Malaysiakini.com	my	ms	\N
+1254	Trafficnews.bg	bg	bg	\N
+1255	Ladbible.com	my	ms	\N
+1256	Nst.com.my	my	ms	\N
+1257	Theborneopost.com	my	ms	\N
+1258	Thesundaily.my	my	ms	\N
+1259	Globalnews.ca	ca	en	\N
+1260	Sina.com.tw	tw	zh	\N
+1261	Bnnbloomberg.ca	ca	en	\N
+1262	Castanet.net	ca	en	\N
+1263	Wordpress.com	ca	en	\N
+1264	Sootoday.com	ca	en	\N
+1265	Vocm.com	ca	en	\N
+1266	Nationalpost.com	ca	en	\N
+1267	Saharareporters.com	ng	en	\N
+1268	Dailypost.ng	ng	en	\N
+1269	Thenationonlineng.net	ng	en	\N
+1270	Irishnews.com	ng	en	\N
+1271	Allafrica.com	ng	en	\N
+1272	Mcall.com	us	en	\N
+1273	Guardian.ng	ng	en	\N
+1274	Concordmonitor.com	us	en	\N
+1275	Ksl.com	us	en	\N
+1276	Krtv.com	us	en	\N
+1277	Punchng.com	ng	en	\N
+1278	Newsobserver.com	us	en	\N
+1279	Chelsea-news.co	ng	en	\N
+1280	Channelstv.com	ng	en	\N
+1281	Egora.fr	fr	fr	\N
+1282	Newidea.com.au	nz	en	\N
+1283	Scinexx.de	de	de	\N
+1284	Gofeminin.de	de	de	\N
+1285	Www.unt.se	se	se	\N
+1286	Morgenpost.de	de	de	\N
+1287	Husbilhusvagn.se	se	se	\N
+1288	Www.br.de	de	de	\N
+1289	Nyteknik.se	se	se	\N
+1290	Derwesten.de	de	de	\N
+1291	Falkopingstidning.se	se	se	\N
+1292	Spektrum.de	de	de	\N
+1293	Eposten.se	se	se	\N
+1294	Grenzwissenschaft-aktuell.de	de	de	\N
+1295	Futurezone.de	de	de	\N
+1296	Www.mdr.de	de	de	\N
+1297	Abendblatt.de	de	de	\N
+1298	Astronews.com	de	de	\N
+1299	Blesk.cz	cz	cs	\N
+1300	Zive.cz	cz	cs	\N
+1301	Rozhlas.cz	cz	cs	\N
+1302	Denik.cz	cz	cs	\N
+1303	Nova.cz	cz	cs	\N
+1304	Ahaonline.cz	cz	cs	\N
+1305	Thaipbs.or.th	th	th	\N
+1306	Expres.cz	cz	cs	\N
+1307	Komchadluek.net	th	th	\N
+1308	Lidovky.cz	cz	cs	\N
+1309	Flashfly.net	th	th	\N
+1310	77jowo.com	th	th	\N
+1311	Dailynews.co.th	th	th	\N
+1312	Siamrath.co.th	th	th	\N
+1313	Internazionale.it	it	it	\N
+1314	Palermo.gds.it	it	it	\N
+1315	Macitynet.it	it	it	\N
+1316	Calcionewsweb.it	it	it	\N
+1317	Ilfattoquotidiano.it	it	it	\N
+1318	Planetfootball.com	my	ms	\N
+1319	Thisisanfield.com	my	ms	\N
+1320	Ambientebio.it	it	it	\N
+1321	Liverpool.com	my	ms	\N
+1322	Grazia.it	it	it	\N
+1323	Empireofthekop.com	my	ms	\N
+1324	Notizieora.it	it	it	\N
+1325	Foxsports.com.my	my	ms	\N
+1326	Ladyblitz.it	it	it	\N
+1327	Trevisotoday.it	it	it	\N
+1328	Ilmattino.it	it	it	\N
+1329	Foxsportsasia.com	my	ms	\N
+1330	Liverpoolecho.co.uk	my	ms	\N
+1331	Quotidianosanita.it	it	it	\N
+1332	Ok-salute.it	it	it	\N
+1333	Adnkronos.com	it	it	\N
+1334	Gpone.com	my	ms	\N
+1335	Theaustralian.com.au	au	en	\N
+1336	Standardmedia.co.ke	au	en	\N
+1337	Pedestrian.tv	au	en	\N
+1338	Newsapi.com.au	au	en	\N
+1339	Diariodepetropolis.com.br	pt	pt	\N
+1340	Obomdanoticia.com.br	pt	pt	\N
+1341	Itnonline.com	au	en	\N
+1342	Consumidormoderno.com.br	pt	pt	\N
+1343	Atribunamt.com.br	pt	pt	\N
+1344	Cbncuritiba.com	pt	pt	\N
+1345	Folhavitoria.com.br	pt	pt	\N
+1346	Minhavida.com.br	pt	pt	\N
+1347	Pebmed.com.br	pt	pt	\N
+1348	Jornalbomdia.com.br	pt	pt	\N
+1349	Cash.ch	ch	de	\N
+1350	Www.nzz.ch	ch	de	\N
+1351	Cnwest.com	cn	zh	\N
+1352	Youth.cn	cn	zh	\N
+1353	Ent.cri.cn	cn	zh	\N
+1354	Ynet.com	cn	zh	\N
+1355	Wenyi.gmw.cn	cn	zh	\N
+1356	Letemsvetemapplem.eu	cz	cs	\N
+1357	Diit.cz	cz	cs	\N
+1358	Svethardware.cz	cz	cs	\N
+1359	Root.cz	cz	cs	\N
+1360	Mobilenet.cz	cz	cs	\N
+1361	Mobilizujeme.cz	cz	cs	\N
+1362	Svetandroida.cz	cz	cs	\N
+1363	Nemzetisport.hu	hu	hu	\N
+1364	Csakfoci.hu	hu	hu	\N
+1365	444.hu	hu	hu	\N
+1366	Ameinfo.com	ie	en	\N
+1367	Madison.com	ie	en	\N
+1368	Rangado.24.hu	hu	hu	\N
+1369	Thejc.com	ie	en	\N
+1370	Deccanherald.com	ie	en	\N
+1371	F1vilag.hu	hu	hu	\N
+1372	888.hu	hu	hu	\N
+1373	Irishhealth.com	ie	en	\N
+1374	Epmmagazine.com	ie	en	\N
+1375	Chemistryworld.com	ie	en	\N
+1376	Mercopress.com	ie	en	\N
+1377	Wickedlocal.com	ie	en	\N
+1378	Si21.com	si	sl	\N
+1379	Tyla.com	sg	en	\N
+1380	Vmax.si	si	sl	\N
+1381	Ibtimes.sg	sg	en	\N
+1382	Pharmaceutical-business-review.com	sg	en	\N
+1383	Yenisafak.com	sg	en	\N
+1384	Timescolonist.com	sg	en	\N
+1385	Reliefweb.int	sg	en	\N
+1386	Chroniclelive.co.uk	gb	en	\N
+1387	Dni.ru	ru	ru	\N
+1388	Rg.ru	ru	ru	\N
+1389	Vmo24.ru	ru	ru	\N
+1390	Ancient-origins.net	gb	en	\N
+1391	Medialeaks.ru	ru	ru	\N
+1392	Eveningtimes.co.uk	gb	en	\N
+1393	Iz.ru	ru	ru	\N
+1394	Schweizer-illustrierte.ch	ch	de	\N
+1395	1health.id	id	id	\N
+1396	Medaninside.com	id	id	\N
+1397	Popmama.com	id	id	\N
+1398	Republika.co.id	id	id	\N
+1399	Merdeka.com	id	id	\N
+1400	Allkpop.com	sg	en	\N
+1401	Brilio.net	id	id	\N
+1402	Genengnews.com	sg	en	\N
+1403	Theonlinecitizen.com	sg	en	\N
+1404	Fimela.com	id	id	\N
+1405	Mancode.id	id	id	\N
+1406	Abola.pt	pt	pt	\N
+1407	Macwelt.de	de	de	\N
+1408	Pressetext.com	de	de	\N
+1409	Autosport.pt	pt	pt	\N
+1410	Businessportal24.com	de	de	\N
+1411	Www.ots.at	de	de	\N
+1412	Ojogo.pt	pt	pt	\N
+1413	Slbenfica.pt	pt	pt	\N
+1414	Record.pt	pt	pt	\N
+1415	Motorpasionmoto.com	co	es	\N
+1416	Computerhoy.com	co	es	\N
+1417	Sport-express.ru	ru	ru	\N
+1418	Larepublica.co	co	es	\N
+1419	Sportbox.ru	ru	ru	\N
+1420	Euro2020.ria.ru	ru	ru	\N
+1421	Gorobzor.ru	ru	ru	\N
+1422	Championat.com	ru	ru	\N
+1423	Sportrbc.ru	ru	ru	\N
+1424	Www.1tv.ru	ru	ru	\N
+1425	Elcarrocolombiano.com	co	es	\N
+1426	Sovsport.ru	ru	ru	\N
+1428	Livesport.ru	ru	ru	\N
+1427	Laopinion.com.co	co	es	\N
+1430	Ziarulevenimentul.ro	ro	ro	\N
+1431	Stiripesurse.ro	ro	ro	\N
+1432	Timpul.md	ro	ro	\N
+1434	Teslamagazin.sk	sk	sk	\N
+1436	Refresher.sk	sk	sk	\N
+1437	Ekonomika.sme.sk	sk	sk	\N
+2831	Gadgetsnow.com	in	hi	\N
+2832	Rivalry.com	in	hi	\N
+2846	Nfljapan.com	jp	ja	\N
+2848	Sport.sky.de	de	de	\N
+2849	Sportschau.de	de	de	\N
+2851	Schwarzwaelder-bote.de	de	de	\N
+2852	Fussballtransfers.com	de	de	\N
+2854	90min.de	de	de	\N
+2855	Sport1.de	de	de	\N
+2856	Stuttgarter-nachrichten.de	de	de	\N
+2858	Minutoneuquen.com	ar	es	\N
+2859	Viapais.com.ar	ar	es	\N
+2863	Newtalk.tw	tw	zh	\N
+2866	Tendanceouest.com	fr	fr	\N
+2868	13or-du-hiphop.fr	fr	fr	\N
+2875	Fichajes.com	co	es	\N
+2876	Lapatria.com	co	es	\N
+2879	Mediasr.co.kr	kr	ko	\N
+2880	Sagunin.com	kr	ko	\N
+2885	Timesindonesia.co.id	id	id	\N
+2886	Galamedianews.com	id	id	\N
+2887	Krjogja.com	id	id	\N
+2888	Riaupos.co	id	id	\N
+2891	Razaoautomovel.com	pt	pt	\N
+2893	Criptofacil.com	pt	pt	\N
+2894	Gizmochina.com	ng	en	\N
+3299	Lecourrier.vn	ma	fr	\N
+3300	Gqmagazine.fr	ma	fr	\N
+3302	Volkskrant.nl	nl	nl	\N
+3303	Superguide.nl	nl	nl	\N
+3308	Crhoy.com	cu	es	\N
+3309	Justnje.com	za	en	\N
+3310	Newsday.co.zw	za	en	\N
+3312	Insideparadeplatz.ch	ch	de	\N
+3314	Latimes.com	sa	ar	\N
+3316	Forexfactory.com	sa	ar	\N
+3318	Musicradar.com	sa	ar	\N
+3322	Juvedipendenza.net	it	it	\N
+3323	Fcinternews.it	it	it	\N
+3325	Tuttonapoli.net	it	it	\N
+3326	Tuttosport.com	it	it	\N
+3329	Kobieta.wp.pl	pl	pl	\N
+3330	Innpoland.pl	pl	pl	\N
+3331	Kormedi.com	kr	ko	\N
+3332	Dailyesports.com	kr	ko	\N
+3334	Yonhapnewstv.co.kr	kr	ko	\N
+3335	Dispatch.co.kr	kr	ko	\N
+3337	Radio-canada.ca	ma	fr	\N
+3339	Www.rci.fm	ma	fr	\N
+3340	Forum.fr	ma	fr	\N
+3341	Journalmetro.com	be	nl	\N
+3343	It-markt.ch	ch	de	\N
+3344	Netzwoche.ch	ch	de	\N
+3345	Rimava.sk	sk	sk	\N
+3348	Worldwrestling.it	it	it	\N
+3349	Bitchyf.it	it	it	\N
+3350	Urbanpost.it	it	it	\N
+3351	Davidemaggio.it	it	it	\N
+3352	Larena.it	it	it	\N
+3353	Siviaggia.it	it	it	\N
+3354	Tabloidbintang.com	id	id	\N
+3355	Arah.com	id	id	\N
+3356	Ayopurwakarta.com	id	id	\N
+3358	Trend.at	at	de	\N
+3359	Industriemagazin.at	at	de	\N
+3360	Sapo.ao	pt	pt	\N
+3361	Enternity.gr	gr	el	\N
+3363	Chartsinfrance.net	ma	fr	\N
+3364	Timeout.co.il	il	he	\N
+3366	Kan-ashdod.co.il	il	he	\N
+3371	Ceskenoviny.cz	cz	cs	\N
+3376	Tsargrad.tv	ru	ru	\N
+3377	Svpressa.ru	ru	ru	\N
+3378	Stolica-s.su	ru	ru	\N
+3381	Dailybizon.com	kr	ko	\N
+3382	Docdocdoc.co.kr	kr	ko	\N
+3383	Womancs.co.kr	kr	ko	\N
+3384	Kbs.co.kr	kr	ko	\N
+3385	Doctorsnews.co.kr	kr	ko	\N
+3386	Top-rider.com	kr	ko	\N
+3387	Cleantechnica.com	ca	en	\N
+3388	Vancouverisawesome.com	ca	en	\N
+3389	Boingboing.net	ca	en	\N
+3390	Thestarphoenix.com	ca	en	\N
+3393	Now.com	hk	zh	\N
+3394	Cna.com.tw	hk	zh	\N
+3395	Speakout.hk	hk	zh	\N
+3401	Diariocorreo.pe	ve	es	\N
+3406	Ledesk.ma	ma	fr	\N
+3407	Lematin.ch	ma	fr	\N
+3408	Alwihdainfo.com	ma	fr	\N
+3409	Voaafrique.com	ma	fr	\N
+3410	Nj.com	sa	ar	\N
+3411	Kktv.com	sa	ar	\N
+3412	Bet.com	sa	ar	\N
+3413	Kdvr.com	sa	ar	\N
+3414	Mmm-online.com	sa	ar	\N
+3416	Tialoto.bg	bg	bg	\N
+3417	Signal.bg	bg	bg	\N
+3418	Kisalfold.hu	hu	hu	\N
+3419	Republika.rs	rs	sr	\N
+3424	Superluchas.com	mx	es	\N
+3425	Mediapool.bg	bg	bg	\N
+3426	Startupcafe.ro	ro	ro	\N
+3427	Smartnews.ro	ro	ro	\N
+3428	Iqads.ro	ro	ro	\N
+3433	Ecodibergamo.it	it	it	\N
+3434	Messinatoday.it	it	it	\N
+3435	Lanazione.it	it	it	\N
+3436	Pokemonmillennium.net	it	it	\N
+3437	Padovaoggi.it	it	it	\N
+3438	Tirol.orf.at	at	de	\N
+3439	Oricon.co.jp	jp	ja	\N
+3440	Dwango.jp	jp	ja	\N
+3441	Crank-in.net	jp	ja	\N
+3444	Lenouvelliste.ch	be	nl	\N
+3445	Lepoint.fr	be	nl	\N
+3446	Dailygeekshow.com	be	nl	\N
+3449	Biznews.com	za	en	\N
+3450	Beincrypto.com	za	en	\N
+3451	Mg.co.za	za	en	\N
+3453	Trendingtopics.at	at	de	\N
+3455	Minhaserie.com.br	br	pt	\N
+3457	Topgear.com.ph	ph	en	\N
+3458	Threatpost.com	ph	en	\N
+3464	Bristolpost.co.uk	in	hi	\N
+3465	Privataaffarer.se	se	se	\N
+3466	Kkuriren.se	se	se	\N
+3467	Mitti.se	se	se	\N
+3468	Wowktv.com	nz	en	\N
+3469	Haaretz.com	nz	en	\N
+3570	Www.pd.no	no	no	\N
+3575	Fda.gov	us	en	\N
+3576	People.com	us	en	\N
+3577	Wgntv.com	us	en	\N
+3578	Coindeskkorea.com	kr	ko	\N
+3580	Blockchaintoday.co.kr	kr	ko	\N
+3581	Bodnara.co.kr	kr	ko	\N
+3582	Ilsalvagente.it	it	it	\N
+1429	Business-gazeta.ru	ru	ru	\N
+1433	Tabloidpulsa.co.id	id	id	\N
+1435	Znanost.sta.si	si	sl	\N
+1438	Mydrivers.com	cn	zh	\N
+1439	Dwnews.com	cn	zh	\N
+1440	Ashqelon.net	il	he	\N
+1441	Be106.net	il	he	\N
+1442	Observador.pt	pt	pt	\N
+1443	Novagente.pt	pt	pt	\N
+1444	Blitz.pt	pt	pt	\N
+1445	Sic.pt	pt	pt	\N
+1446	Salud180.com	cu	es	\N
+1447	Elnacional.com	cu	es	\N
+1448	Hola.com	cu	es	\N
+1449	Deia.eus	cu	es	\N
+1450	Laprensa.hn	cu	es	\N
+1451	Radioreloj.cu	cu	es	\N
+1452	Eju.tv	cu	es	\N
+1453	Sportsnet.ca	ca	en	\N
+1454	Torontosun.com	ca	en	\N
+1455	Montrealgazette.com	ca	en	\N
+1456	Edmontonjournal.com	ca	en	\N
+1457	Thescore.com	ca	en	\N
+1458	Huffingtonpost.ca	ca	en	\N
+1459	Www.tsn.ca	ca	en	\N
+1460	Calgarysun.com	ca	en	\N
+1461	Kathimerini.gr	gr	el	\N
+1462	Skai.gr	gr	el	\N
+1463	Enikos.gr	gr	el	\N
+1464	Voria.gr	gr	el	\N
+1465	News247.gr	gr	el	\N
+1466	Traction.gr	gr	el	\N
+1467	Dikaiologitika.gr	gr	el	\N
+1468	Euro2day.gr	gr	el	\N
+1469	Newsbomb.gr	gr	el	\N
+1470	Motomag.gr	gr	el	\N
+1471	Thetoc.gr	gr	el	\N
+1472	Diena.lt	lt	lt	\N
+1473	Www.vz.lt	lt	lt	\N
+1474	Kvitrina.lt	lt	lt	\N
+1475	Www.ve.lt	lt	lt	\N
+1476	Elektronika.lt	lt	lt	\N
+1477	U.today	my	ms	\N
+1478	Malaymail.com	my	ms	\N
+1479	Carmag.co.za	my	ms	\N
+1480	Reitingi.lv	lv	lv	\N
+1481	Beauty321.com	tw	zh	\N
+1482	Tvbs.com.tw	tw	zh	\N
+1483	Koreastardaily.com	tw	zh	\N
+1484	Am.com.mx	mx	es	\N
+1485	Amqueretaro.com	mx	es	\N
+1486	Viveusa.mx	mx	es	\N
+1487	Sector.sk	sk	sk	\N
+1488	Techpit.sk	sk	sk	\N
+1489	Mobil.sk	sk	sk	\N
+1490	Techbyte.sk	sk	sk	\N
+1491	Pcrevue.sk	sk	sk	\N
+1492	Ta3.com	sk	sk	\N
+1493	Touchit.sk	sk	sk	\N
+1494	Xboxer.sk	sk	sk	\N
+1495	24hod.sk	sk	sk	\N
+1496	Xkb.com.cn	cn	zh	\N
+1497	Www.rfi.fr	cn	zh	\N
+1498	Wxrb.com	cn	zh	\N
+1499	Zjol.com.cn	cn	zh	\N
+1500	Legaldaily.com.cn	cn	zh	\N
+1501	Tycsports.com	ar	es	\N
+1502	Ellitoral.com	ar	es	\N
+1503	Ole.com.ar	ar	es	\N
+1504	Mdzol.com	ar	es	\N
+1505	Lapaginamillonaria.com	ar	es	\N
+1506	Diariodecuyo.com.ar	ar	es	\N
+1507	Puntodebreak.com	ar	es	\N
+1508	Eldestapeweb.com	ar	es	\N
+1509	Akhbarak.net	eg	ar	\N
+1510	Tech-wd.com	eg	ar	\N
+1511	Dotmsr.com	eg	ar	\N
+1512	Assawsana.com	eg	ar	\N
+1513	Aitnews.com	eg	ar	\N
+1514	Newsplus.co.th	th	th	\N
+1515	Beartai.com	th	th	\N
+1516	Whatphone.net	th	th	\N
+1517	Kapook.com	th	th	\N
+1518	Siamphone.com	th	th	\N
+1519	Irishexaminer.com	ie	en	\N
+1520	Www.her.ie	ie	en	\N
+1521	Agriland.ie	ie	en	\N
+1522	Thejournal.ie	ie	en	\N
+1523	Irishmirror.ie	ie	en	\N
+1524	Independent.ie	ie	en	\N
+1525	Tipperarylive.ie	ie	en	\N
+1526	Teknoburada.net	tr	tr	\N
+1527	Shiftdelete.net	tr	tr	\N
+1528	Takvim.com.tr	tr	tr	\N
+1529	Posta.com.tr	tr	tr	\N
+1530	Dinheirovivo.pt	pt	pt	\N
+1531	Idealista.pt	pt	pt	\N
+1532	Jornalf8.net	pt	pt	\N
+1533	Ngenespanol.com	cu	es	\N
+1534	Xatakaciencia.com	cu	es	\N
+1535	Trendencias.com	cu	es	\N
+1536	Abc.com.py	cu	es	\N
+1537	Okdiario.com	cu	es	\N
+1538	Listindiario.com	cu	es	\N
+1539	Kpopn.com	hk	zh	\N
+1540	Ulifestyle.com.hk	hk	zh	\N
+1541	Baenegocios.com	ar	es	\N
+1542	Directoalpaladar.com	ar	es	\N
+1543	Hibridosyelectricos.com	ar	es	\N
+1544	Ctvnews.ca	ca	en	\N
+1545	Dcrainmaker.com	nz	en	\N
+1546	Bloombergquint.com	in	hi	\N
+1547	Carwale.com	in	hi	\N
+1548	Cnbctv18.com	in	hi	\N
+1549	Gaadiwaadi.com	in	hi	\N
+1550	Indiacarnews.com	in	hi	\N
+1551	Cardekho.com	in	hi	\N
+1552	Nilopolisonline.com.br	br	pt	\N
+1553	Mynetraanana.co.il	il	he	\N
+1554	N-tv.de	de	de	\N
+1555	Stimme.de	de	de	\N
+1556	Rp-online.de	de	de	\N
+1557	Frognews.bg	bg	bg	\N
+1558	Pariteni.bg	bg	bg	\N
+1559	Pc-magazin.de	ch	de	\N
+1560	Suedostschweiz.ch	ch	de	\N
+1561	Finews.ch	ch	de	\N
+1562	Elbaladtv.net	eg	ar	\N
+1563	Klasika.lsm.lv	lv	lv	\N
+1564	Filfan.com	eg	ar	\N
+1565	Skaties.lv	lv	lv	\N
+1566	Tautaruna.nra.lv	lv	lv	\N
+1567	Readliverpoolfc.com	my	ms	\N
+1568	Liverpoolfc.com	my	ms	\N
+1569	Teamtalk.com	my	ms	\N
+1570	Rousingthekop.com	my	ms	\N
+1571	Canoe.com	ca	en	\N
+1572	Windsorstar.com	ca	en	\N
+1573	Mobilesyrup.com	ca	en	\N
+1574	Www.geo.tv	ca	en	\N
+1575	Www.se.pl	pl	pl	\N
+1576	Dorzeczy.pl	pl	pl	\N
+1577	Ciudad.com.ar	ar	es	\N
+1578	Telefenoticias.com.ar	ar	es	\N
+1579	Bigbangnews.com	ar	es	\N
+1580	A24.com	ar	es	\N
+1581	Eltrecetv.com.ar	ar	es	\N
+1582	Pronto.com.ar	ar	es	\N
+1583	Nyheter24.se	se	se	\N
+1588	Naewna.com	th	th	\N
+1596	Fnh.ma	ma	fr	\N
+1597	Maroc-diplomatique.net	ma	fr	\N
+1598	Industries.ma	ma	fr	\N
+1599	Lesiteinfo.com	ma	fr	\N
+1600	Aujourdhui.ma	ma	fr	\N
+1603	Offnews.bg	bg	bg	\N
+1604	Trud.bg	bg	bg	\N
+1605	It.dir.bg	bg	bg	\N
+1610	Diena.lv	lv	lv	\N
+1611	Cairnspost.com.au	au	en	\N
+1612	Gizmodo.com.au	au	en	\N
+1613	Harvard.edu	au	en	\N
+1615	Mobilebulgaria.com	bg	bg	\N
+1616	Money.bg	bg	bg	\N
+1617	Kaldata.com	bg	bg	\N
+1618	Hicomm.bg	bg	bg	\N
+1633	Moneytimes.com.br	br	pt	\N
+1634	Autoo.com.br	br	pt	\N
+1635	Vrum.com.br	br	pt	\N
+1636	Bhaz.com.br	br	pt	\N
+1637	Correiodopovo.com.br	br	pt	\N
+1638	Ebc.com.br	br	pt	\N
+1639	Noticiasconcursos.com.br	br	pt	\N
+1640	Freundin.de	de	de	\N
+1641	Www.hna.de	de	de	\N
+1643	Sports.fr	ma	fr	\N
+1644	Onzemondial.com	ma	fr	\N
+1645	Basket-infos.com	ma	fr	\N
+1646	Afrik-foot.com	ma	fr	\N
+1647	Topmercato.com	ma	fr	\N
+1651	Mariestadstidningen.se	se	se	\N
+1652	Skaraborgslanstidning.se	se	se	\N
+1657	Evz.ro	ro	ro	\N
+1658	Stiritv.ro	ro	ro	\N
+1659	Gadgetzone.ro	ro	ro	\N
+1660	Ziare.com	ro	ro	\N
+1661	Dcnews.ro	ro	ro	\N
+1663	Guimaraesdigital.com	pt	pt	\N
+1664	4gnews.pt	pt	pt	\N
+1674	Bnn.lv	lv	lv	\N
+1675	Ventspils.lv	lv	lv	\N
+1676	Jauns.lv	lv	lv	\N
+1677	Tribalfootball.com	sg	en	\N
+1678	Thesportreview.com	sg	en	\N
+1682	Sportnieuws.nl	nl	nl	\N
+1687	Bomba32.com	tr	tr	\N
+1688	Halktv.com.tr	tr	tr	\N
+1689	Ahaber.com.tr	tr	tr	\N
+1690	Cumhuriyet.com.tr	tr	tr	\N
+1691	Tele1.com.tr	tr	tr	\N
+1692	Cnnturk.com	tr	tr	\N
+1693	Ocakmedya.com	tr	tr	\N
+1697	Uefa.com	ng	en	\N
+1698	Manisteenews.com	ng	en	\N
+1699	Theprideoflondon.com	ng	en	\N
+1700	Standard.co.uk	ng	en	\N
+1701	Legit.ng	ng	en	\N
+1702	Sempremilan.com	ng	en	\N
+1703	Fcnaija.com	ng	en	\N
+1707	Zerozero.pt	pt	pt	\N
+1711	Espn.in	in	hi	\N
+1716	Afl.com.au	au	en	\N
+1717	Cricket.com.au	au	en	\N
+1718	Thenewdaily.com.au	au	en	\N
+1719	Sport.tvp.pl	pl	pl	\N
+1720	Dziennikbaltycki.pl	pl	pl	\N
+1721	Obcas.pl	pl	pl	\N
+1722	Przegladsportowy.pl	pl	pl	\N
+1729	Rmco.id	id	id	\N
+1730	Technologue.id	id	id	\N
+1731	Jawapos.com	id	id	\N
+1732	Saibumi.com	id	id	\N
+1733	Indozone.id	id	id	\N
+1734	Akurat.co	id	id	\N
+1735	Industry.co.id	id	id	\N
+1736	Wartaekonomi.co.id	id	id	\N
+2833	Thueringer-allgemeine.de	de	de	\N
+2834	Androidpit.de	de	de	\N
+2835	Stuttgarter-zeitung.de	de	de	\N
+2836	Glamour.mx	cu	es	\N
+2837	Lecturas.com	cu	es	\N
+2838	Vitonica.com	cu	es	\N
+2839	Protathlima.com	gr	el	\N
+2840	Thebest.gr	gr	el	\N
+2841	Www.cnn.gr	gr	el	\N
+2842	Neakriti.gr	gr	el	\N
+2843	Mikrometoxos.gr	gr	el	\N
+2844	Gavros.gr	gr	el	\N
+2845	Irafina.gr	gr	el	\N
+2847	Star.gr	gr	el	\N
+2850	Www.nsd.se	se	se	\N
+2853	Landlantbruk.se	se	se	\N
+2857	Eaomedia.ru	ru	ru	\N
+2860	Vc.ru	ru	ru	\N
+2861	M.dbw.cn	cn	zh	\N
+2862	Qianlong.com	cn	zh	\N
+2864	Stnn.cc	cn	zh	\N
+2865	Yule.com.cn	cn	zh	\N
+2867	Www.dt.se	se	se	\N
+2869	Sysla.no	no	no	\N
+2870	Www.ba.no	no	no	\N
+2871	Finansavisen.no	no	no	\N
+2872	Bilnorge.no	no	no	\N
+2873	Kampanje.com	no	no	\N
+2874	Strandbuen.no	no	no	\N
+2877	Industryglobalnews24.com	ng	en	\N
+2878	Spacenews.com	ng	en	\N
+2881	Racgp.org.au	au	en	\N
+2882	Startsat60.com	au	en	\N
+2883	Apotheke-adhoc.de	de	de	\N
+2884	Katadata.co.id	id	id	\N
+2889	Theweekendleader.com	in	hi	\N
+2890	Invenglobal.com	ph	en	\N
+2892	Topgear.com	ph	en	\N
+3472	Sensacine.com	cu	es	\N
+3473	Los40.com	cu	es	\N
+3474	Hoy.com.do	cu	es	\N
+3477	Linda.nl	nl	nl	\N
+3478	Blauwbloed.eo.nl	nl	nl	\N
+3480	Whoscored.com	za	en	\N
+3481	Supersport.com	za	en	\N
+3482	Sarugbymag.co.za	za	en	\N
+3572	Thestandnews.com	hk	zh	\N
+3573	Gamebase.com.tw	hk	zh	\N
+3574	Hkcd.com	hk	zh	\N
+3579	Document.no	no	no	\N
+3591	Chvnoticias.cl	mx	es	\N
+3592	Extra.ec	mx	es	\N
+3593	Gpfans.com	nl	nl	\N
+3594	Racexpress.nl	nl	nl	\N
+3600	Wkyc.com	sa	ar	\N
+3601	Wbaltv.com	sa	ar	\N
+3606	Mentalfloss.com	us	en	\N
+3607	Syfy.com	us	en	\N
+3608	Entertainmentdaily.co.uk	ie	en	\N
+3609	Theory.gmw.cn	cn	zh	\N
+3610	Darkhorizons.com	au	en	\N
+3611	Respekt.cz	cz	cs	\N
+3613	Newsnation.in	in	hi	\N
+3615	Cryptonaute.fr	be	nl	\N
+3616	Automobile-magazine.fr	be	nl	\N
+3619	Telepolis.pl	pl	pl	\N
+3620	Miuipolska.pl	pl	pl	\N
+3621	Pressfire.no	no	no	\N
+3625	Japantimes.co.jp	sg	en	\N
+1584	Computerworld.hu	hu	hu	\N
+1585	Prohardver.hu	hu	hu	\N
+1586	Pcforum.hu	hu	hu	\N
+1587	Mobilarena.hu	hu	hu	\N
+1589	Zmescience.com	my	ms	\N
+1590	Walesonline.co.uk	my	ms	\N
+1591	Prnewswire.co.uk	my	ms	\N
+1592	Qctimes.com	my	ms	\N
+1593	Infectioncontroltoday.com	my	ms	\N
+1594	Kacu.org	my	ms	\N
+1595	Medscape.com	my	ms	\N
+1601	Ksnblocal4.com	ie	en	\N
+1602	Leinsterexpress.ie	ie	en	\N
+1606	Mdpr.jp	jp	ja	\N
+1607	Barks.jp	jp	ja	\N
+1608	Dime.jp	jp	ja	\N
+1609	Nikkan.co.jp	jp	ja	\N
+1614	Pulsonline.rs	rs	sr	\N
+1619	Anorthosis24.net	gr	el	\N
+1620	Www.el.gr	gr	el	\N
+1621	Alphanews.live	gr	el	\N
+1622	Tothemaonline.com	gr	el	\N
+1623	Pronews.gr	gr	el	\N
+1624	Huffingtonpost.gr	gr	el	\N
+1625	Athensvoice.gr	gr	el	\N
+1626	Newsbeast.gr	gr	el	\N
+1627	Protagon.gr	gr	el	\N
+1628	Sports.ru	ru	ru	\N
+1629	Soccer.ru	ru	ru	\N
+1630	Lokobasket.com	ru	ru	\N
+1631	Health.hsw.cn	cn	zh	\N
+1632	Sciencenet.cn	cn	zh	\N
+1642	Telefonai.eu	lt	lt	\N
+1648	Nzcity.co.nz	my	ms	\N
+1649	Sci-news.com	my	ms	\N
+1650	Inverse.com	my	ms	\N
+1653	Voxbiz.ro	ro	ro	\N
+1654	Ziarulunirea.ro	ro	ro	\N
+1655	Bistriteanul.ro	ro	ro	\N
+1656	Oradesibiu.ro	ro	ro	\N
+1662	Gamereactor.no	no	no	\N
+1665	Zmones.lt	lt	lt	\N
+1666	Alfa.lt	lt	lt	\N
+1667	Www.tv3.lt	lt	lt	\N
+1668	Elmanana.com.mx	mx	es	\N
+1669	Tribuna.com.mx	mx	es	\N
+1670	Tierragamer.com	mx	es	\N
+1671	Wipy.tv	mx	es	\N
+1672	Tvnotas.com.mx	mx	es	\N
+1673	Quien.com	mx	es	\N
+1679	Diariodocentrodomundo.com.br	br	pt	\N
+1680	Estadaoconteudo.com.br	br	pt	\N
+1681	Sbt.com.br	br	pt	\N
+1683	Foxsports.com.au	au	en	\N
+1684	Sbs.com.au	au	en	\N
+1685	Zdnet.com	au	en	\N
+1686	Dailytelegraph.com.au	au	en	\N
+1694	Foot-national.com	fr	fr	\N
+1695	Lejdc.fr	fr	fr	\N
+1696	Welovetennis.fr	fr	fr	\N
+1704	Skynewsarabia.com	ae	en	\N
+1705	Kapanlagi.com	id	id	\N
+1706	Ayobandung.com	id	id	\N
+1708	Townandcountrymag.com	ie	en	\N
+1709	Www.joe.ie	ie	en	\N
+1710	Extra.ie	ie	en	\N
+1712	Meridiano.com.ve	co	es	\N
+1713	Ciudadanodiario.com.ar	co	es	\N
+1714	Sg.hu	hu	hu	\N
+1715	Eurogamer.pt	pt	pt	\N
+1723	N1info.com	rs	sr	\N
+1724	Danas.rs	rs	sr	\N
+1725	Mozzartsport.com	rs	sr	\N
+1726	Sportklub.rs	rs	sr	\N
+1727	Www.rts.rs	rs	sr	\N
+1728	Beta.rs	rs	sr	\N
+1737	Chtoukapress.com	ae	en	\N
+1738	Stepagency-sy.net	ae	en	\N
+1739	Diwanfm.net	ae	en	\N
+1740	Emarat-news.ae	ae	en	\N
+1741	Lavenir.net	be	nl	\N
+1742	Techno-science.net	be	nl	\N
+1743	Sciencepost.fr	be	nl	\N
+1744	Ipnoze.com	be	nl	\N
+1745	Nba.com	ph	en	\N
+1746	Espn.co.uk	ph	en	\N
+1747	Atptour.com	ph	en	\N
+1748	Abs-cbn.com	ph	en	\N
+1749	Sbnation.com	ph	en	\N
+1750	Lakersdaily.com	ph	en	\N
+1751	Fadeawayworld.net	ph	en	\N
+1752	Balls.ie	ie	en	\N
+1753	Footballfancast.com	ie	en	\N
+1754	Paddypower.com	ie	en	\N
+1755	247sports.com	sa	ar	\N
+1756	Wralsportsfan.com	sa	ar	\N
+1757	Forskning.no	no	no	\N
+1758	Tpo.nl	nl	nl	\N
+1759	Rtvoost.nl	nl	nl	\N
+1760	Luchtvaartnieuws.nl	nl	nl	\N
+1761	Bnnvara.nl	nl	nl	\N
+1762	Www.rd.nl	nl	nl	\N
+1763	Autoweek.nl	nl	nl	\N
+1764	Fox2now.com	in	hi	\N
+1765	Weather.com	in	hi	\N
+1766	Researchmatters.in	in	hi	\N
+1767	Varelanoticias.com.br	br	pt	\N
+1768	Merumo.ne.jp	jp	ja	\N
+1769	Soccer-king.jp	jp	ja	\N
+1770	Blogos.com	jp	ja	\N
+1771	Sorae.info	jp	ja	\N
+1772	Ainow.ai	jp	ja	\N
+1773	Technologyreview.jp	jp	ja	\N
+1774	Aikatu.jp	jp	ja	\N
+1775	Natureasia.com	jp	ja	\N
+1776	Ctitv.com.tw	tw	zh	\N
+1777	Formule1.nl	nl	nl	\N
+1778	Gpupdate.net	nl	nl	\N
+1779	F1maximaal.nl	nl	nl	\N
+1780	Gptoday.net	nl	nl	\N
+1781	Colunadofla.com	br	pt	\N
+1782	Fogaonet.com	br	pt	\N
+1783	Itatiaia.com.br	br	pt	\N
+1784	Esmaelmorais.com.br	br	pt	\N
+1785	Xavierstuder.com	ma	fr	\N
+1786	Diken.com.tr	tr	tr	\N
+1787	Memurlar.net	tr	tr	\N
+1788	Yenicaggazetesi.com.tr	tr	tr	\N
+1789	Fotomac.com.tr	tr	tr	\N
+1790	Aksam.com.tr	tr	tr	\N
+1791	Inquirer.net	ph	en	\N
+1792	Bworldonline.com	ph	en	\N
+1793	Gcn.ie	ph	en	\N
+1794	Manilatimes.net	ph	en	\N
+1795	Businessmirror.com.ph	ph	en	\N
+1796	Cnnphilippines.com	ph	en	\N
+1797	Spin.ph	ph	en	\N
+1798	Cagesideseats.com	ph	en	\N
+1799	Sunstar.com.ph	ph	en	\N
+1800	Sedaily.com	kr	ko	\N
+1801	Hankookilbo.com	kr	ko	\N
+1802	Khan.co.kr	kr	ko	\N
+1803	Joins.com	kr	ko	\N
+1804	Donga.com	kr	ko	\N
+1805	Hankyung.com	kr	ko	\N
+1806	Mk.co.kr	kr	ko	\N
+1807	Ytn.co.kr	kr	ko	\N
+1808	Chosun.com	kr	ko	\N
+1809	Hankooki.com	kr	ko	\N
+1813	Business-standard.com	in	hi	\N
+1823	Vidas.pt	pt	pt	\N
+1836	Shorouknews.com	ae	en	\N
+1837	Saidaonline.com	ae	en	\N
+1838	Annahar.com	ae	en	\N
+1849	Nepszava.hu	hu	hu	\N
+1850	Napi.hu	hu	hu	\N
+1854	Tengrinews.kz	ru	ru	\N
+1855	Hi-news.ru	ru	ru	\N
+1856	Astronews.ru	ru	ru	\N
+1857	Vesti.ru	ru	ru	\N
+1858	Crimea.kp.ru	ru	ru	\N
+1859	Nplus1.ru	ru	ru	\N
+1860	Thealphacentauri.net	ru	ru	\N
+1868	Bienpublic.com	fr	fr	\N
+1869	Lechorepublicain.fr	fr	fr	\N
+1870	Atlantico.fr	fr	fr	\N
+1871	Lyonne.fr	fr	fr	\N
+1872	Lejsl.com	fr	fr	\N
+1873	Moneysavingexpert.com	gb	en	\N
+1874	Dailyrecord.co.uk	gb	en	\N
+1875	Simpleflying.com	gb	en	\N
+1883	Foxsports.co.th	th	th	\N
+1884	Newtv.co.th	th	th	\N
+1885	Banmuang.co.th	th	th	\N
+1886	Huff.ro	ro	ro	\N
+1887	Click.ro	ro	ro	\N
+1888	Protv.ro	ro	ro	\N
+1889	Realitatea.net	ro	ro	\N
+1890	Digi24.ro	ro	ro	\N
+1893	Geenstijl.nl	nl	nl	\N
+1910	Healthtapa.com	kr	ko	\N
+1911	Gamemeca.com	kr	ko	\N
+1912	Asiae.co.kr	kr	ko	\N
+1913	Etoday.co.kr	kr	ko	\N
+1914	Kmib.co.kr	kr	ko	\N
+1923	Notebookcheck.net	my	ms	\N
+1931	Caradvice.com.au	au	en	\N
+1932	Airlineratings.com	au	en	\N
+1933	Adelaidenow.com.au	au	en	\N
+1936	Sport.ro	ro	ro	\N
+1937	Digisport.ro	ro	ro	\N
+1938	Www.gsp.ro	ro	ro	\N
+1939	G4media.ro	ro	ro	\N
+1940	Prosport.ro	ro	ro	\N
+1941	France24.com	ma	fr	\N
+1942	Sceneario.com	ma	fr	\N
+1943	Unfauteuilpourlorchestre.com	ma	fr	\N
+1944	Afriqueactudaily.com	ma	fr	\N
+1945	Paris-courses.com	ma	fr	\N
+1946	Canalturf.com	ma	fr	\N
+1947	Vinylemusique.fr	ma	fr	\N
+1948	Letrois.info	ma	fr	\N
+1949	Paris-turf.com	ma	fr	\N
+1954	Smartmania.cz	cz	cs	\N
+1955	Seznamzpravy.cz	cz	cs	\N
+1956	Www.fio.cz	cz	cs	\N
+1957	Autoforum.cz	cz	cs	\N
+1965	Mthai.com	th	th	\N
+1966	Innnews.co.th	th	th	\N
+1967	365supersport.com	th	th	\N
+1968	Smmsport.com	th	th	\N
+1969	Thsport.com	th	th	\N
+1970	Siamsport.co.th	th	th	\N
+2895	Observator.tv	ro	ro	\N
+2896	Leseco.ma	ma	fr	\N
+2898	Eonline.com	ma	fr	\N
+2899	Infomediaire.net	ma	fr	\N
+2904	Strategies.fr	ma	fr	\N
+2905	Lorientlejour.com	ma	fr	\N
+2907	Hazipatika.com	hu	hu	\N
+2908	Globalgame.hu	hu	hu	\N
+2909	Webbeteg.hu	hu	hu	\N
+2914	Estadao.com.br	br	pt	\N
+2915	Tercalivre.com.br	br	pt	\N
+2916	Noticiasautomotivas.com.br	br	pt	\N
+2919	Journaldesfemmes.fr	ma	fr	\N
+2920	Observatoire-sante.fr	ma	fr	\N
+2921	Tribuneoccitanie.com	ma	fr	\N
+2922	Lesoleil.com	ma	fr	\N
+2923	Www.dna.fr	ma	fr	\N
+2924	Racefans.net	gb	en	\N
+2925	Manchestereveningnews.co.uk	gb	en	\N
+2926	Ammonnews.net	ae	en	\N
+2927	Nessma.tv	ae	en	\N
+2929	Sayidaty.net	ae	en	\N
+2933	Cnews.cz	cz	cs	\N
+2936	Desimartini.com	my	ms	\N
+2937	Indiaglitz.com	my	ms	\N
+2938	Ingenieur.de	at	de	\N
+2948	Plejada.pl	pl	pl	\N
+2952	Pomponik.pl	pl	pl	\N
+2954	Telemagazyn.pl	pl	pl	\N
+2956	Superseriale.se.pl	pl	pl	\N
+2957	Sport.orf.at	at	de	\N
+2958	Transfermarkt.de	at	de	\N
+2961	Abseits.at	at	de	\N
+2966	Managingmadrid.com	in	hi	\N
+2969	Crictracker.com	in	hi	\N
+2974	Hitek.fr	be	nl	\N
+2978	Auntminnie.com	nz	en	\N
+2979	Azocleantech.com	nz	en	\N
+2980	Bolalob.com	id	id	\N
+2988	Mondo.rs	rs	sr	\N
+2989	Airedesantafe.com.ar	ar	es	\N
+2990	Dnevnik.si	si	sl	\N
+2995	Avrotros.nl	nl	nl	\N
+2996	Nieuweoogst.nl	nl	nl	\N
+2997	A5bar24h.com	eg	ar	\N
+2999	Wsbtv.com	ph	en	\N
+3003	Pageone.ph	ph	en	\N
+3004	Gulfnews.com	ph	en	\N
+3005	Decrypt.co	ph	en	\N
+3007	Gulte.com	in	hi	\N
+3008	Indiewire.com	ng	en	\N
+3009	Vulture.com	ng	en	\N
+3011	Officialcharts.com	ng	en	\N
+3014	Driven.co.nz	nz	en	\N
+3017	Noticiasmagazine.pt	pt	pt	\N
+3018	Meiosepublicidade.pt	pt	pt	\N
+3019	Swissinfo.ch	pt	pt	\N
+3021	Ohmymag.com	fr	fr	\N
+3024	Fontanka.ru	ru	ru	\N
+3025	Quote.rbc.ru	ru	ru	\N
+3026	Klops.ru	ru	ru	\N
+3027	Cybersport.ru	ru	ru	\N
+3029	Sportazinas.com	lv	lv	\N
+3030	Go4speed.lv	lv	lv	\N
+3033	Zappit.gr	gr	el	\N
+3042	Numericalcio.it	it	it	\N
+3044	Hdmotori.it	it	it	\N
+3045	Moto.it	it	it	\N
+3047	Primocanale.it	it	it	\N
+3048	Monitor.bg	bg	bg	\N
+3049	Braziliantimes.com	pt	pt	\N
+3050	Diariodepernambuco.com.br	pt	pt	\N
+3051	Engeplus.com.br	pt	pt	\N
+3052	Diariopiaui.com	pt	pt	\N
+3053	Bonde.com.br	pt	pt	\N
+3054	Agoravale.com.br	pt	pt	\N
+3056	Uaaau.com.br	pt	pt	\N
+3057	Nsctotal.com.br	pt	pt	\N
+3058	Panoramafarmaceutico.com.br	pt	pt	\N
+3060	Fitbook.de	ch	de	\N
+3065	Instyle.mx	cu	es	\N
+1810	Topky.sk	sk	sk	\N
+1811	Mynovohrad.sme.sk	sk	sk	\N
+1812	Vosveteit.sk	sk	sk	\N
+1814	Tvline.com	ng	en	\N
+1815	Xxlmag.com	ng	en	\N
+1816	Fool.com.au	au	en	\N
+1817	Aroundandroid.com	ph	en	\N
+1818	Happygamer.com	ph	en	\N
+1819	Thegamer.com	ph	en	\N
+1820	Androidauthority.com	ph	en	\N
+1821	Cbr.com	ph	en	\N
+1822	Apptrigger.com	ph	en	\N
+1824	Oe24.at	at	de	\N
+1825	Kurier.at	at	de	\N
+1826	Promiflash.de	at	de	\N
+1827	Futurezone.at	at	de	\N
+1828	Orf.at	at	de	\N
+1829	Www.vip.de	at	de	\N
+1830	Film.at	at	de	\N
+1831	Filmstarts.de	at	de	\N
+1832	Www.rtl.de	at	de	\N
+1833	Tt.com	at	de	\N
+1834	Www.sn.at	at	de	\N
+1835	F1.sk	sk	sk	\N
+1839	Abc13.com	sa	ar	\N
+1840	Tmz.com	sa	ar	\N
+1841	Tvinsider.com	sa	ar	\N
+1842	Slate.com	sa	ar	\N
+1843	Hollywoodlife.com	sa	ar	\N
+1844	Flobowling.com	ph	en	\N
+1845	Panaynews.net	ph	en	\N
+1846	Mobihealthnews.com	ph	en	\N
+1847	Montana-ledger.com	ph	en	\N
+1848	Pna.gov.ph	ph	en	\N
+1851	Smalanningen.se	se	se	\N
+1852	Www.sla.se	se	se	\N
+1853	Svenskdam.se	se	se	\N
+1861	F5haber.com	tr	tr	\N
+1862	Bloomberght.com	tr	tr	\N
+1863	Borsagundem.com	tr	tr	\N
+1864	Telecomtalk.info	in	hi	\N
+1865	Yourstory.com	in	hi	\N
+1866	Team-bhp.com	in	hi	\N
+1867	Overdrive.in	in	hi	\N
+1876	Gazzetta.it	it	it	\N
+1877	Milannews.it	it	it	\N
+1878	Calciomercato.com	it	it	\N
+1879	Vocegiallorossa.it	it	it	\N
+1880	Oasport.it	it	it	\N
+1881	Ilposticipo.it	it	it	\N
+1882	Formulapassion.it	it	it	\N
+1891	Insideretail.asia	sg	en	\N
+1892	Www.tnp.sg	sg	en	\N
+1894	Mothersblog.gr	gr	el	\N
+1895	Fthis.gr	gr	el	\N
+1896	Gossip-tv.gr	gr	el	\N
+1897	Queen.gr	gr	el	\N
+1898	Tvxs.gr	gr	el	\N
+1899	Astrology.gr	gr	el	\N
+1900	Volksblatt.at	at	de	\N
+1901	Www.vol.at	at	de	\N
+1902	Tennisnet.com	at	de	\N
+1903	Salzburg24.at	at	de	\N
+1904	Finanzen.at	at	de	\N
+1905	Boerse-express.com	at	de	\N
+1906	Www.gmx.at	at	de	\N
+1907	Diepresse.com	at	de	\N
+1908	Jacarandafm.com	za	en	\N
+1909	Enca.com	za	en	\N
+1915	Coinreaders.com	kr	ko	\N
+1916	Inews24.com	kr	ko	\N
+1917	Blockmedia.co.kr	kr	ko	\N
+1918	Zdnet.co.kr	kr	ko	\N
+1919	Thelec.kr	kr	ko	\N
+1920	Hypebeast.kr	kr	ko	\N
+1921	Beinews.net	kr	ko	\N
+1922	Blockinpress.com	kr	ko	\N
+1924	Freep.com	us	en	\N
+1925	Ajc.com	us	en	\N
+1926	Jalopnik.com	us	en	\N
+1927	Staradvertiser.com	us	en	\N
+1928	Barrons.com	us	en	\N
+1929	Fox2detroit.com	us	en	\N
+1930	Samchui.com	us	en	\N
+1934	Press-start.com.au	au	en	\N
+1935	Couriermail.com.au	au	en	\N
+1950	Mydaily.co.kr	kr	ko	\N
+1951	Mt.co.kr	kr	ko	\N
+1952	Newsen.com	kr	ko	\N
+1953	Sportsseoul.com	kr	ko	\N
+1958	Apollo.lv	lv	lv	\N
+1959	Comutricolor.com	co	es	\N
+1960	Futbolred.com	co	es	\N
+1961	Ligadeportiva.com	co	es	\N
+1962	Canal1.com.co	co	es	\N
+1963	Caracol.com.co	co	es	\N
+1964	Stirileprotv.ro	ro	ro	\N
+1971	Trt.net.tr	cu	es	\N
+1972	Nacion.com	cu	es	\N
+1973	Juventudrebelde.cu	cu	es	\N
+1974	Icrt.cu	cu	es	\N
+1975	Cubadebate.cu	cu	es	\N
+1976	Lasirena.la	cu	es	\N
+1977	Www.acn.cu	cu	es	\N
+1978	Radiocubana.cu	cu	es	\N
+1979	Radiohc.cu	cu	es	\N
+1980	Elpais.cr	cu	es	\N
+1981	Comunidadxbox.com	cu	es	\N
+1982	Granma.cu	cu	es	\N
+1983	Vistarmagazine.com	cu	es	\N
+1984	Excelenciascuba.com	cu	es	\N
+1985	Mopo.de	de	de	\N
+1986	Schlager.de	de	de	\N
+1987	Bz-berlin.de	de	de	\N
+1988	Posttoday.com	th	th	\N
+1989	Infostart.hu	hu	hu	\N
+1990	Alon.hu	hu	hu	\N
+1991	Bitport.hu	hu	hu	\N
+1992	Esport1.hu	hu	hu	\N
+1993	Showtv.com.tr	tr	tr	\N
+1994	Generation-nt.com	be	nl	\N
+1995	Antena3.ro	ro	ro	\N
+1996	Lavoz.com.ar	ar	es	\N
+1997	Diariopopular.com.ar	ar	es	\N
+1998	Diarioshow.com	ar	es	\N
+1999	Muraselon.com	ae	en	\N
+2000	61saat.com	tr	tr	\N
+2001	Milliyet.com.tr	tr	tr	\N
+2002	Acunn.com	tr	tr	\N
+2003	Malatyahaber.com	tr	tr	\N
+2004	Pulsoslp.com.mx	cu	es	\N
+2005	Cuerpomente.com	cu	es	\N
+2006	Latercera.com	cu	es	\N
+2007	Mma.pl	pl	pl	\N
+2008	Siatka.org	pl	pl	\N
+2009	Hokej.net	pl	pl	\N
+2010	Skijumping.pl	pl	pl	\N
+2011	Autosport.com	gb	en	\N
+2012	Birminghammail.co.uk	gb	en	\N
+2013	Football.london	gb	en	\N
+2014	Pinkun.com	gb	en	\N
+2015	Gloucestershirelive.co.uk	gb	en	\N
+2016	Aawsat.com	sg	en	\N
+2017	Wesm913.org	sg	en	\N
+2018	Kxnet.com	sg	en	\N
+2019	Lepotaizdravlje.rs	rs	sr	\N
+2020	Toronews.net	it	it	\N
+2021	Tg24.sky.it	it	it	\N
+2022	Mondomobileweb.it	it	it	\N
+2023	Liberoquotidiano.it	it	it	\N
+2024	Fanpage.it	it	it	\N
+2025	Ilmessaggero.it	it	it	\N
+2031	Chiangmainews.co.th	th	th	\N
+2032	Trueid.net	th	th	\N
+2897	Orizzontescuola.it	it	it	\N
+2900	Focustech.it	it	it	\N
+2901	Focus.it	it	it	\N
+2902	Cremonaoggi.it	it	it	\N
+2903	Firenzetoday.it	it	it	\N
+2906	Basilicata24.it	it	it	\N
+2910	Wlstock.com	cn	zh	\N
+2911	163.com	cn	zh	\N
+2912	Scol.com.cn	cn	zh	\N
+2913	66wz.com	cn	zh	\N
+2917	Whatnext.pl	pl	pl	\N
+2918	Pressesante.com	fr	fr	\N
+2928	Gizmodo.co.uk	gb	en	\N
+2930	Aol.co.uk	gb	en	\N
+2931	Pressgazette.co.uk	gb	en	\N
+2932	Belfastlive.co.uk	gb	en	\N
+2934	Pluska.sk	sk	sk	\N
+2935	Meiobit.com	br	pt	\N
+2939	Kultura.sme.sk	sk	sk	\N
+2940	Slovakwoman.sk	sk	sk	\N
+2941	Markiza.sk	sk	sk	\N
+2942	Tvnoviny.sk	sk	sk	\N
+2943	Notimerica.com	cu	es	\N
+2944	Rrhhdigital.com	cu	es	\N
+2945	Soymotero.net	cu	es	\N
+2946	Algoafm.co.za	za	en	\N
+2947	Techfinancials.co.za	za	en	\N
+2949	Nag.co.za	za	en	\N
+2950	Screenafrica.com	za	en	\N
+2951	Thesouthafrican.com	za	en	\N
+2953	Memeburn.com	za	en	\N
+2955	Whatculture.com	za	en	\N
+2959	Leiphone.com	cn	zh	\N
+2960	Stcn.com	cn	zh	\N
+2962	Earthsky.org	sg	en	\N
+2963	Sciencebusiness.net	sg	en	\N
+2964	Arabianaerospace.aero	sg	en	\N
+2965	Chicagotribune.com	cu	es	\N
+2967	Thechampionsvoice.com	cu	es	\N
+2968	Enlaraya.com	cu	es	\N
+2970	Rtvnoord.nl	nl	nl	\N
+2971	Echolive.ie	ie	en	\N
+2972	Dnaindia.com	in	hi	\N
+2973	Nordlys.no	no	no	\N
+2975	Semana.com	cu	es	\N
+2976	Www.lne.es	cu	es	\N
+2977	Elpais.com.uy	cu	es	\N
+2981	Tradingsat.com	fr	fr	\N
+2982	Charentelibre.fr	fr	fr	\N
+2983	Boursorama.com	fr	fr	\N
+2984	Tourmag.com	fr	fr	\N
+2985	Gentside.com	fr	fr	\N
+2986	Planet.fr	fr	fr	\N
+2987	Mundohispanico.com	ve	es	\N
+2991	Radioformula.com.mx	mx	es	\N
+2992	Record.com.mx	mx	es	\N
+2993	Albat.com	mx	es	\N
+2994	Tudn.mx	mx	es	\N
+2998	Tocana.jp	jp	ja	\N
+3000	Nicovideo.jp	jp	ja	\N
+3001	Sbbit.jp	jp	ja	\N
+3002	Cyzo.com	jp	ja	\N
+3006	Businessinsider.jp	jp	ja	\N
+3010	Nextinpact.com	fr	fr	\N
+3012	Actualite.cd	fr	fr	\N
+3013	Ntdtv.com	tw	zh	\N
+3015	Ithome.com.tw	tw	zh	\N
+3016	Beol.hu	hu	hu	\N
+3020	Lr2.lsm.lv	lv	lv	\N
+3022	Gearpatrol.com	ca	en	\N
+3023	Pinkbike.com	ca	en	\N
+3028	Francefootball.fr	ma	fr	\N
+3031	Mlb.com	ph	en	\N
+3032	Noobz.ro	ro	ro	\N
+3034	Gagadget.com	ru	ru	\N
+3035	Rionegro.com.ar	ar	es	\N
+3036	Misionescuatro.com	ar	es	\N
+3037	Elpatagonico.com	ar	es	\N
+3038	Womenshealthmag.com	ar	es	\N
+3039	Correiobraziliense.com.br	br	pt	\N
+3040	Www.tsf.pt	br	pt	\N
+3041	Hypescience.com	br	pt	\N
+3043	Ieidiseis.gr	gr	el	\N
+3046	Tanea.gr	gr	el	\N
+3055	Carscoops.com	ph	en	\N
+3059	Misr5.com	eg	ar	\N
+3061	Wcvb.com	us	en	\N
+3062	Hannity.com	us	en	\N
+3063	Charlotteobserver.com	us	en	\N
+3064	Seekingalpha.com	us	en	\N
+3068	Denverpost.com	us	en	\N
+3069	Wraltechwire.com	us	en	\N
+3070	Takungpao.com	cn	zh	\N
+3071	Nbd.com.cn	cn	zh	\N
+3073	Voc.com.cn	cn	zh	\N
+3075	Voachinese.com	cn	zh	\N
+3086	Sokszinuvidek.24.hu	hu	hu	\N
+3092	Huanqiukexue.com	cn	zh	\N
+3093	Yninfo.com	cn	zh	\N
+3094	Themercury.com.au	au	en	\N
+3095	Brisbanetimes.com.au	au	en	\N
+3096	Barossaherald.com.au	au	en	\N
+3097	Unicef.org.au	au	en	\N
+3098	Energydaily.co.kr	kr	ko	\N
+3099	Bloter.net	kr	ko	\N
+3100	Etnews.com	kr	ko	\N
+3101	Tokenpost.kr	kr	ko	\N
+3102	Platum.kr	kr	ko	\N
+3103	Ddaily.co.kr	kr	ko	\N
+3104	Cnfol.com	cn	zh	\N
+3105	Alcalorpolitico.com	mx	es	\N
+3106	Tribunadelabahia.com.mx	mx	es	\N
+3108	Netnoticias.mx	mx	es	\N
+3110	Imparcialoaxaca.mx	mx	es	\N
+3112	10tv.com	sa	ar	\N
+3113	Variety.com	ca	en	\N
+3114	Thurrott.com	ca	en	\N
+3115	Tribuneindia.com	in	hi	\N
+3119	Wissenschaft-aktuell.de	de	de	\N
+3120	Deutschlandfunk.de	de	de	\N
+3122	Peopleenespanol.com	co	es	\N
+3123	Ntn24.com	co	es	\N
+3125	Spoilertime.com	co	es	\N
+3126	Vibra.fm	co	es	\N
+3475	Cbslocal.com	sa	ar	\N
+3476	Ktla.com	sa	ar	\N
+3479	Varden.no	no	no	\N
+3483	Wasd.ro	ro	ro	\N
+3484	Dynews.co.kr	kr	ko	\N
+3485	Tijd.be	nl	nl	\N
+3486	Www.vrt.be	nl	nl	\N
+3487	Nieuwsblad.be	nl	nl	\N
+3488	Eoswetenschap.eu	nl	nl	\N
+3489	Wielerflits.nl	nl	nl	\N
+3490	Manify.nl	nl	nl	\N
+3491	Knack.be	nl	nl	\N
+3492	Nationalgeographic.nl	nl	nl	\N
+3493	Trouw.nl	nl	nl	\N
+3494	Weeronline.nl	nl	nl	\N
+3495	Www.gva.be	nl	nl	\N
+3583	Radioradio.it	it	it	\N
+3584	Modenatoday.it	it	it	\N
+2026	Tiempo.com.mx	mx	es	\N
+2027	Debate.com.mx	mx	es	\N
+2028	Atomix.vg	mx	es	\N
+2029	Metroecuador.com.ec	mx	es	\N
+2030	Tierce-magazine.com	ma	fr	\N
+2033	Elektroauto-news.net	at	de	\N
+2034	Kleinezeitung.at	at	de	\N
+2035	Kriptoworld.hu	hu	hu	\N
+2036	Tnh1.com.br	br	pt	\N
+2037	Areavip.com.br	br	pt	\N
+2038	Otempo.com.br	br	pt	\N
+2039	Gamekapocs.hu	hu	hu	\N
+2040	Electrek.co	ca	en	\N
+2041	Overclockers.ua	ru	ru	\N
+2042	Hotnewhiphop.com	ca	en	\N
+2043	Fool.ca	ca	en	\N
+2044	Vedomosti.ru	ru	ru	\N
+2045	Riafan.ru	ru	ru	\N
+2046	Insideevs.com	ca	en	\N
+2047	Znak.com	ru	ru	\N
+2048	Vancouversun.com	ca	en	\N
+2049	Thepostmillennial.com	ca	en	\N
+2050	Interfax.ru	ru	ru	\N
+2051	Kommersant.ru	ru	ru	\N
+2052	Aif.ru	ru	ru	\N
+2053	Turfomania.fr	ma	fr	\N
+2054	Koimoi.com	in	hi	\N
+2055	Franceantilles.fr	ma	fr	\N
+2056	Jambonburst.com	ma	fr	\N
+2057	Topvisages.net	ma	fr	\N
+2058	Pourelle.info	ma	fr	\N
+2059	Bollywoodlife.com	in	hi	\N
+2060	Worldzine.fr	ma	fr	\N
+2061	Afrik.com	ma	fr	\N
+2062	Androidcentral.com	nz	en	\N
+2063	Comicbook.com	nz	en	\N
+2064	Nintendolife.com	nz	en	\N
+2065	Scoop.co.nz	nz	en	\N
+2066	Tamahereforum.co.nz	nz	en	\N
+2067	Dexerto.com	nz	en	\N
+2068	Stars24.cz	cz	cs	\N
+2069	Prozeny.cz	cz	cs	\N
+2070	Gpf1.cz	cz	cs	\N
+2071	Autoroad.cz	cz	cs	\N
+2072	News1.kr	kr	ko	\N
+2073	Edaily.co.kr	kr	ko	\N
+2074	Rookie.co.kr	kr	ko	\N
+2075	36kr.com	cn	zh	\N
+2076	Epochtimes.com	cn	zh	\N
+2077	Geektime.co.il	il	he	\N
+2078	Lafm.com.co	co	es	\N
+2079	Altadensidad.com	co	es	\N
+2080	3djuegos.com	co	es	\N
+2081	Unocero.com	co	es	\N
+2082	Afnoticias.com.br	br	pt	\N
+2083	Domov.sme.sk	sk	sk	\N
+2084	Profutbal.sk	sk	sk	\N
+2085	Pptvhd36.com	th	th	\N
+2086	Sport7.sk	sk	sk	\N
+2087	Mid-day.com	in	hi	\N
+2088	Allehanda.se	se	se	\N
+2089	Stockholmdirekt.se	se	se	\N
+2090	Moviezine.se	se	se	\N
+2091	Aninews.in	in	hi	\N
+2092	Dailymercato.com	fr	fr	\N
+2093	Laola1.at	at	de	\N
+2094	Paddock-gp.com	fr	fr	\N
+2095	Lensois.com	fr	fr	\N
+2096	Heute.at	at	de	\N
+2097	Lerugbynistere.fr	fr	fr	\N
+2098	Skysportaustria.at	at	de	\N
+2099	Weltfussball.at	at	de	\N
+2100	Foot-sur7.fr	fr	fr	\N
+2101	Sportbuzzer.de	at	de	\N
+2102	Sportreport.biz	at	de	\N
+2103	Harianhaluan.com	id	id	\N
+2104	Antaranews.com	id	id	\N
+2105	Kumparan.com	id	id	\N
+2106	Bejagadget.com	id	id	\N
+2107	Lacapitalmdp.com	ar	es	\N
+2108	Eldia.com	ar	es	\N
+2109	Kamubulteni.com	tr	tr	\N
+2110	Diariopanorama.com	ar	es	\N
+2111	Eltribuno.com	ar	es	\N
+2112	Indonews.id	id	id	\N
+2113	Slashgear.com	sg	en	\N
+2114	Celebmix.com	sg	en	\N
+2115	Dnaberita.com	id	id	\N
+2116	Minews.id	id	id	\N
+2117	Shine.cn	sg	en	\N
+2118	Batampos.co.id	id	id	\N
+2119	Cleveland.com	sg	en	\N
+2120	Heraldpublicist.com	sg	en	\N
+2121	Fajar.co.id	id	id	\N
+2122	Harianaceh.co.id	id	id	\N
+2123	Vaxbeforetravel.com	sg	en	\N
+2124	Femina.co.id	id	id	\N
+2125	Harianjogja.com	id	id	\N
+2126	Saturdaydownsouth.com	us	en	\N
+2127	Bizportal.co.il	il	he	\N
+2128	Landgrantholyland.com	us	en	\N
+2129	Kolhazman.co.il	il	he	\N
+2130	Dawgnation.com	us	en	\N
+2131	Ashdodnet.com	il	he	\N
+2132	Dkpittsburghsports.com	us	en	\N
+2133	Journalstar.com	us	en	\N
+2134	Russianmachineneverbreaks.com	us	en	\N
+2135	Bjpenn.com	us	en	\N
+2136	Bruinsnation.com	us	en	\N
+2137	Techbang.com	hk	zh	\N
+2138	Heilongjiang.dbw.cn	cn	zh	\N
+2139	Tom.com	cn	zh	\N
+2140	Bandao.cn	cn	zh	\N
+2141	Worldjournal.com	hk	zh	\N
+2142	News.cbg.cn	cn	zh	\N
+2143	Wenhua.cjn.cn	cn	zh	\N
+2144	Mtime.com	cn	zh	\N
+2145	Gamepress.gg	sg	en	\N
+2146	77kaoded.com	th	th	\N
+2147	Lokwannee.com	th	th	\N
+2148	Fathailand.org	th	th	\N
+2149	Nationtv.tv	th	th	\N
+2150	Radiosvoboda.org	ua	uk	\N
+2151	Champion.com.ua	ua	uk	\N
+2152	Football24.ua	ua	uk	\N
+2153	Tehnofan.com.ua	ua	uk	\N
+2154	Pravda.com.ua	ua	uk	\N
+2155	Handelszeitung.ch	ch	de	\N
+2156	Prm.ua	ua	uk	\N
+2157	Tsn.ua	ua	uk	\N
+2158	Gsminfo.com.ua	ua	uk	\N
+2159	Zaxid.net	ua	uk	\N
+2160	Mashyna.com.ua	ua	uk	\N
+2161	24tv.ua	ua	uk	\N
+2162	Finance.ua	ua	uk	\N
+2163	Unian.ua	ua	uk	\N
+2164	Celtsarehere.com	gb	en	\N
+2165	Mynintendonews.com	gb	en	\N
+2166	Kotaku.co.uk	gb	en	\N
+2167	Rockpapershotgun.com	gb	en	\N
+2168	Thoroldnews.com	ng	en	\N
+2169	Outbreaknewstoday.com	ng	en	\N
+2170	Tctmd.com	ng	en	\N
+2171	Moosegazette.net	ng	en	\N
+2172	Oklahoman.com	ng	en	\N
+2173	Mainichi.jp	jp	ja	\N
+2174	Golfdigest.co.jp	jp	ja	\N
+2175	Soccerdigestweb.com	jp	ja	\N
+2176	Chunichi.co.jp	jp	ja	\N
+2177	1000ps.at	at	de	\N
+2181	Wienerzeitung.at	at	de	\N
+2185	Abcnyheter.no	no	no	\N
+2186	Www.ta.no	no	no	\N
+2189	Www.dn.no	no	no	\N
+2190	Hangar.no	no	no	\N
+2194	Pagesix.com	sa	ar	\N
+2197	6abc.com	sa	ar	\N
+2199	Fool.com	sa	ar	\N
+2201	Evwind.com	cu	es	\N
+2202	Elhorizonte.mx	cu	es	\N
+2203	Diariosigloxxi.com	cu	es	\N
+2204	Expreso.info	cu	es	\N
+2206	Daycryptotrading.com	cu	es	\N
+2207	Periodicoprincipal.com	cu	es	\N
+2208	Crypto-news-flash.com	cu	es	\N
+2209	Mundiario.com	cu	es	\N
+2210	Estrategiaynegocios.net	cu	es	\N
+2211	Wwwhatsnew.com	cu	es	\N
+2213	Marketrealist.com	ph	en	\N
+2214	Huffpost.com	ph	en	\N
+2215	Poundsterlinglive.com	ph	en	\N
+3066	Elle.mx	cu	es	\N
+3067	Peru21.pe	cu	es	\N
+3072	Techrepublic.com	in	hi	\N
+3074	Phandroid.com	in	hi	\N
+3076	Phonearena.com	in	hi	\N
+3077	Storypick.com	in	hi	\N
+3078	Voodoofilm.org	se	se	\N
+3079	Realtid.se	se	se	\N
+3080	Fastighetsvarlden.se	se	se	\N
+3081	Fivethirtyeight.com	us	en	\N
+3082	Lettermenrow.com	us	en	\N
+3083	Ninersnation.com	us	en	\N
+3084	Patriots.com	us	en	\N
+3085	Stampedeblue.com	us	en	\N
+3087	Noticel.com	cu	es	\N
+3088	Quinto-poder.mx	cu	es	\N
+3089	Dutchnews.nl	ie	en	\N
+3090	Buzz.ie	ie	en	\N
+3091	Waterfordlive.ie	ie	en	\N
+3107	Hirtv.hu	hu	hu	\N
+3109	Mandiner.hu	hu	hu	\N
+3111	Sail-world.com	nz	en	\N
+3116	Spox.com	at	de	\N
+3117	Mapleleafshotstove.com	ca	en	\N
+3118	Dailyhive.com	ca	en	\N
+3121	Elcierredigital.com	cu	es	\N
+3124	Canalnet.tv	cu	es	\N
+3496	Osa-opn.org	ng	en	\N
+3497	Asgardia.space	ng	en	\N
+3498	Counterpunch.org	ng	en	\N
+3506	Hd-tecnologia.com	ar	es	\N
+3507	Forbes.co.il	il	he	\N
+3508	E27.co	sg	en	\N
+3509	Postal.pt	br	pt	\N
+3510	Itnews.com.au	au	en	\N
+3511	Salon.com	us	en	\N
+3512	Sport.fr	ma	fr	\N
+3513	Sportune.fr	ma	fr	\N
+3515	Chinaqw.com	cn	zh	\N
+3516	Www.ce.cn	cn	zh	\N
+3519	Www.mpg.de	at	de	\N
+3525	Guancha.gmw.cn	cn	zh	\N
+3526	Europeanscientist.com	ie	en	\N
+3530	Thesportsrush.com	in	hi	\N
+3534	Medicalonline.hu	hu	hu	\N
+3537	Riga.lv	lv	lv	\N
+3541	Dailygalaxy.com	my	ms	\N
+3543	Www.an.no	no	no	\N
+3544	Corsedimoto.com	it	it	\N
+3552	Soyfutbol.com	mx	es	\N
+3553	Senenews.com	ma	fr	\N
+3554	Franceculture.fr	ma	fr	\N
+3561	Genbeta.com	mx	es	\N
+3562	Dineroenimagen.com	mx	es	\N
+3564	Rcinet.ca	be	nl	\N
+3565	Medisite.fr	be	nl	\N
+3566	Webtimemedias.com	be	nl	\N
+3567	Usine-digitale.fr	be	nl	\N
+3568	Hospimedia.fr	be	nl	\N
+3585	Chedonna.it	it	it	\N
+3586	Ohga.it	it	it	\N
+3587	Triesteprima.it	it	it	\N
+3588	Bergamonews.it	it	it	\N
+3589	Lastampa.it	it	it	\N
+3590	Worldofbuzz.com	my	ms	\N
+3595	Benchmark.pl	pl	pl	\N
+3596	Sportscn.com	cn	zh	\N
+3597	Shaoxing.com.cn	cn	zh	\N
+3598	Thestrangenews.com	ng	en	\N
+3599	Watertowndaily.com	ng	en	\N
+3602	Xiancn.com	cn	zh	\N
+3603	Stats.gov.cn	cn	zh	\N
+3604	Kolesa.ru	ru	ru	\N
+3605	Forbes.ru	ru	ru	\N
+3612	Yam.com	tw	zh	\N
+3614	Neowin.net	gb	en	\N
+3617	Somagnews.com	au	en	\N
+3618	Watoday.com.au	au	en	\N
+3622	Excelenciaspanama.com	cu	es	\N
+3623	Cronicaviva.com.pe	cu	es	\N
+3624	Cicconstruccion.com	cu	es	\N
+3630	Pocket-lint.com	ng	en	\N
+3635	Www.rnd.de	de	de	\N
+3636	Eleconomista.com.mx	mx	es	\N
+3637	Kbench.com	kr	ko	\N
+3639	Gazetakrakowska.pl	pl	pl	\N
+3640	Powrotroberta.pl	pl	pl	\N
+3642	Autocar.jp	jp	ja	\N
+3643	Bitdays.jp	jp	ja	\N
+3644	Voetbalzone.nl	nl	nl	\N
+3645	Cryptoticker.io	ch	de	\N
+3650	Megazap.fr	be	nl	\N
+3651	Lenouvelliste.ca	be	nl	\N
+3656	Wideo.wp.pl	pl	pl	\N
+3657	Nczas.com	pl	pl	\N
+3662	660citynews.com	sg	en	\N
+3665	Physicsworld.com	ng	en	\N
+3666	Thechronicleherald.ca	ng	en	\N
+3667	Thecardiologyadvisor.com	ng	en	\N
+3668	Techtimes.com	ng	en	\N
+3671	Maccabi-tlv.co.il	il	he	\N
+3672	Dealstreetasia.com	ph	en	\N
+3673	Europa.eu	ph	en	\N
+3687	Dzfoot.com	be	nl	\N
+3688	Alg24.net	fr	fr	\N
+3689	Gilabola.com	id	id	\N
+3690	Kompas.tv	id	id	\N
+3693	Chinadaily.com.cn	cn	zh	\N
+3696	Newsie.co.nz	nz	en	\N
+3697	Fijisun.com.fj	nz	en	\N
+3700	Publika.md	ro	ro	\N
+3701	Ilfattoalimentare.it	it	it	\N
+3706	Broadstreethockey.com	sa	ar	\N
+3707	Bustingbrackets.com	sa	ar	\N
+3708	Bamahammer.com	sa	ar	\N
+3709	Halosheaven.com	sa	ar	\N
+3712	Uct.ac.za	za	en	\N
+3713	Melkvee.nl	nl	nl	\N
+3716	Telekomsport.ro	ro	ro	\N
+3717	Rcnradio.com	co	es	\N
+2178	Popsugar.com.au	nz	en	\N
+2179	Spacedaily.com	nz	en	\N
+2180	Beaconjournal.com	nz	en	\N
+2182	Sciencenewspress.com	nz	en	\N
+2183	Conradcourier.com	nz	en	\N
+2184	Coastmountainnews.com	nz	en	\N
+2187	Travronden.se	se	se	\N
+2188	Svenska.yle.fi	se	se	\N
+2191	Fotbolldirekt.se	se	se	\N
+2192	Www.vlt.se	se	se	\N
+2193	Pren.nsd.se	se	se	\N
+2195	Donbalon.com	co	es	\N
+2196	Caracoltv.com	co	es	\N
+2198	Eluniversal.com.co	co	es	\N
+2200	Thenewscrunch.com	sg	en	\N
+2205	Tweaktown.com	sg	en	\N
+2212	Taipeitimes.com	za	en	\N
+2216	Dualdove.com	za	en	\N
+2217	News-daily.com	za	en	\N
+2218	Lowyat.net	my	ms	\N
+2219	Hobbyconsolas.com	ve	es	\N
+2220	Miamidiario.com	ve	es	\N
+2221	Telesurtv.net	ve	es	\N
+2222	Zamora24horas.com	ve	es	\N
+2223	Elmedicointeractivo.com	ve	es	\N
+2224	Todotexcoco.com	ve	es	\N
+2225	Sudbury.com	ca	en	\N
+2226	Ultimasnoticias.com.ve	ve	es	\N
+2227	Theprogress.com	ca	en	\N
+2228	Publinews.gt	ve	es	\N
+2229	Economica.net	ro	ro	\N
+2230	Auto-bild.ro	ro	ro	\N
+2231	Hsbnoticias.com	co	es	\N
+2232	Vanguardia.com	co	es	\N
+2233	Vosgesmatin.fr	be	nl	\N
+2234	Informe21.com	ve	es	\N
+2235	Journaldequebec.com	be	nl	\N
+2236	Panamaamerica.com.pa	ve	es	\N
+2237	Fredzone.org	be	nl	\N
+2238	Kuxtal.com	ve	es	\N
+2239	Elle.com	ve	es	\N
+2240	Wapa.pe	ve	es	\N
+2241	Theprint.in	in	hi	\N
+2242	Soycarmin.com	ve	es	\N
+2243	Newsgram.com	in	hi	\N
+2244	Colombia.com	ve	es	\N
+2245	Thehealthsite.com	in	hi	\N
+2246	Eldiariony.com	ve	es	\N
+2247	Romaniatv.net	ro	ro	\N
+2248	A1.ro	ro	ro	\N
+2249	Ka-news.de	at	de	\N
+2250	Libertatea.ro	ro	ro	\N
+2251	Www.gds.ro	ro	ro	\N
+2252	Noen.at	at	de	\N
+2253	Viva.ro	ro	ro	\N
+2254	Ebihoreanul.ro	ro	ro	\N
+2255	Busan.com	kr	ko	\N
+2256	Reporteindigo.com	mx	es	\N
+2257	Elsoldemexico.com.mx	mx	es	\N
+2258	Editalconcursosbrasil.com.br	br	pt	\N
+2259	Seucreditodigital.com.br	br	pt	\N
+2260	Aeroin.net	br	pt	\N
+2261	Diarioprime.com.br	br	pt	\N
+2262	Brasil247.com	br	pt	\N
+2263	Maisminas.org	br	pt	\N
+2264	Tecmundo.com.br	br	pt	\N
+2265	Nordbuzz.de	at	de	\N
+2266	Ceskatelevize.cz	cz	cs	\N
+2267	Eurofotbal.cz	cz	cs	\N
+2268	Bunte.de	at	de	\N
+2269	Glamourparis.com	ma	fr	\N
+2270	Lomazoma.com	ae	en	\N
+2271	Sharjah24.ae	ae	en	\N
+2272	Yabiladi.com	ma	fr	\N
+2273	Beinsports.com	ae	en	\N
+2274	Www.wam.ae	ae	en	\N
+2275	Abcbourse.com	ma	fr	\N
+2276	Alittihad.ae	ae	en	\N
+2277	Moroccomail.fr	ma	fr	\N
+2278	Eurosport.com	ae	en	\N
+2279	Sport360.com	ae	en	\N
+2280	Akhbarelyom.com	ae	en	\N
+2281	Abudhabi-news.com	ae	en	\N
+2282	Dotesports.com	ie	en	\N
+2283	Pcgamesn.com	ie	en	\N
+2284	Indy100.com	gb	en	\N
+2285	Edp24.co.uk	gb	en	\N
+2286	Midilibre.fr	fr	fr	\N
+2287	Cheltv.ru	ru	ru	\N
+2288	Autoplus.fr	fr	fr	\N
+2289	Actu.fr	fr	fr	\N
+2290	Letelegramme.fr	fr	fr	\N
+2291	Caradisiac.com	fr	fr	\N
+2292	Odt.co.nz	nz	en	\N
+2293	Szon.hu	hu	hu	\N
+2294	Cronica.com.ar	ar	es	\N
+2295	Bellanaija.com	za	en	\N
+2296	Menshealth.com	ar	es	\N
+2297	Informedeestado.com	ar	es	\N
+2298	Elterritorio.com.ar	ar	es	\N
+2299	Billboard.com	za	en	\N
+2300	Thethings.com	za	en	\N
+2301	Genius.com	za	en	\N
+2302	Eldiaonline.com	ar	es	\N
+2303	Rap-up.com	za	en	\N
+2304	Briefly.co.za	za	en	\N
+2305	Ghbase.com	za	en	\N
+2306	Thenews.com.pk	za	en	\N
+2307	Amomama.fr	fr	fr	\N
+2308	Sprucegroveexaminer.com	ca	en	\N
+2309	Metalheadzone.com	ca	en	\N
+2310	Citynews1130.com	ca	en	\N
+2311	Thestar.com	ca	en	\N
+2312	Cp24.com	ca	en	\N
+2313	Harpersbazaar.com	tw	zh	\N
+2314	Newser.com	us	en	\N
+2315	Wthr.com	us	en	\N
+2316	Tverigrad.ru	ru	ru	\N
+2317	Fanatik.com.tr	tr	tr	\N
+2318	Motor.ru	ru	ru	\N
+2319	Sporx.com	tr	tr	\N
+2320	Forklog.com	ru	ru	\N
+2321	Trtspor.com.tr	tr	tr	\N
+2322	Pokatim.ru	ru	ru	\N
+2323	Ntvspor.net	tr	tr	\N
+2324	Avtonovostidnya.ru	ru	ru	\N
+2325	Vistanews.ru	ru	ru	\N
+2326	T24.com.tr	tr	tr	\N
+2327	Mubasher.info	eg	ar	\N
+2328	Levelup.com	ve	es	\N
+2329	Aporrea.org	ve	es	\N
+2330	Sharkiatoday.com	eg	ar	\N
+2331	Ngmisr.com	eg	ar	\N
+2332	Yomiuri.co.jp	jp	ja	\N
+2333	Mantan-web.jp	jp	ja	\N
+2334	Vanguardngr.com	ng	en	\N
+2335	Sportbible.com	ng	en	\N
+2336	Buckys5thquarter.com	us	en	\N
+2337	Europafm.ro	ro	ro	\N
+2338	Bleedinggreennation.com	us	en	\N
+2339	Elevenwarriors.com	us	en	\N
+2340	Startribune.com	us	en	\N
+2341	Leadersnet.at	at	de	\N
+2342	Boerse-social.com	at	de	\N
+2343	Edigest.hk	hk	zh	\N
+2344	Pcmarket.com.hk	hk	zh	\N
+2345	Newstracklive.com	in	hi	\N
+2346	Medicaldialogues.in	in	hi	\N
+2347	India.com	in	hi	\N
+2348	Start-up.ro	ro	ro	\N
+2350	Dojotech.ro	ro	ro	\N
+2353	Shueisha.co.jp	jp	ja	\N
+2354	Espnf1.com	jp	ja	\N
+2359	Benchmark.rs	rs	sr	\N
+2360	Vijesti.me	rs	sr	\N
+2361	M.cdm.me	rs	sr	\N
+2369	Publimetro.co	co	es	\N
+2370	Minuto30.com	co	es	\N
+2371	Winsports.co	co	es	\N
+2372	Thebchain.co.kr	kr	ko	\N
+2373	Huffingtonpost.kr	kr	ko	\N
+2375	Mediatoday.co.kr	kr	ko	\N
+2377	Newshub.co.nz	nz	en	\N
+2378	Pcworld.com	nz	en	\N
+2379	Reseller.co.nz	nz	en	\N
+2380	Futurefive.co.nz	nz	en	\N
+2382	Pisatoday.it	it	it	\N
+2384	Tecnicadellascuola.it	it	it	\N
+2388	Telediario.mx	ve	es	\N
+2389	Heraldodemexico.com.mx	ve	es	\N
+2390	Liderendeportes.com	ve	es	\N
+2393	Laprensalara.com.ve	ve	es	\N
+2394	Hayadan.org.il	il	he	\N
+2395	The7eye.org.il	il	he	\N
+2396	Kikar.co.il	il	he	\N
+2400	Rushthekop.com	my	ms	\N
+2403	Cosmopolitan.com	ng	en	\N
+2404	Meczyki.pl	pl	pl	\N
+2405	Sport.wm.pl	pl	pl	\N
+2407	Lanueva.com	ar	es	\N
+2408	Lmneuquen.com	ar	es	\N
+2409	News.de	at	de	\N
+2411	Dagsavisen.no	no	no	\N
+2415	Las2orillas.co	mx	es	\N
+2417	Lapatilla.com	mx	es	\N
+2419	Adn40.mx	mx	es	\N
+2420	Bolsamania.com	mx	es	\N
+2421	Diariolaopinion.com.ar	mx	es	\N
+2422	Sipse.com	mx	es	\N
+2427	Lexpress.fr	be	nl	\N
+2429	Themalaysianinsight.com	my	ms	\N
+2430	Thejakartapost.com	my	ms	\N
+2431	Newtimes.co.rw	my	ms	\N
+2432	Belatina.com	my	ms	\N
+2433	Un.org	my	ms	\N
+2434	Myarklamiss.com	my	ms	\N
+2436	Deeperblue.com	my	ms	\N
+2437	Goodfood.com.au	my	ms	\N
+2438	Gulf-times.com	my	ms	\N
+2439	Glamour.com	my	ms	\N
+2444	Astro.cz	cz	cs	\N
+2445	Exoplanety.cz	cz	cs	\N
+2446	Appdisqus.com	th	th	\N
+2456	Dublinlive.ie	ie	en	\N
+2462	Gamesindustry.biz	sa	ar	\N
+2463	Anandtech.com	sa	ar	\N
+2468	Nzdoctor.co.nz	nz	en	\N
+2469	Independent.co.ug	nz	en	\N
+2473	Cowcotland.com	fr	fr	\N
+2475	Igen.fr	fr	fr	\N
+2476	Interez.sk	sk	sk	\N
+2480	Extratipp.com	de	de	\N
+2484	Moviejones.de	de	de	\N
+2491	Tinynews.be	be	nl	\N
+3127	Cdr.cz	cz	cs	\N
+3128	Tiscali.cz	cz	cs	\N
+3129	Sciencemag.cz	cz	cs	\N
+3130	Flowee.cz	cz	cs	\N
+3134	El-ahly.com	eg	ar	\N
+3135	Jujuyalmomento.com	ar	es	\N
+3137	Puromarketing.com	ar	es	\N
+3138	16valvulas.com.ar	ar	es	\N
+3139	Elevenmyanmar.com	ie	en	\N
+3140	Astrobiology.com	ie	en	\N
+3141	Rsvplive.ie	ie	en	\N
+3142	Entertainment.ie	ie	en	\N
+3143	Gaz.com.br	br	pt	\N
+3144	Clicrbs.com.br	br	pt	\N
+3145	Tribunapr.com.br	br	pt	\N
+3147	Oantagonista.com	br	pt	\N
+3148	Moneyweb.co.za	za	en	\N
+3149	Iharare.com	za	en	\N
+3151	Wheels24.co.za	za	en	\N
+3152	Bikehub.co.za	za	en	\N
+3155	Belg24.com	ae	en	\N
+3159	Vietnamnews.vn	ph	en	\N
+3167	Manitoulin.ca	ca	en	\N
+3168	Skystatement.com	ca	en	\N
+3170	Tunisienumerique.com	fr	fr	\N
+3171	Cnews.fr	fr	fr	\N
+3173	Vedia.be	fr	fr	\N
+3175	Icc-cricket.com	in	hi	\N
+3176	Tottenhamhotspur.com	in	hi	\N
+3177	Bollywoodshaadis.com	in	hi	\N
+3178	Cinema5d.com	sg	en	\N
+3180	Telefonguru.hu	hu	hu	\N
+3183	Digitalnewsasia.com	my	ms	\N
+3184	Healtheuropa.eu	my	ms	\N
+3185	Thepeninsulaqatar.com	my	ms	\N
+3187	Boston25news.com	my	ms	\N
+3188	Israel21c.org	my	ms	\N
+3190	Ottawacitizen.com	sa	ar	\N
+3191	Calgaryherald.com	sa	ar	\N
+3192	Fm4.orf.at	at	de	\N
+3193	Suedtirolnews.it	at	de	\N
+3194	Derstandard.de	at	de	\N
+3198	Top1health.com	tw	zh	\N
+3499	Aerzteblatt.de	de	de	\N
+3500	Techbeacon.com	my	ms	\N
+3501	Technave.com	my	ms	\N
+3502	Documentonews.gr	gr	el	\N
+3503	Ypaithros.gr	gr	el	\N
+3504	Pagenews.gr	gr	el	\N
+3505	Aftodioikisi.gr	gr	el	\N
+3514	Pba.ph	ph	en	\N
+3517	Bitbol.la	co	es	\N
+3518	Whio.com	us	en	\N
+3520	Data-economy.com	ie	en	\N
+3521	Sciencefocus.com	nz	en	\N
+3522	Dpaonthenet.net	nz	en	\N
+3523	Interestingengineering.com	nz	en	\N
+3524	Mnn.com	nz	en	\N
+3527	Tomatazos.com	mx	es	\N
+3528	Sdpnoticias.com	mx	es	\N
+3529	Automaton-media.com	jp	ja	\N
+3531	Nikkan-spa.jp	jp	ja	\N
+3532	Republica.com	cu	es	\N
+3533	Diariogol.com	cu	es	\N
+3535	Nowosci.com.pl	pl	pl	\N
+3536	Pulskosmosu.pl	pl	pl	\N
+3538	Www.o2.pl	pl	pl	\N
+3539	Newssalt.com	jp	ja	\N
+3540	Wired.jp	jp	ja	\N
+3542	Autopro.hu	hu	hu	\N
+3545	Codcourier.org	ph	en	\N
+3546	Yaktrinews.com	ph	en	\N
+3547	Cancernetwork.com	ph	en	\N
+3548	Tv-tokyo.co.jp	jp	ja	\N
+3549	Alba.co.jp	jp	ja	\N
+3550	Alquds.co.uk	eg	ar	\N
+3551	Notebookcheck.com	de	de	\N
+2349	Cadena3.com	ar	es	\N
+2351	Diariosanrafael.com.ar	ar	es	\N
+2352	Filo.news	ar	es	\N
+2355	Coincierge.de	de	de	\N
+2356	Infranken.de	de	de	\N
+2357	Tarnkappe.info	de	de	\N
+2358	Veselam.la.lv	lv	lv	\N
+2362	Elespanol.com	cu	es	\N
+2363	Www.t13.cl	cu	es	\N
+2364	Fcbarcelonanoticias.com	cu	es	\N
+2365	Directvsports.com	cu	es	\N
+2366	Avtechguide.com	th	th	\N
+2367	Droidsans.com	th	th	\N
+2368	Mobileocta.com	th	th	\N
+2374	Fool.co.uk	sg	en	\N
+2376	Ausdroid.net	sg	en	\N
+2381	Wetter.at	at	de	\N
+2383	Dagelijksestandaard.nl	nl	nl	\N
+2385	Www.iex.nl	nl	nl	\N
+2386	Onemorething.nl	nl	nl	\N
+2387	Fd.nl	nl	nl	\N
+2391	Metrosport.gr	gr	el	\N
+2392	Tovima.gr	gr	el	\N
+2397	Odatv.com	tr	tr	\N
+2398	Aspor.com.tr	tr	tr	\N
+2399	Bursasporluyuz.org	tr	tr	\N
+2401	Nu.or.id	id	id	\N
+2402	Koran-jakarta.com	id	id	\N
+2406	Windowslatest.com	in	hi	\N
+2410	Katu.com	us	en	\N
+2412	Azdesertswarm.com	us	en	\N
+2413	News4jax.com	us	en	\N
+2414	Mercurynews.com	us	en	\N
+2416	N-tv.pt	pt	pt	\N
+2418	Maria.pt	pt	pt	\N
+2423	Bazonline.ch	ch	de	\N
+2424	Kaixian.tv	cn	zh	\N
+2425	Gxnews.com.cn	cn	zh	\N
+2426	Ldnews.cn	cn	zh	\N
+2428	Laprovinciadicomo.it	it	it	\N
+2435	Udinetoday.it	it	it	\N
+2440	Journal-aviation.com	fr	fr	\N
+2441	Laprovence.com	fr	fr	\N
+2442	La-croix.com	fr	fr	\N
+2443	Air-journal.fr	fr	fr	\N
+2447	Expressbydgoski.pl	pl	pl	\N
+2448	Www.cgm.pl	pl	pl	\N
+2449	Niezalezna.pl	pl	pl	\N
+2450	Teleshow.wp.pl	pl	pl	\N
+2451	Chillizet.pl	pl	pl	\N
+2452	Naszemiasto.pl	pl	pl	\N
+2453	Www.rmf.fm	pl	pl	\N
+2454	Rmfmaxxx.pl	pl	pl	\N
+2455	Serialowa.pl	pl	pl	\N
+2457	Canal-supporters.com	fr	fr	\N
+2458	Olympique-et-lyonnais.com	fr	fr	\N
+2459	1plus1.ua	ua	uk	\N
+2460	Zik.ua	ua	uk	\N
+2461	Znaj.ua	ua	uk	\N
+2464	Ukrinform.ua	ua	uk	\N
+2465	Today.ua	ua	uk	\N
+2466	Volynpost.com	ua	uk	\N
+2467	Espreso.tv	ua	uk	\N
+2470	Pmnewsnigeria.com	ng	en	\N
+2471	Thehardtackle.com	ng	en	\N
+2472	Thefootballfanbase.com	ng	en	\N
+2474	Barcablaugranes.com	ng	en	\N
+2477	Borsonline.hu	hu	hu	\N
+2478	Tv2.hu	hu	hu	\N
+2479	Femina.hu	hu	hu	\N
+2481	Ujszo.com	hu	hu	\N
+2482	Lokal.hu	hu	hu	\N
+2483	Contextus.hu	hu	hu	\N
+2485	Cosmopolitan.hu	hu	hu	\N
+2486	Laraza.com	co	es	\N
+2487	Laprensagrafica.com	co	es	\N
+2488	Ecosdelcombeima.com	co	es	\N
+2489	Theringer.com	us	en	\N
+2490	Raiders.com	us	en	\N
+2492	Bostonherald.com	us	en	\N
+2493	49ers.com	us	en	\N
+2494	Dallascowboys.com	us	en	\N
+2495	Behindthesteelcurtain.com	us	en	\N
+2496	Controcampus.it	it	it	\N
+2497	Strettoweb.com	it	it	\N
+2498	Comingsoon.it	it	it	\N
+2499	Quotidiano.net	it	it	\N
+2500	3bmeteo.com	it	it	\N
+2501	Sportacentrs.com	lv	lv	\N
+2502	Tzomet-ran.co.il	il	he	\N
+2503	El-carabobeno.com	ve	es	\N
+2504	Ferra.ru	ru	ru	\N
+2505	Sportinak.sk	sk	sk	\N
+2506	Korzar.sme.sk	sk	sk	\N
+2507	Novayagazeta.ru	ru	ru	\N
+2508	Emaratalyoum.com	ae	en	\N
+2509	Kyodonews.net	sg	en	\N
+2510	Al-akhbar.com	ae	en	\N
+2511	Marketresearchfeed.com	sg	en	\N
+2512	Tayyar.org	ae	en	\N
+2513	Marketresearchjournals.com	sg	en	\N
+2514	Yakimaherald.com	sg	en	\N
+2515	Elnashra.com	ae	en	\N
+2516	Sarayanews.com	ae	en	\N
+2517	Businesstimes.com.sg	sg	en	\N
+2518	Cnn.co.jp	jp	ja	\N
+2519	Rakuten-sec.net	jp	ja	\N
+2520	President.jp	jp	ja	\N
+2521	Fashion-press.net	jp	ja	\N
+2522	Panet.co.il	eg	ar	\N
+2523	Aksalser.com	eg	ar	\N
+2524	Muhtwaplus.com	eg	ar	\N
+2525	Barlamane.com	eg	ar	\N
+2526	Elbashayer.com	eg	ar	\N
+2527	Arab48.com	eg	ar	\N
+2528	Pingvin.pro	ua	uk	\N
+2529	Funder.co.il	il	he	\N
+2530	Itechua.com	ua	uk	\N
+2531	Vgolos.com.ua	ua	uk	\N
+2532	Techtoday.in.ua	ua	uk	\N
+2533	Itsider.com.ua	ua	uk	\N
+2534	Vsviti.com.ua	ua	uk	\N
+2535	Racurs.ua	ua	uk	\N
+2536	Sponser.co.il	il	he	\N
+2537	Rubryka.com	ua	uk	\N
+2538	Talniri.co.il	il	he	\N
+2539	Techno.nv.ua	ua	uk	\N
+2540	Mcot.net	th	th	\N
+2541	Rmolsumsel.com	id	id	\N
+2542	Eratekno.com	id	id	\N
+2543	Merahputih.com	id	id	\N
+2544	Droidlime.com	id	id	\N
+2545	Workpointnews.com	th	th	\N
+2546	Resume.se	se	se	\N
+2547	Www.jp.se	se	se	\N
+2548	Adressa.no	no	no	\N
+2549	Fifa.com	co	es	\N
+2550	Www.fvn.no	no	no	\N
+2551	Kokteilis.la.lv	lv	lv	\N
+2552	Androidworld.it	it	it	\N
+2553	Everyeye.it	it	it	\N
+2554	Alwatanvoice.com	ae	en	\N
+2555	Izlandbipbip.com	ma	fr	\N
+2556	Kooora.com	ae	en	\N
+2557	Boursedirect.fr	ma	fr	\N
+2558	Arablifestyle.com	ae	en	\N
+2559	Alhurra.com	ae	en	\N
+3131	Www.smp.no	no	no	\N
+3132	Letemps.ch	be	nl	\N
+3133	Vozpopuli.com	ve	es	\N
+3136	Efinancialcareers.com	sg	en	\N
+3146	Ultimahora.com	ve	es	\N
+3150	Finanzen.ch	ch	de	\N
+3153	Misr365.com	eg	ar	\N
+3154	Fxnewstoday.ae	eg	ar	\N
+3156	Utro.ru	ru	ru	\N
+3157	Ren.tv	ru	ru	\N
+3158	Cosmo.ru	ru	ru	\N
+3160	Noticierodigital.com	co	es	\N
+3161	Laguajirahoy.com	co	es	\N
+3162	Oilersnation.com	ca	en	\N
+3163	Koamnewsnow.com	ca	en	\N
+3164	Spaceflightnow.com	ng	en	\N
+3165	Dawn.com	ng	en	\N
+3166	Ismedia.jp	jp	ja	\N
+3169	Rugby.com.au	au	en	\N
+3172	Papermag.com	ng	en	\N
+3174	Happytv.tv	rs	sr	\N
+3179	Investor.bg	bg	bg	\N
+3181	Cryptodnes.bg	bg	bg	\N
+3182	Farmacija-mic.lv	lv	lv	\N
+3186	Plenglish.com	sg	en	\N
+3189	Sgp-insider.de	ch	de	\N
+3195	Paininthearsenal.com	ng	en	\N
+3196	Blueprint.ng	ng	en	\N
+3197	Madaboutepl.net	ng	en	\N
+3199	Thepeoplesperson.com	ng	en	\N
+3555	Invasor.cu	cu	es	\N
+3556	Cmhw.cu	cu	es	\N
+3557	Radiorebelde.cu	cu	es	\N
+3558	Prensa-latina.cu	cu	es	\N
+3559	Aldia.cu	cu	es	\N
+3560	Cubasi.cu	cu	es	\N
+3563	Kwongwah.com.my	cn	zh	\N
+3626	Theloop.ca	ca	en	\N
+3627	Dirigentesdigital.com	cu	es	\N
+3628	Reportur.com	cu	es	\N
+3629	Ambcrypto.com	cu	es	\N
+3631	Newsauto.gr	gr	el	\N
+3632	Punto-informatico.it	it	it	\N
+3633	Dday.it	it	it	\N
+3634	Gamereactor.se	se	se	\N
+3638	Abendzeitung-muenchen.de	de	de	\N
+3641	Augsburger-allgemeine.de	at	de	\N
+3646	Euro.cz	cz	cs	\N
+3647	Echo24.cz	cz	cs	\N
+3648	Drbna.cz	cz	cs	\N
+3649	Kurzy.cz	cz	cs	\N
+3652	Auto-swiat.pl	pl	pl	\N
+3653	Autokult.pl	pl	pl	\N
+3654	Wirtualnemedia.pl	pl	pl	\N
+3655	9to5toys.com	sa	ar	\N
+3658	Dailysabah.com	za	en	\N
+3659	Freshfruitportal.com	za	en	\N
+3660	Fijitimes.com	za	en	\N
+3661	Pravda.rs	rs	sr	\N
+3663	Vz.ru	ru	ru	\N
+3664	Cnews.ru	ru	ru	\N
+3669	Business.dir.bg	bg	bg	\N
+3670	Profit.bg	bg	bg	\N
+3674	Alvolante.it	it	it	\N
+3675	Bergamopost.it	it	it	\N
+3676	Nicolaporro.it	it	it	\N
+3677	Trend-online.com	it	it	\N
+3678	Ilsussidiario.net	it	it	\N
+3679	Ilrestodelcarlino.it	it	it	\N
+3680	Iltempo.it	it	it	\N
+3681	Tiscali.it	it	it	\N
+3682	Inmeteo.net	it	it	\N
+3683	Leganerd.com	it	it	\N
+3684	Sporbiz.co.kr	kr	ko	\N
+3685	Jejutwn.com	kr	ko	\N
+3686	Fsnews.co.kr	kr	ko	\N
+3691	Asajo.jp	jp	ja	\N
+3692	Nikkan-gendai.com	jp	ja	\N
+3694	Www.pba.ph	ph	en	\N
+3695	Ourwindsor.ca	ph	en	\N
+3698	90minuten.at	at	de	\N
+3699	Wien.orf.at	at	de	\N
+3702	Profinance.ru	ru	ru	\N
+3703	Ripplenews.ru	ru	ru	\N
+3704	Mdon.co.kr	kr	ko	\N
+3705	Theceluv.com	kr	ko	\N
+3710	Purepc.pl	pl	pl	\N
+3711	Dailyweb.pl	pl	pl	\N
+3714	Fmprc.gov.cn	cn	zh	\N
+3715	Yangtse.com	cn	zh	\N
+3718	Universityherald.com	za	en	\N
+3719	Minutouno.com	ar	es	\N
+3720	Skispringen.com	de	de	\N
+3721	Realtotal.de	de	de	\N
+3722	Nuus.hu	hu	hu	\N
+3723	Madeinvilnius.lt	lt	lt	\N
+3724	Programme.tv	fr	fr	\N
+3725	Ecranlarge.com	fr	fr	\N
+3726	Local.co.il	il	he	\N
+3727	Computerworld.com	au	en	\N
+3728	Indebuurt.nl	nl	nl	\N
+3729	Spotvnews.co.kr	kr	ko	\N
+3730	Insight.co.kr	kr	ko	\N
+3731	Idomin.com	kr	ko	\N
+3732	Www.svz.de	de	de	\N
+3733	Finanzmarktwelt.de	de	de	\N
+3734	Isaechia.it	it	it	\N
+3735	Tvsoap.it	it	it	\N
+3736	Bestmovie.it	it	it	\N
+3737	Huffingtonpost.it	it	it	\N
+3738	Today.it	it	it	\N
+3739	Autorevue.at	at	de	\N
+3740	Esquire.com.gr	gr	el	\N
+3741	Ashdodonline.co.il	il	he	\N
+3742	13news.co.il	il	he	\N
+3743	China.org.cn	sg	en	\N
+3744	Extremetech.com	sg	en	\N
+3745	Mapa.co.il	il	he	\N
+3746	Www.zdf.de	de	de	\N
+3747	Rheumatologynetwork.com	ng	en	\N
+3748	Warwickonline.com	ng	en	\N
+3749	Elheraldodechihuahua.com.mx	mx	es	\N
+3750	Telemundo52.com	mx	es	\N
+3751	Elsoldetijuana.com.mx	mx	es	\N
+3752	Eldiariodechihuahua.mx	mx	es	\N
+3753	Ghacks.net	nz	en	\N
+3754	Pcauto.com.cn	cn	zh	\N
+3755	Ifanr.com	cn	zh	\N
+3756	Newstalk.com	ie	en	\N
+3757	Aerospacetestinginternational.com	ie	en	\N
+3758	Republicworld.com	in	hi	\N
+3759	Mmamania.com	ca	en	\N
+3760	Visie.eo.nl	nl	nl	\N
+3761	Standaard.be	nl	nl	\N
+3762	Boeddhistischdagblad.nl	nl	nl	\N
+3763	Voetbalbelgie.be	nl	nl	\N
+3764	Capebretonpost.com	ca	en	\N
+3765	Fox8.com	sa	ar	\N
+3766	Abc15.com	sa	ar	\N
+3767	Wlky.com	sa	ar	\N
+3768	Wbur.org	sa	ar	\N
+3769	Digitimes.com.tw	hk	zh	\N
+3770	Estrepublicain.fr	fr	fr	\N
+3771	Lunion.fr	fr	fr	\N
+3772	Elsiglodetorreon.com.mx	mx	es	\N
+3773	Laizquierdadiario.com	ar	es	\N
+2560	Sport24.ru	ru	ru	\N
+2561	Fijivillage.com	au	en	\N
+2562	Theage.com.au	au	en	\N
+2563	Digital.bg	bg	bg	\N
+2564	Refresher.cz	cz	cs	\N
+2565	Senayanpost.com	id	id	\N
+2566	Sulselsatu.com	id	id	\N
+2567	Tyden.cz	cz	cs	\N
+2568	Vortex.cz	cz	cs	\N
+2569	Mynetkfarsaba.co.il	il	he	\N
+2570	Friday-magazine.ch	ch	de	\N
+2571	Www.gmx.ch	ch	de	\N
+2572	Migrosmagazin.ch	ch	de	\N
+2573	Ntv.com.tr	tr	tr	\N
+2574	Newsdzezimbabwe.co.uk	gb	en	\N
+2575	Nwemail.co.uk	gb	en	\N
+2576	Thisismoney.co.uk	gb	en	\N
+2577	Autocar.co.uk	gb	en	\N
+2578	Lincolnshirelive.co.uk	gb	en	\N
+2579	Mancity.com	cu	es	\N
+2580	Folkbladet.nu	se	se	\N
+2581	Ystadsallehanda.se	se	se	\N
+2582	Mynewsdesk.com	se	se	\N
+2583	Yankodesign.com	ph	en	\N
+2584	Kamerabild.se	se	se	\N
+2585	Tips.at	at	de	\N
+2586	Tourismuspresse.at	at	de	\N
+2587	Vienna.at	at	de	\N
+2588	Ecuagol.com	ar	es	\N
+2589	K.at	at	de	\N
+2590	Kino.de	at	de	\N
+2591	Kilkennynow.ie	ie	en	\N
+2592	Businesswire.com	ie	en	\N
+2593	Plymouthherald.co.uk	ie	en	\N
+2594	Hospimedica.com	ie	en	\N
+2595	Highlandradio.com	ie	en	\N
+2596	Birgun.net	tr	tr	\N
+2597	Heritagedaily.com	ph	en	\N
+2598	Azosensors.com	ph	en	\N
+2599	Iconnect007.com	ph	en	\N
+2600	Haber3.com	tr	tr	\N
+2601	Misionesonline.net	ar	es	\N
+2602	Heraldolamango.com	ar	es	\N
+2603	Parati.com.ar	ar	es	\N
+2604	Ojo.pe	ar	es	\N
+2605	Eldoce.tv	ar	es	\N
+2606	Capital.gr	gr	el	\N
+2607	Finanzaonline.com	it	it	\N
+2608	Wired.it	it	it	\N
+2609	Iefimerida.gr	gr	el	\N
+2610	Proiezionidiborsa.it	it	it	\N
+2611	Money.it	it	it	\N
+2612	Agrotypos.gr	gr	el	\N
+2613	Whiplash.net	br	pt	\N
+2614	Jovemnerd.com.br	br	pt	\N
+2615	Samsung.com	my	ms	\N
+2616	Lavieeco.com	be	nl	\N
+2617	Businessinsider.my	my	ms	\N
+2618	Lessentiel.lu	be	nl	\N
+2619	Gamergen.com	be	nl	\N
+2620	Closermag.fr	be	nl	\N
+2621	Adiac-congo.com	ma	fr	\N
+2622	Provenceazur-tv.fr	ma	fr	\N
+2623	Tvanouvelles.ca	ma	fr	\N
+2624	Lindependant.fr	ma	fr	\N
+2625	Lapresse.ca	ma	fr	\N
+2626	Afrikmag.com	ma	fr	\N
+2627	Heidi.news	ma	fr	\N
+2628	Destinationsante.com	ma	fr	\N
+2629	Pourquoidocteur.fr	ma	fr	\N
+2630	Zdnet.fr	ma	fr	\N
+2631	Santelog.com	ma	fr	\N
+2632	Newswire.ca	ma	fr	\N
+2633	Liepajniekiem.lv	lv	lv	\N
+2634	Racesport.nl	nl	nl	\N
+2635	Www.rti.ci	ma	fr	\N
+2636	Wtae.com	us	en	\N
+2637	4for4.com	us	en	\N
+2638	2m.ma	ma	fr	\N
+2639	Skornorth.com	us	en	\N
+2640	Musiccitymiracles.com	us	en	\N
+2641	Winfuture.de	at	de	\N
+2642	Cerodosbe.com	ar	es	\N
+2643	Letrap.com.ar	ar	es	\N
+2644	Aviacionline.com	ar	es	\N
+2645	Expansion.com	ar	es	\N
+2646	Topnews.jp	jp	ja	\N
+2647	Netkeiba.com	jp	ja	\N
+2648	Jsports.co.jp	jp	ja	\N
+2649	Tokyo-sports.co.jp	jp	ja	\N
+2650	Ditjesendatjes.nl	nl	nl	\N
+2651	Www.lrt.lt	lt	lt	\N
+2652	Teraz.sk	sk	sk	\N
+2653	Journaldemontreal.com	ma	fr	\N
+2654	Lest-eclair.fr	ma	fr	\N
+2655	Businessinsider.nl	nl	nl	\N
+2656	Www.pu.nl	nl	nl	\N
+2657	Insidegamer.nl	nl	nl	\N
+2658	Galaxyclub.nl	nl	nl	\N
+2659	Ajaxshowtime.com	nl	nl	\N
+2660	Bloovi.be	nl	nl	\N
+2661	Newscientist.nl	nl	nl	\N
+2662	Thebruns.ca	ca	en	\N
+2663	Menafn.com	ca	en	\N
+2664	Kijkmagazine.nl	nl	nl	\N
+2665	Scientias.nl	nl	nl	\N
+2666	Benefitscanada.com	ca	en	\N
+2667	Lethbridgeherald.com	ca	en	\N
+2668	Labmanager.com	ca	en	\N
+2669	Surreynowleader.com	ca	en	\N
+2670	Nih.gov	ca	en	\N
+2671	Taz.de	de	de	\N
+2672	Mobiflip.de	de	de	\N
+2673	Donaukurier.de	de	de	\N
+2674	Www.pnp.de	de	de	\N
+2675	Efsyn.gr	gr	el	\N
+2676	Newpost.gr	gr	el	\N
+2677	Www.fnn.jp	jp	ja	\N
+2678	News24.jp	jp	ja	\N
+2679	De10.com.mx	mx	es	\N
+2680	Huffingtonpost.jp	jp	ja	\N
+2681	Teslamag.de	ch	de	\N
+2682	Israeldefense.co.il	il	he	\N
+2683	Aerotelegraph.com	ch	de	\N
+2684	Ecomento.de	ch	de	\N
+2685	Blogdoiphone.com	br	pt	\N
+2686	Acusticafm.com.br	br	pt	\N
+2687	Tecnoblog.net	br	pt	\N
+2688	Megafon-news.co.il	il	he	\N
+2689	Lebanon24.com	ae	en	\N
+2690	Mynetrehovot.co.il	il	he	\N
+2691	Mynetroshhaayin.co.il	il	he	\N
+2692	Mynetjerusalem.co.il	il	he	\N
+2693	Sondakika.com	tr	tr	\N
+2694	Hockeysverige.se	se	se	\N
+2695	Www.nwt.se	se	se	\N
+2696	Www.vt.se	se	se	\N
+2697	Bursadabugun.com	tr	tr	\N
+2698	Www.vf.se	se	se	\N
+2699	Autocar.co.nz	nz	en	\N
+2700	Gameconsole.co.nz	nz	en	\N
+2701	Sydostran.se	se	se	\N
+2702	Destructoid.com	nz	en	\N
+2703	Imore.com	in	hi	\N
+2704	Almalnews.com	eg	ar	\N
+2705	Albawabhnews.com	eg	ar	\N
+2706	Telecoms.com	in	hi	\N
+2707	Japantoday.com	ph	en	\N
+2708	Cbs17.com	ph	en	\N
+2709	Bigthink.com	ph	en	\N
+2710	Kitco.com	in	hi	\N
+2716	Healthline.com	ng	en	\N
+2717	Kccu.org	ng	en	\N
+2719	Instyle.com	ng	en	\N
+2724	Ginjfo.com	fr	fr	\N
+2725	Gameblog.fr	fr	fr	\N
+2726	Usinenouvelle.com	fr	fr	\N
+2727	Chip.pl	pl	pl	\N
+2728	Krosno24.pl	pl	pl	\N
+2729	Cyfrowa.rp.pl	pl	pl	\N
+2732	Geriatricarea.com	ar	es	\N
+2733	Codigonuevo.com	ar	es	\N
+2734	Ethnos.gr	gr	el	\N
+2735	Europost.gr	gr	el	\N
+2736	Neaselida.gr	gr	el	\N
+2737	Health24.com	za	en	\N
+2738	Dailymaverick.co.za	za	en	\N
+2739	Businesslive.co.za	za	en	\N
+2741	Businessinsider.co.za	za	en	\N
+2748	Mediadale.com	kr	ko	\N
+2751	Mediajeju.com	kr	ko	\N
+2754	Koreaittimes.com	kr	ko	\N
+2760	Medcom.id	id	id	\N
+2762	Kompas.id	id	id	\N
+2775	Vicnews.com	ca	en	\N
+2776	Taiwannews.com.tw	ca	en	\N
+2777	Citynews.ca	ca	en	\N
+2778	Steamboatpilot.com	ca	en	\N
+2781	Vetlandaposten.se	se	se	\N
+2785	Pcgameshardware.de	de	de	\N
+2786	Techbook.de	de	de	\N
+2787	Aastocks.com	hk	zh	\N
+3200	Ecoticias.com	cu	es	\N
+3201	Muycomputerpro.com	cu	es	\N
+3202	Marketingdirecto.com	cu	es	\N
+3203	Interempresas.net	cu	es	\N
+3204	Lainformacion.com	cu	es	\N
+3205	Actualidadmotor.com	cu	es	\N
+3216	Slate.fr	fr	fr	\N
+3217	Warhead.su	ru	ru	\N
+3218	Sm-news.ru	ru	ru	\N
+3219	Afc.com.au	au	en	\N
+3221	Mandatory.com	ca	en	\N
+3222	Etcanada.com	ca	en	\N
+3225	Toofab.com	ca	en	\N
+3226	Movieweb.com	ca	en	\N
+3227	Mdmag.com	sg	en	\N
+3230	Bmj.com	sg	en	\N
+3231	Tv20detroit.com	sg	en	\N
+3232	Whatsonweibo.com	sg	en	\N
+3233	Apple.com	ng	en	\N
+3234	Dailycriticism.com	ng	en	\N
+3236	Qz.com	ng	en	\N
+3237	Nairametrics.com	ng	en	\N
+3238	Spacemarketnow.com	ng	en	\N
+3239	Dailytrust.com.ng	ng	en	\N
+3240	Sunnewsonline.com	ng	en	\N
+3258	It-online.co.za	za	en	\N
+3262	Tanja24.com	ae	en	\N
+3264	Fanpiece.com	hk	zh	\N
+3272	Inews24.it	it	it	\N
+3275	Pensionplanpuppets.com	ca	en	\N
+3276	Leaderpost.com	ca	en	\N
+3277	Habseyesontheprize.com	ca	en	\N
+3278	Winnipegfreepress.com	ca	en	\N
+3279	Cinepremiere.com.mx	mx	es	\N
+3281	Wenweipo.com	hk	zh	\N
+3284	Em.com.br	br	pt	\N
+3285	Cidadeverde.com	br	pt	\N
+3286	Newsler.ru	ru	ru	\N
+3287	Popcornnews.ru	ru	ru	\N
+3289	Economic.bg	bg	bg	\N
+3292	Verdesmares.com.br	br	pt	\N
+3293	Clickpetroleoegas.com.br	br	pt	\N
+3301	Nasaspaceflight.com	ng	en	\N
+3304	Scitation.org	ng	en	\N
+3305	Millenniumpost.in	in	hi	\N
+3306	Oketekno.com	id	id	\N
+3307	Gatra.com	id	id	\N
+3311	12termann.at	at	de	\N
+3313	Funweek.it	it	it	\N
+3315	Ilgiornaledivicenza.it	it	it	\N
+3317	Giornaledibrescia.it	it	it	\N
+3319	Greenme.it	it	it	\N
+3320	Www.r3m.it	it	it	\N
+3321	Parool.nl	nl	nl	\N
+3324	Svetapple.sk	sk	sk	\N
+3327	Animenewsnetwork.com	sg	en	\N
+3328	Blikk.hu	hu	hu	\N
+3333	Autotriti.gr	gr	el	\N
+3336	Taxheaven.gr	gr	el	\N
+3338	Hipwee.com	id	id	\N
+3342	Huanqiu.com	cn	zh	\N
+3346	Traveller.com.au	au	en	\N
+3347	Reneweconomy.com.au	au	en	\N
+3357	Elnabaa.net	eg	ar	\N
+3362	Klix.ba	rs	sr	\N
+3365	Thehansindia.com	in	hi	\N
+3367	Toyokeizai.net	jp	ja	\N
+3368	Appmedia.jp	jp	ja	\N
+3369	Appbank.net	jp	ja	\N
+3370	Evolves.biz	jp	ja	\N
+3372	Finanse.wp.pl	pl	pl	\N
+3373	Pomorska.pl	pl	pl	\N
+3374	Fxmag.pl	pl	pl	\N
+3375	Nowiny24.pl	pl	pl	\N
+3379	Codigotlaxcala.com	mx	es	\N
+3380	Eldiariodecoahuila.com.mx	mx	es	\N
+3391	Babnet.net	ae	en	\N
+3392	Letudiant.fr	fr	fr	\N
+3396	Falasimoesfilho.com.br	br	pt	\N
+3397	Jornaldooeste.com.br	br	pt	\N
+3398	Meionorte.com	br	pt	\N
+3399	Simoesfilhoonline.com.br	br	pt	\N
+3400	Atribuna.com.br	br	pt	\N
+3402	Spaziowrestling.it	it	it	\N
+3403	Shareinfo.pl	pl	pl	\N
+3404	Limanowa.in	pl	pl	\N
+3405	Pch24.pl	pl	pl	\N
+3415	Respublika.lt	lt	lt	\N
+3420	Kutv.com	sa	ar	\N
+3421	Fox11online.com	sa	ar	\N
+3422	Wlwt.com	sa	ar	\N
+3423	Vetogate.com	eg	ar	\N
+3429	Notiziescientifiche.it	it	it	\N
+3430	Polito.it	it	it	\N
+3431	Ilgiorno.it	it	it	\N
+3432	Libreriamo.it	it	it	\N
+3442	Techspot.com	us	en	\N
+3443	Interest.co.nz	nz	en	\N
+3447	Hollywoodreporter.com	us	en	\N
+3448	Theblast.com	us	en	\N
+3452	Popbee.com	hk	zh	\N
+3454	Ziarulnational.md	ro	ro	\N
+3456	Ecr.co.za	za	en	\N
+3459	News.ngs.ru	ru	ru	\N
+3460	Echo.msk.ru	ru	ru	\N
+3461	Eurosport.ru	ru	ru	\N
+3462	Regnum.ru	ru	ru	\N
+3463	Mojok.co	id	id	\N
+3470	Swedroid.se	se	se	\N
+3471	Mestmotor.se	se	se	\N
+3569	Am730.com.hk	hk	zh	\N
+3571	Autoreview.ru	ru	ru	\N
+2711	1istochnik.ru	ru	ru	\N
+2712	Vokrug.tv	ru	ru	\N
+2713	Ura.news	ru	ru	\N
+2714	Amur.info	ru	ru	\N
+2715	Rappler.com	ph	en	\N
+2718	Patentlyapple.com	ph	en	\N
+2720	Unaids.org	ph	en	\N
+2721	Manilastandard.net	ph	en	\N
+2722	Nogomania.com	si	sl	\N
+2723	Prlekija-on.net	si	sl	\N
+2730	Polsatnews.pl	pl	pl	\N
+2731	Fakt.pl	pl	pl	\N
+2740	Htxt.co.za	za	en	\N
+2742	Uploadvr.com	za	en	\N
+2743	Realhomes.com	za	en	\N
+2744	Lavoixdunord.fr	be	nl	\N
+2745	Lachainemeteo.com	be	nl	\N
+2746	Www.geo.fr	be	nl	\N
+2747	Cieletespace.fr	be	nl	\N
+2749	Macworld.idg.se	se	se	\N
+2750	Www.fz.se	se	se	\N
+2752	Breakit.se	se	se	\N
+2753	Sweclockers.com	se	se	\N
+2755	M3.idg.se	se	se	\N
+2756	Pcforalla.idg.se	se	se	\N
+2757	Digital.di.se	se	se	\N
+2758	Computersweden.idg.se	se	se	\N
+2759	Techworld.idg.se	se	se	\N
+2761	Kronehit.at	at	de	\N
+2763	Meinbezirk.at	at	de	\N
+2764	Film-tv.at	at	de	\N
+2765	Indicator.ru	ru	ru	\N
+2766	Tvzvezda.ru	ru	ru	\N
+2767	42.tut.by	ru	ru	\N
+2768	In-space.ru	ru	ru	\N
+2769	Popmech.ru	ru	ru	\N
+2770	Saocarlosagora.com.br	br	pt	\N
+2771	Emtempo.com.br	br	pt	\N
+2772	Bahianoar.com	br	pt	\N
+2773	Toledonews.com.br	br	pt	\N
+2774	Falauniversidades.com.br	br	pt	\N
+2779	Nmas1.org	cu	es	\N
+2780	Voxy.co.nz	nz	en	\N
+2782	Sakshi.com	in	hi	\N
+2783	Perfdrive.com	in	hi	\N
+2784	Cinemablend.com	my	ms	\N
+2788	Bjnews.com.cn	cn	zh	\N
+2789	Cnstock.com	cn	zh	\N
+2790	Edunews.net.cn	cn	zh	\N
+2791	Qstheory.cn	cn	zh	\N
+2792	Tech.ce.cn	cn	zh	\N
+2793	Theweathernetwork.com	ca	en	\N
+2794	Americatv.com.pe	co	es	\N
+2795	Theargus.co.uk	gb	en	\N
+2796	Golsmedia.com	co	es	\N
+2797	Pasionaguila.com	mx	es	\N
+2798	Imagenzac.com.mx	mx	es	\N
+2799	Rocketnews24.com	jp	ja	\N
+2800	Elimparcial.com	mx	es	\N
+2801	Topics.or.jp	jp	ja	\N
+2802	Cyzowoman.com	jp	ja	\N
+2803	Metrotime.be	nl	nl	\N
+2804	Groentennieuws.nl	nl	nl	\N
+2805	Elfagr.com	eg	ar	\N
+2806	Filgoal.com	eg	ar	\N
+2807	Solopos.com	id	id	\N
+2808	Itnewsonline.com	nz	en	\N
+2809	Reqnews.com	id	id	\N
+2810	Bustle.com	ng	en	\N
+2811	Indotelko.com	id	id	\N
+2812	Www.atv.pe	mx	es	\N
+2813	Elmercurio.com.mx	mx	es	\N
+2814	Telemundo51.com	mx	es	\N
+2815	Abcnoticias.mx	mx	es	\N
+2816	Elvigia.net	mx	es	\N
+2817	Stuff.co.za	za	en	\N
+2818	Wradio.com.co	co	es	\N
+2819	Wfxl.com	za	en	\N
+2820	Show.news	co	es	\N
+2821	Protagonista.com.co	co	es	\N
+2822	Wrestling-infos.de	de	de	\N
+2823	Op-online.de	de	de	\N
+2824	Bestcarweb.jp	jp	ja	\N
+2825	Aviationwire.jp	jp	ja	\N
+2826	Businessinsider.in	in	hi	\N
+2827	Newsweekjapan.jp	jp	ja	\N
+2828	Prtimes.jp	jp	ja	\N
+2829	Kocpc.com.tw	tw	zh	\N
+2830	Lameuse.be	be	nl	\N
+3206	Cbsaustin.com	us	en	\N
+3207	Wqow.com	us	en	\N
+3208	Mysuncoast.com	us	en	\N
+3209	Rawstory.com	us	en	\N
+3210	Webmd.com	us	en	\N
+3211	Channel3000.com	us	en	\N
+3212	Q13fox.com	us	en	\N
+3213	Diariouno.com.ar	ar	es	\N
+3214	Www.tek.no	no	no	\N
+3215	Moss-avis.no	no	no	\N
+3220	9to5mac.com	gb	en	\N
+3223	Videogameschronicle.com	gb	en	\N
+3224	Wccftech.com	gb	en	\N
+3228	Israelnoticias.com	mx	es	\N
+3229	Eladelantado.com	mx	es	\N
+3235	Motorsactu.com	be	nl	\N
+3241	Lineadirectaportal.com	mx	es	\N
+3242	Info7.mx	mx	es	\N
+3243	Revistaclase.mx	mx	es	\N
+3244	Sinembargo.mx	mx	es	\N
+3245	Esto.com.mx	mx	es	\N
+3246	Clubz.bg	bg	bg	\N
+3247	Agenciaaids.com.br	pt	pt	\N
+3248	Radioprogresso.com.br	pt	pt	\N
+3249	Paranashop.com.br	pt	pt	\N
+3250	Portalfalanordeste.com	pt	pt	\N
+3251	Folhadecianorte.com	pt	pt	\N
+3252	Novavenezaonline.com.br	pt	pt	\N
+3253	Saojoaquimonline.com.br	pt	pt	\N
+3254	Ricmais.com.br	pt	pt	\N
+3255	Infonet.com.br	pt	pt	\N
+3256	Jornalmedico.pt	pt	pt	\N
+3257	Folhabv.com.br	pt	pt	\N
+3259	Seudinheiro.com	br	pt	\N
+3260	Aeroflap.com.br	br	pt	\N
+3261	Gadget.co.za	za	en	\N
+3263	Monvicto.com	ma	fr	\N
+3265	Fm104.ie	ie	en	\N
+3266	Gentside.co.uk	ie	en	\N
+3267	Filmtotaal.nl	nl	nl	\N
+3268	Rijnmond.nl	nl	nl	\N
+3269	1limburg.nl	nl	nl	\N
+3270	Nporadio1.nl	nl	nl	\N
+3271	Lesinrocks.com	fr	fr	\N
+3273	Lyonmag.com	fr	fr	\N
+3274	Nextplz.fr	fr	fr	\N
+3280	Ntdtv.com.tw	tw	zh	\N
+3282	Cm-tv.pt	pt	pt	\N
+3283	Esquire.com	co	es	\N
+3288	Bladi.net	be	nl	\N
+3290	Prensa.com	mx	es	\N
+3291	Mamamia.com.au	au	en	\N
+3294	Juritravail.com	ma	fr	\N
+3295	Latina.fr	ma	fr	\N
+3296	Santemagazine.fr	ma	fr	\N
+3297	Www.jim.fr	ma	fr	\N
+3298	Mcgill.ca	ma	fr	\N
+3774	Diarioregistrado.com	ar	es	\N
+3775	Webcafe.bg	bg	bg	\N
+3776	Infocielo.com	ar	es	\N
+3777	Nezavisne.com	rs	sr	\N
+3778	Extradienst.at	at	de	\N
+3779	Horizont.at	at	de	\N
+3780	Noi.md	ro	ro	\N
+3781	Xatakamovil.com	cu	es	\N
+3782	Adslzone.net	cu	es	\N
+3783	Xatakandroid.com	cu	es	\N
+3784	Capital.bg	bg	bg	\N
+3785	Playground.ru	ru	ru	\N
+3786	Gq.com	us	en	\N
+3787	Straight.com	ca	en	\N
+3788	Highsnobiety.com	ie	en	\N
+3789	Wellandgood.com	ie	en	\N
+3790	Lopezdoriga.com	mx	es	\N
+3791	Lasestrellas.tv	mx	es	\N
+3792	Fosonline.gr	gr	el	\N
+3793	Elsob7.news	ae	en	\N
+3794	Mojaolesnica.pl	pl	pl	\N
+3795	Wysokieobcasy.pl	pl	pl	\N
+3796	Fox5vegas.com	ph	en	\N
+3797	Oilcity.news	ph	en	\N
+3798	Popsugar.com	ph	en	\N
+3799	Collider.com	sa	ar	\N
+3800	Ameba.jp	jp	ja	\N
+3801	Animatetimes.com	jp	ja	\N
+3802	Theriver.jp	jp	ja	\N
+3803	Sakigake.jp	jp	ja	\N
+3804	News-postseven.com	jp	ja	\N
+3805	Sportske.net	rs	sr	\N
+3806	Tirto.id	id	id	\N
+3807	Avclub.com	us	en	\N
+3808	Dailywire.com	us	en	\N
+3809	Orissapost.com	in	hi	\N
+3810	Www.cw.no	no	no	\N
+3811	Inosmi.ru	ru	ru	\N
+3812	Iguides.ru	ru	ru	\N
+3813	Rosbalt.ru	ru	ru	\N
+3814	Kslsports.com	ng	en	\N
+3815	Mynorthbaynow.com	ng	en	\N
+3816	Football-talk.co.uk	ng	en	\N
+3817	Boxingnews.jp	jp	ja	\N
+3818	Cryptonews.com	be	nl	\N
+3819	Tomsguide.com	us	en	\N
+3820	Leak.pt	pt	pt	\N
+3821	Ndmais.com.br	br	pt	\N
+3822	Costanorte.com.br	br	pt	\N
+3823	Noticiasaominuto.com.br	br	pt	\N
+3824	Pelomundodf.com.br	br	pt	\N
+3825	Minhaoperadora.com.br	br	pt	\N
+3826	Gds.it	it	it	\N
+3827	Castedduonline.it	it	it	\N
+3828	Affaritaliani.it	it	it	\N
+3829	Vanityfair.it	it	it	\N
+3830	Baritoday.it	it	it	\N
+3831	Basket.lv	lv	lv	\N
+3832	Elfinancierocr.com	cu	es	\N
+3833	Welingelichtekringen.nl	nl	nl	\N
+3834	Wgbctv.com	ie	en	\N
+3835	Mindbodygreen.com	ie	en	\N
+3836	Finance.ce.cn	cn	zh	\N
+3837	Lalaziosiamonoi.it	it	it	\N
+3838	Forzaroma.info	it	it	\N
+3839	Delmagyar.hu	hu	hu	\N
+3840	Androgeek.hu	hu	hu	\N
+3841	Haon.hu	hu	hu	\N
+3842	Wetteronline.de	de	de	\N
+3843	Wochenblatt.cc	de	de	\N
+3844	Novsport.com	bg	bg	\N
+3845	Clubs1.bg	bg	bg	\N
+3875	Tradewindsnews.com	sg	en	\N
+3876	Stockdailydish.com	sg	en	\N
+3877	Guernseypress.com	sg	en	\N
+3878	Mic.com	sg	en	\N
+3879	Impact.ro	ro	ro	\N
+3880	Gamepro.de	de	de	\N
+3881	Diarioinformacion.com	ve	es	\N
+3882	Muyinteresante.com.mx	ve	es	\N
+3883	Financialafrik.com	ma	fr	\N
+3884	Almayadeen.net	eg	ar	\N
+3885	Nrttv.com	eg	ar	\N
+3886	Samanews.ps	eg	ar	\N
+3887	Jawharafm.net	eg	ar	\N
+3888	Elbilad.net	eg	ar	\N
+3889	Subotica.com	rs	sr	\N
+3890	Krinitrikalon.gr	gr	el	\N
+3891	Zurnal.rs	rs	sr	\N
+3892	Omonoianews.com	gr	el	\N
+3893	Theinquirer.net	sg	en	\N
+3894	Shopback.sg	sg	en	\N
+3895	Www.vn.se	se	se	\N
+3896	Hbvl.be	nl	nl	\N
+3897	Forsal.pl	pl	pl	\N
+3898	Eurohoops.net	gr	el	\N
+3899	Contextotucuman.com	co	es	\N
+3900	Caffeinamagazine.it	it	it	\N
+3901	Newsarama.com	my	ms	\N
+3902	Controcopertina.com	it	it	\N
+3903	Wjsu.org	ng	en	\N
+3904	Rhyljournal.co.uk	ng	en	\N
+3905	Tribune.com.pk	ng	en	\N
+3906	Antiguaobserver.com	ng	en	\N
+3907	Theguardian.comworld	ng	en	\N
+3908	Leoforos.gr	gr	el	\N
+3909	Ofeminin.pl	pl	pl	\N
+3910	Upgo.news	it	it	\N
+3911	Optimagazine.com	it	it	\N
+3912	Yorkshireeveningpost.co.uk	ie	en	\N
+3913	Devdiscourse.com	in	hi	\N
+3914	Indiaeducationdiary.in	in	hi	\N
+3915	Ibtimes.co.in	in	hi	\N
+3916	Cgtn.com	in	hi	\N
+3917	Eloutput.com	ve	es	\N
+3918	Panarmenian.net	nz	en	\N
+3919	Antyradio.pl	pl	pl	\N
+3920	Glamrap.pl	pl	pl	\N
+3921	Disco-polo.info	pl	pl	\N
+3922	Pentapostagma.gr	gr	el	\N
+3923	Fun.hsw.cn	cn	zh	\N
+3924	Marketresearchbase.com	nz	en	\N
+3925	Maligue2.fr	fr	fr	\N
+3926	Kupi.cz	cz	cs	\N
+3927	Oenergetice.cz	cz	cs	\N
+3928	Zdopravy.cz	cz	cs	\N
+3929	Smallcaps.com.au	au	en	\N
+3930	Mixvale.com.br	pt	pt	\N
+3931	Fotografidigitali.it	it	it	\N
+3932	Mg.gov.br	pt	pt	\N
+3933	Quifinanza.it	it	it	\N
+3934	Selecoes.com.br	pt	pt	\N
+3935	Lancenoticias.com.br	pt	pt	\N
+3936	Recordeuropa.com	pt	pt	\N
+3937	Portaldacidade.com	pt	pt	\N
+3938	Ilcittadinomb.it	it	it	\N
+3939	Studiocataldi.it	it	it	\N
+3940	Destakjornal.com.br	pt	pt	\N
+3941	Lametino.it	it	it	\N
+3942	Msnoticias.com.br	pt	pt	\N
+3943	Ilgazzettino.it	it	it	\N
+3944	Jmonline.com.br	pt	pt	\N
+3945	Lanuovasardegna.it	it	it	\N
+3946	Revistanews.com.br	pt	pt	\N
+3947	Chromeunboxed.com	nz	en	\N
+3948	News.hsw.cn	cn	zh	\N
+3955	Tonica.la	cu	es	\N
+3957	Asere.com	cu	es	\N
+3958	Caras.com.mx	cu	es	\N
+3959	Vogue.mx	cu	es	\N
+3960	Objectifgard.com	be	nl	\N
+3961	Ledevoir.com	be	nl	\N
+3962	Ilsecoloxix.it	it	it	\N
+3963	Espn.com.au	au	en	\N
+3964	Fxmag.com	cu	es	\N
+3965	Autocosmos.com.ar	cu	es	\N
+3966	Radiolaprimerisima.com	cu	es	\N
+3967	Politicalanalysis.co.za	za	en	\N
+3973	Sciencecue.it	it	it	\N
+3974	Catanzaroinforma.it	it	it	\N
+3975	Direttagoal.it	it	it	\N
+3976	Meteogiornale.it	it	it	\N
+3977	Settimanasport.com	it	it	\N
+3978	Beppegrillo.it	it	it	\N
+3981	Laprensademonclova.com	mx	es	\N
+3982	Viaatv.tv	ma	fr	\N
+3985	Doctissimo.fr	ma	fr	\N
+3987	Zaikei.co.jp	jp	ja	\N
+3988	Elsol.com.ar	ar	es	\N
+3990	Giessener-allgemeine.de	de	de	\N
+3992	Chiemgau24.de	de	de	\N
+3993	Heraldplanet.com	sg	en	\N
+3994	Newsbtc.com	ng	en	\N
+3995	Lonestar-chronicle.com	ng	en	\N
+3996	News.bnt.bg	bg	bg	\N
+3998	Fortressofsolitude.co.za	za	en	\N
+3999	Robbreport.com	za	en	\N
+4000	Autoblog.comhttps	za	en	\N
+4001	Nouvelobs.com	be	nl	\N
+4002	Thecointribune.com	be	nl	\N
+4008	Cefalunews.org	it	it	\N
+4009	Youmovies.it	it	it	\N
+4010	Phonetoday.it	it	it	\N
+4011	Romatoday.it	it	it	\N
+4012	Targatocn.it	it	it	\N
+4015	Eurasiareview.com	ph	en	\N
+4016	Webbyfeed.com	ph	en	\N
+4017	Investrecords.com	ph	en	\N
+4018	Infostreetwire.com	ph	en	\N
+4019	Matamata.com	id	id	\N
+4022	Sport.sky.it	it	it	\N
+4023	Calcionapoli24.it	it	it	\N
+4024	Mondoudinese.it	it	it	\N
+4025	Juvenews.eu	it	it	\N
+4026	Pianetalecce.it	it	it	\N
+4028	Newsroompost.com	in	hi	\N
+4029	Newindianexpress.com	in	hi	\N
+4030	Dailyexcelsior.com	in	hi	\N
+4033	Whathifi.com	ca	en	\N
+4034	Morningpicker.com	ca	en	\N
+4035	Kaltengpos.co	id	id	\N
+4036	Beritasatu.com	id	id	\N
+4037	Radardepok.com	id	id	\N
+4038	Foxsports.com.mx	br	pt	\N
+4040	Mein-mmo.de	de	de	\N
+4042	Noizz.rs	rs	sr	\N
+4043	Stade-rennais-online.com	fr	fr	\N
+4045	Akhbaralaan.net	eg	ar	\N
+4047	Esporteinterativo.com.br	br	pt	\N
+4050	Ugpressa.ru	ru	ru	\N
+4053	Behindpress.com	kr	ko	\N
+4054	Inceptivemind.com	ph	en	\N
+4055	Revistaforum.com.br	br	pt	\N
+4056	Corowafreepress.com.au	au	en	\N
+4057	Elnacional.cat	mx	es	\N
+4058	Meteored.com.ar	mx	es	\N
+4059	1informer.com	ru	ru	\N
+4060	Computerra.ru	ru	ru	\N
+4061	Www.nw.de	de	de	\N
+4063	Btc-echo.de	de	de	\N
+4064	Elsalvador.com	ve	es	\N
+4066	Aljaras.com	eg	ar	\N
+4068	Thetopflight.com	sg	en	\N
+4069	Besoccer.com	sg	en	\N
+4070	Siasat.com	ph	en	\N
+4071	Nation.co.ke	ph	en	\N
+4072	Oncozine.com	ph	en	\N
+4074	Mui.today	co	es	\N
+4077	Vipsg.fr	fr	fr	\N
+4078	Ntd.com	ca	en	\N
+4079	Nordbayern.de	de	de	\N
+4080	Yourtango.com	sa	ar	\N
+4082	Scoopwhoop.com	in	hi	\N
+4083	Ecoportal.net	cu	es	\N
+4085	Pijamasurf.com	cu	es	\N
+4086	Expreso.ec	cu	es	\N
+4087	Alnas.fr	ma	fr	\N
+4089	Dailysecu.com	kr	ko	\N
+4091	Aargauerzeitung.ch	ch	de	\N
+4092	Antena3.com	ve	es	\N
+4098	Vg247.com	za	en	\N
+4101	Gadgetlab.ro	ro	ro	\N
+4104	Logout.hu	hu	hu	\N
+4105	Pcguru.hu	hu	hu	\N
+4108	Junkee.com	au	en	\N
+4110	Nanaimobulletin.com	sg	en	\N
+4112	Mobiltelefon.ru	ru	ru	\N
+4113	Delfi.ee	ru	ru	\N
+4114	Inquisitr.com	za	en	\N
+4118	Fighttime.ru	ru	ru	\N
+4119	Moe-online.ru	ru	ru	\N
+4120	Telebasel.ch	ch	de	\N
+4121	Computerwelt.at	ch	de	\N
+4126	News1.co.il	il	he	\N
+4131	Festileaks.com	nl	nl	\N
+4135	Replay.lsm.lv	lv	lv	\N
+4140	Mmnews.de	de	de	\N
+4141	Cryptomonday.de	de	de	\N
+4142	Www.waz.de	de	de	\N
+4143	Androidayuda.com	cu	es	\N
+4144	Aciprensa.com	cu	es	\N
+4147	Fox6now.com	us	en	\N
+4151	Spotboye.com	in	hi	\N
+4152	Scroll.in	in	hi	\N
+4161	Infos-israel.news	ma	fr	\N
+4162	Winnetnews.com	id	id	\N
+4163	Maclife.de	de	de	\N
+4169	Vistazo.com	cu	es	\N
+4170	Bebesymas.com	cu	es	\N
+4171	Gestion.pe	cu	es	\N
+4172	Infofueguina.com	cu	es	\N
+4173	Lasexta.com	cu	es	\N
+4175	Direcaoconcursos.com.br	br	pt	\N
+4176	Expressodasilhas.cv	br	pt	\N
+4177	Opopular.com.br	br	pt	\N
+4178	Kwwl.com	us	en	\N
+4180	Rosario3.com	ar	es	\N
+4181	Polsatsport.pl	pl	pl	\N
+4182	Polskikosz.pl	pl	pl	\N
+4189	Adnblanco.com	cu	es	\N
+4190	Palco23.com	cu	es	\N
+4194	Catch-newz.com	be	nl	\N
+4196	Corkbeo.ie	ie	en	\N
+4197	Zerotackle.com	nz	en	\N
+4198	Cmjornal.pt	pt	pt	\N
+4199	Viniciusteixeiracomunicador.com	pt	pt	\N
+4200	Ch10.co.il	il	he	\N
+4202	Nzzas.nzz.ch	at	de	\N
+4203	Premium.gsp.ro	ro	ro	\N
+4205	Dallasnews.com	us	en	\N
+3949	Offsite.com.cy	gr	el	\N
+3950	Wrestling.pt	pt	pt	\N
+3951	Tasnimnews.com	sg	en	\N
+3952	China.com.cn	cn	zh	\N
+3953	21cn.com	cn	zh	\N
+3954	Ynxxb.com	cn	zh	\N
+3956	Mb.com.ph	ph	en	\N
+3968	Timesnownews.com	in	hi	\N
+3969	Dqindia.com	in	hi	\N
+3970	Swarajyamag.com	in	hi	\N
+3971	Muycomputer.com	cu	es	\N
+3972	Profesionalreview.com	cu	es	\N
+3979	Www.rb.no	no	no	\N
+3980	Www.t-a.no	no	no	\N
+3983	Inside-digital.de	de	de	\N
+3984	Googlewatchblog.de	de	de	\N
+3986	Magicmaman.com	fr	fr	\N
+3989	Xm.gov.cn	cn	zh	\N
+3991	Www.bgr.in	in	hi	\N
+3997	Pcmag.com	au	en	\N
+4003	Dailytimes.com.pk	sg	en	\N
+4004	Digitaljournal.com	sg	en	\N
+4005	Wprl.org	sg	en	\N
+4006	Cryptoslate.com	ph	en	\N
+4007	Maritime-executive.com	ph	en	\N
+4013	Centrepresseaveyron.fr	fr	fr	\N
+4014	Lexpress.mu	fr	fr	\N
+4020	Dailystockdish.com	au	en	\N
+4021	Prothomalo.com	au	en	\N
+4027	Mspoweruser.com	ie	en	\N
+4031	Auto.ru	ru	ru	\N
+4032	Eurozpravy.cz	cz	cs	\N
+4039	Guineefoot.info	ma	fr	\N
+4041	Techwok.hu	hu	hu	\N
+4044	Bzbasel.ch	ch	de	\N
+4046	Thedailybeast.com	sa	ar	\N
+4048	Prowrestlingsheet.com	sa	ar	\N
+4049	Ketv.com	sa	ar	\N
+4051	Multimedios.com	mx	es	\N
+4052	Regeneracion.mx	mx	es	\N
+4062	Gulftoday.ae	au	en	\N
+4065	Cinemascomics.com	ar	es	\N
+4067	Kcra.com	us	en	\N
+4073	Hockeybladet.nu	se	se	\N
+4075	Luzernerzeitung.ch	ch	de	\N
+4076	Healthwriteups.com	ph	en	\N
+4081	Guinee7.com	ma	fr	\N
+4084	Vemba.com	pl	pl	\N
+4088	Acordacidade.com.br	br	pt	\N
+4090	Centrumher.eu	sk	sk	\N
+4093	Bilkulonline.com	sg	en	\N
+4094	Bignewsnetwork.com	sg	en	\N
+4095	Onegreenplanet.org	sg	en	\N
+4096	Nasdaq.com	sg	en	\N
+4097	Arkansasonline.com	sg	en	\N
+4099	Runnersworld.com	mx	es	\N
+4100	Lavozdelafrontera.com.mx	mx	es	\N
+4102	Csillagaszat.hu	hu	hu	\N
+4103	Marieclaire.com.tw	tw	zh	\N
+4106	Gentosha-go.com	jp	ja	\N
+4107	Bitcoinmagazine.com	ng	en	\N
+4109	Dailypost.co.uk	ca	en	\N
+4111	Daijiworld.com	ca	en	\N
+4115	Imirante.com	br	pt	\N
+4116	Portalpopline.com.br	br	pt	\N
+4117	Courant.com	ng	en	\N
+4122	Gtplanet.net	sg	en	\N
+4123	Conjur.com.br	br	pt	\N
+4124	Wareable.com	au	en	\N
+4125	Androidplanet.nl	nl	nl	\N
+4127	Androidworld.nl	nl	nl	\N
+4128	Want.nl	nl	nl	\N
+4129	Newsbit.nl	nl	nl	\N
+4130	N1bahia.com.br	br	pt	\N
+4132	Portaldobitcoin.com	br	pt	\N
+4133	Criptonizando.com	pt	pt	\N
+4134	Autoportal.iol.pt	pt	pt	\N
+4136	Upmedia.mg	tw	zh	\N
+4137	4gamers.com.tw	tw	zh	\N
+4138	Ctee.com.tw	tw	zh	\N
+4139	Cts.com.tw	tw	zh	\N
+4145	Cio.co.nz	nz	en	\N
+4146	Bizedge.co.nz	nz	en	\N
+4148	Trib.com	ie	en	\N
+4149	Spacepolicyonline.com	ie	en	\N
+4150	Automanas.lt	lt	lt	\N
+4153	Zimeye.net	za	en	\N
+4154	Insideracing.com	za	en	\N
+4155	Thedigitalwise.com	sa	ar	\N
+4156	Guinnessworldrecords.com	sa	ar	\N
+4157	Fox5sandiego.com	sa	ar	\N
+4158	Wsaz.com	sa	ar	\N
+4159	Mundodeportivo.com	cu	es	\N
+4160	Voanoticias.com	cu	es	\N
+4164	Instalki.pl	pl	pl	\N
+4165	Bithub.pl	pl	pl	\N
+4166	Vaterland.li	at	de	\N
+4167	Stormbringer.at	at	de	\N
+4168	Epaper.vn.at	at	de	\N
+4174	Fxempire.com	ph	en	\N
+4179	Alkas.lt	lt	lt	\N
+4183	Studyinternational.com	ca	en	\N
+4184	Thedailyherald.sx	ca	en	\N
+4185	Thelancet.com	ca	en	\N
+4186	Bombalatimes.com.au	ca	en	\N
+4187	News957.com	ca	en	\N
+4188	Sheknows.com	ca	en	\N
+4191	Medicaldaily.com	ph	en	\N
+4192	One31.net	th	th	\N
+4193	Prdnorth.in.th	th	th	\N
+4195	Tbrfootball.com	ng	en	\N
+4201	Noe.orf.at	at	de	\N
+4204	Gizchina.cz	cz	cs	\N
+4206	Svet.sme.sk	sk	sk	\N
+4207	Yve.ro	ro	ro	\N
+4208	Profm.ro	ro	ro	\N
+4209	Serietotaal.nl	nl	nl	\N
+4210	Themoscowtimes.com	nz	en	\N
+4211	Graziame.com	nz	en	\N
+4212	Torinotoday.it	it	it	\N
+4213	Violanews.com	it	it	\N
+4214	Elcordillerano.com.ar	ve	es	\N
+4215	Efotbal.cz	cz	cs	\N
+4216	Rbnett.no	no	no	\N
+4217	Deutschlandfunkkultur.de	de	de	\N
+4218	Thequint.com	in	hi	\N
+4219	Idiva.com	in	hi	\N
+4220	Jantakareporter.com	in	hi	\N
+4221	Noviny.sk	sk	sk	\N
+4222	Popculture.com	us	en	\N
+4223	Dotekomanie.cz	cz	cs	\N
+4224	Freshplaza.it	it	it	\N
+4225	Calcionow.it	it	it	\N
+4226	Vistanet.it	it	it	\N
+4227	Biomedicalcue.it	it	it	\N
+4228	Meteoweb.eu	it	it	\N
+4229	Assocarenews.it	it	it	\N
+4230	Lacapital.com.ar	ar	es	\N
+4231	Metro.pr	ar	es	\N
+4232	Gesundheit-adhoc.de	at	de	\N
+4233	Televizier.nl	nl	nl	\N
+4234	Labnews.co.uk	ph	en	\N
+4235	Geek.com	ph	en	\N
+4236	Sciencemarketnews.com	ph	en	\N
+4237	Finanzas.com	ar	es	\N
+4238	Losandes.com.ar	ar	es	\N
+4239	Slovaknhl.sk	sk	sk	\N
+4240	Mlive.com	sa	ar	\N
+4241	Cincyjungle.com	sa	ar	\N
+4245	Chouftv.ma	eg	ar	\N
+4246	Elwatan.com	be	nl	\N
+4249	Iphoneitalia.com	it	it	\N
+4250	Ozap.com	fr	fr	\N
+4253	Drive.com.au	au	en	\N
+4254	Madata.gr	gr	el	\N
+4257	Cruiseindustrynews.com	nz	en	\N
+4259	Www.bzi.ro	ro	ro	\N
+4260	Drivingeco.com	cu	es	\N
+4261	Topesdegama.com	cu	es	\N
+4262	Loff.it	cu	es	\N
+4263	Travel2latam.com	cu	es	\N
+4264	Tribunasalamanca.com	cu	es	\N
+4265	Turkeyalaan.net	eg	ar	\N
+4266	Raialyoum.com	eg	ar	\N
+4268	Newspim.com	kr	ko	\N
+4269	Paraeles.pt	pt	pt	\N
+4270	Expreso.press	mx	es	\N
+4271	Lajornadamaya.mx	mx	es	\N
+4272	Telemetro.com	mx	es	\N
+4273	Pianetadonne.blog	it	it	\N
+4274	Belfasttelegraph.co.uk	za	en	\N
+4275	Girondins4ever.com	fr	fr	\N
+4276	Lfpress.com	ca	en	\N
+4277	Indystar.com	sa	ar	\N
+4278	Goodmorningamerica.com	sa	ar	\N
+4279	Ghanaweb.com	sa	ar	\N
+4280	Fiercepharma.com	sa	ar	\N
+4281	Gn-online.de	at	de	\N
+4282	Defatoonline.com.br	br	pt	\N
+4283	Tribunadonorte.com.br	br	pt	\N
+4284	Panditfootball.com	id	id	\N
+4285	Dcfever.com	hk	zh	\N
+4286	Coritiba.com.br	br	pt	\N
+4287	Riftherald.com	gb	en	\N
+4288	Epoznan.pl	pl	pl	\N
+4289	Kanald.ro	ro	ro	\N
+4290	Searchenginejournal.com	my	ms	\N
+4291	Thecentersquare.com	my	ms	\N
+4292	90minutos.co	co	es	\N
+4293	Oxigeno.fm	co	es	\N
+4294	Popbela.com	id	id	\N
+4295	Ohmynews.com	kr	ko	\N
+4296	Lawtalk.co.kr	kr	ko	\N
+4297	Finnewsnetwork.com.au	ph	en	\N
+4298	Telehit.com	mx	es	\N
+4299	Lifehacker.jp	jp	ja	\N
+4300	Zestadionu.pl	pl	pl	\N
+4301	Veol.hu	hu	hu	\N
+4302	Ranablad.no	no	no	\N
+4303	Bohemia.cu	cu	es	\N
+4304	Lademajagua.cu	cu	es	\N
+4305	Cuba.cu	cu	es	\N
+4306	Vtv.gob.ve	ve	es	\N
+4307	Entrelineas.com.mx	ve	es	\N
+4308	Limerickleader.ie	ie	en	\N
+4309	Eurovision-austria.com	at	de	\N
+4310	Belbalady.net	ae	en	\N
+4311	Saadaonline.net	ae	en	\N
+4313	Diez.hn	cu	es	\N
+4314	Cocinavital.mx	cu	es	\N
+4315	Radioangulo.cu	cu	es	\N
+4316	Diariomedico.com	cu	es	\N
+4317	Psychiatryadvisor.com	ph	en	\N
+4318	Wboy.com	ph	en	\N
+4319	Vogue.com	ph	en	\N
+4323	Gamekings.tv	nl	nl	\N
+4324	Computertotaal.nl	nl	nl	\N
+4325	Totaaltv.nl	nl	nl	\N
+4327	Notizie.it	it	it	\N
+4328	Palermotoday.it	it	it	\N
+4329	Tv-asahi.co.jp	jp	ja	\N
+4330	The-ans.jp	jp	ja	\N
+4331	Canadianinquirer.net	ph	en	\N
+4332	Lasillarota.com	mx	es	\N
+4333	Culturacolectiva.com	mx	es	\N
+4334	Lapagina.com.sv	mx	es	\N
+4335	Mina.news	rs	sr	\N
+4340	Therams.com	us	en	\N
+4342	Stcatharinesstandard.ca	ca	en	\N
+4343	Reddeeradvocate.com	ca	en	\N
+4344	Annals.org	ca	en	\N
+4346	Netsdaily.com	ph	en	\N
+4352	Real-france.fr	ma	fr	\N
+4355	Boxerdergisi.com.tr	tr	tr	\N
+4356	Log.com.tr	tr	tr	\N
+4363	Varna24.bg	bg	bg	\N
+4369	Mouv.fr	ma	fr	\N
+4371	Zone-turf.fr	ma	fr	\N
+4373	Music-covers-creations.com	ma	fr	\N
+4374	Swigg.fr	ma	fr	\N
+4376	Racoonbuzz.com	id	id	\N
+4383	Skiweltcup.tv	at	de	\N
+4387	Beta.h-a.no	no	no	\N
+4388	Laarena.com.ar	ar	es	\N
+4389	Elnueve.com	ar	es	\N
+4391	Mactechnews.de	ch	de	\N
+4395	Ice.co.il	il	he	\N
+4398	Nacionrex.com	co	es	\N
+4399	Cw.com.tw	tw	zh	\N
+4403	Www.vn.nl	nl	nl	\N
+4404	Astroblogs.nl	nl	nl	\N
+4405	Focus-wtv.be	nl	nl	\N
+4406	Pz-news.de	ch	de	\N
+4411	Coindesk.com	ph	en	\N
+4412	Liberal.gr	gr	el	\N
+4413	Goldcoastbulletin.com.au	au	en	\N
+4414	Daily.co.jp	jp	ja	\N
+4416	Www.mbs.jp	jp	ja	\N
+4417	Sfgate.com	sa	ar	\N
+4418	Lookoutlanding.com	sa	ar	\N
+4419	Kmbc.com	sa	ar	\N
+4420	Radiotimes.com	gb	en	\N
+4421	Afriquesports.net	ma	fr	\N
+4422	Lionsdelatlas.ma	ma	fr	\N
+4423	Www.noz.de	de	de	\N
+4424	Adnews.com.au	au	en	\N
+4425	Plataformamedia.com	pt	pt	\N
+4427	Thepressroom.gr	gr	el	\N
+4431	Elpilon.com.co	co	es	\N
+4432	Vix.com	co	es	\N
+4433	Komonews.com	sa	ar	\N
+4435	247wallst.com	sa	ar	\N
+4436	Hackaday.com	sa	ar	\N
+4437	Jamaica-star.com	sa	ar	\N
+4438	Fox5dc.com	sa	ar	\N
+4439	Naked-science.ru	ru	ru	\N
+4446	Timlo.net	id	id	\N
+4447	Connect.de	ch	de	\N
+4449	Www.sa.no	no	no	\N
+4450	Tachad.com	ma	fr	\N
+4451	Nightlife.ca	ma	fr	\N
+4452	Renseignementeconomique.net	ma	fr	\N
+4453	Clicanoo.re	ma	fr	\N
+4454	Thesneaklife.com	ma	fr	\N
+4459	Ifun.de	de	de	\N
+4242	Forexlive.com	my	ms	\N
+4243	Dailyexpress.com.my	my	ms	\N
+4244	Fxstreet.com	my	ms	\N
+4247	Oeticket.com	at	de	\N
+4248	Techstage.de	at	de	\N
+4251	Imbc.com	kr	ko	\N
+4252	Ajunews.com	kr	ko	\N
+4255	Szegedma.hu	hu	hu	\N
+4256	Firenzeviola.it	it	it	\N
+4258	Sport.org.cn	cn	zh	\N
+4267	Philstar.com	ph	en	\N
+4312	Odishatv.in	in	hi	\N
+4320	Dailyddt.com	ng	en	\N
+4321	7thspace.com	za	en	\N
+4322	Ecns.cn	za	en	\N
+4326	Finanzen.net	at	de	\N
+4336	Telestar.fr	fr	fr	\N
+4337	Economiematin.fr	fr	fr	\N
+4338	Gamers.at	at	de	\N
+4339	Outnow.ch	at	de	\N
+4341	Jemin.com	kr	ko	\N
+4345	Nextnews.kr	kr	ko	\N
+4347	Itsvet.com	rs	sr	\N
+4348	Pcpress.rs	rs	sr	\N
+4349	Newcannabisventures.com	ca	en	\N
+4350	Onvista.de	de	de	\N
+4351	Wwd.com	ng	en	\N
+4353	Mundofranquicia.com	cu	es	\N
+4354	Infosalus.com	cu	es	\N
+4357	Entrackr.com	in	hi	\N
+4358	Techopital.com	be	nl	\N
+4359	Journaldebangui.com	be	nl	\N
+4360	Businessinsider.fr	be	nl	\N
+4361	Caducee.net	be	nl	\N
+4362	Acadienouvelle.com	be	nl	\N
+4364	Narcity.com	ca	en	\N
+4365	Rondoniaovivo.com	br	pt	\N
+4366	Vs.com.br	br	pt	\N
+4367	Elementy.ru	ru	ru	\N
+4368	Womanhit.ru	ru	ru	\N
+4370	Newstalkzb.co.nz	nz	en	\N
+4372	Thespinoff.co.nz	nz	en	\N
+4375	Vremeto.dir.bg	bg	bg	\N
+4377	Technews.bg	bg	bg	\N
+4378	Guru3d.com	au	en	\N
+4379	Portal-energia.com	pt	pt	\N
+4380	Watanserb.com	ae	en	\N
+4381	Elaph.com	ae	en	\N
+4382	Lebanondebate.com	ae	en	\N
+4384	Postimees.ee	ru	ru	\N
+4385	Www.nkj.ru	ru	ru	\N
+4386	Iza.ne.jp	jp	ja	\N
+4390	Avto.info	si	sl	\N
+4392	Vavel.com	mx	es	\N
+4393	Futboltotal.com.mx	mx	es	\N
+4394	E.gmw.cn	cn	zh	\N
+4396	Qhnews.com	cn	zh	\N
+4397	Internal.dbw.cn	cn	zh	\N
+4400	Ashkelonim.co.il	il	he	\N
+4401	Arimnews.co.il	il	he	\N
+4402	Uzladets.lv	lv	lv	\N
+4407	Tiempo.com	ar	es	\N
+4408	Diariocordoba.com	ar	es	\N
+4409	Radiosantiago.cl	ar	es	\N
+4410	Labotana.com	ve	es	\N
+4415	Keremeosreview.com	au	en	\N
+4426	Efesalud.com	cu	es	\N
+4428	Bulawayo24.com	za	en	\N
+4429	Newsroom.co.nz	nz	en	\N
+4430	Greatandhra.com	in	hi	\N
+4434	Autonetmagz.com	id	id	\N
+4440	Wrestlinginc.com	us	en	\N
+4441	Iflscience.com	ph	en	\N
+4442	Itv.com	gb	en	\N
+4443	Leeds-live.co.uk	gb	en	\N
+4444	Schweizerbauer.ch	ch	de	\N
+4445	Persoenlich.com	ch	de	\N
+4448	Fcbayern.com	at	de	\N
+4455	Ecoactu.ma	ma	fr	\N
+4456	Challenge.ma	ma	fr	\N
+4457	Sol.org.tr	tr	tr	\N
+4458	Dostor.org	ae	en	\N
+\.
+
+
+--
+-- Data for Name: source_categories; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.source_categories (source_id, category_id) FROM stdin;
+1	7
+3	7
+4	7
+5	7
+6	7
+7	1
+8	6
+9	7
+10	7
+11	1
+12	7
+13	7
+14	5
+15	7
+16	7
+17	5
+18	1
+19	7
+20	1
+21	1
+22	2
+23	7
+24	7
+25	1
+26	7
+27	7
+28	6
+29	2
+30	7
+31	1
+32	7
+33	6
+34	2
+35	5
+36	5
+37	1
+38	1
+39	7
+40	5
+41	1
+42	5
+43	7
+44	5
+45	7
+46	7
+47	7
+48	7
+49	7
+50	7
+51	7
+52	7
+53	7
+54	7
+55	7
+56	7
+57	7
+58	7
+59	6
+60	6
+61	1
+62	2
+63	1
+64	7
+65	7
+66	1
+67	7
+68	7
+69	7
+70	7
+71	7
+72	5
+73	1
+74	7
+75	5
+76	2
+77	3
+78	7
+79	7
+80	7
+81	2
+82	2
+83	4
+84	7
+85	7
+86	7
+87	4
+88	7
+89	7
+90	7
+91	4
+92	5
+93	5
+94	7
+95	7
+96	2
+97	7
+98	6
+99	7
+100	7
+101	7
+102	7
+103	7
+104	7
+105	7
+106	7
+107	6
+108	5
+109	6
+110	6
+111	6
+112	7
+113	1
+114	7
+115	7
+116	7
+117	7
+118	7
+119	7
+120	7
+121	7
+122	2
+123	7
+124	6
+125	5
+126	7
+127	7
+128	6
+129	1
+130	7
+131	7
+132	7
+133	7
+134	7
+135	6
+136	6
+137	1
+138	7
+139	7
+140	6
+141	6
+142	6
+143	6
+144	6
+145	6
+146	6
+147	6
+148	6
+149	4
+150	1
+151	1
+152	1
+65	1
+67	1
+153	1
+154	1
+155	1
+156	1
+68	1
+157	1
+158	1
+159	7
+160	7
+161	7
+162	7
+163	7
+164	7
+165	7
+166	7
+167	7
+168	7
+169	7
+170	7
+171	7
+172	7
+173	2
+174	2
+175	2
+176	2
+177	2
+178	2
+179	2
+180	2
+181	2
+182	2
+183	2
+184	2
+185	2
+186	2
+187	2
+188	2
+189	2
+190	2
+127	2
+191	2
+192	5
+46	2
+193	5
+46	5
+194	5
+138	5
+195	5
+196	5
+197	5
+198	5
+199	5
+200	5
+201	5
+202	5
+203	5
+204	5
+205	5
+206	3
+207	3
+46	1
+208	3
+209	1
+210	3
+211	3
+212	1
+213	3
+214	1
+215	1
+216	1
+101	1
+217	1
+218	1
+185	7
+220	7
+222	7
+223	7
+225	7
+227	7
+229	7
+230	7
+232	7
+234	7
+235	7
+238	7
+239	7
+241	7
+247	6
+249	6
+251	6
+253	6
+254	6
+255	6
+257	6
+259	6
+261	6
+262	6
+263	6
+264	6
+265	6
+266	6
+270	7
+272	7
+274	7
+276	7
+278	7
+279	7
+281	7
+282	7
+283	7
+285	7
+286	7
+287	7
+289	7
+291	7
+219	1
+221	1
+224	1
+226	1
+228	1
+231	1
+233	1
+236	1
+237	1
+240	1
+242	1
+243	1
+46	3
+244	3
+245	3
+246	3
+248	3
+250	3
+252	3
+256	3
+258	3
+260	3
+267	5
+268	5
+269	5
+271	5
+273	5
+275	5
+277	5
+280	5
+284	5
+6	5
+288	5
+290	5
+292	5
+293	5
+294	5
+295	5
+296	5
+297	5
+298	2
+299	5
+300	2
+301	2
+302	2
+303	2
+304	2
+305	2
+306	4
+307	7
+46	4
+308	4
+309	7
+310	7
+311	4
+312	7
+313	4
+314	7
+315	4
+316	7
+317	4
+318	7
+319	4
+320	7
+321	4
+322	4
+323	4
+324	4
+325	7
+326	4
+327	4
+328	7
+329	3
+330	3
+331	3
+209	7
+332	3
+333	3
+334	3
+335	3
+336	3
+337	3
+338	3
+215	7
+339	3
+340	3
+341	3
+342	3
+343	2
+185	6
+344	2
+345	6
+43	2
+346	6
+347	6
+24	2
+348	2
+349	6
+350	2
+351	6
+33	2
+352	6
+353	6
+133	2
+354	6
+355	2
+135	2
+356	2
+357	2
+358	2
+359	2
+360	2
+361	2
+362	2
+140	2
+363	2
+364	2
+143	2
+365	2
+366	2
+367	2
+368	2
+369	2
+370	2
+371	2
+372	2
+373	2
+142	2
+374	2
+375	2
+376	2
+377	2
+148	2
+378	2
+379	6
+380	6
+381	6
+209	6
+191	3
+382	6
+127	3
+383	6
+384	3
+385	6
+386	3
+387	6
+388	3
+216	6
+185	3
+324	6
+389	3
+390	6
+134	3
+391	3
+392	6
+393	6
+394	6
+395	3
+396	6
+397	3
+398	3
+399	6
+26	3
+400	3
+187	3
+401	4
+402	4
+403	5
+404	4
+405	4
+406	5
+407	5
+45	4
+408	4
+409	5
+410	4
+411	5
+412	4
+134	4
+413	4
+414	4
+415	5
+416	4
+417	4
+418	5
+270	4
+419	4
+420	6
+350	6
+421	6
+422	2
+423	6
+424	2
+425	2
+426	6
+402	2
+427	6
+410	2
+428	6
+429	2
+430	2
+431	6
+432	6
+433	2
+434	6
+435	2
+436	2
+45	2
+437	2
+438	2
+439	2
+440	3
+441	5
+13	3
+442	5
+443	3
+148	5
+212	3
+445	5
+444	3
+446	3
+372	5
+447	5
+64	3
+371	5
+448	5
+449	5
+450	5
+452	5
+375	5
+451	3
+360	3
+453	3
+454	6
+455	6
+331	6
+456	6
+457	6
+31	6
+458	6
+459	6
+460	6
+461	6
+463	6
+333	6
+153	6
+464	6
+465	6
+466	6
+467	6
+468	6
+469	2
+470	2
+471	2
+472	2
+473	2
+474	2
+475	2
+476	2
+477	3
+181	3
+478	3
+479	3
+480	3
+481	7
+482	7
+483	7
+484	7
+485	7
+486	7
+487	7
+72	7
+488	7
+489	7
+490	7
+491	7
+492	7
+493	7
+494	7
+495	7
+496	7
+497	7
+498	7
+499	7
+500	7
+501	7
+502	7
+503	7
+504	7
+444	4
+505	4
+100	4
+389	4
+506	4
+507	4
+508	4
+509	4
+510	4
+33	4
+511	4
+512	4
+367	4
+513	4
+514	4
+515	4
+516	4
+517	4
+518	4
+519	4
+520	4
+521	4
+184	4
+522	4
+523	4
+524	4
+525	4
+526	4
+527	4
+201	4
+192	4
+294	4
+528	4
+529	2
+530	2
+531	2
+532	2
+497	2
+500	2
+533	2
+496	2
+495	2
+501	2
+499	2
+534	2
+535	2
+536	2
+504	2
+537	2
+538	2
+192	1
+194	1
+527	1
+539	1
+540	1
+33	1
+541	1
+542	1
+543	1
+544	1
+545	1
+100	1
+546	2
+547	2
+71	2
+548	2
+549	2
+550	2
+551	2
+552	2
+553	2
+554	2
+555	2
+556	2
+557	2
+558	2
+403	1
+418	1
+407	1
+559	1
+409	1
+560	1
+561	1
+562	1
+406	1
+563	1
+564	1
+565	1
+566	1
+567	1
+568	1
+569	1
+570	1
+571	1
+572	1
+185	1
+234	1
+220	1
+573	1
+229	1
+574	1
+575	1
+576	1
+232	1
+235	1
+577	1
+139	6
+495	6
+533	6
+578	6
+502	6
+500	6
+534	6
+579	6
+580	6
+319	1
+581	1
+582	1
+382	1
+396	1
+383	1
+583	1
+584	1
+585	1
+324	1
+586	1
+587	1
+588	1
+589	1
+590	6
+591	6
+592	6
+593	6
+594	6
+595	6
+596	6
+597	6
+598	6
+599	1
+600	1
+601	1
+602	1
+603	1
+604	1
+605	1
+606	1
+607	1
+608	1
+609	1
+46	6
+610	6
+611	6
+612	6
+613	6
+614	6
+615	6
+616	6
+617	6
+618	1
+619	1
+620	1
+364	1
+621	1
+622	1
+623	1
+624	1
+367	1
+625	1
+626	3
+627	1
+590	1
+593	1
+591	1
+628	1
+595	1
+592	1
+598	1
+629	1
+594	1
+596	1
+443	7
+630	7
+446	7
+631	1
+632	1
+633	1
+634	1
+635	1
+636	1
+637	1
+318	1
+638	1
+639	1
+640	1
+307	1
+641	1
+310	1
+642	1
+643	1
+316	1
+593	5
+350	5
+644	5
+596	5
+645	5
+629	5
+646	5
+628	5
+33	5
+647	3
+103	3
+648	3
+649	3
+650	3
+651	3
+652	3
+653	3
+654	3
+15	6
+39	6
+655	6
+656	6
+341	6
+657	2
+374	4
+658	4
+659	4
+660	4
+360	4
+661	4
+662	4
+663	4
+127	4
+191	4
+3	4
+664	4
+665	4
+666	4
+26	4
+128	4
+667	4
+668	4
+669	6
+670	6
+71	6
+671	6
+97	6
+672	6
+554	6
+673	6
+674	4
+675	4
+676	4
+677	4
+76	4
+678	4
+679	4
+680	4
+681	5
+185	5
+682	5
+683	5
+684	5
+685	5
+686	5
+687	5
+688	5
+133	5
+689	5
+690	6
+691	6
+692	6
+693	6
+101	4
+68	4
+694	4
+154	4
+695	4
+155	4
+696	4
+697	4
+698	2
+699	2
+692	2
+700	4
+701	4
+247	4
+702	4
+703	4
+704	4
+705	4
+265	4
+261	4
+706	4
+253	4
+707	4
+708	4
+26	1
+709	1
+43	1
+710	1
+711	1
+712	1
+713	1
+666	1
+714	1
+715	6
+630	6
+716	6
+717	6
+718	6
+719	6
+720	6
+721	6
+139	4
+503	4
+722	4
+580	4
+723	7
+724	7
+244	7
+246	7
+725	7
+726	7
+727	7
+252	7
+260	7
+728	7
+245	4
+727	4
+729	4
+244	4
+228	4
+730	4
+731	4
+248	4
+732	4
+252	4
+246	4
+733	5
+734	5
+735	5
+736	5
+737	5
+738	5
+739	5
+740	1
+741	1
+742	1
+743	1
+744	1
+745	1
+746	4
+747	7
+748	7
+749	7
+750	7
+751	7
+664	7
+752	7
+753	7
+754	7
+755	7
+756	7
+757	7
+758	7
+282	4
+759	4
+525	1
+760	1
+761	1
+762	1
+763	1
+764	1
+765	1
+181	1
+766	1
+180	1
+767	1
+230	4
+225	4
+381	7
+216	7
+75	7
+385	7
+768	7
+581	7
+382	7
+769	7
+770	7
+588	7
+771	7
+772	7
+773	7
+774	7
+775	7
+776	7
+443	2
+440	2
+13	2
+778	2
+446	2
+630	2
+779	2
+64	2
+780	2
+781	2
+796	5
+797	5
+798	5
+799	5
+800	5
+801	5
+802	5
+803	5
+804	5
+805	5
+777	5
+782	4
+783	4
+784	4
+785	4
+786	4
+6	4
+787	4
+788	4
+789	4
+790	4
+791	4
+792	4
+69	4
+793	4
+794	4
+795	4
+806	5
+807	5
+808	5
+809	5
+810	5
+811	5
+402	5
+45	5
+812	5
+813	6
+407	6
+814	6
+815	6
+816	6
+482	6
+233	6
+242	6
+817	6
+818	6
+246	2
+819	2
+26	2
+815	4
+820	4
+821	4
+822	4
+823	4
+74	4
+70	4
+824	4
+825	4
+826	4
+489	4
+827	4
+828	4
+489	5
+488	5
+829	5
+830	5
+831	5
+832	5
+833	5
+834	5
+835	5
+836	5
+837	5
+838	3
+839	6
+840	6
+841	6
+842	6
+843	6
+844	6
+845	6
+846	6
+6	6
+847	6
+848	4
+849	4
+850	4
+487	4
+851	4
+485	4
+852	4
+159	2
+853	2
+854	2
+855	2
+856	2
+857	2
+161	2
+170	2
+160	2
+169	2
+858	4
+859	4
+185	4
+860	6
+861	6
+862	6
+863	6
+864	6
+865	6
+866	6
+867	6
+868	4
+869	4
+870	4
+871	4
+872	4
+873	4
+874	4
+875	4
+876	4
+877	4
+878	4
+517	7
+879	7
+184	7
+880	7
+881	7
+764	7
+882	7
+762	7
+479	7
+525	7
+883	7
+524	7
+175	7
+884	7
+885	7
+886	7
+887	7
+888	7
+889	7
+890	7
+891	7
+892	7
+893	7
+894	7
+895	7
+896	7
+897	1
+898	1
+899	1
+900	1
+901	1
+902	1
+903	1
+904	1
+905	1
+906	1
+907	1
+908	1
+909	1
+910	1
+15	5
+333	5
+652	5
+911	5
+912	5
+913	5
+914	5
+915	5
+916	5
+337	5
+917	5
+918	5
+919	5
+920	5
+921	5
+102	5
+922	5
+64	5
+923	5
+120	5
+924	3
+645	3
+628	3
+925	3
+926	3
+927	3
+350	3
+428	3
+928	3
+613	2
+929	2
+611	2
+930	2
+94	2
+4	2
+931	2
+932	2
+614	2
+933	5
+162	5
+159	5
+163	5
+167	5
+934	5
+935	5
+166	5
+936	5
+937	7
+647	7
+938	7
+648	7
+939	7
+940	7
+941	7
+942	3
+205	3
+943	3
+944	3
+945	3
+946	3
+947	5
+948	5
+43	5
+949	5
+712	5
+950	5
+344	5
+951	5
+952	5
+953	5
+954	5
+955	5
+956	5
+957	2
+106	2
+310	2
+958	2
+58	2
+318	2
+959	2
+309	2
+960	2
+307	2
+961	2
+962	2
+641	2
+800	6
+968	6
+969	6
+970	6
+971	6
+972	6
+973	6
+974	6
+975	6
+976	6
+977	6
+978	6
+979	6
+980	6
+985	5
+599	5
+986	5
+600	5
+987	5
+988	5
+989	5
+992	3
+993	3
+994	3
+511	3
+506	3
+995	3
+996	3
+138	3
+780	3
+997	3
+998	3
+999	3
+1005	7
+1006	7
+1007	7
+1008	7
+1009	7
+1010	7
+1013	5
+467	5
+1014	5
+1015	5
+1016	5
+1017	5
+1018	5
+96	6
+963	6
+25	6
+395	6
+186	6
+188	6
+964	6
+965	6
+966	6
+967	6
+981	7
+830	7
+982	7
+835	7
+983	7
+984	7
+816	7
+990	4
+991	4
+278	4
+937	3
+941	3
+1000	6
+1001	6
+820	6
+1002	6
+1003	6
+487	6
+1004	6
+637	5
+1011	5
+1012	5
+634	5
+428	5
+434	5
+1019	5
+1020	6
+1021	5
+1014	6
+925	5
+1022	6
+1023	5
+1024	5
+171	3
+1025	6
+938	6
+1026	6
+1027	1
+1008	6
+647	6
+1028	6
+394	1
+1029	6
+1030	6
+1031	1
+1032	1
+1033	1
+443	1
+426	1
+350	1
+1034	1
+434	1
+1035	1
+1024	1
+428	1
+1036	1
+925	1
+1037	1
+128	1
+1038	1
+421	1
+1039	1
+1040	1
+1041	5
+1042	2
+1043	5
+1044	2
+1045	5
+1046	2
+1047	2
+1048	5
+1049	2
+1050	5
+1051	2
+1052	2
+1053	5
+1054	2
+1055	2
+1056	5
+1057	2
+1058	2
+255	5
+101	2
+264	5
+1059	5
+570	5
+1060	2
+1061	5
+1063	5
+1065	5
+700	5
+705	5
+1076	1
+1077	1
+1078	1
+1080	1
+1081	1
+1082	1
+1083	1
+1084	1
+1085	1
+389	6
+384	6
+2831	6
+2832	6
+497	4
+2846	5
+334	5
+2848	5
+2849	5
+341	5
+1290	5
+2851	5
+2852	5
+2854	5
+454	5
+2855	5
+2856	5
+695	2
+151	2
+2858	2
+2859	2
+2408	2
+1998	2
+1021	7
+434	7
+2863	7
+627	7
+1024	7
+428	7
+423	7
+925	7
+484	2
+2866	2
+2868	2
+848	2
+491	2
+392	1
+769	1
+1972	1
+2141	3
+646	3
+655	7
+331	7
+2855	7
+456	7
+464	7
+31	7
+1554	7
+337	7
+1829	7
+914	7
+1290	7
+913	7
+2875	5
+2876	5
+894	5
+1800	2
+1806	2
+878	2
+876	2
+1805	2
+2879	2
+1803	2
+868	2
+2880	2
+2072	2
+873	2
+1804	2
+1808	2
+365	3
+367	3
+566	3
+2885	3
+1731	3
+2886	3
+2887	3
+705	3
+2888	3
+315	1
+1442	1
+278	1
+281	1
+1173	1
+413	1
+2891	1
+2893	1
+414	1
+2894	6
+3367	6
+3368	6
+1235	6
+3369	6
+3370	6
+902	7
+1941	4
+3372	1
+516	1
+184	1
+3373	1
+3374	1
+3375	1
+1124	1
+3191	7
+2377	7
+3190	7
+351	7
+3379	3
+2422	3
+1533	3
+3380	3
+381	3
+2239	2
+840	2
+2559	3
+3391	3
+488	4
+3392	4
+3396	3
+3397	3
+419	3
+3398	3
+3399	3
+3400	3
+3284	3
+3402	2
+789	2
+16	2
+3403	3
+3404	3
+184	3
+3405	3
+764	3
+1666	1
+1048	1
+3415	1
+1404	2
+3420	3
+3421	3
+3422	3
+3423	6
+392	3
+1385	7
+527	5
+1306	5
+2553	4
+3429	4
+3430	4
+3044	4
+3431	4
+3432	4
+3442	6
+22	6
+1167	1
+2377	1
+3443	1
+1110	2
+3447	2
+3448	2
+2042	2
+17	2
+10	2
+123	2
+2063	2
+627	5
+3452	5
+2550	1
+458	5
+2571	5
+3454	6
+1908	7
+3456	7
+663	7
+546	7
+2713	7
+587	4
+774	4
+2987	4
+3459	5
+3460	5
+557	5
+3461	5
+97	5
+2052	5
+1857	5
+3462	5
+1399	7
+3463	7
+706	7
+2785	2
+454	2
+2855	2
+640	6
+310	6
+3470	6
+3471	6
+2356	7
+3214	6
+2189	6
+3570	6
+342	6
+276	5
+3575	3
+3389	3
+659	3
+1	3
+3576	3
+3577	3
+3578	6
+3580	6
+3581	6
+3582	3
+2025	3
+1062	2
+1064	2
+1066	2
+1067	2
+1068	2
+1074	6
+1075	6
+1079	6
+912	1
+2833	1
+2834	1
+654	1
+2835	1
+2836	3
+1069	3
+1229	3
+2837	3
+2838	3
+2362	3
+209	3
+979	4
+2839	4
+2840	4
+968	4
+976	4
+2841	4
+2842	4
+2392	4
+2675	4
+2843	4
+2844	4
+2845	4
+1469	4
+802	2
+2847	2
+1625	2
+106	1
+328	1
+2850	1
+2853	1
+2755	1
+2696	1
+97	2
+2857	2
+2860	2
+2861	2
+2862	2
+2425	2
+2864	2
+196	2
+2865	2
+2867	5
+958	5
+2869	1
+2870	1
+2871	1
+2872	1
+2873	1
+2874	1
+4	1
+2548	7
+1056	4
+2589	7
+2096	7
+2093	7
+2181	7
+2877	4
+2878	4
+109	4
+2608	6
+2881	3
+1874	3
+1611	3
+88	3
+1612	3
+2882	3
+3	3
+1832	3
+2589	3
+656	3
+2883	3
+1014	3
+455	3
+2884	7
+1705	7
+266	7
+2889	7
+1791	6
+2890	6
+2892	6
+458	3
+1960	7
+2196	7
+2975	7
+2198	7
+2232	7
+2078	7
+2369	7
+3457	1
+1796	1
+3458	1
+1842	7
+3387	7
+3464	3
+2015	3
+3365	3
+966	3
+962	1
+3465	1
+3466	1
+3467	1
+2274	3
+3468	3
+3469	3
+2561	3
+782	3
+3583	3
+3584	3
+3585	3
+3586	3
+3587	3
+3588	3
+3589	3
+3590	1
+3595	7
+2862	5
+3596	5
+3597	5
+3598	1
+509	1
+2592	1
+2878	1
+3599	1
+2470	1
+1355	7
+3602	7
+527	7
+3603	7
+203	7
+1544	4
+2377	4
+3626	4
+1456	4
+905	3
+396	5
+1484	5
+588	5
+3627	1
+3628	1
+3629	1
+2734	1
+3631	1
+3632	6
+3633	6
+2090	6
+318	6
+3634	6
+432	7
+2504	6
+3573	6
+2141	6
+1253	5
+2763	7
+2958	7
+333	7
+912	7
+3638	7
+3641	2
+1901	2
+1005	2
+1010	2
+3646	1
+3647	1
+3648	1
+3649	1
+3652	1
+3653	1
+3654	1
+89	6
+3655	6
+3658	3
+3659	3
+666	3
+3660	3
+3661	6
+3663	7
+547	7
+3664	7
+3669	1
+1617	1
+3670	1
+69	1
+3674	1
+273	1
+2025	1
+1324	1
+3675	1
+3676	1
+3677	1
+3678	1
+3679	1
+3680	1
+1333	4
+3681	4
+3585	4
+2435	4
+3319	4
+3682	4
+3633	4
+3683	4
+3684	3
+1808	3
+872	3
+3685	3
+3686	3
+2189	7
+930	7
+3214	7
+2871	7
+3689	7
+702	7
+3690	7
+2861	7
+3693	7
+2075	7
+3696	7
+428	4
+421	4
+628	4
+1070	4
+596	4
+1024	4
+432	4
+1072	4
+926	4
+1073	4
+434	4
+1086	4
+1088	4
+1089	4
+1090	4
+1091	4
+1093	4
+1094	4
+1095	4
+1096	4
+1939	2
+1995	2
+860	2
+2895	2
+2896	7
+1107	7
+2898	7
+2899	7
+1596	7
+2056	7
+2904	7
+2905	7
+2907	3
+2908	3
+2909	3
+410	1
+2914	1
+2915	1
+2916	1
+438	1
+419	1
+2890	5
+1164	5
+1892	5
+1027	6
+2369	6
+491	3
+827	3
+2919	3
+2920	3
+2269	3
+2441	3
+2921	3
+2922	3
+2286	3
+2923	3
+2924	5
+2925	5
+2926	4
+104	4
+2927	4
+725	3
+101	3
+1509	3
+2689	3
+2929	3
+607	6
+602	6
+2933	6
+2936	2
+2937	2
+2938	3
+1833	3
+2086	5
+523	2
+2948	2
+2952	2
+2954	2
+2956	2
+2957	5
+2958	5
+1833	5
+1824	5
+2961	5
+1825	5
+966	5
+2966	5
+2969	5
+1995	4
+302	1
+2595	1
+1255	1
+815	2
+2830	2
+2974	2
+992	4
+2978	4
+2979	4
+2980	5
+2105	5
+262	5
+2988	2
+1109	4
+742	4
+1114	4
+1113	4
+1990	4
+67	5
+1577	5
+2989	5
+525	3
+2449	3
+698	3
+2990	3
+2995	1
+2996	1
+2997	2
+2508	2
+2280	2
+2805	2
+260	2
+2999	1
+3003	1
+3004	1
+3005	1
+3007	2
+3008	2
+3009	2
+3011	2
+666	2
+20	2
+3014	2
+1612	2
+746	7
+3017	7
+1412	7
+3018	7
+1530	7
+3019	7
+1173	7
+2092	7
+2620	7
+3021	7
+2981	7
+89	3
+1035	3
+1034	3
+1925	3
+130	3
+997	4
+3024	7
+1060	7
+3025	7
+3026	7
+3027	7
+3029	5
+904	5
+909	5
+1958	5
+2501	5
+1565	5
+1610	5
+3030	5
+906	5
+3033	2
+1465	2
+3472	2
+2219	2
+3473	2
+584	2
+212	2
+3474	2
+2004	2
+18	6
+3477	2
+3478	2
+755	5
+3480	5
+751	5
+3481	5
+749	5
+753	5
+3482	5
+2554	2
+3496	4
+3497	4
+3498	4
+3163	4
+3164	4
+2609	6
+1465	6
+2841	6
+1463	6
+549	5
+548	5
+151	6
+156	6
+695	6
+1504	6
+152	6
+3506	6
+154	6
+3507	7
+3508	1
+3144	4
+3509	4
+1222	1
+3510	1
+1234	1
+133	4
+20	4
+3511	4
+3061	4
+1101	5
+233	5
+3512	5
+2896	5
+1600	5
+236	5
+3513	5
+2911	7
+3515	7
+299	7
+2862	7
+3516	7
+2960	7
+1069	4
+1071	4
+158	4
+387	4
+667	3
+1087	3
+778	3
+1092	3
+1098	2
+1097	2
+1099	2
+264	2
+255	2
+1100	2
+700	2
+1101	2
+72	2
+265	2
+701	2
+1102	2
+570	2
+813	2
+1103	2
+1104	2
+982	2
+706	2
+1105	2
+247	2
+1106	2
+1107	2
+1108	2
+1109	2
+1110	3
+1111	3
+1112	2
+133	3
+1113	2
+681	3
+1114	2
+509	3
+1115	2
+43	3
+742	2
+1116	3
+1117	2
+1118	3
+1119	2
+128	3
+123	3
+1120	3
+1121	3
+714	3
+1122	3
+1123	6
+8	4
+1124	6
+1125	6
+1126	6
+123	4
+762	6
+1127	6
+85	4
+350	4
+1128	6
+1129	4
+764	6
+43	4
+1130	6
+1131	6
+1132	6
+763	6
+1133	6
+1134	6
+328	3
+1135	3
+307	3
+1136	4
+960	3
+640	3
+1137	3
+1138	3
+1139	3
+1140	3
+1141	3
+1142	3
+984	2
+45	3
+1143	2
+481	2
+1144	3
+836	2
+807	3
+1145	2
+991	3
+70	2
+417	3
+1146	3
+1147	2
+1148	3
+1149	2
+489	2
+1150	3
+1151	2
+1152	3
+1153	2
+1154	3
+1155	2
+1156	3
+1157	3
+282	3
+1158	3
+1159	3
+1160	3
+1161	3
+1162	3
+1163	2
+1164	3
+1165	2
+1166	3
+282	2
+1167	3
+270	2
+281	2
+1168	3
+1169	2
+1170	3
+1171	2
+1172	2
+1173	2
+1174	2
+499	5
+139	5
+1175	6
+1176	5
+1177	6
+497	5
+1178	6
+536	5
+1179	6
+666	6
+501	5
+403	2
+360	5
+1180	5
+186	5
+406	2
+1181	5
+1182	5
+407	2
+1183	2
+127	5
+1184	2
+191	5
+1185	5
+188	5
+409	2
+1186	5
+1187	1
+301	6
+301	1
+698	6
+302	6
+1188	1
+1189	6
+698	1
+1188	6
+298	1
+1190	4
+1191	2
+1192	4
+1193	4
+1194	4
+1195	2
+1196	4
+1197	2
+1054	4
+998	4
+1198	2
+1199	2
+1044	4
+1200	4
+1201	4
+1202	4
+318	5
+1135	5
+643	5
+307	5
+1139	5
+1203	5
+310	5
+959	5
+328	5
+58	5
+1204	5
+1205	5
+309	5
+303	5
+154	5
+301	5
+1206	5
+1207	5
+302	5
+306	5
+1208	5
+298	5
+300	5
+321	5
+1209	5
+698	5
+1210	5
+1211	3
+1212	3
+472	3
+1213	3
+1214	3
+469	3
+1215	5
+1216	5
+128	2
+1217	3
+1218	3
+141	3
+959	7
+1219	3
+1139	7
+1220	3
+1221	7
+1222	2
+1223	6
+1224	2
+26	6
+88	2
+1225	2
+1226	6
+1227	2
+65	6
+1228	6
+3	2
+321	6
+1229	6
+1230	6
+887	6
+1231	6
+1232	2
+1233	6
+1234	2
+147	1
+143	1
+212	6
+1235	1
+1236	1
+1237	1
+140	1
+1238	6
+1060	6
+441	1
+1239	6
+1240	1
+371	1
+1241	1
+146	1
+191	7
+315	2
+186	7
+1206	2
+1242	7
+1243	2
+188	7
+964	7
+1244	2
+306	2
+1245	7
+1246	2
+384	7
+1247	7
+1248	7
+1249	2
+715	7
+1250	2
+1251	7
+65	2
+166	2
+1252	7
+936	2
+622	7
+1253	7
+1254	2
+362	7
+1255	7
+1256	7
+619	7
+624	7
+1257	7
+618	7
+1258	7
+1259	1
+1260	3
+23	1
+1261	1
+1262	1
+1263	1
+1264	1
+1265	1
+1266	1
+711	3
+360	7
+8	3
+1267	7
+1268	7
+19	3
+1269	7
+5	3
+1270	7
+1271	7
+1272	3
+1273	7
+1274	3
+1275	3
+444	7
+1276	3
+1277	7
+1278	3
+712	3
+1279	7
+135	3
+1280	7
+20	7
+735	2
+831	7
+733	2
+1167	2
+852	7
+1281	7
+1282	2
+1116	2
+959	1
+1283	4
+914	4
+325	1
+1284	4
+105	4
+1285	1
+1286	4
+1287	1
+1288	4
+1289	1
+1290	4
+1291	1
+1292	4
+309	1
+31	4
+1293	1
+312	1
+1294	4
+61	4
+1295	4
+1296	4
+1297	4
+1298	4
+1299	2
+1300	2
+599	2
+1301	2
+1302	2
+607	2
+1303	2
+576	7
+1304	2
+1305	7
+1306	2
+1307	7
+1308	2
+1309	7
+1310	7
+1311	7
+1312	7
+1313	3
+1314	3
+1315	3
+780	5
+1316	3
+630	5
+1317	3
+1318	5
+789	3
+1319	5
+1320	3
+1321	5
+1322	3
+1323	5
+1324	3
+1325	5
+1326	3
+1327	3
+618	5
+1328	3
+1329	5
+290	3
+1330	5
+1331	3
+1332	3
+446	5
+6	3
+1333	3
+1334	5
+1335	3
+1336	3
+1337	3
+1338	3
+1339	3
+1340	3
+1341	3
+1342	3
+433	3
+1343	3
+1344	3
+402	3
+1345	3
+1346	3
+1347	3
+1348	3
+1349	6
+1017	6
+1350	6
+192	2
+193	2
+294	2
+1351	2
+1352	2
+194	2
+1353	2
+527	2
+201	2
+195	2
+1354	2
+293	2
+138	2
+1355	2
+1300	6
+1356	6
+1357	6
+1358	6
+605	6
+1359	6
+1360	6
+599	6
+1361	6
+1301	6
+1362	6
+608	6
+1363	5
+1109	5
+1364	5
+1114	5
+1365	5
+744	5
+1368	5
+1371	5
+1372	5
+2025	4
+2608	4
+842	4
+2897	4
+2900	4
+2901	4
+2902	4
+2903	4
+1317	4
+2906	4
+2024	4
+2910	2
+2911	2
+299	2
+2912	2
+2913	2
+2137	7
+1023	7
+1482	7
+175	4
+2917	4
+70	3
+2918	3
+1743	3
+488	3
+483	3
+319	7
+2928	6
+64	6
+440	6
+2577	6
+2930	2
+2931	2
+2932	2
+1490	1
+2934	1
+2935	6
+2614	6
+410	6
+2893	6
+45	6
+1810	2
+2934	2
+637	2
+2939	2
+2940	2
+2941	2
+2942	2
+1012	2
+2476	2
+2246	1
+2943	1
+2944	1
+306	1
+2945	1
+2946	6
+2947	6
+2949	6
+2950	6
+2951	6
+2953	6
+756	6
+2955	6
+2788	1
+2959	1
+2960	1
+2789	1
+1439	1
+2962	4
+2963	4
+780	4
+2964	4
+315	5
+2965	5
+2967	5
+2968	5
+2970	3
+120	2
+2971	2
+1519	2
+451	2
+2972	2
+614	4
+4	4
+2973	4
+2185	4
+930	4
+932	4
+613	4
+317	3
+2975	3
+2029	3
+2976	3
+2977	3
+216	3
+383	3
+387	5
+816	1
+2981	1
+2982	1
+2983	1
+2984	1
+2985	1
+2986	1
+982	1
+2228	2
+2987	2
+1523	3
+100	3
+189	3
+2797	5
+772	5
+385	5
+775	5
+2991	5
+583	5
+2992	5
+2993	5
+2388	5
+2994	5
+770	5
+2998	4
+141	4
+2173	4
+3000	4
+3001	4
+3002	4
+144	4
+372	4
+140	4
+366	4
+3006	4
+2827	4
+2990	7
+1378	7
+982	6
+3010	6
+3012	6
+925	6
+3013	6
+2829	6
+627	6
+1036	6
+3015	6
+1021	6
+3016	3
+3020	2
+902	2
+1573	6
+3022	6
+3023	6
+1941	5
+1108	5
+217	5
+3028	5
+2220	3
+3031	5
+1791	5
+2715	5
+1797	5
+2250	7
+1995	7
+1889	7
+3032	7
+900	7
+3034	6
+2320	6
+3035	3
+156	3
+151	3
+3036	3
+2349	3
+3037	3
+695	3
+3038	3
+3475	3
+2340	3
+3476	3
+629	6
+1540	6
+3479	3
+3483	6
+3484	5
+3485	4
+3486	4
+3487	4
+3488	4
+3489	4
+3490	4
+3491	4
+3492	4
+3493	4
+3494	4
+3495	4
+2034	4
+1832	4
+3499	4
+654	4
+3500	6
+3501	6
+2218	6
+3502	1
+3503	1
+3504	1
+3505	1
+352	1
+1456	1
+2562	2
+3145	5
+2420	1
+1233	1
+2294	1
+3514	7
+1370	7
+1958	4
+909	4
+3517	5
+3518	4
+3520	1
+1088	3
+679	3
+676	3
+1366	3
+1367	3
+1369	3
+1370	3
+658	3
+1373	3
+1374	3
+1375	3
+675	3
+1376	3
+1377	3
+1378	6
+1379	3
+1380	6
+1381	3
+369	3
+1382	3
+1383	3
+1384	3
+1385	3
+1386	3
+515	3
+1387	2
+673	2
+124	3
+1388	2
+374	3
+1389	2
+1390	3
+1391	2
+1392	3
+1393	2
+1394	5
+305	5
+364	7
+262	3
+369	7
+111	7
+1395	3
+1396	3
+570	3
+350	7
+1397	3
+1398	3
+365	7
+1399	3
+261	3
+1400	7
+247	3
+358	7
+1401	3
+1402	7
+264	3
+1403	7
+701	3
+1404	3
+1405	3
+1406	5
+1407	3
+1408	3
+282	5
+454	3
+1409	5
+1410	3
+1411	3
+1412	5
+281	5
+414	5
+1413	5
+1414	5
+270	5
+1415	1
+1062	5
+1416	1
+1417	5
+1418	1
+1419	5
+894	1
+1420	5
+890	1
+71	5
+1421	5
+887	1
+1422	5
+101	5
+893	1
+889	1
+1423	5
+1231	1
+1424	5
+1425	1
+1426	5
+1427	1
+895	1
+1428	5
+1429	5
+1430	3
+1431	3
+1432	3
+262	1
+255	1
+1433	1
+302	4
+698	4
+1434	1
+1435	4
+1436	1
+1437	1
+1012	1
+527	6
+192	6
+1438	6
+1439	6
+139	2
+1440	2
+579	2
+1441	2
+1442	2
+1443	2
+414	2
+1444	2
+1445	2
+154	3
+1446	3
+65	3
+319	3
+1447	3
+1448	3
+1449	3
+315	3
+1450	3
+313	3
+1451	3
+1452	3
+697	3
+1209	3
+1453	5
+1454	5
+1455	5
+1456	5
+1457	5
+1458	5
+1459	5
+1460	5
+970	1
+1461	1
+1462	1
+975	1
+802	1
+1463	1
+1464	1
+1465	1
+1466	1
+1467	1
+1468	1
+1469	1
+1470	1
+1471	1
+977	1
+800	1
+1472	1
+1473	1
+1474	1
+1475	1
+1056	1
+1476	1
+1045	1
+1477	1
+1253	1
+1478	1
+1479	1
+359	1
+1480	6
+434	2
+1481	2
+627	2
+925	2
+423	2
+1482	2
+1483	2
+428	2
+1024	2
+381	1
+385	1
+1484	1
+393	1
+380	1
+1485	1
+1486	1
+1487	6
+1012	6
+637	6
+1488	6
+635	6
+1489	6
+1490	6
+1491	6
+1492	6
+1493	6
+1494	6
+1495	6
+1496	7
+193	7
+194	7
+293	7
+1497	7
+198	7
+541	7
+1498	7
+192	7
+1439	7
+1499	7
+1500	7
+297	7
+1501	5
+68	5
+65	5
+1502	5
+1503	5
+152	5
+1504	5
+151	5
+1505	5
+1506	5
+1507	5
+1508	5
+225	6
+241	6
+1514	6
+1309	6
+1515	6
+239	6
+238	6
+234	6
+1516	6
+1517	6
+1518	6
+220	6
+1049	6
+1526	6
+1193	6
+1527	6
+1528	6
+1529	6
+1450	4
+383	4
+1533	4
+1534	4
+1535	4
+1536	4
+1537	4
+1416	4
+1226	4
+1538	4
+65	4
+209	4
+596	2
+1539	2
+646	2
+628	2
+1540	2
+629	2
+1453	7
+1544	7
+1261	7
+1266	7
+22	7
+510	7
+1454	7
+1259	7
+346	7
+37	7
+25	7
+3039	4
+3040	4
+2914	4
+3041	4
+979	1
+3043	1
+3046	1
+1624	1
+2990	4
+1110	1
+3055	1
+2806	7
+2705	7
+2805	7
+3059	7
+489	3
+3021	3
+2803	3
+1833	6
+1824	6
+3061	1
+3062	1
+3063	1
+3064	1
+130	1
+3068	1
+3069	1
+3070	1
+3071	1
+3073	1
+3075	1
+905	5
+364	3
+2479	4
+3086	4
+724	6
+725	6
+3092	7
+545	7
+204	7
+1354	7
+3093	7
+3075	7
+3094	7
+3095	7
+2562	7
+3096	7
+3097	7
+3098	6
+3099	6
+3100	6
+3101	6
+3102	6
+3103	6
+3104	1
+198	1
+735	1
+733	1
+3014	1
+2292	1
+3105	3
+588	3
+586	3
+2389	3
+1210	3
+3106	3
+3108	3
+2800	3
+3110	3
+12	4
+681	4
+3112	4
+89	4
+3113	6
+3114	6
+2826	3
+3115	3
+454	4
+337	4
+3119	4
+913	4
+3120	4
+893	2
+589	2
+3122	2
+3123	2
+3125	2
+3126	2
+1962	2
+605	4
+3127	4
+3128	4
+1358	4
+607	4
+3129	4
+3130	4
+2022	6
+3044	6
+1876	6
+310	4
+731	5
+3134	5
+727	5
+3135	1
+3137	1
+2111	1
+3138	1
+3139	4
+3140	4
+2120	4
+2113	4
+3141	2
+3142	2
+3143	1
+3144	1
+404	1
+3145	1
+3147	1
+529	1
+408	1
+440	1
+3148	1
+747	1
+753	1
+750	1
+756	1
+3149	1
+664	1
+3151	1
+2739	1
+3152	1
+723	3
+725	4
+3155	4
+3159	1
+721	1
+2516	4
+1475	3
+1056	3
+1472	3
+181	5
+885	5
+3167	3
+3163	3
+3168	3
+3170	4
+3171	4
+1017	4
+3132	4
+3173	4
+1791	4
+1796	4
+451	4
+3175	5
+3176	5
+3177	5
+3178	6
+365	6
+451	6
+3180	6
+2479	6
+511	7
+3183	7
+621	7
+3184	3
+3185	3
+2205	3
+3187	3
+3188	3
+505	3
+1999	6
+3190	1
+3191	1
+2311	1
+1411	2
+3192	2
+730	6
+244	6
+101	6
+728	6
+731	6
+1509	6
+1510	6
+250	6
+1511	6
+1512	6
+252	6
+1513	6
+260	6
+1519	1
+102	1
+120	1
+679	1
+1520	1
+780	1
+1521	1
+1522	1
+1523	1
+1524	1
+1525	1
+289	1
+282	1
+1530	1
+1406	1
+1414	1
+1531	1
+270	1
+274	1
+746	1
+1532	1
+534	4
+502	4
+535	4
+1541	1
+1542	1
+1506	1
+1543	1
+1504	1
+1545	6
+1248	1
+127	1
+964	1
+188	1
+1546	1
+1547	1
+966	1
+1548	1
+1549	1
+191	1
+1550	1
+1551	1
+1552	4
+285	4
+436	4
+530	4
+807	4
+537	3
+1553	3
+494	3
+1441	3
+455	1
+15	1
+454	1
+105	1
+914	1
+1554	1
+464	1
+333	1
+459	1
+337	1
+331	1
+1555	1
+457	1
+1556	1
+1557	7
+855	7
+1558	7
+1559	6
+1560	6
+1561	6
+725	2
+244	2
+1562	2
+731	2
+904	2
+905	2
+1563	2
+906	2
+910	2
+1564	2
+909	2
+724	2
+1565	2
+726	2
+1566	2
+1567	5
+1568	5
+369	5
+1569	5
+1570	5
+559	5
+1184	5
+1571	3
+109	3
+1572	3
+1266	3
+1259	3
+1573	3
+1574	3
+923	7
+440	7
+780	7
+1330	7
+181	7
+183	7
+1575	7
+1576	7
+523	7
+311	2
+1577	2
+154	2
+1578	2
+1579	2
+1580	2
+1508	2
+1504	2
+1581	2
+1582	2
+959	4
+1289	4
+1583	4
+318	4
+1138	4
+1114	6
+1584	6
+1585	6
+1109	6
+742	6
+1586	6
+745	6
+1587	6
+229	2
+239	2
+225	2
+235	2
+1588	2
+232	2
+230	2
+1307	2
+1589	3
+1590	3
+1591	3
+1592	3
+1593	3
+1594	3
+1595	3
+1596	1
+1597	1
+1107	1
+1598	1
+1599	1
+1600	1
+1522	7
+1601	7
+1524	7
+1519	7
+674	7
+1602	7
+165	4
+159	4
+1603	4
+1604	4
+170	4
+855	4
+1605	4
+166	4
+172	4
+936	4
+171	4
+164	4
+33	7
+1606	7
+447	7
+148	7
+368	7
+1236	7
+1607	7
+449	7
+146	7
+441	7
+373	7
+1608	7
+1609	7
+1218	7
+1610	2
+728	2
+1611	4
+1612	4
+1613	4
+446	4
+1168	4
+1164	4
+1614	2
+1211	2
+159	6
+1615	6
+1616	6
+160	6
+1605	6
+1617	6
+171	6
+1618	6
+164	6
+166	6
+801	4
+1619	4
+1620	4
+1621	4
+1622	4
+975	4
+1623	4
+802	4
+1465	4
+1624	4
+971	4
+1625	4
+1626	4
+1627	4
+1461	4
+1628	5
+1629	5
+1630	5
+1631	3
+1632	3
+192	3
+198	3
+193	3
+1476	6
+1642	6
+1041	6
+1179	4
+1648	4
+1601	4
+1649	4
+1650	4
+347	4
+1653	1
+1654	1
+1655	1
+1656	1
+1662	2
+1665	2
+1056	2
+1048	2
+1041	2
+1666	2
+1667	2
+216	2
+1668	2
+1669	2
+1670	2
+1671	2
+588	2
+1672	2
+1486	2
+1673	2
+768	2
+697	2
+3042	7
+3044	7
+1876	7
+3045	7
+845	7
+3047	7
+936	7
+3048	7
+934	7
+1616	7
+3049	3
+3050	3
+3051	3
+3052	3
+3053	3
+3054	3
+3056	3
+3057	3
+3058	3
+3018	3
+1638	3
+3060	3
+2356	3
+3065	2
+3066	2
+3067	2
+2898	2
+1223	2
+590	7
+2076	7
+924	7
+3072	6
+3074	6
+3076	6
+3077	6
+3078	1
+320	1
+2752	1
+3079	1
+3080	1
+3081	5
+3082	5
+3083	5
+3084	5
+3085	5
+3087	4
+3088	4
+2196	4
+674	1
+3089	1
+3090	1
+3091	1
+1519	5
+1939	3
+867	3
+898	3
+58	1
+1164	7
+1990	5
+1989	5
+3107	5
+3109	5
+62	5
+3111	5
+1906	5
+3116	5
+1907	5
+515	7
+3117	7
+1571	7
+1459	7
+3118	7
+3121	2
+2029	2
+3124	2
+310	3
+958	3
+325	3
+611	1
+612	1
+3131	1
+3132	6
+2079	1
+3133	1
+451	1
+361	1
+3136	1
+1557	4
+168	4
+854	4
+18	7
+1892	7
+2517	7
+1329	7
+695	1
+3146	4
+2834	6
+3150	6
+3153	1
+3154	1
+250	1
+3156	7
+3157	7
+3158	7
+2876	3
+2196	3
+889	3
+3160	3
+3161	3
+894	3
+3162	7
+662	7
+2113	7
+2048	7
+3163	7
+505	7
+506	7
+1698	7
+2334	7
+3164	7
+3165	7
+145	4
+3166	4
+147	4
+853	7
+3169	7
+1698	2
+3172	2
+3174	2
+172	6
+3179	6
+1603	6
+856	6
+3181	6
+3182	1
+2501	1
+3186	4
+646	4
+925	4
+928	4
+3189	7
+2683	7
+3195	5
+3196	5
+720	5
+3197	5
+3199	5
+1225	5
+1935	5
+3169	5
+68	6
+31	2
+655	4
+460	4
+1901	4
+3519	4
+595	5
+1659	4
+1582	7
+1996	7
+152	7
+1504	7
+2294	7
+1497	1
+294	1
+3525	1
+1270	3
+3526	3
+674	3
+2184	3
+3530	5
+3534	3
+3537	5
+3541	4
+3543	1
+2876	1
+1963	1
+891	1
+3544	5
+2025	5
+244	5
+1633	1
+1634	1
+45	1
+402	1
+1635	1
+807	1
+1636	1
+401	1
+1637	1
+1638	1
+1639	1
+1640	3
+1641	3
+228	5
+1643	5
+1644	5
+1645	5
+219	5
+492	5
+1646	5
+1647	5
+318	3
+1651	3
+1652	3
+643	3
+1285	3
+1221	3
+1657	6
+1658	6
+1659	6
+1660	6
+898	6
+1661	6
+1406	7
+413	7
+759	7
+1442	7
+414	7
+991	7
+1663	7
+1169	7
+1664	7
+1414	7
+1674	1
+1675	1
+1676	1
+1610	1
+1677	5
+1678	5
+1679	2
+417	2
+1680	2
+1681	2
+1026	7
+838	7
+1682	7
+1168	7
+1335	7
+716	7
+1683	7
+1684	7
+997	7
+1685	7
+1686	7
+1232	7
+1612	7
+1687	4
+1047	4
+1688	4
+1689	4
+1690	4
+1052	4
+1691	4
+1528	4
+1692	4
+1055	4
+1693	4
+487	5
+491	5
+1694	5
+1695	5
+1696	5
+1697	5
+1698	5
+443	5
+1280	5
+1699	5
+1700	5
+1701	5
+1702	5
+1268	5
+13	5
+1703	5
+1704	1
+1705	2
+1706	2
+1707	5
+286	5
+102	2
+1520	2
+674	2
+1708	2
+1524	2
+1602	2
+1709	2
+1710	2
+679	2
+1711	5
+389	5
+118	5
+1712	4
+893	4
+394	4
+1713	4
+1714	6
+1715	2
+285	2
+94	6
+4	6
+1716	5
+1232	5
+1227	5
+1683	5
+88	5
+1684	5
+1686	5
+3	5
+1717	5
+1718	5
+1719	7
+519	7
+1720	7
+1124	7
+1721	7
+1722	7
+1723	7
+475	7
+1724	7
+1725	7
+1726	7
+470	7
+1197	7
+1727	7
+1728	7
+1198	7
+471	7
+1211	7
+1729	6
+1730	6
+1731	6
+1732	6
+1733	6
+570	6
+701	6
+1734	6
+1735	6
+1736	6
+1737	4
+260	4
+1738	4
+540	4
+1739	4
+1740	4
+982	4
+1741	4
+407	4
+482	4
+1742	4
+1743	4
+1151	4
+1744	4
+1236	6
+1237	6
+366	6
+1745	5
+123	5
+1746	5
+347	5
+1747	5
+1748	5
+1749	5
+1750	5
+1751	5
+1524	5
+1752	5
+679	5
+1753	5
+1754	5
+674	5
+1755	5
+1756	5
+1757	3
+937	1
+1008	1
+1758	1
+1759	1
+938	1
+648	1
+1760	1
+1761	1
+647	1
+1762	1
+1763	1
+1764	4
+1370	4
+138	4
+1765	4
+1766	4
+966	4
+1345	2
+807	2
+1767	2
+148	4
+1768	4
+1769	4
+1770	4
+1771	4
+441	4
+1219	4
+1772	4
+1773	4
+1774	4
+210	4
+1775	4
+434	3
+1776	3
+1781	5
+1782	5
+1783	5
+1784	5
+1200	7
+1042	7
+1690	7
+1049	7
+1691	7
+1689	7
+1193	7
+1786	7
+1787	7
+990	7
+1051	7
+1788	7
+1047	7
+1052	7
+1789	7
+1529	7
+1790	7
+1800	7
+1801	7
+1802	7
+876	7
+1803	7
+1804	7
+1805	7
+1806	7
+1807	7
+1808	7
+1809	7
+128	7
+1711	7
+1813	7
+76	7
+389	7
+187	7
+1823	2
+413	2
+730	3
+1836	3
+728	3
+540	3
+1837	3
+1838	3
+742	5
+1849	5
+1850	5
+329	2
+3193	2
+3194	2
+3198	7
+3189	3
+463	3
+1792	2
+347	2
+3521	4
+3522	4
+3523	4
+3524	4
+2820	7
+3527	7
+3528	7
+3529	6
+372	6
+376	6
+3531	6
+2677	6
+3532	5
+3533	5
+2294	6
+1996	6
+2311	2
+1571	2
+1262	2
+3191	2
+3535	4
+3536	4
+2447	4
+181	4
+764	4
+3538	4
+3539	4
+1240	4
+3540	4
+1109	1
+3542	1
+1114	1
+1850	1
+1587	1
+1825	6
+1907	6
+3545	3
+3546	3
+3547	3
+1218	5
+3548	5
+1235	5
+3549	5
+2705	6
+3550	6
+2641	6
+3551	6
+1540	1
+589	7
+3555	7
+3556	7
+3557	7
+3558	7
+3559	7
+3560	7
+135	1
+3563	4
+413	5
+3571	1
+3025	1
+2044	1
+3604	1
+672	1
+3605	1
+97	1
+2504	1
+554	1
+1480	1
+3612	3
+3614	6
+88	4
+3617	4
+1933	4
+3618	4
+3622	1
+326	1
+3623	1
+3624	1
+1223	1
+1256	1
+245	6
+3630	6
+446	6
+514	6
+2250	1
+703	3
+2044	6
+549	6
+3282	2
+2763	3
+3499	3
+3635	3
+2228	1
+3244	1
+773	1
+2389	1
+3636	1
+3637	7
+2073	7
+2072	7
+1912	7
+432	3
+3639	5
+3640	5
+2952	5
+141	1
+3642	1
+2799	1
+3643	1
+2970	5
+3644	5
+2108	4
+152	4
+2601	4
+3645	6
+3650	3
+3651	3
+2055	3
+2075	1
+138	1
+1807	5
+1806	5
+3656	4
+3657	4
+3330	4
+3662	4
+3665	3
+38	3
+3666	3
+3667	3
+3668	3
+1271	3
+3671	5
+3672	1
+3673	1
+1955	6
+3687	4
+3688	4
+3339	4
+1147	4
+2520	3
+3000	3
+3691	3
+1773	3
+3692	3
+3694	7
+3695	7
+1660	3
+530	5
+3698	5
+3699	5
+1901	5
+2034	5
+3700	6
+2248	6
+855	5
+1447	7
+3701	3
+3679	3
+3319	3
+3702	1
+3027	1
+671	1
+3703	1
+1589	4
+778	4
+3704	7
+3705	7
+648	5
+937	5
+1006	5
+1777	5
+938	5
+1778	5
+1779	5
+1780	5
+647	5
+827	6
+835	6
+1785	6
+1087	7
+1590	7
+1748	7
+1791	7
+1792	7
+1793	7
+1794	7
+1795	7
+1796	7
+1797	7
+1798	7
+1799	7
+1810	7
+633	7
+637	7
+1012	7
+634	7
+1492	7
+1811	7
+1812	7
+1437	7
+1814	2
+1815	2
+25	2
+1222	7
+1816	7
+1817	6
+1818	6
+1819	6
+1820	6
+1821	6
+1822	6
+458	2
+460	2
+1824	2
+1825	2
+1826	2
+1827	2
+468	2
+1828	2
+463	2
+911	2
+1829	2
+1830	2
+1831	2
+1832	2
+1833	2
+1834	2
+1835	5
+472	7
+469	7
+473	7
+1839	2
+1840	2
+1841	2
+1842	2
+1843	2
+681	2
+1844	1
+109	1
+1791	1
+1845	1
+1792	1
+1846	1
+1795	1
+992	1
+1847	1
+1848	1
+1851	2
+1852	2
+1853	2
+328	2
+1854	4
+1855	4
+97	4
+1238	4
+1856	4
+1857	4
+1858	4
+673	4
+1859	4
+212	4
+1860	4
+546	4
+1861	1
+1193	1
+1691	1
+1528	1
+1190	1
+1862	1
+1863	1
+1788	1
+1790	1
+1689	1
+1787	1
+1047	1
+391	1
+1864	1
+1865	1
+1866	1
+118	1
+1867	1
+481	4
+1868	4
+1869	4
+1870	4
+1871	4
+1872	4
+663	1
+1330	1
+630	1
+444	1
+13	1
+1873	1
+715	1
+1874	1
+1875	1
+374	1
+360	1
+1590	1
+69	5
+1876	5
+1877	5
+1878	5
+1879	5
+1880	5
+1881	5
+1882	5
+1883	7
+577	7
+1588	7
+1884	7
+1885	7
+949	7
+1658	2
+1653	2
+1886	2
+900	2
+899	2
+861	2
+1887	2
+867	2
+1888	2
+1889	2
+1890	2
+1400	2
+1891	2
+1892	2
+232	4
+1574	2
+1312	4
+938	2
+937	2
+647	2
+1007	2
+648	2
+1893	2
+1758	2
+1894	2
+1469	2
+1895	2
+1896	2
+1897	2
+1898	2
+800	2
+1899	2
+979	2
+975	2
+1463	2
+1623	2
+1626	2
+460	7
+463	7
+1900	7
+1901	7
+1902	7
+468	7
+1903	7
+1825	7
+336	7
+1904	7
+1905	7
+1906	7
+1833	7
+1907	7
+1407	7
+358	3
+1908	3
+510	3
+1909	3
+868	1
+1910	1
+1911	1
+1912	1
+1803	1
+1800	1
+1808	1
+1805	1
+1913	1
+1914	1
+1915	6
+1916	6
+1808	6
+1917	6
+1803	6
+1806	6
+1805	6
+1918	6
+1919	6
+1920	6
+1921	6
+1912	6
+1922	6
+1923	6
+20	6
+88	1
+1164	1
+3	1
+1816	1
+1232	1
+1931	1
+1932	1
+1933	1
+703	1
+1890	5
+1936	5
+1937	5
+1938	5
+1939	5
+867	5
+1940	5
+1079	2
+1941	2
+1942	2
+1943	2
+1944	2
+219	2
+1945	2
+1946	2
+1947	2
+1948	2
+1949	2
+236	2
+1954	1
+1359	1
+1955	1
+1360	1
+1956	1
+1957	1
+1082	4
+1965	5
+1883	5
+1966	5
+1588	5
+232	5
+1967	5
+230	5
+220	5
+1968	5
+576	5
+1969	5
+225	5
+1307	5
+1970	5
+334	2
+341	2
+15	2
+1985	2
+1986	2
+1987	2
+333	2
+912	2
+913	2
+1288	2
+105	2
+914	2
+1554	2
+1989	7
+741	7
+1990	7
+1109	7
+1114	7
+1368	7
+1365	7
+742	7
+1991	7
+1992	7
+418	6
+1184	6
+1183	6
+1994	6
+1996	5
+311	5
+1997	5
+1998	5
+155	5
+1999	4
+1689	2
+1192	2
+2000	2
+1691	2
+2001	2
+2002	2
+1790	2
+2003	2
+479	5
+1719	5
+879	5
+1722	5
+2007	5
+525	5
+2008	5
+880	5
+175	5
+2009	5
+184	5
+2010	5
+3019	1
+3200	1
+1206	1
+3201	1
+3202	1
+3203	1
+3204	1
+3205	1
+894	2
+891	2
+261	7
+2475	1
+3010	1
+813	1
+3216	1
+848	1
+981	1
+1857	2
+3217	2
+3024	2
+3158	2
+3218	2
+3219	5
+1544	2
+3221	2
+3222	2
+717	2
+23	2
+3225	2
+2048	2
+3226	2
+3113	2
+3227	3
+3230	3
+25	3
+3231	3
+3232	3
+3233	1
+2826	1
+3234	1
+3236	1
+1268	1
+3237	1
+3238	1
+3239	1
+1273	1
+3240	1
+720	1
+731	3
+1909	7
+3258	7
+2951	7
+3148	7
+988	2
+2068	2
+605	2
+1955	2
+3262	4
+2990	1
+3264	5
+1147	7
+828	7
+815	7
+451	7
+1381	7
+69	6
+3272	6
+23	5
+3275	5
+3276	5
+3277	5
+3117	5
+3278	5
+583	2
+381	2
+2800	2
+769	2
+3244	2
+1448	2
+2006	2
+1484	2
+2389	2
+3279	2
+3281	6
+279	4
+3284	4
+3285	4
+1530	4
+3286	2
+3287	2
+1238	2
+3289	6
+3292	1
+3293	1
+456	3
+3301	4
+2592	4
+3304	4
+3305	7
+570	4
+3306	4
+257	4
+3307	4
+254	4
+266	4
+2122	4
+1398	4
+2762	4
+264	4
+538	4
+2682	4
+1613	3
+514	3
+1129	3
+3311	5
+2024	2
+3313	2
+69	2
+782	2
+3315	2
+290	2
+6	2
+3317	2
+1924	1
+1925	1
+1926	1
+123	1
+1927	1
+667	1
+1928	1
+1929	1
+1930	1
+8	1
+1934	2
+1686	2
+1935	2
+1145	7
+848	7
+836	7
+813	7
+1912	5
+1803	5
+876	5
+1802	5
+870	5
+1950	5
+1804	5
+1809	5
+1951	5
+1952	5
+1808	5
+1953	5
+1676	2
+1958	2
+887	5
+893	5
+1959	5
+888	5
+1960	5
+1961	5
+892	5
+890	5
+1962	5
+1963	5
+1431	7
+1890	7
+1658	7
+1937	7
+1661	7
+1938	7
+1653	7
+1964	7
+1657	7
+861	7
+899	7
+867	7
+1971	7
+1972	7
+1973	7
+1974	7
+1975	7
+1976	7
+1451	7
+1977	7
+1978	7
+1979	7
+1980	7
+1981	7
+1982	7
+1983	7
+1984	7
+1988	1
+1307	1
+1966	1
+227	1
+1312	1
+1884	1
+990	6
+1993	6
+1995	3
+1667	3
+1080	4
+2004	4
+2005	4
+2006	4
+1452	4
+2011	5
+2012	5
+1590	5
+2013	5
+2014	5
+2015	5
+967	5
+2016	3
+188	3
+737	3
+2017	3
+2018	3
+2019	3
+630	3
+267	7
+275	7
+2020	7
+1880	7
+1317	7
+2021	7
+789	7
+407	7
+795	7
+403	7
+2022	7
+409	7
+2023	7
+840	7
+2024	7
+411	7
+1882	7
+783	7
+406	7
+2025	7
+1184	7
+790	7
+1741	7
+843	7
+2026	7
+587	7
+2027	7
+396	7
+667	7
+2028	7
+2029	7
+2030	2
+1311	5
+2031	5
+239	5
+2032	5
+2033	6
+2034	6
+1906	6
+2035	6
+2036	2
+1850	6
+1113	6
+2037	2
+62	6
+2038	2
+1991	6
+741	6
+2039	6
+673	7
+347	1
+1062	7
+2040	1
+2041	7
+22	1
+2042	1
+1238	7
+2043	1
+2044	7
+1422	7
+114	1
+2045	7
+2046	1
+2047	7
+2048	1
+557	7
+2049	1
+1388	7
+2050	7
+2051	7
+2052	7
+551	7
+226	2
+966	2
+2053	2
+2054	2
+2055	2
+2056	2
+2057	2
+395	2
+2058	2
+2059	2
+2060	2
+2061	2
+237	2
+632	6
+1812	6
+633	6
+1432	4
+2062	6
+443	6
+360	6
+2063	6
+667	6
+2064	6
+2065	6
+2066	6
+374	6
+2067	6
+1685	6
+607	5
+2068	5
+1308	5
+2069	5
+1300	5
+1299	5
+2070	5
+2071	5
+303	4
+2072	5
+1805	5
+878	5
+1914	5
+868	5
+2073	5
+2074	5
+2075	4
+1632	4
+2076	4
+534	5
+2077	4
+893	6
+215	6
+1209	6
+896	6
+889	6
+2078	6
+2079	6
+2080	6
+888	6
+2081	6
+270	3
+530	3
+429	3
+430	3
+410	3
+278	3
+1406	3
+2082	3
+746	3
+1442	3
+529	3
+1968	7
+2085	7
+1135	2
+2088	2
+2089	2
+325	2
+2090	2
+468	5
+105	5
+2093	5
+463	5
+1902	5
+2096	5
+2098	5
+2099	5
+2101	5
+2102	5
+1834	5
+2107	7
+311	7
+2108	7
+694	7
+154	7
+2110	7
+155	7
+2111	7
+1997	7
+695	7
+151	7
+2112	3
+257	3
+702	3
+2115	3
+253	3
+265	3
+2116	3
+2118	3
+2105	3
+2121	3
+2122	3
+2124	3
+2125	3
+1924	5
+2126	5
+2128	5
+2130	5
+26	5
+2132	5
+2133	5
+2134	5
+2135	5
+2136	5
+2138	2
+542	2
+2139	2
+2140	2
+2142	2
+2143	2
+2144	2
+198	2
+2146	5
+577	5
+2147	5
+2148	5
+227	5
+2149	5
+1517	5
+2150	7
+2151	7
+2152	7
+2153	7
+2154	7
+2156	7
+2157	7
+2158	7
+2159	7
+2160	7
+2161	7
+2162	7
+2163	7
+1211	1
+990	1
+471	1
+1198	1
+1724	1
+1021	1
+423	1
+2137	1
+1236	5
+2173	5
+373	5
+2174	5
+366	5
+1769	5
+2175	5
+1240	5
+2176	5
+1827	1
+2177	1
+468	1
+1825	1
+1904	1
+2181	1
+341	1
+1411	1
+1905	1
+2033	1
+2096	1
+614	1
+2185	1
+2186	1
+613	1
+2189	1
+2190	1
+615	1
+610	1
+2194	7
+1059	7
+355	7
+681	7
+2197	7
+2126	7
+666	7
+135	7
+2199	7
+2062	7
+327	6
+895	6
+953	3
+3206	3
+3207	3
+3208	3
+3209	3
+3210	3
+3211	3
+3212	3
+3213	5
+2859	5
+3214	1
+3215	1
+3220	6
+3223	6
+3224	6
+3228	4
+3229	4
+1079	1
+3235	1
+3241	5
+3242	5
+3243	5
+3244	5
+381	5
+3245	5
+1616	1
+159	1
+3179	1
+855	1
+3246	1
+1615	1
+170	1
+856	1
+1605	1
+71	4
+2044	4
+3034	4
+3247	3
+3248	3
+3249	3
+3250	3
+3251	3
+3252	3
+3253	3
+3254	3
+3255	3
+1174	3
+3256	3
+3257	3
+856	3
+3259	1
+3260	1
+3261	6
+750	6
+1479	6
+3258	6
+664	6
+857	5
+170	5
+160	5
+2896	1
+850	1
+3263	1
+2275	1
+827	1
+1710	1
+686	1
+3265	1
+3266	1
+2081	7
+682	7
+710	7
+1673	7
+393	7
+3244	7
+3267	2
+3268	2
+3269	2
+3270	2
+820	2
+849	2
+3271	2
+3273	2
+3274	2
+252	1
+1884	4
+239	4
+1487	7
+2083	7
+2084	7
+635	7
+2086	7
+395	7
+2087	7
+2091	7
+2092	5
+2094	5
+2095	5
+2097	5
+2100	5
+2103	6
+2104	6
+567	6
+2105	6
+2106	6
+1200	6
+1054	6
+2109	6
+1190	6
+1044	6
+1052	6
+2113	3
+2114	3
+186	3
+2117	3
+2119	3
+2120	3
+661	3
+2123	3
+536	7
+2127	7
+2129	7
+2131	7
+534	7
+2137	4
+1482	4
+593	4
+2141	4
+1540	4
+598	4
+967	2
+2145	2
+2155	6
+1013	6
+2164	6
+2165	6
+2166	6
+13	6
+778	6
+780	6
+2167	6
+2168	3
+2169	3
+2170	3
+2171	3
+2172	3
+1273	3
+1381	4
+64	4
+2178	4
+2179	4
+2180	4
+733	4
+2182	4
+2183	4
+735	4
+186	4
+2184	4
+2187	5
+2188	5
+325	5
+2191	5
+2192	5
+2193	5
+641	5
+896	5
+2195	5
+2196	5
+2198	5
+2200	2
+2201	1
+2202	1
+620	6
+2203	1
+2204	1
+2205	6
+2206	1
+364	6
+2207	1
+2208	1
+2209	1
+2210	1
+2211	1
+2199	1
+2212	4
+1179	1
+135	4
+2213	1
+2214	1
+369	4
+2215	1
+2216	4
+2217	4
+665	7
+374	7
+2218	7
+367	7
+1843	7
+2219	7
+326	7
+622	4
+2220	7
+2221	7
+2222	7
+2223	7
+2224	7
+2225	4
+2226	7
+2227	4
+1712	7
+2205	4
+2228	7
+1657	1
+1964	1
+2229	1
+1431	1
+2230	1
+2231	6
+2232	6
+418	4
+2220	6
+2233	4
+1994	4
+2234	6
+406	4
+2235	4
+483	4
+2236	6
+2237	4
+129	3
+2238	3
+1206	3
+2087	3
+2239	3
+1247	3
+2240	3
+2241	3
+306	3
+2223	3
+2091	3
+2242	3
+326	3
+2243	3
+2244	3
+1251	3
+2221	3
+2245	3
+2246	3
+2027	3
+990	3
+2226	3
+1657	2
+2247	2
+2248	2
+2249	1
+2250	2
+2251	2
+458	1
+2252	1
+149	2
+2253	2
+2254	2
+873	7
+2255	7
+868	7
+1953	7
+2256	7
+583	7
+2257	7
+2258	1
+2259	1
+2260	1
+324	7
+2261	1
+380	7
+1345	1
+2262	1
+2263	1
+2264	1
+2265	2
+1290	2
+2266	5
+1906	2
+2181	2
+2267	5
+2096	2
+2268	2
+2034	2
+1900	2
+212	7
+2269	7
+1102	7
+2270	5
+2053	7
+1704	5
+242	7
+2271	5
+2272	7
+2273	5
+1075	7
+2274	5
+2275	7
+2276	5
+2277	7
+2278	5
+228	7
+237	7
+226	7
+723	5
+2279	5
+233	7
+236	7
+827	7
+2282	6
+2283	6
+2284	2
+2285	2
+165	2
+1604	2
+1057	7
+1628	7
+548	7
+1419	7
+671	7
+549	7
+2287	7
+43	6
+515	6
+76	6
+2293	6
+751	2
+86	2
+756	2
+2295	2
+748	2
+758	2
+749	2
+2299	2
+2300	2
+2301	2
+2303	2
+750	2
+2304	2
+2305	2
+2306	2
+2129	2
+305	3
+1435	3
+2313	2
+1023	2
+1021	2
+557	1
+1239	1
+2316	1
+2318	1
+2051	1
+556	1
+2320	1
+2322	1
+2324	1
+2325	1
+2041	1
+2328	6
+1207	6
+2329	6
+2332	7
+363	7
+147	7
+2173	7
+2333	7
+211	7
+366	7
+376	7
+143	7
+372	7
+2334	5
+1279	5
+1277	5
+374	5
+2335	5
+1273	5
+904	4
+2336	5
+2338	5
+2339	5
+2340	5
+628	6
+646	6
+2343	6
+2344	6
+2345	3
+2346	3
+2347	3
+149	6
+2348	6
+2350	6
+2229	6
+899	6
+2353	5
+368	5
+2354	5
+147	5
+469	6
+470	6
+2359	6
+473	6
+1198	6
+1211	6
+2360	6
+471	6
+472	6
+2361	6
+475	6
+303	1
+305	1
+1225	7
+1227	7
+1224	7
+1234	7
+703	7
+2369	5
+2370	5
+2371	5
+2372	7
+2373	7
+2375	7
+870	7
+737	2
+2377	2
+2292	2
+2378	7
+1167	7
+737	7
+2379	7
+2380	7
+2382	7
+290	7
+1333	7
+273	7
+2384	7
+841	7
+3280	3
+3256	7
+3282	7
+3283	4
+499	6
+3288	5
+1741	5
+2800	1
+1228	1
+3290	1
+3291	2
+354	1
+482	3
+3294	3
+3295	3
+1458	3
+3296	3
+3297	3
+3298	3
+3299	3
+2896	3
+3216	3
+3300	3
+3302	2
+3303	2
+1308	1
+3124	3
+3308	3
+589	3
+3309	2
+1909	2
+1908	2
+3310	2
+2743	1
+3312	1
+3150	1
+344	7
+3314	7
+3316	7
+2314	7
+1749	7
+3318	7
+361	7
+3391	4
+1513	4
+3423	1
+1513	1
+1472	7
+1508	7
+3552	5
+1093	7
+3553	4
+3554	4
+2625	4
+2974	4
+2726	4
+2256	1
+3561	1
+2081	1
+3562	1
+2679	1
+1813	1
+487	3
+1155	3
+3564	3
+2237	3
+3565	3
+3566	3
+3567	3
+2235	3
+3568	3
+1255	6
+1034	4
+3606	4
+3607	4
+1522	2
+3090	2
+3608	2
+296	7
+294	7
+3609	7
+3543	7
+3610	2
+1168	2
+3611	4
+187	4
+2091	4
+188	4
+3613	4
+395	4
+3288	1
+2618	1
+3615	1
+1184	1
+3616	1
+516	6
+2280	5
+728	5
+2281	5
+160	4
+161	4
+163	4
+815	1
+70	1
+488	1
+489	1
+72	1
+491	1
+2286	1
+487	1
+1004	1
+2288	1
+835	1
+2289	1
+2290	1
+482	1
+1000	1
+2291	1
+1870	1
+735	7
+733	7
+347	7
+2217	7
+2205	7
+2292	7
+559	7
+418	7
+150	3
+2294	3
+2296	3
+2297	3
+1506	3
+2298	3
+152	3
+2111	3
+155	3
+2302	3
+67	3
+2231	3
+482	2
+488	2
+835	2
+983	2
+2307	2
+2308	7
+2309	7
+2310	7
+2311	7
+1457	7
+2312	7
+124	4
+2314	4
+2315	4
+1052	5
+2317	5
+2001	5
+1789	5
+2319	5
+1055	5
+1200	5
+2321	5
+2323	5
+1788	5
+1049	5
+2326	5
+1042	5
+2000	5
+726	1
+248	1
+244	1
+2327	1
+246	1
+728	1
+727	1
+2330	1
+2331	1
+609	6
+1308	6
+1954	6
+313	1
+149	7
+2337	7
+860	7
+901	7
+2341	1
+2342	1
+1907	1
+1998	7
+2349	7
+1501	7
+2351	7
+2352	7
+655	1
+2355	1
+107	1
+1017	1
+2356	1
+2357	1
+2358	3
+2362	5
+2363	5
+2364	5
+2365	5
+2366	6
+2367	6
+2368	6
+369	1
+2374	1
+365	1
+2376	1
+358	1
+1834	7
+2341	7
+2034	7
+458	7
+454	7
+2381	7
+1827	7
+1014	7
+103	1
+2383	1
+1009	1
+2385	1
+2386	1
+2387	1
+838	1
+313	7
+1223	7
+1626	5
+2388	7
+1623	5
+1461	5
+2389	7
+970	5
+2390	7
+2391	5
+153	7
+2392	5
+2393	7
+2394	7
+538	7
+2395	7
+2396	7
+2397	5
+2398	5
+2399	5
+567	7
+259	7
+265	7
+570	7
+622	5
+1061	7
+2400	5
+255	7
+253	7
+262	7
+257	7
+701	7
+1706	7
+264	7
+2401	7
+704	7
+2402	7
+667	2
+2403	2
+160	3
+2404	5
+882	5
+2405	5
+127	6
+2108	5
+187	6
+158	5
+695	5
+2406	6
+2407	5
+2113	6
+694	5
+2408	5
+234	2
+1903	2
+1311	2
+2409	2
+1515	2
+1904	2
+227	2
+576	2
+1312	2
+2085	2
+614	7
+613	7
+2410	1
+2411	7
+932	7
+929	7
+610	7
+2412	1
+2185	7
+2413	1
+931	7
+117	1
+2414	1
+588	4
+2415	4
+2416	2
+2417	4
+396	4
+2351	4
+382	4
+2418	2
+2389	4
+2419	4
+2420	4
+1506	4
+2421	4
+2422	4
+2349	4
+1975	4
+467	1
+2423	1
+1352	5
+1496	5
+2424	5
+2425	5
+2426	5
+2428	7
+1878	7
+782	7
+2435	7
+2440	1
+2441	1
+2269	1
+2442	1
+828	1
+2443	1
+1994	1
+2447	2
+2448	2
+2449	2
+2450	2
+2451	2
+2452	2
+2453	2
+2454	2
+2455	2
+482	5
+2457	5
+70	5
+2458	5
+2157	2
+2459	2
+2460	2
+2161	2
+2461	2
+2464	2
+2465	2
+2163	2
+2466	2
+2467	2
+1048	4
+1041	4
+2001	7
+2398	7
+2397	7
+1055	7
+2319	7
+1190	7
+1688	7
+1528	7
+1527	7
+2470	5
+20	5
+2471	5
+2472	5
+2474	5
+2477	2
+2478	2
+2479	2
+2481	2
+2482	2
+2483	2
+2485	2
+1962	3
+1233	3
+2415	3
+2486	3
+888	3
+893	3
+2487	3
+2488	3
+2489	5
+2414	5
+2490	5
+2492	5
+2493	5
+2494	5
+2495	5
+2496	7
+2497	7
+2498	7
+2499	7
+63	7
+2500	7
+909	7
+1610	7
+1958	7
+1676	7
+1565	7
+904	7
+910	7
+905	7
+2501	7
+908	7
+2503	4
+2504	7
+1393	7
+554	7
+2507	7
+2509	4
+2511	4
+2513	4
+2514	4
+364	4
+1251	4
+148	1
+372	1
+2518	1
+2519	1
+142	1
+145	1
+2520	1
+2521	1
+2522	4
+2523	4
+2524	4
+2525	4
+2526	4
+2527	4
+503	1
+2529	1
+502	1
+495	1
+496	1
+2127	1
+2536	1
+2538	1
+538	1
+2540	5
+235	5
+234	5
+1305	5
+222	5
+2545	2
+1885	2
+223	2
+222	2
+220	2
+2032	2
+628	7
+593	7
+719	7
+1260	7
+646	7
+629	7
+596	7
+598	7
+613	5
+932	5
+2548	5
+929	5
+614	5
+4	5
+930	5
+931	5
+2550	5
+2552	6
+1315	6
+2553	6
+789	6
+63	6
+2554	7
+258	7
+2523	7
+2279	7
+2281	7
+2556	7
+2558	7
+2508	7
+2559	7
+1890	6
+795	2
+280	2
+3319	2
+2498	2
+3320	2
+1317	2
+2023	2
+843	2
+341	7
+1832	7
+455	7
+3499	7
+3569	3
+2289	2
+3021	2
+486	2
+1417	7
+2860	7
+3571	7
+550	7
+3572	7
+3573	7
+2343	7
+2787	7
+3574	7
+611	7
+3579	7
+612	7
+3014	7
+3035	4
+3591	4
+3592	4
+2202	4
+151	4
+381	4
+1448	4
+2988	6
+3593	5
+3594	5
+1682	5
+1828	7
+2252	7
+2856	7
+130	5
+3600	5
+85	5
+3601	5
+521	6
+3619	6
+525	6
+881	6
+3620	6
+3538	6
+3621	6
+630	4
+3625	4
+1266	4
+2311	4
+409	4
+1184	4
+403	4
+2427	4
+2429	3
+2430	3
+2431	3
+2432	3
+2433	3
+2434	3
+2436	3
+1136	3
+2437	3
+2438	3
+2439	3
+1935	1
+1225	1
+1335	1
+1168	1
+2444	4
+599	4
+1302	4
+1303	4
+1308	4
+1299	4
+2445	4
+2266	4
+1300	4
+1955	4
+2446	6
+111	2
+2456	2
+2462	6
+2463	6
+100	6
+38	6
+1926	6
+2042	6
+1779	7
+735	3
+2468	3
+2469	3
+347	3
+490	6
+2427	6
+481	6
+2473	6
+1743	6
+1870	6
+2475	6
+493	6
+2476	4
+635	4
+1812	4
+2480	2
+456	2
+1286	2
+2484	2
+337	2
+262	2
+761	7
+173	7
+765	7
+2491	7
+1048	7
+1043	7
+1056	7
+1041	7
+1053	7
+1667	7
+1476	7
+2502	4
+2505	5
+2506	5
+2508	6
+2510	6
+2512	6
+248	6
+228	6
+2515	6
+246	6
+2516	6
+1748	1
+2517	1
+2528	6
+2530	6
+2153	6
+2158	6
+2531	6
+2532	6
+2157	6
+2461	6
+2533	6
+2534	6
+2535	6
+2537	6
+2163	6
+2539	6
+566	6
+702	6
+2541	6
+2542	6
+2543	6
+2544	6
+218	7
+665	6
+2546	2
+2547	2
+2549	5
+2551	2
+1480	2
+1941	1
+2555	1
+2557	1
+1057	5
+2560	5
+2561	5
+2562	5
+1849	2
+168	6
+2563	6
+2564	5
+1303	5
+855	6
+160	1
+1056	6
+171	1
+262	4
+2103	4
+2565	4
+2116	4
+1303	3
+2104	7
+2566	7
+247	7
+571	7
+700	7
+1303	6
+2096	6
+2567	6
+1827	6
+2568	6
+2569	3
+2129	3
+1017	2
+1014	2
+1192	1
+2570	2
+2571	2
+1052	1
+467	2
+1527	1
+2572	2
+2326	1
+1016	2
+2573	1
+1020	2
+1394	2
+446	1
+2574	1
+2575	1
+2576	1
+2577	1
+2578	1
+2579	5
+312	2
+2580	2
+1293	2
+2581	2
+2582	2
+2583	6
+643	2
+2584	2
+1504	4
+2585	2
+894	4
+2586	2
+2252	2
+1997	4
+1907	2
+2587	2
+2234	4
+2588	4
+2589	2
+2107	4
+1083	4
+2590	2
+2294	4
+2591	3
+2592	3
+2593	3
+2594	3
+2595	3
+2596	1
+1497	4
+130	4
+1046	1
+2597	4
+2598	4
+1049	1
+2599	4
+1092	4
+2600	1
+1582	3
+2601	3
+68	3
+1504	3
+741	2
+2602	3
+2603	3
+2604	3
+2605	3
+843	1
+2606	1
+268	1
+2607	1
+2392	1
+2608	1
+1626	1
+790	1
+2609	1
+271	1
+2610	1
+971	1
+2611	1
+840	1
+2612	1
+2613	2
+2614	2
+1741	6
+560	6
+2616	6
+2618	6
+828	6
+2195	2
+209	2
+2078	2
+365	5
+939	5
+2634	5
+2636	5
+2637	5
+2639	5
+2640	5
+2642	1
+390	1
+2643	1
+2362	1
+2644	1
+2645	1
+106	4
+2456	5
+2653	3
+2635	3
+848	3
+2654	3
+648	6
+2655	6
+2656	6
+2657	6
+2386	6
+2658	6
+23	3
+2662	3
+2663	3
+2666	3
+2667	3
+2668	3
+2669	3
+2670	3
+913	1
+2671	1
+2672	1
+2673	1
+2674	1
+1240	7
+2677	7
+2678	7
+1237	7
+2680	7
+76	1
+503	6
+2682	6
+2127	6
+2077	6
+538	6
+536	6
+501	6
+2396	6
+1837	6
+2689	6
+104	6
+2580	5
+2694	5
+2695	5
+2696	5
+312	5
+962	5
+2698	5
+2701	2
+1285	2
+2703	6
+191	6
+1370	6
+2706	6
+2707	4
+2708	4
+2709	4
+186	1
+2710	1
+1251	1
+1242	1
+1478	3
+2716	3
+1255	3
+2717	3
+1179	3
+2719	3
+733	3
+821	6
+70	6
+489	6
+2619	6
+2724	6
+2725	6
+2726	6
+882	4
+761	4
+2727	4
+2728	4
+2729	4
+479	4
+765	4
+2732	4
+2733	4
+2734	2
+2735	2
+2609	2
+970	2
+968	2
+2736	2
+62	7
+2737	7
+2738	7
+2739	7
+2741	7
+584	6
+1416	6
+2748	5
+873	5
+2751	5
+1800	5
+2754	5
+1951	1
+870	1
+1804	1
+2760	7
+2121	7
+2762	7
+1731	7
+566	7
+171	2
+1605	2
+702	2
+1399	2
+1065	2
+253	2
+1397	2
+2775	3
+1544	3
+2311	3
+2776	3
+2777	3
+2778	3
+289	5
+1442	5
+279	5
+510	6
+1519	6
+2781	3
+2582	3
+2193	3
+641	3
+1832	6
+334	6
+105	6
+2785	6
+2786	6
+2787	1
+924	1
+431	1
+597	1
+2775	7
+2793	7
+1456	7
+1874	2
+1523	2
+2795	2
+1821	2
+1330	2
+2797	7
+2798	7
+1533	7
+2800	7
+2803	4
+2804	4
+941	4
+2805	5
+725	5
+260	5
+2806	5
+246	5
+2103	3
+2807	3
+706	3
+1065	3
+1706	3
+2809	3
+707	3
+2566	3
+1893	7
+3321	7
+3269	7
+634	6
+3324	6
+3327	2
+3328	6
+3333	1
+2841	1
+3336	1
+3338	2
+205	2
+3013	2
+3342	2
+296	2
+1667	5
+3346	1
+3347	1
+443	4
+3357	4
+3029	7
+906	7
+1675	7
+1197	6
+1724	6
+1199	6
+3362	6
+1727	6
+718	7
+3365	7
+2826	7
+1218	6
+1317	1
+842	1
+1334	1
+789	1
+2022	1
+621	6
+509	6
+2615	6
+2617	6
+511	6
+559	2
+2619	2
+2620	2
+2621	3
+2622	3
+2623	3
+2624	3
+981	3
+2625	3
+2626	3
+2627	3
+485	3
+982	3
+2628	3
+820	3
+2629	3
+1281	3
+2630	3
+1147	3
+2631	3
+2632	3
+2056	3
+470	1
+2633	2
+2635	7
+2627	7
+221	7
+1994	7
+2638	7
+1099	7
+219	7
+2631	7
+2616	7
+39	4
+1907	4
+2641	4
+652	4
+468	4
+2356	4
+15	4
+2646	5
+2647	5
+2648	5
+2649	5
+103	2
+2650	2
+1041	1
+1642	1
+2651	1
+2652	3
+576	4
+1010	4
+2659	4
+1762	4
+937	4
+2660	4
+2661	4
+647	4
+2664	4
+2665	4
+1461	7
+803	7
+1626	7
+2609	7
+1469	7
+1467	7
+970	7
+802	7
+1462	7
+2675	7
+1468	7
+2676	7
+2392	7
+797	7
+2642	7
+2679	7
+1350	1
+1013	1
+2681	1
+2683	1
+1020	1
+2684	1
+1014	1
+1561	1
+1016	1
+401	6
+2264	6
+419	6
+2685	6
+2686	6
+402	6
+404	6
+2687	6
+2077	2
+2688	2
+2690	2
+2691	2
+2692	2
+2693	2
+2326	2
+2397	2
+2697	2
+1200	2
+2317	2
+2699	6
+2700	6
+2702	6
+735	6
+725	1
+2704	1
+2705	1
+1492	1
+2052	2
+2711	2
+1424	2
+2712	2
+2713	2
+2714	2
+2715	7
+1088	7
+109	7
+2718	7
+2720	7
+2721	7
+2722	5
+2723	5
+367	5
+2699	7
+1648	7
+2730	7
+1130	7
+2731	7
+1127	7
+763	7
+2663	4
+2740	6
+2718	6
+2742	6
+663	6
+2743	6
+2378	6
+491	4
+2744	4
+2745	4
+2746	4
+2747	4
+320	6
+2749	6
+2750	6
+2752	6
+2753	6
+2188	6
+2755	6
+1289	6
+2756	6
+2757	6
+2758	6
+2759	6
+298	7
+691	7
+302	7
+300	7
+305	7
+301	7
+303	7
+698	7
+1187	7
+690	7
+2761	2
+2763	2
+2764	2
+2052	4
+2765	4
+2766	4
+1062	4
+1393	4
+2504	4
+2767	4
+2768	4
+2769	4
+1067	4
+2770	3
+2038	3
+413	3
+657	3
+2771	3
+436	3
+2772	3
+2773	3
+401	3
+414	3
+2774	3
+2363	4
+896	4
+216	4
+392	4
+2779	4
+2780	3
+2065	3
+1245	2
+2782	2
+2783	2
+2784	2
+2218	2
+2788	7
+2789	7
+196	7
+2790	7
+202	7
+2791	7
+2792	7
+38	4
+2794	4
+2796	4
+1606	2
+2333	2
+2799	2
+441	2
+2801	2
+2802	2
+1048	3
+1476	3
+2808	4
+2810	1
+1277	1
+2334	1
+382	3
+2811	7
+2812	3
+2813	3
+396	3
+587	3
+2814	3
+1098	7
+2815	3
+2816	3
+2004	3
+2817	7
+887	2
+508	7
+2196	2
+2818	2
+2819	7
+890	2
+2820	2
+2821	2
+2369	2
+896	2
+2822	2
+940	1
+2823	2
+1893	1
+649	1
+2824	1
+2825	1
+366	1
+2826	4
+2332	1
+2827	1
+2828	1
+420	1
+560	7
+2829	1
+427	1
+2830	7
+3322	5
+2020	5
+3323	5
+795	5
+3325	5
+3326	5
+1317	5
+1503	7
+517	6
+180	6
+3329	6
+3330	6
+3331	5
+3332	5
+1911	5
+3334	5
+3335	5
+3337	3
+3339	3
+3340	3
+2982	3
+1184	3
+983	3
+3341	3
+561	3
+467	7
+1017	7
+1013	7
+1350	7
+2268	7
+1020	7
+3343	7
+3344	7
+1491	4
+3345	4
+632	4
+268	2
+2025	2
+3348	2
+3349	2
+3350	2
+3351	2
+3352	2
+3353	2
+3354	3
+708	3
+3355	3
+3356	3
+1828	1
+2034	1
+1834	1
+59	1
+3358	1
+3359	1
+3360	4
+802	6
+1626	6
+1469	6
+3361	6
+1598	7
+3271	7
+3296	7
+3363	7
+1176	2
+3364	2
+3366	2
+2529	2
+3371	3
+1048	6
+3376	2
+3377	2
+3378	2
+1827	4
+1408	4
+2571	4
+875	1
+3381	1
+3382	1
+3383	1
+3384	1
+3385	1
+3386	1
+3099	1
+3387	1
+1544	1
+1175	1
+3388	1
+3389	1
+2310	1
+1571	1
+3390	1
+602	4
+1704	6
+1838	6
+3393	4
+3394	4
+3395	4
+1672	7
+1031	7
+1228	7
+315	7
+3401	3
+1427	3
+3406	2
+3407	2
+1497	2
+831	2
+3408	2
+3409	2
+2638	2
+2985	2
+3112	3
+2410	3
+3410	3
+355	3
+2315	3
+3411	3
+3412	3
+3413	3
+3414	3
+1178	3
+3416	2
+3417	2
+1989	2
+3418	2
+1197	4
+470	4
+469	4
+2361	4
+1195	4
+2360	4
+475	4
+3419	4
+587	2
+3424	2
+396	2
+385	2
+772	2
+3009	7
+3697	7
+3425	7
+3426	6
+900	6
+3427	6
+3032	6
+901	6
+3428	6
+3433	7
+3434	7
+791	7
+3435	7
+3323	7
+3436	7
+3437	7
+3438	2
+3439	2
+3440	2
+3441	2
+1263	6
+3444	4
+3445	4
+3446	4
+752	1
+3449	1
+748	1
+3450	1
+86	1
+3451	1
+2548	2
+3321	1
+1833	1
+460	1
+3453	1
+463	1
+2935	2
+3455	2
+1206	7
+1035	5
+1367	5
+3706	5
+1840	5
+3707	5
+3708	5
+3709	5
+3712	3
+748	3
+750	3
+753	3
+3713	1
+1029	1
+3716	5
+313	6
+1418	6
+890	6
+2370	6
+3717	6
+1642	7
+1045	7
+1665	7
+2651	7
+1222	5
+1666	7
+3723	7
+3726	5
+3728	3
+2641	1
+3732	1
+1290	1
+3733	1
+3734	2
+277	2
+3735	2
+3736	2
+791	2
+3737	2
+1333	2
+1878	2
+3738	2
+2606	6
+1895	6
+1468	6
+3740	6
+3741	7
+3742	7
+1176	7
+503	2
+3745	2
+3746	3
+1093	3
+3747	3
+3748	3
+3749	3
+2820	3
+3750	3
+394	3
+3636	3
+3751	3
+3752	3
+719	1
+3758	4
+3115	4
+1114	3
+1113	3
+3765	3
+85	3
+3766	3
+2197	3
+3767	3
+3768	3
+1300	1
+2266	1
+1303	1
+1370	1
+68	2
+2349	2
+3773	2
+2989	2
+152	2
+1	1
+168	2
+3246	2
+3775	2
+3777	3
+1199	3
+2360	3
+2266	6
+3780	3
+1675	2
+2957	7
+1411	7
+3194	7
+3778	7
+3784	6
+1604	6
+3786	6
+2841	2
+1308	7
+607	7
+605	7
+606	7
+987	7
+602	7
+599	7
+1954	7
+168	5
+3788	3
+3789	3
+3790	2
+3243	2
+393	2
+2242	2
+2256	2
+3791	2
+3793	7
+3165	3
+3662	3
+3796	3
+2708	3
+3797	3
+3798	3
+107	7
+652	7
+917	7
+956	7
+3799	7
+3805	5
+1197	5
+470	5
+2105	7
+3806	7
+705	7
+3807	2
+3808	2
+3314	2
+3799	2
+2194	2
+3511	2
+1925	2
+932	6
+3810	6
+2871	6
+3811	4
+3812	4
+3813	4
+1303	7
+1304	7
+1362	7
+403	6
+559	6
+409	6
+3818	6
+3818	1
+1741	1
+2312	4
+1672	3
+387	3
+1211	5
+1199	5
+473	5
+469	5
+471	5
+475	5
+1726	5
+1725	5
+1727	5
+2988	5
+3826	2
+3827	2
+3828	2
+3829	2
+3830	2
+1890	1
+3833	3
+2912	1
+3836	1
+3837	5
+3838	5
+3842	4
+3843	4
+1641	4
+1643	7
+3406	7
+3342	3
+2948	7
+2453	7
+3876	4
+3877	4
+3878	4
+1247	4
+3168	4
+236	6
+3883	6
+1597	6
+2988	7
+3889	7
+3805	7
+972	4
+800	4
+3890	4
+3046	4
+1462	4
+3740	4
+970	4
+3892	4
+1381	6
+1248	6
+3893	6
+3894	6
+3895	1
+2547	1
+3896	4
+883	1
+479	1
+3897	1
+881	1
+2449	1
+975	5
+3898	5
+2844	5
+3067	4
+3899	4
+3901	2
+800	7
+3710	6
+761	6
+174	6
+3711	6
+2675	1
+3714	7
+3715	7
+3071	7
+2864	7
+814	1
+486	1
+493	1
+10	4
+3718	4
+3719	5
+2858	5
+2823	5
+1554	5
+3720	5
+3721	5
+456	5
+1372	7
+2908	7
+3722	7
+1850	7
+1363	7
+3724	2
+3725	2
+622	2
+3727	6
+1234	6
+2376	6
+343	6
+1242	6
+3729	5
+3730	5
+3731	5
+3739	6
+3194	6
+3743	4
+3744	4
+617	1
+2344	7
+1540	7
+645	7
+3753	6
+2818	6
+2028	6
+2876	6
+3754	6
+3755	6
+3756	4
+3757	4
+2311	5
+3759	5
+114	5
+1266	5
+3760	4
+3761	4
+3762	4
+3763	4
+3764	1
+3118	1
+3769	4
+3770	1
+3771	1
+820	1
+3772	3
+1565	1
+3774	5
+2352	5
+3776	5
+3778	2
+3779	2
+3781	6
+315	6
+2362	6
+1973	6
+2246	6
+3782	6
+3783	6
+1112	5
+3785	6
+3787	4
+1195	1
+460	5
+730	7
+1513	7
+248	7
+2841	5
+3792	5
+3794	3
+175	3
+3795	3
+983	1
+3800	2
+3801	2
+3802	2
+3803	2
+3804	2
+3035	1
+694	1
+2006	1
+2110	1
+1996	1
+3809	3
+3814	7
+2470	7
+3815	7
+3816	7
+1826	7
+918	7
+3741	5
+3817	5
+662	6
+674	6
+3819	6
+2810	6
+282	6
+3820	6
+1664	6
+1442	6
+270	6
+289	6
+991	6
+3754	1
+3821	3
+3822	3
+425	3
+3823	3
+2477	7
+1364	7
+3824	6
+3825	6
+910	5
+3831	5
+3832	6
+1447	1
+2415	7
+1963	7
+1962	7
+3834	3
+3835	3
+2559	6
+2523	6
+3839	4
+3840	4
+3841	4
+3844	5
+169	5
+3845	5
+1746	7
+3076	7
+3875	1
+1509	2
+1704	2
+1836	2
+2214	2
+444	2
+2248	7
+3879	7
+3880	7
+2852	7
+3845	4
+3881	4
+3882	4
+2705	4
+3884	4
+3885	4
+3886	4
+3887	4
+3888	4
+1836	4
+3891	5
+1198	5
+212	5
+106	5
+2496	2
+3900	2
+3902	2
+3589	2
+3521	3
+1896	7
+3903	3
+1895	7
+1465	7
+3904	3
+975	7
+3905	3
+3906	3
+801	7
+2841	7
+3907	3
+971	7
+3908	7
+733	6
+3373	3
+3909	3
+1502	2
+694	2
+1569	7
+354	7
+3893	7
+3910	6
+3911	6
+3350	6
+3912	5
+1709	5
+1522	5
+2407	6
+3035	6
+155	6
+1071	6
+694	6
+605	5
+3170	6
+599	3
+1704	7
+731	7
+3913	4
+3914	4
+2827	7
+371	7
+3915	4
+445	7
+3916	4
+2306	3
+3918	3
+3919	2
+3920	2
+3921	2
+3372	2
+1599	7
+3028	7
+1945	7
+1496	2
+3693	2
+3923	2
+203	2
+3602	2
+3924	4
+3668	4
+3926	1
+3927	1
+1362	1
+2933	1
+3928	1
+1686	1
+2561	1
+1170	1
+736	1
+3929	1
+1612	1
+3930	3
+3932	3
+3934	3
+3935	3
+3936	3
+3937	3
+3285	3
+3940	3
+2914	3
+3942	3
+3944	3
+3946	3
+3947	6
+3949	4
+991	2
+3950	2
+3951	4
+3952	7
+3013	7
+1352	7
+3953	7
+542	7
+3954	7
+2592	7
+3956	7
+3337	4
+3960	4
+559	4
+3961	4
+788	2
+1324	2
+269	2
+3962	2
+3963	5
+3964	1
+3965	1
+1449	1
+3966	1
+2829	7
+3967	1
+2737	1
+2741	1
+3107	2
+1372	2
+3973	4
+3974	4
+3975	4
+3976	4
+3977	4
+2500	4
+3588	4
+3978	4
+3837	4
+2256	3
+3981	3
+2991	3
+393	3
+3982	4
+981	4
+3985	4
+3987	4
+211	4
+2680	4
+1207	2
+3988	2
+3213	2
+2411	4
+332	5
+3990	5
+655	5
+3992	5
+3993	7
+3168	7
+2776	7
+3638	5
+3994	1
+3995	1
+161	6
+3996	6
+3998	6
+3999	6
+4000	6
+406	6
+4001	6
+4002	6
+3264	7
+592	7
+63	3
+4008	3
+4009	3
+4010	3
+3429	3
+1876	3
+4011	3
+4012	3
+3352	3
+2608	3
+2024	3
+3681	3
+4015	4
+4016	4
+4017	4
+4018	4
+2105	2
+4019	2
+4022	5
+4023	5
+4024	5
+4025	5
+789	5
+4026	5
+2012	3
+4028	3
+1813	3
+4029	3
+3077	3
+4030	3
+3916	3
+118	3
+2663	6
+4033	6
+4034	6
+700	3
+4035	3
+4036	3
+2104	3
+1733	3
+4037	3
+812	7
+402	7
+4038	7
+1784	7
+807	7
+437	7
+3284	7
+2672	6
+4040	6
+1724	4
+1727	4
+4042	4
+4043	5
+2441	5
+1564	7
+4045	7
+444	6
+748	5
+4047	5
+4050	7
+2318	7
+4053	7
+4054	4
+1252	4
+3766	4
+4055	5
+477	4
+760	4
+3373	4
+1134	4
+2300	6
+2199	4
+4062	4
+478	5
+4065	2
+1506	2
+1461	2
+2975	4
+4067	2
+2383	5
+2214	6
+3168	6
+4073	5
+1285	5
+983	4
+486	4
+4075	1
+4020	3
+4076	3
+3014	5
+1167	5
+140	5
+1534	6
+2221	6
+4081	2
+487	2
+3299	2
+235	6
+1979	3
+4083	3
+4085	3
+1228	3
+4086	3
+4087	2
+4089	3
+990	2
+4091	7
+1016	7
+4092	4
+4098	6
+4101	6
+3917	7
+3389	6
+803	6
+3922	6
+1461	6
+3504	6
+2010	7
+1530	6
+3925	5
+930	6
+3931	1
+3933	1
+2497	1
+1882	1
+3938	1
+3939	1
+280	1
+847	1
+3941	1
+3943	1
+3945	1
+2388	2
+3533	2
+2027	2
+2026	2
+3527	2
+3948	2
+2776	2
+3955	2
+3957	2
+1233	2
+321	2
+387	2
+3958	2
+3959	2
+2794	2
+1229	2
+2870	7
+1824	1
+2761	1
+342	1
+2312	2
+1454	2
+333	4
+2096	4
+3968	1
+3969	1
+3970	1
+3647	4
+3971	6
+3972	6
+1982	6
+1078	6
+540	7
+3979	2
+3980	2
+3983	6
+3984	6
+1829	6
+3986	3
+896	1
+2369	1
+1962	1
+3342	7
+3989	7
+943	7
+3991	6
+2951	1
+1168	6
+1612	6
+3997	6
+1497	3
+3697	3
+4003	3
+4004	3
+4005	3
+849	6
+4006	1
+4007	1
+3617	1
+4013	4
+4014	4
+4020	4
+4021	4
+1232	4
+2849	7
+1985	7
+342	7
+4027	6
+3450	6
+71	1
+1388	1
+4031	1
+2800	5
+769	5
+710	5
+3371	2
+4032	2
+866	7
+1936	7
+1659	7
+864	7
+4039	5
+1107	5
+1599	5
+1372	6
+3542	6
+4041	6
+4044	1
+4046	2
+4048	2
+682	2
+130	2
+4049	2
+2992	7
+4051	7
+4052	7
+3528	6
+697	6
+2029	6
+699	7
+1435	7
+3572	6
+1497	6
+1222	3
+1232	3
+4056	3
+1686	3
+2329	4
+4057	4
+2027	4
+4058	4
+3474	4
+4059	4
+4060	4
+3024	4
+4061	1
+4063	1
+2409	1
+321	3
+4064	3
+3204	3
+4066	3
+450	7
+2518	7
+1769	7
+3439	7
+4068	5
+2282	5
+4069	5
+4070	3
+2284	3
+4071	3
+4072	3
+2198	2
+2415	2
+319	2
+4074	2
+568	7
+425	5
+429	5
+4077	5
+982	5
+3687	5
+2300	1
+4078	1
+4079	5
+1987	5
+4080	2
+4082	7
+966	7
+189	7
+1488	1
+4084	4
+3930	1
+1679	1
+3039	1
+4088	1
+291	1
+530	1
+2652	6
+4090	6
+2476	6
+3213	4
+2914	5
+4093	4
+4094	4
+4095	4
+4096	4
+19	4
+4097	4
+773	3
+4099	3
+4100	3
+415	7
+1189	7
+4102	4
+3292	5
+924	6
+3394	2
+4103	2
+2479	7
+4104	7
+4105	7
+1608	3
+1236	3
+2173	3
+4106	3
+1337	2
+1194	1
+1170	2
+4107	1
+4108	2
+1034	7
+3819	7
+4109	4
+2793	4
+4110	4
+4111	4
+3022	2
+641	7
+2749	7
+1583	7
+4112	6
+2045	6
+4113	6
+4114	2
+927	5
+4118	5
+4119	5
+3026	5
+4044	7
+4120	7
+4121	7
+2373	4
+1806	4
+1808	4
+1803	4
+746	6
+4126	7
+533	7
+4131	2
+940	2
+4135	2
+924	4
+2863	4
+927	4
+1021	4
+3281	4
+106	6
+328	6
+959	6
+4140	1
+4141	1
+4142	1
+334	1
+1490	4
+1436	4
+2652	4
+3179	4
+3014	6
+4145	6
+4146	6
+1650	6
+1875	4
+4148	4
+1272	4
+4149	4
+4150	1
+4153	5
+750	5
+4154	5
+4155	3
+4156	3
+4157	3
+4158	3
+1685	1
+1535	2
+4159	2
+4160	2
+1537	2
+1069	2
+4169	3
+4164	6
+4165	6
+2729	6
+4166	2
+4167	2
+4168	2
+2341	2
+774	3
+887	3
+2388	3
+4170	3
+4171	3
+4172	3
+4173	3
+4175	4
+3057	4
+4176	4
+4177	4
+1679	4
+4178	3
+2349	5
+4180	5
+523	5
+883	5
+4181	5
+4182	5
+4189	5
+4190	5
+1972	5
+3240	3
+720	3
+4194	2
+3141	1
+4196	1
+3608	1
+4044	2
+3638	2
+2377	5
+4197	5
+4198	7
+4199	7
+4200	2
+2556	1
+260	1
+3059	1
+341	4
+4202	4
+1678	7
+4027	7
+4203	5
+2250	5
+1660	5
+1842	5
+4205	5
+1937	2
+4207	2
+4208	2
+2970	2
+4209	2
+418	2
+3313	7
+3734	7
+4212	7
+4213	7
+2608	7
+4214	3
+4217	4
+3777	4
+1213	4
+1211	4
+4221	2
+1436	2
+634	2
+4222	2
+4224	3
+4225	3
+4226	3
+3941	3
+3272	3
+4227	3
+69	3
+4228	3
+4229	3
+2497	3
+788	3
+4230	4
+769	4
+4231	4
+1233	4
+4233	2
+2218	1
+4242	1
+4243	1
+4244	1
+2743	7
+679	7
+899	4
+3663	5
+3027	5
+4247	7
+4248	7
+3116	7
+818	4
+4001	4
+3216	4
+2290	4
+3987	3
+2677	3
+3384	7
+4251	7
+3335	7
+4252	7
+331	2
+4255	5
+1586	5
+2478	5
+1640	4
+284	7
+4256	7
+268	7
+847	7
+4011	7
+3953	5
+4258	5
+4152	5
+3968	5
+1065	1
+253	1
+109	5
+4267	5
+4268	5
+3820	7
+1443	7
+1163	7
+4269	7
+4052	3
+4270	3
+4271	3
+769	3
+772	3
+4272	3
+795	3
+3828	3
+4273	3
+4274	3
+3236	3
+1601	3
+1524	3
+992	7
+1473	7
+646	1
+2344	1
+1215	1
+4275	5
+1151	5
+1142	4
+3023	1
+2312	1
+4276	1
+1454	1
+4277	3
+4278	3
+4279	3
+4280	3
+4281	7
+281	4
+4282	4
+4283	4
+569	5
+4115	2
+4116	2
+4117	4
+397	4
+3305	4
+4122	6
+809	7
+3147	7
+1679	7
+4123	7
+530	7
+66	7
+252	2
+4124	7
+2663	7
+4125	6
+4127	6
+4128	6
+2383	6
+4129	6
+4130	1
+4132	1
+4133	1
+4134	1
+2651	2
+172	3
+3394	7
+4136	7
+426	7
+4137	7
+4138	7
+4139	7
+924	2
+2242	6
+4143	6
+1206	6
+4144	6
+4147	4
+4151	2
+4152	2
+4161	6
+867	4
+2402	4
+2105	4
+4162	4
+1286	7
+4163	7
+3635	7
+2766	3
+550	3
+557	3
+4050	3
+3218	3
+4174	1
+4179	3
+3743	3
+4183	3
+4184	3
+4185	3
+2048	3
+4186	3
+4187	3
+4188	3
+4191	3
+4017	3
+2377	3
+1748	3
+1365	4
+1988	7
+4192	7
+4193	7
+3240	7
+1701	7
+720	7
+3199	7
+4195	7
+2369	3
+3067	3
+835	4
+1079	4
+3407	4
+3983	7
+330	7
+465	7
+4201	7
+4141	6
+2674	6
+1554	6
+2818	7
+3067	7
+600	6
+3649	6
+4204	6
+2939	7
+1493	7
+632	7
+1491	7
+4206	7
+1011	7
+4210	3
+4211	3
+2830	6
+779	6
+4215	5
+3543	5
+4216	5
+2185	5
+2189	2
+2550	2
+1242	2
+4218	2
+4219	2
+4220	2
+3177	2
+3664	6
+4223	6
+3621	7
+1662	7
+4232	3
+4234	4
+4235	4
+4236	4
+4237	1
+4238	1
+3506	1
+75	1
+4239	5
+2934	5
+4240	5
+4241	5
+3410	5
+3068	5
+2119	5
+1	5
+4245	4
+529	5
+4246	6
+4249	6
+268	6
+74	2
+4250	2
+2624	2
+304	7
+3094	1
+2562	1
+4253	1
+1013	3
+977	4
+3922	4
+3502	4
+4254	4
+4257	1
+2379	1
+1940	7
+863	7
+4259	7
+4260	1
+4261	1
+4262	1
+3532	1
+4263	1
+3558	1
+4264	1
+4265	6
+540	6
+4266	6
+4284	5
+4285	6
+4286	5
+4287	6
+4235	6
+158	2
+3538	1
+175	1
+3619	1
+4288	1
+4289	2
+1257	1
+4290	3
+4291	3
+4292	2
+4293	2
+4294	2
+4251	2
+1912	2
+4295	2
+4296	2
+1463	5
+2734	5
+4042	2
+1723	2
+4297	1
+2991	2
+4298	2
+4299	6
+3179	7
+3289	7
+514	7
+1718	7
+3329	5
+4300	5
+620	7
+745	7
+1587	7
+2485	7
+4301	7
+4302	1
+4303	7
+317	7
+4304	7
+1229	7
+4305	7
+3506	4
+4306	4
+2737	3
+2800	4
+4307	4
+710	4
+1666	3
+2261	2
+4308	5
+1523	5
+3013	4
+629	4
+4309	2
+4310	7
+4311	7
+4312	2
+144	2
+1218	2
+3123	3
+4313	3
+4314	3
+4315	3
+1975	3
+4316	3
+4105	2
+1538	3
+3591	3
+1661	2
+4317	3
+4318	3
+4319	3
+4320	2
+2387	6
+937	6
+4321	4
+4322	4
+4323	6
+4324	6
+4325	6
+2831	1
+395	1
+189	1
+4326	6
+4327	3
+4328	3
+363	5
+4329	5
+4330	5
+4331	3
+728	4
+4332	4
+4333	4
+4334	4
+1742	3
+826	3
+1198	3
+4335	3
+4336	2
+4337	2
+4338	2
+4339	2
+4340	7
+509	7
+3511	7
+4341	2
+4342	3
+2073	2
+870	2
+4343	3
+4344	3
+1094	3
+1801	2
+4345	2
+3730	2
+615	7
+1848	5
+4346	5
+4347	7
+4348	7
+1195	7
+1214	7
+4349	1
+1905	2
+1458	1
+1455	1
+1573	1
+3641	3
+468	3
+4281	3
+4350	3
+1502	7
+2408	7
+3988	7
+1541	7
+4351	6
+1924	7
+2449	5
+3052	7
+4352	5
+4134	7
+2736	5
+2076	1
+4353	1
+4354	1
+311	1
+1690	6
+2317	6
+1047	6
+2573	6
+4355	6
+4356	6
+1689	6
+4357	1
+1523	6
+4358	3
+418	3
+4359	3
+4360	3
+4361	3
+4362	3
+460	3
+2342	3
+4363	4
+4364	1
+2262	7
+1781	7
+4283	7
+422	7
+2914	7
+1639	7
+531	7
+4365	7
+4366	7
+404	7
+1628	4
+4367	4
+4368	4
+2050	4
+4369	2
+4370	3
+4371	2
+1648	3
+814	2
+4372	3
+4373	2
+4374	2
+4375	4
+263	7
+4376	7
+4377	6
+854	6
+2877	3
+3626	3
+4378	6
+1224	6
+1164	6
+3190	3
+88	6
+2185	2
+279	1
+4379	1
+922	1
+285	1
+1243	5
+3775	5
+4380	6
+4381	6
+4382	6
+2252	5
+2181	5
+4383	5
+4384	4
+4385	4
+4386	3
+2548	4
+4387	4
+4295	4
+1995	6
+1996	3
+2408	3
+4388	3
+3899	3
+1502	3
+1577	3
+4389	3
+305	6
+4390	6
+1435	6
+4391	6
+4392	5
+4393	5
+768	5
+3515	2
+4394	2
+2075	2
+4395	6
+4396	2
+2394	6
+4397	2
+4398	2
+342	2
+4399	4
+4400	2
+4401	2
+3742	2
+3384	5
+2373	5
+4082	2
+4402	1
+2997	1
+2137	6
+1215	6
+838	4
+936	6
+1761	4
+4403	4
+4404	4
+4405	4
+4406	3
+2211	4
+4407	4
+3505	6
+4408	4
+2993	4
+4409	4
+1896	6
+501	3
+2396	3
+502	3
+2198	3
+3956	1
+4410	3
+4411	1
+271	7
+3326	7
+864	4
+1660	4
+4412	1
+8	7
+2462	7
+1857	1
+4415	4
+960	5
+349	1
+1911	4
+3716	7
+1660	7
+632	2
+589	4
+4426	4
+1209	4
+4428	5
+693	4
+4429	7
+4243	7
+1164	2
+4413	2
+1933	2
+448	2
+4414	2
+2677	2
+2332	2
+4416	2
+3540	2
+4417	5
+3765	5
+4418	5
+4419	5
+4420	6
+1490	7
+1436	7
+4421	5
+2290	5
+4422	5
+2272	5
+237	5
+4406	7
+4423	7
+1718	1
+4424	1
+1413	7
+4425	7
+1409	7
+3013	5
+1354	5
+3952	5
+4427	1
+3922	1
+309	6
+2546	6
+1153	7
+4430	2
+1091	7
+250	2
+2078	3
+2232	3
+727	2
+4431	3
+4432	3
+4433	3
+1059	1
+10	3
+4434	1
+4435	3
+701	1
+4436	3
+4437	3
+4438	3
+2331	7
+1424	7
+4439	7
+85	2
+3777	6
+1195	6
+1213	6
+4440	2
+8	2
+1685	4
+4441	4
+1874	7
+4442	7
+309	3
+1289	3
+38	7
+4443	7
+2155	1
+4444	1
+4445	1
+651	1
+1733	4
+1736	4
+4446	4
+1734	4
+4288	3
+3375	3
+1054	7
+2573	7
+4356	7
+2323	7
+2031	1
+222	1
+1311	1
+230	1
+495	4
+499	4
+537	4
+651	6
+4447	6
+980	1
+1219	2
+4448	5
+4449	7
+836	3
+4450	3
+4451	3
+4452	3
+219	3
+4453	3
+4454	3
+4455	1
+3228	6
+2616	1
+1076	6
+4456	1
+1529	2
+1861	2
+4457	2
+4458	7
+4459	6
+2356	6
+\.
+
+
+--
+-- Name: category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.category_id_seq', 7, true);
+
+
+--
+-- Name: source_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.source_id_seq', 4459, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
