@@ -29,18 +29,14 @@ class Source(db.Model):
             'categories': [category.json for category in self.categories]
         }
 
-
 class Category(db.Model):
 
     __tablename__ = 'category'
-
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(255), nullable=False, unique=True)
 
-    @property
-    def json(self):
-        return {
-            'name': self.name
-        }
+
+@property
+def json(self):
+    return {'name': self.name}
 
 
