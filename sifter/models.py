@@ -42,10 +42,10 @@ class Source(db.Model):
 class Category(db.Model):
 
     __tablename__ = 'category'
+
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), default='N/A', nullable=False)
 
-
-@property
-def json(self):
-    return {'name': self.name}
+    @property
+    def json(self):
+        return {'name': self.name}
