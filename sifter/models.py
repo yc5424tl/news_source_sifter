@@ -35,7 +35,7 @@ class Source(db.Model):
             'country': self.country,
             'language': self.language,
             'url': self.url,
-            'categories': [category.json() for category in self.categories]
+            'categories': [category.json for category in self.categories]
         }
 
 

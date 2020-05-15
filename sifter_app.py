@@ -211,7 +211,7 @@ def send_all_sources():
     populate_sources()
     sources = Source.query.all()
     for source in sources:
-        data_dict_all['sources'].append(source.json())
+        data_dict_all['sources'].append(source.json)
     try:
         payload = post_json(data_dict)
         logger.log(level=logging.INFO,
