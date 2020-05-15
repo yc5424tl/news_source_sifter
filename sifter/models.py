@@ -43,7 +43,7 @@ class Category(db.Model):
 
     __tablename__ = 'category'
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(50), default='N/A', nullable=False, blank=False)
+    name = db.Column(db.String(50), default='N/A', nullable=False)
 
 
 @property
