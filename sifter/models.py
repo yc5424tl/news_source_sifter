@@ -1,9 +1,5 @@
-import BaseModel as BaseModel
-import six
-
 from sifter import db
 from enum import Enum
-# from sqlalchemy.dialects.postgresql import ENUM
 from sqlalchemy.dialects import postgresql
 
 source_categories = db.Table('source_categories', db.Column('source_id', db.Integer, db.ForeignKey('source.id'), primary_key=True), db.Column('category_id', db.Integer, db.ForeignKey('category.id'), primary_key=True)    )
