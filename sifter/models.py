@@ -1,6 +1,5 @@
 from sifter import db
-from enum import Enum
-from sqlalchemy.dialects import postgresql
+
 
 source_categories = db.Table('source_categories', db.Column('source_id', db.Integer, db.ForeignKey('source.id'), primary_key=True), db.Column('category_id', db.Integer, db.ForeignKey('category.id'), primary_key=True)    )
 
@@ -27,14 +26,14 @@ class Source(db.Model):
         }
 
 
-class CategoryChoice(Enum):
-    BIZ = 'business'
-    ENT = 'entertainment'
-    HLT = 'health'
-    GEN = 'general'
-    SCI = 'science'
-    SPO = 'sports'
-    TEC = 'technology'
+# class CategoryChoice(Enum):
+#     BIZ = 'business'
+#     ENT = 'entertainment'
+#     HLT = 'health'
+#     GEN = 'general'
+#     SCI = 'science'
+#     SPO = 'sports'
+#     TEC = 'technology'
 
 
 class Category(db.Model):
@@ -42,7 +41,8 @@ class Category(db.Model):
     __tablename__ = 'category'
 
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(postgresql.ENUM(CategoryChoice, name='name'), create_type=False, unique=False, nullable=False)
+    name = db.Column(db.String(50), nullable=False, blank=False, unique=False)
+
 
     @property
     def json(self):
