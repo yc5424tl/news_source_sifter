@@ -12,6 +12,7 @@ logging.basicConfig(filename='news_sources_ms.log', level=logging.INFO)
 logger = logging.getLogger(__name__)
 categories = ['business', 'entertainment', 'health', 'science', 'sports', 'technology', 'general']
 
+
 api_country_codes = {
     'ar': {'name': 'Argentina',      'language': 'es'},
     'au': {'name': 'Australia',      'language': 'en'},

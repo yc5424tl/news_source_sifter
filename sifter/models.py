@@ -1,20 +1,12 @@
+import BaseModel as BaseModel
+import six
+
 from sifter import db
+from enum import Enum
+# from sqlalchemy.dialects.postgresql import ENUM
+from sqlalchemy.dialects import postgresql
 
-
-source_categories = db.Table(
-        'source_categories',
-        db.Column(
-            'source_id',
-            db.Integer,
-            db.ForeignKey('source.id'),
-            primary_key=True),
-        db.Column(
-            'category_id',
-            db.Integer,
-            db.ForeignKey('category.id'),
-            primary_key=True
-        )
-    )
+source_categories = db.Table('source_categories', db.Column('source_id', db.Integer, db.ForeignKey('source.id'), primary_key=True), db.Column('category_id', db.Integer, db.ForeignKey('category.id'), primary_key=True)    )
 
 
 class Source(db.Model):
@@ -39,12 +31,22 @@ class Source(db.Model):
         }
 
 
+class CategoryChoice(Enum):
+    BIZ = 'business'
+    ENT = 'entertainment'
+    HLT = 'health'
+    GEN = 'general'
+    SCI = 'science'
+    SPO = 'sports'
+    TEC = 'technology'
+
+
 class Category(db.Model):
 
     __tablename__ = 'category'
 
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(50), default='N/A', nullable=False)
+    name = db.Column(postgresql.ENUM(CategoryChoice, name='name'), create_type=False, unique=False, nullable=False)
 
     @property
     def json(self):
