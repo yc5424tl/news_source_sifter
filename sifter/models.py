@@ -45,4 +45,6 @@ class Category(db.Model):
 
     @property
     def json(self):
-        return {'name': self.name}
+        return {
+            'name': self.name
+        }

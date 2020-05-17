@@ -208,20 +208,21 @@ bool_dict = {'have_top': False}
 
 
 def send_all_sources():
-    populate_categories()
-    populate_sources()
-    sources = Source.query.all()
-    for source in sources:
-        data_dict_all['sources'].append(source.json)
-    try:
-        payload = post_json(data_dict)
-        logger.log(level=logging.INFO,
-                   msg=f'Payload Delivered == {payload}\n\n=================================================\nContents:\n{data_dict_all}\n\n=================================================\n')
-        time.sleep(360)
-        return True
-    except ConnectionError:
-        logger.log(level=logging.INFO, msg=f'ConnectionError when posting payload.')
-        return False
+    with app.app_context():
+        populate_categories()
+        populate_sources()
+        sources = Source.query.all()
+        for source in sources:
+            data_dict_all['sources'].append(source.json)
+        try:
+            payload = post_json(data_dict)
+            logger.log(level=logging.INFO,
+                       msg=f'Payload Delivered == {payload}\n\n=================================================\nContents:\n{data_dict_all}\n\n=================================================\n')
+            time.sleep(360)
+            return True
+        except ConnectionError:
+            logger.log(level=logging.INFO, msg=f'ConnectionError when posting payload.')
+            return False
 
 
 def populate_categories():
