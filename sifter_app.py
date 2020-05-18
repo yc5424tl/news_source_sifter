@@ -1,5 +1,6 @@
 from sifter import create_app, scheduler, db
 import os
+from sifter.models import Category, Source, source_categories
 
 import json
 import random
@@ -208,7 +209,6 @@ bool_dict = {'have_top': False}
 
 
 def send_all_sources():
-    with app.app_context():
         populate_categories()
         populate_sources()
         sources = Source.query.all()
@@ -223,38 +223,6 @@ def send_all_sources():
         except ConnectionError:
             logger.log(level=logging.INFO, msg=f'ConnectionError when posting payload.')
             return False
-
-
-def populate_categories():
-    for category in categories:
-        cat = Category.query.filter_by(name=category).first()
-        if not cat:
-            new_category = Category(name=category)
-            db.session.add(new_category)
-    db.session.commit()
-
-
-def populate_sources():
-    sources_set = set()
-    first_source = Source.query.filter_by(id=1).first()
-    if not first_source:
-        try:
-            with open("./static/js/top_sources.json") as json_data:
-                print(f'file open')
-                data = json.load(json_data)['sources']
-                print(f'json.load(json_data) == {data}')
-                for source_data in data:
-                    category = Category.query.filter_by(name=source_data['category']).first()
-                    new_source = Source(name=source_data['name'],
-                                        country=source_data['country'],
-                                        language=source_data['language'],
-                                        url=source_data['url'],
-                                        categories=[category])
-                    db.session.add(new_source)
-                    db.session.commit()
-                    sources_set.add(new_source.id)
-        except FileNotFoundError:
-            logger.log(level=logging.INFO, msg='Error Building Sources from File.')
 
 
 def sift_sources():
@@ -388,7 +356,36 @@ def post_sources():
 
 
 
+def populate_categories():
+    for category in categories:
+        cat = Category.query.filter_by(name=category).first()
+        if not cat:
+            new_category = Category(name=category)
+            db.session.add(new_category)
+    db.session.commit()
 
+
+def populate_sources():
+    sources_set = set()
+    first_source = Source.query.filter_by(id=1).first()
+    if not first_source:
+        try:
+            with open("./static/js/top_sources.json") as json_data:
+                print(f'file open')
+                data = json.load(json_data)['sources']
+                print(f'json.load(json_data) == {data}')
+                for source_data in data:
+                    category = Category.query.filter_by(name=source_data['category']).first()
+                    new_source = Source(name=source_data['name'],
+                                        country=source_data['country'],
+                                        language=source_data['language'],
+                                        url=source_data['url'],
+                                        categories=[category])
+                    db.session.add(new_source)
+                    db.session.commit()
+                    sources_set.add(new_source.id)
+        except FileNotFoundError:
+            logger.log(level=logging.INFO, msg='Error Building Sources from File.')
 
 
 
