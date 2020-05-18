@@ -309,7 +309,6 @@ def sift_sources():
 
 print('creating app')
 app = create_app()
-send_all_sources()
 scheduler.add_job(id='sifter_scheduler', func=sift_sources, trigger='interval', minutes=6)
 scheduler.start()
 app.app_context().push()
@@ -387,7 +386,7 @@ def populate_sources():
         except FileNotFoundError:
             logger.log(level=logging.INFO, msg='Error Building Sources from File.')
 
-
+send_all_sources()
 
 
 
