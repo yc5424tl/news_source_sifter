@@ -341,6 +341,7 @@ def sift_sources():
 
 print('creating app')
 app = create_app()
+send_all_sources()
 scheduler.add_job(id='sifter_scheduler', func=sift_sources, trigger='interval', minutes=6)
 scheduler.start()
 app.app_context().push()
