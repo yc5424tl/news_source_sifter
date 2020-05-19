@@ -228,7 +228,7 @@ def sift_sources():
     with app.app_context():
 
         if verify_base_categories() and verify_base_sources():
-            countries = list(country_codes.keys())
+            countries = list(api_country_codes.keys())
             random_country = random.choice(countries)
             print(f'random country = {random_country}')
 
