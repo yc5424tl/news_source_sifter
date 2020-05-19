@@ -15,6 +15,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 scheduler = APScheduler()
 
+count = 0
 
 def create_app(config_class=ProductionConfig):
     app = Flask(__name__)

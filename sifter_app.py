@@ -223,8 +223,18 @@ NOT_ENTERED_AT_ALL = {
 }
 
 
+
+
+
 def sift_sources():
+
     with app.app_context():
+
+        from sifter import count
+
+        if count == 0:
+            send_all_sources()
+        count += 1
 
         if verify_base_categories() and verify_base_sources():
             countries = list(country_codes.keys())
@@ -268,15 +278,11 @@ def send_all_sources():
 
 print("creating app")
 app = create_app()
-if send_all_sources:
-    print('in if send_all_sources')
-    scheduler.add_job(
-        id="sifter_scheduler", func=sift_sources, trigger="interval", minutes=6
-    )
-    scheduler.start()
-    app.app_context().push()
-else:
-    print('did not send all sources')
+scheduler.add_job(
+    id="sifter_scheduler", func=sift_sources, trigger="interval", minutes=6
+)
+scheduler.start()
+app.app_context().push()
 from sifter.models import Source, Category
 
 
