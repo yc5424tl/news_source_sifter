@@ -421,6 +421,7 @@ def request_country_sources(alpha2_code, src_cat=None):
 
 
 def build_country_sources(generated_country_sources, alpha2_code, src_cat):
+    print('\n\nTOP OF BUILD_COUNTRY_SOURCES\n\n')
     new_and_updated_source_ids = set()
     category = Category.query.filter_by(name=src_cat).first()
 
@@ -430,10 +431,12 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
         db.session.commit()
 
     for src in generated_country_sources:
-        print(f'src from generator iteration in build_country_sources = {src}')
+        print('top of "for src in generated_country_sources"')
         source = Source.query.filter_by(
             name=src["source"]["name"]
         ).first()  # check if source in db
+
+        print(f'src from generator iteration in build_country_sources = {src}')
 
         if source is None:  # Source not in DB
             new_source = Source(
@@ -445,7 +448,9 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
             db.session.add(new_source)
             db.session.commit()
             print('adding new source to set in build country sources')
+            print(f'new source being added = {new_source}')
             new_and_updated_source_ids.add(new_source.id)
+            print(f'new_and_updated_source_ids after adding = {new_and_updated_source_ids}')
 
         else:  # Source already in DB
             print('source in build_country_sources already in db')
@@ -461,6 +466,7 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
     db.session.commit()
     print('finished building country sources')
     print(f'new_and_updated_source_ids in build_country_sources = {new_and_updated_source_ids}')
+    print('\n\nBOTTOM OF BUILD_COUNTRY_SOURCES\n\n')
     return new_and_updated_source_ids
 
 
