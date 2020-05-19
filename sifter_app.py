@@ -234,23 +234,22 @@ def sift_sources():
             sources_for_country = request_country_sources(
                 alpha2_code=random_country, src_cat=random_category
             )
-
             if sources_for_country:
                 src_ids = build_country_sources(
                     generated_country_sources=sources_for_country,
                     alpha2_code=random_country,
                     src_cat=random_category,
                 )
-
                 print(f'src_ids in sift_sources being sent to id_set_to_json = {src_ids}')
-
                 json_payload = id_set_to_json(src_ids)
                 print(f'payload being sent to send_payload in sift_sources ->')
                 print(f'{json_payload}')
                 send_payload(json_payload)
+                return True
             else:
                 print('returning false from sift sources')
                 return False
+        return False
 
 
 def send_all_sources():
