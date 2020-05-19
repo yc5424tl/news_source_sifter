@@ -244,20 +244,25 @@ def sift_sources():
             json_payload = id_set_to_json(src_ids)
             send_payload(json_payload)
         else:
+            print('returning false from sift sources')
             return False
 
 
 def send_all_sources():
+    print('top of all sources')
     if verify_base_categories() and verify_base_sources():
+        print('inside verifies of send all sources')
         sources = Source.query.all()
         all_sources = {"sources": [source.json for source in sources]}
         try:
+            print('about to send payload from send all sources')
             if send_payload(all_sources):
                 return True
         except ConnectionError:
             logger.log(
                 level=logging.INFO, msg="Connection Error while delivering payload."
             )
+    print('returning false from send all sources')
     return False
 
 
@@ -296,6 +301,8 @@ def id_set_to_json(id_set: set):
 
 
 def send_payload(payload: dict):
+    print('PAYLOAD:')
+    print(payload)
     login_url = os.getenv("NEWS_MAP_LOGIN_URL")
     username = os.getenv("NEWS_MAP_POST_USER")
     password = os.getenv("NEWS_MAP_POST_PW")
@@ -314,11 +321,11 @@ def send_payload(payload: dict):
 
     r1 = client.post(login_url, data=login_data, headers=dict(Referer=login_url))
     logger.log(level=logging.INFO, msg=f"response_1 => {r1}")
-
+    print(f'r1 = {r1}')
     r2 = client.post(url=post_url, json=payload)
     logger.log(level=logging.INFO, msg=f"response_2 => {r2}")
-
-    time.sleep(360)
+    print(f'r2 = {r2}')
+    # time.sleep(360)
 
     return True
 
@@ -330,6 +337,7 @@ def verify_base_categories():
             new_category = Category(name=category)
             db.session.add(new_category)
     db.session.commit()
+    print('verified base categories')
     return True
 
 
@@ -355,8 +363,11 @@ def verify_base_sources():
                     db.session.commit()
                     new_sources.add(new_source.id)
                 json_payload = id_set_to_json(new_sources)
+                print('verified base sources, about to send payload after building from file')
                 if send_payload(json_payload):
+                    print('sent payload after building base sources from file')
                     return True
+            print('returning catch all false from verify base sources from file')
             return False
 
         except FileNotFoundError:
@@ -365,10 +376,14 @@ def verify_base_sources():
             if top_src_data:
                 top_source_ids = build_top_sources(top_src_data)
                 json_payload = id_set_to_json(top_source_ids)
+                print('verified base sources via request, about to send payload')
                 if send_payload(json_payload):
+                    print('sent payload from verified base sources filenotfoundexception')
                     return True
+            print('returning false inside filenotfounderror inside verified base sources')
             return False
     else:
+        print('verified base sources already present in verified base sources')
         return True
 
 
@@ -384,6 +399,7 @@ def request_country_sources(alpha2_code, src_cat=None):
     if response.json()["status"] == "ok":
         data = response.json()["articles"]
         data_gen = (source for source in data)
+        print('returning generated sources in rerquest_country_sources')
         return generated_sources(data_gen)
 
     elif response.json()["status"] == "error":
@@ -391,8 +407,10 @@ def request_country_sources(alpha2_code, src_cat=None):
             level=logging.ERROR,
             msg=f'Error Code: {response.json()["code"]} Message: {response.json()["message"]}',
         )
+        print('returning none in request country sources')
         return None
     else:
+        print('returning 2nd none in request country sources')
         return None
 
 
@@ -431,6 +449,7 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
                 db.session.commit()
                 new_and_updated_source_ids.add(source.id)
     db.session.commit()
+    print('finished building country sources')
     return new_and_updated_source_ids
 
 
@@ -440,6 +459,7 @@ def request_top_sources():
     if response.json()["status"] == "ok":
         data = response.json()["sources"]
         top_sources_gen = (source for source in data)
+        print('returning gen sources in request top sources')
         return generated_sources(top_sources_gen)
 
     elif response.json()["status"] == "error":
@@ -447,6 +467,7 @@ def request_top_sources():
             level=logging.ERROR,
             msg=f'Code: {response.json()["code"]}, Message: {response.json()["message"]}',
         )
+        print('returning none in request top sources')
         return None
 
 
@@ -486,6 +507,7 @@ def build_top_sources(generated_top_sources):
                 new_and_updated_id_set.add(source.id)
 
     db.session.commit()
+    print('returning id set in build top sources')
     return new_and_updated_id_set
 
 
