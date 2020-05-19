@@ -404,9 +404,11 @@ def request_country_sources(alpha2_code, src_cat=None):
 
     if response.json()["status"] == "ok":
         data = response.json()["articles"]
+        print('\n\nRESPONSE DATA[articles] =\n\n{data}')
         data_gen = (source for source in data)
         print('returning generated sources in request_country_sources')
-        return generated_sources(data_gen)
+        # return generated_sources(data_gen)
+        return data
 
     elif response.json()["status"] == "error":
         logger.log(
