@@ -399,8 +399,9 @@ def request_country_sources(alpha2_code, src_cat=None):
         endpoint = f"https://newsapi.org/v2/top-headlines?country={alpha2_code}&apiKey={api_key}"
     else:
         endpoint = f"https://newsapi.org/v2/top-headlines?country={alpha2_code}&category={src_cat}&apiKey={api_key}"
-
     response = requests.get(endpoint)
+    print(f'\n\nRESPONSE = \n{response}\n\n')
+    print(f'\n\nRESPONSE.json =\n{response.json}')
 
     if response.json()["status"] == "ok":
         data = response.json()["articles"]
