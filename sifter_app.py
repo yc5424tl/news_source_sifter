@@ -235,22 +235,22 @@ def sift_sources():
                 alpha2_code=random_country, src_cat=random_category
             )
 
-        if sources_for_country:
-            src_ids = build_country_sources(
-                generated_country_sources=sources_for_country,
-                alpha2_code=random_country,
-                src_cat=random_category,
-            )
+            if sources_for_country:
+                src_ids = build_country_sources(
+                    generated_country_sources=sources_for_country,
+                    alpha2_code=random_country,
+                    src_cat=random_category,
+                )
 
-            print(f'src_ids in sift_sources being sent to id_set_to_json = {src_ids}')
+                print(f'src_ids in sift_sources being sent to id_set_to_json = {src_ids}')
 
-            json_payload = id_set_to_json(src_ids)
-            print(f'payload being sent to send_payload in sift_sources ->')
-            print(f'{json_payload}')
-            send_payload(json_payload)
-        else:
-            print('returning false from sift sources')
-            return False
+                json_payload = id_set_to_json(src_ids)
+                print(f'payload being sent to send_payload in sift_sources ->')
+                print(f'{json_payload}')
+                send_payload(json_payload)
+            else:
+                print('returning false from sift sources')
+                return False
 
 
 def send_all_sources():
@@ -431,7 +431,7 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
         db.session.commit()
 
     for src in generated_country_sources:
-        print('src from generator iteration in build_country_sources')
+        print(f'src from generator iteration in build_country_sources = {src}')
         source = Source.query.filter_by(
             name=src["source"]["name"]
         ).first()  # check if source in db
