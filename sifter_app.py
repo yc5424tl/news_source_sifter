@@ -230,7 +230,10 @@ def sift_sources():
         if verify_base_categories() and verify_base_sources():
             countries = list(country_codes.keys())
             random_country = random.choice(countries)
+            print(f'random country = {random_country}')
+
             random_category = random.choice(categories)
+            print(f'random category = {random_category}')
             sources_for_country = request_country_sources(
                 alpha2_code=random_country, src_cat=random_category
             )
@@ -395,11 +398,17 @@ def verify_base_sources():
 
 def request_country_sources(alpha2_code, src_cat=None):
 
+    key = os.getenv('NEWS_SRC_MS_API_KEY')
+    print(f'key = {key}')
+    print(f'alpha2_code = {alpha2_code}')
+    print(f'src_cat = {src_cat}')
     if src_cat is None:
-        endpoint = f"https://newsapi.org/v2/top-headlines?country={alpha2_code}&apiKey={api_key}"
+        endpoint = f"https://newsapi.org/v2/top-headlines?country={alpha2_code}&apiKey={key}"
     else:
-        endpoint = f"https://newsapi.org/v2/top-headlines?country={alpha2_code}&category={src_cat}&apiKey={api_key}"
+        endpoint = f"https://newsapi.org/v2/top-headlines?country={alpha2_code}&category={src_cat}&apiKey={key}"
+    print(f'endpoint = {endpoint}')
     response = requests.get(endpoint)
+    print(f'CODE: {response.status_code}\nTEXT: {response.text}')
     print(f'\n\nRESPONSE = \n{response}\n\n')
     print(f'\n\nRESPONSE.json =\n{response.json}')
 
