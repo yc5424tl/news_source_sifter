@@ -248,7 +248,11 @@ def sift_sources():
                 src_cat=random_category,
             )
 
+            print(f'src_ids in sift_sources being sent to id_set_to_json = {src_ids}')
+
             json_payload = id_set_to_json(src_ids)
+            print(f'payload being sent to send_payload in sift_sources ->')
+            print(f'{json_payload}')
             send_payload(json_payload)
         else:
             print('returning false from sift sources')
@@ -262,7 +266,9 @@ def send_all_sources():
         sources = Source.query.all()
         all_sources = {"sources": [source.json for source in sources]}
         try:
-            print('about to send payload from send all sources')
+            print('about to send payload from send all sources -->')
+            print(f'PAYLOAD = {all_sources}')
+
             if send_payload(all_sources):
                 return True
         except ConnectionError:
@@ -297,9 +303,12 @@ def stay_alive():
 
 def id_set_to_json(id_set: set):
     json_payload = {"sources": [] for x in range(2)}
+    print(f'initial payload = {json_payload} ')
     for src_id in id_set:
         source = Source.query.filter_by(id=src_id).first()
+        print(f'source.json to add to payload = {source.json}')
         json_payload["sources"].append(source.json)
+    print(f'payload returning from id_set_to_json = {json_payload}')
     return json_payload
 
 
@@ -402,7 +411,7 @@ def request_country_sources(alpha2_code, src_cat=None):
     if response.json()["status"] == "ok":
         data = response.json()["articles"]
         data_gen = (source for source in data)
-        print('returning generated sources in rerquest_country_sources')
+        print('returning generated sources in request_country_sources')
         return generated_sources(data_gen)
 
     elif response.json()["status"] == "error":
@@ -427,6 +436,7 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
         db.session.commit()
 
     for src in generated_country_sources:
+        print('src from generator iteration in build_country_sources')
         source = Source.query.filter_by(
             name=src["source"]["name"]
         ).first()  # check if source in db
@@ -440,9 +450,11 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
             new_source.categories.append(category)
             db.session.add(new_source)
             db.session.commit()
+            print('adding new source to set in build country sources')
             new_and_updated_source_ids.add(new_source.id)
 
         else:  # Source already in DB
+            print('source in build_country_sources already in db')
             try:
                 idx = source.categories.index(
                     category
@@ -450,9 +462,11 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
             except ValueError:  # Exception Raised if category not listed
                 source.categories.append(category)
                 db.session.commit()
+                print('addind source w new cat to set in build country sources')
                 new_and_updated_source_ids.add(source.id)
     db.session.commit()
     print('finished building country sources')
+    print(f'new_and_updated_source_ids in build_country_sources = {new_and_updated_source_ids}')
     return new_and_updated_source_ids
 
 
@@ -481,7 +495,7 @@ def build_top_sources(generated_top_sources):
     )  # Store ID of each new Source and Sources with a new Category.
 
     for src in generated_top_sources:
-
+        print(f'source from gen_top_sources iteration in build_top_sources')
         category = Category.query.filter_by(
             name=src["category"]
         ).first()  # Check DB for Category[
@@ -495,18 +509,22 @@ def build_top_sources(generated_top_sources):
         ).first()  # Checking DB for Source
         if source is None:  # Source does not exist in DB, add Source.
             source = Source(
-                name=src["name"], country=src["country"], language=src["language"]
+                name=src["name"], country=src["country"], language=src["language"], url=src['url']
             )
             source.categories.append(category)
             db.session.add(source)
             db.session.commit()
+            print(f'new_top_source_id for set == {source.id}')
             new_and_updated_id_set.add(source.id)
+            print(f'after adding source.id, set = {new_and_updated_id_set}')
         else:  # Source exists in DB.
+            print('source exists, checking category in build_top_sources')
             try:  # Check Source for Category
                 idx = source.categories.index(category)
             except ValueError:  # Category does not exist for Source, add Category.
                 source.categories.append(category)
                 db.session.commit()
+                print('adding already present source to nauis in build_top_sources')
                 new_and_updated_id_set.add(source.id)
 
     db.session.commit()
