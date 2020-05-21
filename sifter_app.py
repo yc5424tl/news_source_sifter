@@ -310,8 +310,9 @@ def id_set_to_json(id_set: set):
 
 
 def send_payload(payload: dict):
-    print('PAYLOAD:')
-    print(payload)
+    print('=====================================PAYLOAD==============================================')
+    if payload['sources']:
+        print((payload['sources'])[:3])
     login_url = os.getenv("NEWS_MAP_LOGIN_URL")
     username = os.getenv("NEWS_MAP_POST_USER")
     password = os.getenv("NEWS_MAP_POST_PW")
@@ -330,12 +331,12 @@ def send_payload(payload: dict):
 
     r1 = client.post(login_url, data=login_data, headers=dict(Referer=login_url))
     logger.log(level=logging.INFO, msg=f"response_1 => {r1}")
-    print(f'r1 = {r1}')
+    print(f'\n\n=====================PAYLOAD LOGIN RESPONSE======================= {r1}\n\n')
     r2 = client.post(url=post_url, json=payload)
     logger.log(level=logging.INFO, msg=f"response_2 => {r2}")
-    print(f'r2 = {r2}')
+    print(f'\n\n==========================POST PAYLOAD RESPONSE========================== {r2}\n\n')
     # time.sleep(360)
-
+    print('\n=========================END PAYLOAD=============================\n\n')
     return True
 
 
