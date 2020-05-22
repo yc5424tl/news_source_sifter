@@ -251,7 +251,8 @@ scheduler.add_job(
     id="sifter_scheduler", func=sift_sources, trigger="interval", minutes=6
 )
 scheduler.start()
-print(f'started scheduler')
+print('pr started scheduler')
+logger.log(level=logging.INFO, msg='started scheduler')
 app.app_context().push()
 from sifter.models import Source, Category
 
