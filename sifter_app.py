@@ -268,7 +268,7 @@ def stay_alive():
     return json.dumps({"stay": "alive"}), 200, {"ContentType": "application/json"}
 
 
-def send_payload(payload: {{}}):
+def send_payload(payload: set):
     login_url = os.getenv("NEWS_MAP_LOGIN_URL")
     username = os.getenv("NEWS_MAP_POST_USER")
     password = os.getenv("NEWS_MAP_POST_PW")
@@ -284,6 +284,9 @@ def send_payload(payload: {{}}):
         "csrfmiddlewaretoken": csrf_token,
         "next": "/",
     }
+    payload = {'sources': frozenset(payload)}
+    print("============PAYLOAD================")
+    print(f'{payload}')
     try:
         r1 = client.post(login_url, data=login_data, headers=dict(Referer=login_url))
         logger.log(level=logging.INFO, msg=f"response_1 => {r1}")
