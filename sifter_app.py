@@ -277,11 +277,12 @@ def send_all_sources():
 
 print("creating app")
 app = create_app()
-scheduler.add_job(id="send_all_src", func=send_all_sources)
+# scheduler.add_job(id="send_all_src", func=send_all_sources)
 scheduler.add_job(
     id="sifter_scheduler", func=sift_sources, trigger="interval", minutes=6
 )
 scheduler.start()
+print(f'started scheduler')
 app.app_context().push()
 from sifter.models import Source, Category
 
@@ -352,9 +353,9 @@ def verify_base_categories():
 
 
 def verify_base_sources():
-    new_sources = set()
     first_source = Source.query.filter_by(id=1).first()
     if not first_source:
+        new_sources = set()
         try:
             with open("./static/js/top_sources.json") as json_data:
                 source_data = json.load(json_data)["sources"]
@@ -389,6 +390,7 @@ def verify_base_sources():
                 print('verified base sources via request, about to send payload')
                 if send_payload(json_payload):
                     print('sent payload from verified base sources filenotfoundexception')
+                    print(f'payload = \n\n{json_payload}\n\n')
                     return True
             print('returning false inside filenotfounderror inside verified base sources')
             return False
@@ -416,7 +418,7 @@ def request_country_sources(alpha2_code, src_cat=None):
     if response.json()["status"] == "ok":
         data = response.json()["articles"]
         print('\n\nRESPONSE DATA[articles] =\n\n{data}')
-        data_gen = (source for source in data)
+        data_gen = iter(data)
         print('returning generated sources in request_country_sources')
         return generated_sources(data_gen)
 
@@ -443,11 +445,14 @@ def build_country_sources(generated_country_sources, alpha2_code, src_cat):
         db.session.add(category)
         db.session.commit()
 
+    count = 0
     for src in generated_country_sources:
-        print('top of "for src in generated_country_sources"')
+        print(f'have src {count} from generator in build_country_sources')
         source = Source.query.filter_by(
             name=src["source"]["name"]
         ).first()  # check if source in db
+        count += 1
+
 
         print(f'src from generator iteration in build_country_sources = {src}')
 
@@ -488,7 +493,7 @@ def request_top_sources():
 
     if response.json()["status"] == "ok":
         data = response.json()["sources"]
-        top_sources_gen = (source for source in data)
+        top_sources_gen = iter(data)
         print('returning gen sources in request top sources')
         return generated_sources(top_sources_gen)
 
@@ -546,5 +551,4 @@ def build_top_sources(generated_top_sources):
 
 
 def generated_sources(src_gen):
-    for src in src_gen:
-        yield src
+    yield from src_gen
