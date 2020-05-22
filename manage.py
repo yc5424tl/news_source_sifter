@@ -7,6 +7,7 @@
 #
 # if __name__ == '__main__':
 #     manager.run()
+from config import ProductionConfig, TestingConfig, StagingConfig, DevelopmentConfig, Config
 import os
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
@@ -15,13 +16,12 @@ from sifter_app import app, db, send_all_sources
 
 
 app.config.from_object(os.environ["APP_SETTINGS"])
-
 all_sources = send_all_sources()
 migrate = Migrate(app, db)
 manager = Manager(app)
 
 manager.add_command("db", MigrateCommand)
-manager.add_command(all_sources)
+manager.add_command("all_sources", all_sources)
 
 
 if __name__ == "__main__":

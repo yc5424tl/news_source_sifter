@@ -19,7 +19,8 @@ class ProductionConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     TESTING = False
     DEVELOPMENT = False
-    SECRET_KEY = os.urandom(24)
+    # SECRET_KEY = os.urandom(24)
+    SECRET_KEY = os.getenv('SECRET_KEY')
     LOG_TO_STDOUT = os.getenv("LOG_TO_STDOUT")
 
 

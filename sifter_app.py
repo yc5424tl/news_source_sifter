@@ -223,9 +223,11 @@ NOT_ENTERED_AT_ALL = {
 
 
 def sift_sources():
-
+    print('top of sifter')
     with app.app_context():
+        print('with context')
         if send_all_sources:
+            print('sent all sources')
             countries = list(api_country_codes.keys())
             random_country = random.choice(countries)
             random_category = random.choice(categories)
@@ -233,6 +235,7 @@ def sift_sources():
                 alpha2_code=random_country, src_cat=random_category
             )
             if sources_for_country:
+                print('have sources for country')
                 src_update = build_country_src_data(
                     src_data=sources_for_country,
                     alpha2_code=random_country,
@@ -314,16 +317,19 @@ def send_all_sources():
 
 
 def verify_base_cat():
+    print('top of verify_base_cat')
     for cat in categories:
         cat = Category.query.filter_by(name=cat).first()
         if not cat:
             new_cat = Category(name=cat)
             db.session.add(new_cat)
     db.session.commit()
+    print('end verify base cat')
     return True
 
 
 def verify_base_src():
+    print('top verify_base_src')
     first_src = Source.query.filter_by(id=1).first()
     if not first_src:
         src_update = set()
@@ -344,6 +350,7 @@ def verify_base_src():
                     db.session.add(new_source)
                     db.session.commit()
                     src_update.add(new_source.json)
+                print('bottom of verify_base_src via file')
                 if send_payload(src_update):
                     return True
             logger.log(level=logging.INFO, msg='Error sending payload from file in verify_base_src()')
@@ -353,6 +360,7 @@ def verify_base_src():
             src_data = req_top_src_data()
             if src_data:
                 src_update = build_top_src_data(src_data)
+                print('bottom of verify base src via req')
                 if send_payload(src_update):
                     scheduler.pause()
                     print('paused scheduler, waiting six minutes')
