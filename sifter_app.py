@@ -317,15 +317,16 @@ def send_payload(payload: set):
 def send_all_sources():
     print('top send_all_sources')
     if verify_base_cat() and verify_base_src():
-        print('verified cat/src @ send_all_sources')
+        print('verify_base_cat() and verify_base_src() @ send_all_sources')
         sources = Source.query.all()
         src_update = set()
         for src in sources:
             print(f'src.json for src_update.add(src.json) == {src.json}')
             src_update.add(src.json)
-        all_src_update = set(src.json for src in sources)
+
+        # all_src_update = set(src.json for src in sources)
         print('pre-payload @ send_all_sources')
-        if send_payload(all_src_update):
+        if send_payload(src_update):
             print('bottom send_all_sources -- success @ send_payload')
             return True
         else:
