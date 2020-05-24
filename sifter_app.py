@@ -324,9 +324,9 @@ def send_all_sources():
         # print(f'sources.length() == {Source.query.all().len()}')
         src_update = set()
         for src in sources:
-            print(f'type(src) == {type(src)}')
+            print(f'sources.len() == {sources.len()}')
             # print(f'src.json for src_update.add(src.json) == {src.json}')
-            src_update.add(src.json)
+            #src_update.add(src.json)
             print('added')
 
         # all_src_update = set(src.json for src in sources)
