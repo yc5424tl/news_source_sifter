@@ -243,9 +243,7 @@ def sift_sources():
                 )
                 if send_payload(src_update):
                     print('sifter payload delivered')
-                    return True
         print('returning false from sift sources')
-        return False
 
 
 print("creating app")

@@ -56,6 +56,7 @@ def create_app(config_class=ProductionConfig):
         try:
             return app
         except:
+            print('failed to return app')
             logger.log(
                 level=logging.INFO,
                 msg="Returning app caused exception, shutting down scheduler.",
