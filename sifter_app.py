@@ -164,7 +164,7 @@ NOT_ENTERED_AT_ALL = {
     "gw": "Guinea-Bissau",
     "gy": "Guyana",
     "hr": "Croatia",
-    "ht": "Haiti",   
+    "ht": "Haiti",
     "iq": "Iraq",
     "ir": "Iran",
     "is": "Iceland",
@@ -318,7 +318,8 @@ def send_all_sources():
     print('top send_all_sources')
     if verify_base_cat() and verify_base_src():
         sources = Source.query.all()
-        all_src_update = {src.json for src in sources}
+
+        all_src_update = set(src.json for src in sources)
         print('pre-payload @ send_all_sources')
         if send_payload(all_src_update):
             print('bottom send_all_sources -- success')
