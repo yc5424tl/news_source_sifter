@@ -140,7 +140,7 @@ NOT_ENTERED_AT_ALL = {
     "cm": "Cameroon",
     "cy": "Cyprus",
     "cz": "Czech Republic",
-    "dj": "Djibouti",
+    "dj": "Djibout   i",
     "dk": "Denmark",
     "do": "Dominican Republic",
     "dz": "Algeria",
@@ -164,7 +164,7 @@ NOT_ENTERED_AT_ALL = {
     "gw": "Guinea-Bissau",
     "gy": "Guyana",
     "hr": "Croatia",
-    "ht": "Haiti",
+    "ht": "Haiti",   
     "iq": "Iraq",
     "ir": "Iran",
     "is": "Iceland",
@@ -313,7 +313,7 @@ def send_payload(payload: set):
         print('bottom send_payload -- exception failure')
         return False
 
-    
+
 def send_all_sources():
     print('top send_all_sources')
     if verify_base_cat() and verify_base_src():
