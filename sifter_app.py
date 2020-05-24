@@ -320,13 +320,14 @@ def send_all_sources():
     if verify_base_cat() and verify_base_src():
         print('verify_base_cat() and verify_base_src() @ send_all_sources')
         sources = Source.query.all()
+        print(f'sources.len(1) == {sources.len()}')
         # print(f'type(sources) == {type(sources)}')
         # print(f'sources.length() == {Source.query.all().len()}')
         src_update = set()
         for src in sources:
-            print(f'sources.len() == {sources.len()}')
+            # print(f'sources.len(2) == {sources.len()}')
             # print(f'src.json for src_update.add(src.json) == {src.json}')
-            #src_update.add(src.json)
+            # src_update.add(src.json)
             print('added')
 
         # all_src_update = set(src.json for src in sources)
