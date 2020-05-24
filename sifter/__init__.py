@@ -17,6 +17,7 @@ scheduler = APScheduler()
 
 count = 0
 
+
 def create_app(config_class=ProductionConfig):
     app = Flask(__name__)
     app.config.from_object(config_class)
@@ -50,7 +51,7 @@ def create_app(config_class=ProductionConfig):
         file_handler.setLevel(logging.INFO)
         app.logger.addHandler(file_handler)
     app.logger.setLevel(logging.INFO)
-    app.logger.info("Launching Sifter")
+    app.logger.info("__init__ @ Launching Sifter")
     with app.app_context():
 
         try:
