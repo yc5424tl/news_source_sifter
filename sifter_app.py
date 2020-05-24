@@ -277,6 +277,7 @@ def stay_alive():
 
 
 def send_payload(payload: set):
+    print('top send_payload')
     login_url = os.getenv("NEWS_MAP_LOGIN_URL")
     username = os.getenv("NEWS_MAP_POST_USER")
     password = os.getenv("NEWS_MAP_POST_PW")
@@ -293,42 +294,48 @@ def send_payload(payload: set):
         "next": "/",
     }
     payload = {'sources': frozenset(payload)}
-    print("============PAYLOAD================")
+    print("\n\n============PAYLOAD================")
     print(f'{payload}')
+    print('===========END PAYLOAD=============\n\n')
     try:
         r1 = client.post(login_url, data=login_data, headers=dict(Referer=login_url))
         logger.log(level=logging.INFO, msg=f"response_1 => {r1}")
+        print(f'r1 @ send_payload == {r1}')
         r2 = client.post(url=post_url, json=payload)
         logger.log(level=logging.INFO, msg=f"response_2 => {r2}")
+        print(f'r2 @ send_payload == {r2}')
+        print('bottom send_payload -- success')
         return True
     except ConnectionError:
         logger.log(
             level=logging.INFO, msg="Connection Error while delivering payload."
         )
+        print('bottom send_payload -- exception failure')
         return False
 
-
+    
 def send_all_sources():
-    print('top of all sources')
+    print('top send_all_sources')
     if verify_base_cat() and verify_base_src():
         sources = Source.query.all()
         all_src_update = {src.json for src in sources}
+        print('pre-payload @ send_all_sources')
         if send_payload(all_src_update):
-            print('all_sources payload delivered')
+            print('bottom send_all_sources -- success')
             return True
-    print('returning false from send all sources')
+    print('bottom send_all_sources -- failure')
     return False
 
 
 def verify_base_cat():
-    print('top of verify_base_cat')
+    print('top verify_base_cat')
     for cat in categories:
         cat = Category.query.filter_by(name=cat).first()
         if not cat:
             new_cat = Category(name=cat)
             db.session.add(new_cat)
     db.session.commit()
-    print('end verify base cat')
+    print('bottom verify_base_cat -- success')
     return True
 
 
@@ -354,9 +361,11 @@ def verify_base_src():
                     db.session.add(new_source)
                     db.session.commit()
                     src_update.add(new_source.json)
-                print('bottom of verify_base_src via file')
+                print('pre-payload verify_base_src-file')
                 if send_payload(src_update):
+                    print('bottom verify_base_src-file -- success')
                     return True
+            print('bottom verify_base_sec-file -- failure')
             logger.log(level=logging.INFO, msg='Error sending payload from file in verify_base_src()')
             return False
         except FileNotFoundError:
@@ -364,8 +373,9 @@ def verify_base_src():
             src_data = req_top_src_data()
             if src_data:
                 src_update = build_top_src_data(src_data)
-                print('bottom of verify base src via req')
+                print('pre-payload verify_base_src-req')
                 if send_payload(src_update):
+                    print('bottom verify_base_src-req -- success')
                     scheduler.pause()
                     print('paused scheduler, waiting six minutes')
                     time.sleep(360)
@@ -373,20 +383,25 @@ def verify_base_src():
                     print('resumed scheduler')
                     return True
             logger.log(level=logging.INFO, msg='No data returned from req_top_src_data in verify_base_src')
+            print('bottom verify_base_src-req -- failure')
             return False
     else:
+        print('bottom verify_base_src-no_update_needed -- success')
         return True
 
 
 def req_country_src_data(alpha2_code, src_cat=None):
+    print('top of req_country_src_data')
     if src_cat is None:
         endpoint = f"https://newsapi.org/v2/top-headlines?country={alpha2_code}&apiKey={api_key}"
     else:
         endpoint = f"https://newsapi.org/v2/top-headlines?country={alpha2_code}&category={src_cat}&apiKey={api_key}"
     response = requests.get(endpoint)
     if response.json()["status"] == "ok":
+        print('bottom req_country_src_data -- success')
         return response.json()["articles"]
     elif response.json()["status"] == "error":
+        print('bottom req_country_src_data -- failure')
         logger.log(
             level=logging.ERROR,
             msg=f'Error Code: {response.json()["code"]} Message: {response.json()["message"]}',
@@ -395,12 +410,14 @@ def req_country_src_data(alpha2_code, src_cat=None):
 
 
 def build_country_src_data(src_data, alpha2_code, src_cat):
+    print('top build_country_src_data')
     src_update = set()
     cat = Category.query.filter_by(name=src_cat).first()
     if cat is None:
         cat = Category(name=src_cat)
         db.session.add(cat)
         db.session.commit()
+        print('added category in build_country_src_data -- new_category')
     for art in src_data:
         src = Source.query.filter_by(
             name=art["source"]["name"]
@@ -415,30 +432,38 @@ def build_country_src_data(src_data, alpha2_code, src_cat):
             db.session.add(new_src)
             db.session.commit()
             src_update.add(new_src.json)
+            print('added src to list in build_country_src_data -- new_src')
         else:  # Source already in DB
             try:
                 idx = src.categories.index(cat)  # Check if category currently listed for source
+                print('src and src.cat current @ build_country_src_data')
             except ValueError:  # Exception Raised if category not listed
                 src.categories.append(cat)
                 db.session.commit()
                 src_update.add(src.json)
+                print('added src to list in build_country_src_data -- updated_cat')
     db.session.commit()
+    print('bottom build_country_src_data -- success')
     return src_update
 
 
 def req_top_src_data():
+    print('top req_top_src_data')
     response = requests.get(f"https://newsapi.org/v2/sources?apiKey={api_key}")
     if response.json()["status"] == "ok":
+        print('bottom req_top_src_data -- success')
         return response.json()["sources"]
     elif response.json()["status"] == "error":
         logger.log(
             level=logging.ERROR,
             msg=f'Code: {response.json()["code"]}, Message: {response.json()["message"]}',
         )
+        print('bottom req_top_src_data -- failure')
         return None
 
 
 def build_top_src_data(src_data):
+    print('top build_top_src_data')
     src_update = set()
     for src in src_data:
         cat = Category.query.filter_by(
@@ -448,6 +473,7 @@ def build_top_src_data(src_data):
             cat = Category(name=src["category"])
             db.session.add(cat)
             db.session.commit()
+            print('added cat in build_top_src_data -- new_cat')
         src = Source.query.filter_by(
             name=src["name"]
         ).first()  # Checking DB for Source
@@ -459,13 +485,17 @@ def build_top_src_data(src_data):
             db.session.add(new_src)
             db.session.commit()
             src_update.add(new_src.json)
+            print('added new_src to list in build_top_src_data')
         else:  # Source exists in DB.
             try:  # Check Source for Category
                 idx = src.categories.index(cat)
+                print('src and src.cat is current @ build_top_src_data')
             except ValueError:  # Category does not exist for Source, add Category.
                 src.categories.append(cat)
                 db.session.commit()
                 src_update.add(src.json)
+                print('updated src with new cat in build_top_src_data')
     db.session.commit()
+    print('bottom build_top_src_data -- success')
     return src_update
 
