@@ -252,13 +252,13 @@ def sift_sources():
             print('NOT sent all sources')
 
 
-print("creating app")
+print("MAIN - creating app")
 app = create_app()
 scheduler.add_job(
-    id="sifter_scheduler", func=sift_sources, trigger="interval", minutes=6, max_instances=1, replace_existing=True
+    id="sifter_scheduler", func=sift_sources, trigger="interval", minutes=1, max_instances=1, replace_existing=True
 )
 scheduler.start()
-print('pr started scheduler')
+print('MAIN - started scheduler')
 logger.log(level=logging.INFO, msg='started scheduler')
 app.app_context().push()
 from sifter.models import Source, Category
@@ -317,15 +317,23 @@ def send_payload(payload: set):
 def send_all_sources():
     print('top send_all_sources')
     if verify_base_cat() and verify_base_src():
+        print('verified cat/src @ send_all_sources')
         sources = Source.query.all()
-
+        src_update = set()
+        for src in sources:
+            print(f'src.json for src_update.add(src.json) == {src.json}')
+            src_update.add(src.json)
         all_src_update = set(src.json for src in sources)
         print('pre-payload @ send_all_sources')
         if send_payload(all_src_update):
-            print('bottom send_all_sources -- success')
+            print('bottom send_all_sources -- success @ send_payload')
             return True
-    print('bottom send_all_sources -- failure')
-    return False
+        else:
+            print('bottom send_all_sources -- failure @ send_payload')
+            return False
+    else:
+        print('bottom send_all_sources -- failure @ verify_base_cat and verify_base_src')
+        return False
 
 
 def verify_base_cat():
