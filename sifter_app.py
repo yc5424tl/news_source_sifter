@@ -226,7 +226,7 @@ def sift_sources():
     print('top of sifter')
     with app.app_context():
         print('with context')
-        if send_all_sources:
+        if send_all_sources():
             print('sent all sources')
             countries = list(api_country_codes.keys())
             random_country = random.choice(countries)
@@ -234,16 +234,22 @@ def sift_sources():
             sources_for_country = req_country_src_data(
                 alpha2_code=random_country, src_cat=random_category
             )
-            if sources_for_country:
+            if sources_for_country():
                 print('have sources for country')
                 src_update = build_country_src_data(
                     src_data=sources_for_country,
                     alpha2_code=random_country,
                     src_cat=random_category,
                 )
+                print(f'\n\n==============SIFTER PAYLOAD===============\n\n{src_update}')
                 if send_payload(src_update):
                     print('sifter payload delivered')
-        print('returning false from sift sources')
+                else:
+                    print('NOT sifter payload delivered')
+            else:
+                print('NOT sources_for_country')
+        else:
+            print('NOT sent all sources')
 
 
 print("creating app")
